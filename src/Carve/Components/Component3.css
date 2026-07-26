@@ -1,0 +1,108 @@
+/* Component3 (CaRVE Behaviour Framework) Styles */
+
+.carve-framework-section {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  padding: clamp(28px, 5vw, 52px) clamp(20px, 5vw, 64px) clamp(28px, 5vw, 48px);
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  background:#0B1B3D;
+}
+
+
+.carve-framework-title {
+  text-align: center;
+  font-size: clamp(22px, 4vw, 36px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+  margin-top: 0;
+  color: #f0f2fa
+}
+
+.carve-framework-desc {
+  text-align: center;
+  font-size: clamp(13px, 2vw, 16px);
+  line-height: 1.6;
+  margin-bottom: clamp(24px, 4vw, 44px);
+  max-width: 600px;
+  color: rgba(200, 210, 230, 0.7);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.carve-grid-top {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: clamp(12px, 2vw, 20px);
+  flex-wrap: wrap;
+}
+
+.carve-grid-bottom {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 740px;
+  margin-left: auto;
+  margin-right: auto;
+  flex-wrap: wrap;
+}
+
+.dimension-card {
+  background: #FFFFFF33;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: clamp(28px, 4vw, 40px);
+  min-height: 220px;
+  width: 320px;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.dimension-card:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+.dimension-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: clamp(14px, 2vw, 20px);
+   background: #141736;
+  color: #a0b4d0;
+}
+
+
+.dimension-card-title {
+  font-size: clamp(16px, 2.5vw, 20px);
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  color: #e8ecf8;
+}
+
+
+
+.dimension-card-desc {
+  font-size: clamp(12px, 1.8vw, 14px);
+  line-height: 1.6;
+  margin: 0;
+    color: rgba(180, 195, 220, 0.7);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .carve-grid-top {
+    grid-template-columns: 1fr;
+  }
+
+  .carve-grid-bottom {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+}

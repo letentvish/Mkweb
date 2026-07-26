@@ -1,0 +1,592 @@
+/* Component4 (How CaRVE Works + Energy States) Styles */
+
+/* Main Container */
+[theme='dark'] .carve-how-works-section {
+  background-color: #0B1B3D;
+  padding: clamp(28px, 5vw, 52px) clamp(20px, 5vw, 64px) clamp(28px, 5vw, 48px);
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+[theme='light'] .carve-how-works-section {
+  background: linear-gradient(153.99deg, #FFFFFF 17.51%, #C3FAFF 173.32%);
+  padding: clamp(28px, 5vw, 52px) clamp(20px, 5vw, 64px) clamp(28px, 5vw, 48px);
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* How CaRVE Works Section */
+[theme='dark'] .carve-how-works-title {
+  text-align: center;
+  color: #f0f2fa;
+  font-size: clamp(22px, 4vw, 36px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+  margin-top: 0;
+}
+
+[theme='light'] .carve-how-works-title {
+  text-align: center;
+  color: #0a2540;
+  font-size: clamp(22px, 4vw, 36px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+  margin-top: 0;
+}
+
+[theme='dark'] .carve-how-works-desc {
+  text-align: center;
+  color: rgba(200, 210, 230, 0.7);
+  font-size: clamp(13px, 2vw, 16px);
+  line-height: 1.6;
+  margin-bottom: clamp(30px, 5vw, 56px);
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+[theme='light'] .carve-how-works-desc {
+  text-align: center;
+  color: rgba(10, 37, 64, 0.7);
+  font-size: clamp(13px, 2vw, 16px);
+  line-height: 1.6;
+  margin-bottom: clamp(30px, 5vw, 56px);
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Timeline Styles */
+.carve-timeline-mobile {
+  display: none;
+}
+
+.carve-timeline-desktop {
+  display: block;
+}
+
+.carve-timeline-container {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+/* Keyframe for line filling animation */
+@keyframes fillLine {
+  0% {
+    background-size: 0% 100%;
+  }
+  100% {
+    background-size: 100% 100%;
+  }
+}
+
+/* Connector Line */
+[theme='dark'] .carve-connector-line {
+  position: absolute;
+  top: 20px;
+  left: 40px;
+  right: 40px;
+  height: 4px;
+  background: rgba(252, 222, 83, 0.2);
+  background-image: linear-gradient(to right, #FCDE53 0%, #FCDE53 100%);
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 0% 100%;
+  border-radius: 2px;
+  z-index: 0;
+  animation: fillLine 3s ease-in-out infinite;
+}
+
+[theme='light'] .carve-connector-line {
+  position: absolute;
+  top: 20px;
+  left: 40px;
+  right: 40px;
+  height: 4px;
+  background: rgba(252, 222, 83, 0.2);
+  background-image: linear-gradient(to right, #FCDE53 0%, #FCDE53 100%);
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 0% 100%;
+  border-radius: 2px;
+  z-index: 0;
+  animation: fillLine 3s ease-in-out infinite;
+}
+
+/* Timeline Step */
+.carve-timeline-step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding: 0 8px;
+}
+
+[theme='dark'] .carve-step-bubble {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background:#FCDE53;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1a1a2e;
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 16px rgba(201, 162, 39, 0.4);
+}
+
+[theme='light'] .carve-step-bubble {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background:#FCDE53;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0a2540;
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 16px rgba(212, 185, 65, 0.3);
+}
+
+[theme='dark'] .carve-step-title {
+  color: #e8ecf8;
+  font-size: clamp(14px, 2vw, 17px);
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  line-height: 1.3;
+}
+
+[theme='light'] .carve-step-title {
+  color: #0a2540;
+  font-size: clamp(14px, 2vw, 17px);
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  line-height: 1.3;
+}
+
+[theme='dark'] .carve-step-desc {
+  color: rgba(180, 195, 220, 0.65);
+  font-size: clamp(11px, 1.6vw, 13px);
+  line-height: 1.55;
+  margin: 0;
+  max-width: 200px;
+}
+
+[theme='light'] .carve-step-desc {
+  color: rgba(10, 37, 64, 0.65);
+  font-size: clamp(11px, 1.6vw, 13px);
+  line-height: 1.55;
+  margin: 0;
+  max-width: 200px;
+}
+
+/* Mobile Timeline */
+.carve-timeline-mobile-container {
+  position: relative;
+  padding-left: 48px;
+}
+
+[theme='dark'] .carve-vertical-line {
+  position: absolute;
+  top: 20px;
+  left: 19px;
+  bottom: 20px;
+  width: 4px;
+  background: linear-gradient(180deg, #c9a227, #e6c84d, #c9a227);
+  border-radius: 2px;
+}
+
+[theme='light'] .carve-vertical-line {
+  position: absolute;
+  top: 20px;
+  left: 19px;
+  bottom: 20px;
+  width: 4px;
+  background: linear-gradient(180deg, #d4b941, #e6c84d, #d4b941);
+  border-radius: 2px;
+}
+
+.carve-mobile-step {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+}
+
+.carve-mobile-step:not(:last-child) {
+  margin-bottom: 28px;
+}
+
+[theme='dark'] .carve-mobile-bubble {
+  position: absolute;
+  left: -48px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e6c84d, #c9a227);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1a1a2e;
+  font-weight: 700;
+  font-size: 16px;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+[theme='light'] .carve-mobile-bubble {
+  position: absolute;
+  left: -48px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f5d547, #d4b941);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0a2540;
+  font-weight: 700;
+  font-size: 16px;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+[theme='dark'] .carve-mobile-step-title {
+  color: #e8ecf8;
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+}
+
+[theme='light'] .carve-mobile-step-title {
+  color: #0a2540;
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+}
+
+[theme='dark'] .carve-mobile-step-desc {
+  color: rgba(180, 195, 220, 0.65);
+  font-size: 12px;
+  line-height: 1.55;
+  margin: 0;
+}
+
+[theme='light'] .carve-mobile-step-desc {
+  color: rgba(10, 37, 64, 0.65);
+  font-size: 12px;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Energy States Section */
+[theme='dark'] .carve-energy-title {
+  text-align: center;
+  color: #0065CC;
+  font-size: clamp(22px, 4vw, 36px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+  margin-top: clamp(48px, 8vw, 80px);
+}
+
+[theme='light'] .carve-energy-title {
+  text-align: center;
+  color: #0065CC;
+  font-size: clamp(22px, 4vw, 36px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+  margin-top: clamp(48px, 8vw, 80px);
+}
+
+[theme='dark'] .carve-energy-desc {
+  text-align: center;
+  color: rgba(200, 210, 230, 0.7);
+  font-size: clamp(13px, 2vw, 16px);
+  line-height: 1.6;
+  margin-bottom: clamp(24px, 4vw, 44px);
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+[theme='light'] .carve-energy-desc {
+  text-align: center;
+  color: rgba(10, 37, 64, 0.7);
+  font-size: clamp(13px, 2vw, 16px);
+  line-height: 1.6;
+  margin-bottom: clamp(24px, 4vw, 44px);
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Energy Grid */
+.energy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+/* Energy Card */
+.energy-card {
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.energy-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Reverse layout for second card */
+.energy-card.reverse {
+  flex-direction: column;
+}
+
+/* Keyframe for floating dots animation */
+@keyframes floatDots {
+  0%, 100% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 6px 6px;
+  }
+}
+
+/* Energy Card Header (Yellow Band) */
+[theme='dark'] .energy-card-header {
+  background: #FCDE53;
+  background-image: radial-gradient(circle, #000000 1px, transparent 1px);
+  background-size: 12px 12px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 3vw, 28px);
+  flex: 1;
+  transition: background-position 0.3s ease;
+}
+
+[theme='light'] .energy-card-header {
+  background: #FCDE53;
+  background-image: radial-gradient(circle, #000000 1px, transparent 1px);
+  background-size: 12px 12px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 3vw, 28px);
+  flex: 1;
+  transition: background-position 0.3s ease;
+}
+
+/* Animate dots on hover */
+.energy-card:hover .energy-card-header {
+  animation: floatDots 2s ease-in-out infinite;
+}
+
+/* Normal card - yellow area at top */
+.energy-card:not(.reverse) .energy-card-header {
+  border-bottom: 1px solid transparent;
+}
+
+/* Reverse card - yellow area at bottom */
+.energy-card.reverse .energy-card-header {
+  border-top: 1px solid transparent;
+}
+
+[theme='dark'] .energy-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #1a2040;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+[theme='light'] .energy-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #0a2540;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(10,37,64,0.2);
+}
+
+/* Energy Card Title Section */
+[theme='dark'] .energy-card-title-section {
+  background: rgba(255,255,255,0.04);
+  padding: clamp(18px, 3vw, 24px) clamp(16px, 3vw, 28px);
+  border-left: 1px solid rgba(255,255,255,0.06);
+  border-right: 1px solid rgba(255,255,255,0.06);
+  transition: background 0.3s ease;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[theme='light'] .energy-card-title-section {
+  background: rgba(10, 37, 64, 0.03);
+  padding: clamp(18px, 3vw, 24px) clamp(16px, 3vw, 28px);
+  border-left: 1px solid rgba(10, 37, 64, 0.1);
+  border-right: 1px solid rgba(10, 37, 64, 0.1);
+  transition: background 0.3s ease;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Energy Card Description Section */
+[theme='dark'] .energy-card-desc-section {
+  background: rgba(255,255,255,0.02);
+  padding: clamp(18px, 3vw, 24px) clamp(16px, 3vw, 28px);
+  border-left: 1px solid rgba(255,255,255,0.06);
+  border-right: 1px solid rgba(255,255,255,0.06);
+  transition: background 0.3s ease;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[theme='light'] .energy-card-desc-section {
+  background: rgba(10, 37, 64, 0.02);
+  padding: clamp(18px, 3vw, 24px) clamp(16px, 3vw, 28px);
+  border-left: 1px solid rgba(10, 37, 64, 0.1);
+  border-right: 1px solid rgba(10, 37, 64, 0.1);
+  transition: background 0.3s ease;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Normal card layout - Title section after header */
+[theme='dark'] .energy-card:not(.reverse) .energy-card-title-section {
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+[theme='light'] .energy-card:not(.reverse) .energy-card-title-section {
+  border-top: 1px solid rgba(10, 37, 64, 0.1);
+}
+
+/* Normal card - Description at bottom */
+[theme='dark'] .energy-card:not(.reverse) .energy-card-desc-section {
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+[theme='light'] .energy-card:not(.reverse) .energy-card-desc-section {
+  border-bottom: 1px solid rgba(10, 37, 64, 0.1);
+  border-top: 1px solid rgba(10, 37, 64, 0.1);
+}
+
+/* Reverse card - Title at top */
+[theme='dark'] .energy-card.reverse .energy-card-title-section {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+[theme='light'] .energy-card.reverse .energy-card-title-section {
+  border-top: 1px solid rgba(10, 37, 64, 0.1);
+  border-bottom: 1px solid rgba(10, 37, 64, 0.1);
+}
+
+/* Reverse card - Description in middle */
+[theme='dark'] .energy-card.reverse .energy-card-desc-section {
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+[theme='light'] .energy-card.reverse .energy-card-desc-section {
+  border-bottom: 1px solid rgba(10, 37, 64, 0.1);
+}
+
+/* Hover effects */
+[theme='dark'] .energy-card:hover .energy-card-title-section {
+  background: rgba(255,255,255,0.06);
+}
+
+[theme='light'] .energy-card:hover .energy-card-title-section {
+  background: rgba(10, 37, 64, 0.05);
+}
+
+[theme='dark'] .energy-card:hover .energy-card-desc-section {
+  background: rgba(255,255,255,0.04);
+}
+
+[theme='light'] .energy-card:hover .energy-card-desc-section {
+  background: rgba(10, 37, 64, 0.04);
+}
+
+[theme='dark'] .energy-card-title {
+  color: #e8ecf8;
+  font-size: clamp(18px, 3vw, 24px);
+  font-weight: 700;
+  margin: 0;
+  text-align: center;
+}
+
+[theme='light'] .energy-card-title {
+  color: #0a2540;
+  font-size: clamp(18px, 3vw, 24px);
+  font-weight: 700;
+  margin: 0;
+  text-align: center;
+}
+
+[theme='dark'] .energy-card-desc {
+  color: rgba(180, 195, 220, 0.7);
+  font-size: clamp(12px, 1.8vw, 14px);
+  line-height: 1.6;
+  margin: 0;
+  text-align: center;
+}
+
+[theme='light'] .energy-card-desc {
+  color: rgba(10, 37, 64, 0.7);
+  font-size: clamp(12px, 1.8vw, 14px);
+  line-height: 1.6;
+  margin: 0;
+  text-align: center;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .carve-timeline-desktop {
+    display: none !important;
+  }
+  .carve-timeline-mobile {
+    display: block !important;
+  }
+  .energy-grid {
+    grid-template-columns: 1fr !important;
+  }
+}

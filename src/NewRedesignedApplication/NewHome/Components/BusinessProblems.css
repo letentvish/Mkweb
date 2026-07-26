@@ -1,0 +1,154 @@
+/* Business Problems Section */
+.business-problem-section {
+  padding: 1.5rem 3rem;
+  margin-bottom: 1.5rem;
+}
+
+[theme='dark'] .business-problem-title {
+  font-size: 48px;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 60px;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+}
+
+[theme='light'] .business-problem-title {
+  font-size: 48px;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 60px;
+  letter-spacing: -0.5px;
+  color: #1F2937;
+}
+
+.business-problem-hero-image {
+  width: 100%;
+  height: 280px;
+  border-radius: 24px;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+.business-problem-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.business-problem-hero-image:hover .business-problem-image {
+  transform: scale(1.1);
+}
+
+/* Business Problems Grid */
+.business-problem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+ .business-problem-card {
+ background: radial-gradient(52.91% 152.78% at 50% 50%, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.75) 100%);
+  border-radius: 20px;
+  padding: 2rem 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+[theme='dark'] .business-problem-card {
+  background: radial-gradient(circle at center, transparent 0%, rgba(255, 255, 255, 0.05) 20%, rgba(255, 255, 255, 0.2) 100%);
+}
+
+[theme='dark'] .business-problem-card:hover {
+  /* No card movement or shadow effects */
+}
+
+[theme='light'] .business-problem-card:hover {
+  /* No card movement or shadow effects */
+}
+
+[theme='dark'] .business-problem-card-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.2px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+[theme='light'] .business-problem-card-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.2px;
+  color: #1E2939;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.business-problem-title-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+
+[theme='dark'] .business-problem-card-description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #B2BBC6;
+  margin: 0;
+}
+
+[theme='light'] .business-problem-card-description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #4A5565;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .business-problem-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .business-problem-section {
+    padding: 1.25rem 20px;
+    margin-bottom: 1.25rem;
+  }
+
+  [theme='dark'] .business-problem-title,
+  [theme='light'] .business-problem-title {
+    font-size: 36px;
+    margin-bottom: 40px;
+  }
+
+  .business-problem-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .business-problem-hero-image {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  [theme='dark'] .business-problem-title,
+  [theme='light'] .business-problem-title {
+    font-size: 28px;
+  }
+
+  [theme='dark'] .business-problem-card,
+  [theme='light'] .business-problem-card {
+    padding: 24px;
+  }
+}

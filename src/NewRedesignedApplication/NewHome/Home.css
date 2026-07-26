@@ -1,0 +1,11 @@
+[theme='dark'] .home-container {
+  background: #070E32;
+  color: white;
+  min-height: 100vh;
+}
+
+[theme='light'] .home-container {
+  background: #F9FAFB;
+  color: #111827;
+  min-height: 100vh;
+}

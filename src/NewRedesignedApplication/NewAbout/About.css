@@ -1,0 +1,42 @@
+.about-container {
+  background-color: white;
+}
+
+[theme='dark'] .about-container {
+  background-color: #0A0E27;
+}
+
+.hero-section {
+  min-height: auto;
+  padding: 2rem 2rem;
+}
+
+@media (min-width: 768px) {
+  .hero-section {
+    padding: 4rem 4rem;
+  }
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: 3rem;
+  color: #111827;
+}
+
+[theme='dark'] .hero-title {
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 3.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-title {
+    font-size: 4.5rem;
+  }
+}

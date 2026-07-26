@@ -1,0 +1,214 @@
+.leadership-container {
+  background-color: white;
+}
+
+[theme='dark'] .leadership-container {
+  background-color: #0A0E27;
+}
+
+.leadership-title {
+  color: #111827;
+}
+
+[theme='dark'] .leadership-title {
+  color: white;
+}
+
+/* Card Wrapper with Perspective */
+.team-card-wrapper {
+  perspective: 1000px;
+  height: 100%;
+  min-height: 450px;
+  cursor: pointer;
+}
+
+/* Flip Container */
+.team-card-flip {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+/* Common Card Styles */
+.team-card {
+  background-color: #EFFBF9;
+  border-radius: 16px;
+  padding: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+[theme='dark'] .team-card {
+  background-color: #1a1f3a;
+}
+
+/* Front Side */
+.team-card-front {
+  z-index: 2;
+}
+
+/* Back Side */
+.team-card-back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  position: relative;
+}
+
+[theme='dark'] .team-card-back {
+  background: linear-gradient(135deg, #1a1f3a 0%, #2d3454 100%);
+}
+
+.team-image-container {
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  margin-bottom: 1rem;
+  position: relative;
+  width: 100%;
+}
+
+.team-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.member-name {
+  color: #1E2939;
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 0.25rem;
+}
+
+[theme='dark'] .member-name {
+  color: white;
+}
+
+.linkedin-icon {
+  color: #0077B5;
+}
+
+.member-title {
+  color: #4A5565;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+[theme='dark'] .member-title {
+  color: #9ca3af;
+}
+
+/* Back Card Content */
+.team-card-back-content {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  pointer-events: auto;
+}
+
+.member-name-back {
+  color: #1E2939;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 0.25rem;
+  flex-shrink: 0;
+}
+
+[theme='dark'] .member-name-back {
+  color: white;
+}
+
+.member-title-back {
+  color: #4A5565;
+  font-weight: 500;
+  font-size: 13px;
+  margin-bottom: 0.75rem;
+  flex-shrink: 0;
+}
+
+[theme='dark'] .member-title-back {
+  color: #9ca3af;
+}
+
+.member-description {
+  color: #374151;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.6;
+  text-align: left;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1;
+  padding-right: 12px;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  max-height: 100%;
+}
+
+.member-description::-webkit-scrollbar {
+  width: 8px;
+}
+
+.member-description::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  margin: 4px 0;
+}
+
+.member-description::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+  border: 1px solid transparent;
+  background-clip: padding-box;
+}
+
+.member-description::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.6);
+  background-clip: padding-box;
+}
+
+[theme='dark'] .member-description {
+  color: #d1d5db;
+}
+
+[theme='dark'] .member-description::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  margin: 4px 0;
+}
+
+[theme='dark'] .member-description::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 4px;
+  border: 1px solid transparent;
+  background-clip: padding-box;
+}
+
+[theme='dark'] .member-description::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.6);
+  background-clip: padding-box;
+}
+
+/* Accessibility: Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .team-card-flip {
+    transition: none !important;
+  }
+
+  .leadership-title {
+    transition: none !important;
+  }
+}

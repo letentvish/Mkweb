@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+/* ── BASE ───────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  margin-bottom: 0;
+  border-radius: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 1030px) {
+  .hero {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* ── DARK THEME ─────────────────────────────────────────────── */
+[theme='dark'] .hero {
+  background-color: #0a0a0f;
+}
+
+/* ── LIGHT THEME ────────────────────────────────────────────── */
+[theme='light'] .hero {
+  background-color: #f8f9fa;
+}
+
+/* ── CONTENT ────────────────────────────────────────────────── */
+.hero__content {
+  position: relative;
+  z-index: 2;
+  width: 45%;
+  padding: 0 0 0 4%;
+  flex-shrink: 0;
+}
+
+/* ── TITLE ──────────────────────────────────────────────────── */
+.hero__title {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(14px, 3.5vw, 82px);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 1.5vw 0;
+  color: #ffffff;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ── LIGHT THEME TITLE ──────────────────────────────────────── */
+[theme='light'] .hero__title {
+  color: #0f172a;
+  text-shadow: none;
+}
+
+/* ── ACCENT TEXT ────────────────────────────────────────────── */
+.hero__accent {
+  color: #38BDF8;
+}
+
+[theme='light'] .hero__accent {
+  color: #1447E6;
+  text-shadow: 0 2px 10px rgba(20, 71, 230, 0.2);
+}
+
+/* ── CTA BUTTON ─────────────────────────────────────────────── */
+.hero__cta {
+  display: inline-block;
+  padding: 1vw 2vw;
+  border-radius: 50px;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(10px, 1.2vw, 16px);
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  color: #ffffff;
+  background: linear-gradient(180deg, #2A8DA8 0%, #20A4C1 50%, #1CB8D2 100%);
+}
+
+.hero__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+[theme='light'] .hero__cta {
+  background: linear-gradient(180deg, #1a2f4a 0%, #112237 50%, #0f243f 100%);
+}
+
+[theme='light'] .hero__cta:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}

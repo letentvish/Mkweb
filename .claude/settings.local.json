@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm start)",
+      "Bash(ls /Volumes/Shweta/Projects/ReactJS/multiplierskraft/src/Assets/*.png /Volumes/Shweta/Projects/ReactJS/multiplierskraft/src/Assets/*.webp)",
+      "Bash(find /Volumes/Shweta/Projects/ReactJS/multiplierskraft/src/Assets -name *.webp -o -name hr.* -o -name Educational.* -o -name Consulting.* -o -name Enterprise.* -o -name Government.*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

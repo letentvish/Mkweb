@@ -1,0 +1,64 @@
+.company-title {
+  color: #111827;
+}
+
+[theme='dark'] .company-title {
+  color: white;
+}
+
+.company-description {
+  color: #62666A;
+}
+
+[theme='dark'] .company-description {
+  color: #d1d5db;
+}
+
+.timeline-title {
+  color: #111827;
+}
+
+[theme='dark'] .timeline-title {
+  color: white;
+}
+
+.timeline-subtitle {
+  color: #949192;
+  font-weight: 600;
+}
+
+[theme='dark'] .timeline-subtitle {
+  color: #949192;
+}
+
+.timeline-description {
+  color: #302D2E;
+}
+
+[theme='dark'] .timeline-description {
+  color: #d1d5db;
+}
+
+.icon-container {
+  background-color: #f3f4f6;
+}
+
+[theme='dark'] .icon-container {
+  background-color: #f3f4f6;
+}
+
+.divider-line {
+  background-color: #e5e7eb;
+}
+
+[theme='dark'] .divider-line {
+  background-color: #374151;
+}
+
+.description-highlight {
+  color: #8E8C8A;
+}
+
+[theme='dark'] .description-highlight {
+  color: #8E8C8A;
+}

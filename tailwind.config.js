@@ -1,0 +1,82 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  theme: {
+    extend: {
+      colors: {
+        surface: '#f8f9ff',
+        'surface-dim': '#cbdbf5',
+        'surface-bright': '#f8f9ff',
+        'surface-container-lowest': '#ffffff',
+        'surface-container-low': '#eff4ff',
+        'surface-container': '#e5eeff',
+        'surface-container-high': '#dce9ff',
+        'surface-container-highest': '#d3e4fe',
+        'on-surface': '#0b1c30',
+        'on-surface-variant': '#45464d',
+        'inverse-surface': '#213145',
+        'inverse-on-surface': '#eaf1ff',
+        outline: '#76777d',
+        'outline-variant': '#c6c6cd',
+        'surface-tint': '#565e74',
+        primary: '#000000',
+        'on-primary': '#ffffff',
+        'primary-container': '#131b2e',
+        'on-primary-container': '#7c839b',
+        'inverse-primary': '#bec6e0',
+        secondary: '#0058be',
+        'on-secondary': '#ffffff',
+        'secondary-container': '#2170e4',
+        'on-secondary-container': '#fefcff',
+        tertiary: '#000000',
+        'on-tertiary': '#ffffff',
+        'tertiary-container': '#191c1e',
+        'on-tertiary-container': '#818486',
+        error: '#ba1a1a',
+        'on-error': '#ffffff',
+        'error-container': '#ffdad6',
+        'on-error-container': '#93000a',
+        'primary-fixed': '#dae2fd',
+        'primary-fixed-dim': '#bec6e0',
+        'on-primary-fixed': '#131b2e',
+        'on-primary-fixed-variant': '#3f465c',
+        'secondary-fixed': '#d8e2ff',
+        'secondary-fixed-dim': '#adc6ff',
+        'on-secondary-fixed': '#001a42',
+        'on-secondary-fixed-variant': '#004395',
+        'tertiary-fixed': '#e0e3e5',
+        'tertiary-fixed-dim': '#c4c7c9',
+        'on-tertiary-fixed': '#191c1e',
+        'on-tertiary-fixed-variant': '#444749',
+        background: '#f8f9ff',
+        'on-background': '#0b1c30',
+        'surface-variant': '#d3e4fe',
+        action: '#3B82F6',
+        'slate-primary': '#0F172A'
+      },
+      fontFamily: {
+        poppins: ['Poppins', 'sans-serif'],
+        inter: ['Inter', 'sans-serif']
+      },
+      borderRadius: {
+        sm: '0.25rem',
+        DEFAULT: '0.5rem',
+        md: '0.75rem',
+        lg: '1rem',
+        xl: '1.5rem',
+        full: '9999px'
+      },
+      spacing: {
+        'container-max': '1280px',
+        gutter: '32px',
+        'margin-x': '64px',
+        'stack-sm': '8px',
+        'stack-md': '16px',
+        'stack-lg': '32px',
+        'section-padding': '120px'
+      }
+    },
+  },
+  plugins: [],
+};
+
