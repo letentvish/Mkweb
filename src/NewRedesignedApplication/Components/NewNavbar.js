@@ -16,7 +16,7 @@ import {
   Layers,
   Sparkles
 } from "lucide-react";
-import LogoLight from "../../Assets/MultipliersKraftLogoLight.png";
+import LogoDark from "../../Assets/MultipliersKraftLogoDark.png";
 
 export default function NewNavbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -123,7 +123,7 @@ export default function NewNavbar() {
           {/* Brand Logo */}
           <Link to="/" className="flex items-center gap-3 group">
             <img 
-              src={LogoLight} 
+              src={LogoDark} 
               alt="MultipliersKraft Logo" 
               className="h-9 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />
