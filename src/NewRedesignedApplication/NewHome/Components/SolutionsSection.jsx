@@ -70,9 +70,9 @@ export default function SolutionsSection() {
   }, [scrollYProgress]);
 
   return (
-    <section ref={sectionRef} className="relative w-full h-[220vh] bg-surface">
+    <section ref={sectionRef} className="relative w-full min-h-screen lg:h-[220vh] bg-surface">
       {/* Sticky Screen Viewport Container */}
-      <div className="sticky top-0 h-screen w-full flex flex-col justify-center items-center py-6 px-4 md:px-8 lg:px-12 overflow-hidden">
+      <div className="lg:sticky lg:top-0 min-h-screen w-full flex flex-col justify-center items-center py-8 px-4 sm:px-6 md:px-8 lg:px-12 overflow-hidden">
         
         <div className="w-full max-w-6xl mx-auto flex flex-col items-center">
           
@@ -85,10 +85,10 @@ export default function SolutionsSection() {
           </div>
 
           {/* Main Showcase Dark Container */}
-          <div className="w-full h-[480px] md:h-[520px] bg-[#0b1426] text-white rounded-2xl overflow-hidden shadow-2xl border border-slate-800/80 relative flex">
+          <div className="w-full h-auto lg:h-[520px] bg-[#0b1426] text-white rounded-2xl overflow-hidden shadow-2xl border border-slate-800/80 relative flex flex-col-reverse lg:flex-row">
             
-            {/* Active Card Content Area with Slide Overlap Animation */}
-            <div className="flex-1 p-6 md:p-10 relative flex flex-col justify-between overflow-hidden">
+            {/* Active Card Content Area */}
+            <div className="flex-1 p-5 sm:p-8 lg:p-10 relative flex flex-col justify-between overflow-hidden min-h-[420px] sm:min-h-[440px] lg:min-h-[480px]">
               <AnimatePresence mode="popLayout">
                 {pillars.map((pillar) =>
                   pillar.id === activeTab ? (
@@ -98,21 +98,21 @@ export default function SolutionsSection() {
                       animate={{ x: "0%", opacity: 1 }}
                       exit={{ x: "-30%", opacity: 0 }}
                       transition={{ duration: 0.55, ease: [0.25, 0.8, 0.25, 1] }}
-                      className="absolute inset-0 p-6 md:p-10 grid grid-cols-1 lg:grid-cols-12 items-center gap-6 bg-[#0b1426] z-10 overflow-hidden"
+                      className="absolute inset-0 p-5 sm:p-8 lg:p-10 grid grid-cols-1 lg:grid-cols-12 items-center gap-6 bg-[#0b1426] z-10 overflow-y-auto lg:overflow-hidden"
                     >
                       {/* Left Column: Text & CTA */}
-                      <div className="lg:col-span-6 flex flex-col justify-center items-start z-10">
+                      <div className="lg:col-span-6 flex flex-col justify-center items-start z-10 text-left">
                         <div className="text-sky-400 mb-3 p-2.5 rounded-lg bg-sky-500/10 inline-block border border-sky-500/20">
                           {pillar.icon}
                         </div>
 
-                        <h3 className="text-2xl md:text-3xl lg:text-4xl font-poppins font-bold tracking-tight text-white mb-4 leading-tight">
+                        <h3 className="text-2xl sm:text-3xl lg:text-4xl font-poppins font-bold tracking-tight text-white mb-3 sm:mb-4 leading-tight">
                           {pillar.title}
                         </h3>
 
-                        <ul className="space-y-2.5 mb-6">
+                        <ul className="space-y-2 mb-6">
                           {pillar.bullets.map((bullet, idx) => (
-                            <li key={idx} className="flex items-center gap-3 text-slate-200 text-sm md:text-base font-medium">
+                            <li key={idx} className="flex items-center gap-2.5 text-slate-200 text-xs sm:text-sm md:text-base font-medium">
                               <span className="w-2 h-2 rounded-full bg-sky-400 shrink-0" />
                               <span>{bullet}</span>
                             </li>
@@ -121,7 +121,7 @@ export default function SolutionsSection() {
 
                         <button
                           onClick={() => navigate(pillar.link)}
-                          className="inline-flex items-center gap-2 bg-[#0369a1] hover:bg-[#0284c7] text-white font-bold px-6 py-2.5 rounded-lg transition-all duration-200 cursor-pointer shadow-md"
+                          className="inline-flex items-center gap-2 bg-[#0369a1] hover:bg-[#0284c7] text-white font-bold px-5 sm:px-6 py-2.5 rounded-lg transition-all duration-200 cursor-pointer shadow-md text-xs sm:text-sm"
                         >
                           <span>Explore Solution</span>
                           <ArrowRight className="w-4 h-4" />
@@ -129,8 +129,8 @@ export default function SolutionsSection() {
                       </div>
 
                       {/* Right Column: Clean Aligned Mockup Graphic */}
-                      <div className="lg:col-span-6 flex items-center justify-center relative w-full h-full z-10">
-                        <div className="relative w-full max-w-md h-[220px] md:h-[260px] lg:h-[300px] rounded-xl overflow-hidden border border-slate-700/80 bg-slate-900/90 shadow-2xl flex items-center justify-center group">
+                      <div className="lg:col-span-6 flex items-center justify-center relative w-full z-10">
+                        <div className="relative w-full max-w-md h-[180px] sm:h-[220px] lg:h-[300px] rounded-xl overflow-hidden border border-slate-700/80 bg-slate-900/90 shadow-2xl flex items-center justify-center group">
                           <img
                             src={pillar.mockup}
                             alt={pillar.title}
@@ -145,30 +145,30 @@ export default function SolutionsSection() {
               </AnimatePresence>
             </div>
 
-            {/* Vertical Navigation Right Tabs Sidebar (3 vertical strips side-by-side) */}
-            <aside className="h-full border-l border-slate-700/60 flex flex-row bg-[#0f1b33] z-20">
+            {/* Navigation Tabs Sidebar: Responsive layout (Horizontal on mobile/tablet, Vertical strips on desktop) */}
+            <aside className="w-full lg:w-auto border-b lg:border-b-0 lg:border-l border-slate-700/60 flex flex-row bg-[#0f1b33] z-20 shrink-0">
               {pillars.map((pillar) => {
                 const isActive = activeTab === pillar.id;
                 return (
                   <button
                     key={pillar.id}
                     onClick={() => setActiveTab(pillar.id)}
-                    className={`w-16 sm:w-20 md:w-24 lg:w-28 h-full flex flex-col items-center justify-between py-8 px-2 transition-all duration-300 relative border-r border-slate-700/40 cursor-pointer ${
+                    className={`flex-1 lg:w-24 h-14 sm:h-16 lg:h-full flex flex-row lg:flex-col items-center justify-center lg:justify-between py-2 sm:py-3 lg:py-8 px-2 sm:px-4 lg:px-2 transition-all duration-300 relative border-r border-slate-700/40 cursor-pointer ${
                       isActive
                         ? "bg-[#1d2b4a] text-sky-400 font-bold"
                         : "bg-[#0b1426] hover:bg-slate-800/60 text-slate-300"
                     }`}
                   >
-                    {/* Top Highlight Accent Bar */}
+                    {/* Top Accent Bar (desktop: top bar, mobile/tablet: top indicator line) */}
                     {isActive && (
-                      <div className="absolute top-0 left-0 w-full h-1.5 bg-[#0369a1]"></div>
+                      <div className="absolute top-0 left-0 w-full h-1 lg:h-1.5 bg-[#0369a1]"></div>
                     )}
 
-                    <div className="p-2 rounded-full bg-slate-800/60 text-white mb-auto mt-2">
+                    <div className="p-1.5 sm:p-2 rounded-full bg-slate-800/60 text-white lg:mb-auto lg:mt-2 shrink-0">
                       {pillar.icon}
                     </div>
 
-                    <span className="[writing-mode:vertical-rl] rotate-180 font-semibold text-xs md:text-sm tracking-wide whitespace-nowrap pb-4">
+                    <span className="text-xs sm:text-sm lg:[writing-mode:vertical-rl] lg:rotate-180 font-semibold tracking-wide whitespace-nowrap lg:pb-4 ml-2 lg:ml-0">
                       {pillar.verticalLabel}
                     </span>
                   </button>
