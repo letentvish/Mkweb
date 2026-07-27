@@ -100,7 +100,7 @@ export default function NewNavbar() {
       tagline: "Combine modules into one modular operating system.",
       category: "MODULAR SUITE",
       icon: <Boxes className="w-4 h-4 text-sky-400" />,
-      link: "/assessment",
+      link: "/palbon",
       capabilities: ["Build Your Own Stack", "Unified Data Model", "Single Sign-On (SSO)", "Zero Tool Friction"],
       statsLabel: "Consolidation",
       statsValue: "1 Single Stack"
@@ -328,7 +328,7 @@ export default function NewNavbar() {
             </button>
 
             <button
-              onClick={() => navigate("/assessment")}
+              onClick={() => navigate("/palbon")}
               className="bg-[#0369a1] hover:bg-[#0284c7] text-white px-5 py-2 rounded-lg text-sm font-semibold inline-flex items-center gap-2 shadow-md transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95"
             >
               <Zap className="w-4 h-4 text-amber-300" />
@@ -441,7 +441,7 @@ export default function NewNavbar() {
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
-                  navigate("/assessment");
+                  navigate("/palbon");
                 }}
                 className="w-full text-center bg-[#0369a1] text-white py-2.5 rounded-lg font-semibold flex items-center justify-center gap-2"
               >
