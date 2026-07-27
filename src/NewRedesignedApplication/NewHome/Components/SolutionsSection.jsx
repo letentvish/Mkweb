@@ -85,7 +85,7 @@ export default function SolutionsSection() {
           </div>
 
           {/* Main Showcase Dark Container */}
-          <div className="w-full h-[480px] md:h-[520px] bg-[#0b1426] text-white rounded-2xl overflow-hidden shadow-2xl border border-cyan-800/40 relative flex">
+          <div className="w-full h-[480px] md:h-[520px] bg-[#0b1426] text-white rounded-2xl overflow-hidden shadow-2xl border border-slate-800/80 relative flex">
             
             {/* Active Card Content Area with Slide Overlap Animation */}
             <div className="flex-1 p-6 md:p-10 relative flex flex-col justify-between overflow-hidden">
@@ -102,7 +102,7 @@ export default function SolutionsSection() {
                     >
                       {/* Left Column: Text & CTA */}
                       <div className="lg:col-span-6 flex flex-col justify-center items-start z-10">
-                        <div className="text-teal-400 mb-3 p-2.5 rounded-lg bg-teal-500/10 inline-block border border-teal-500/20">
+                        <div className="text-sky-400 mb-3 p-2.5 rounded-lg bg-sky-500/10 inline-block border border-sky-500/20">
                           {pillar.icon}
                         </div>
 
@@ -113,7 +113,7 @@ export default function SolutionsSection() {
                         <ul className="space-y-2.5 mb-6">
                           {pillar.bullets.map((bullet, idx) => (
                             <li key={idx} className="flex items-center gap-3 text-slate-200 text-sm md:text-base font-medium">
-                              <span className="w-2 h-2 rounded-full bg-teal-400 shrink-0" />
+                              <span className="w-2 h-2 rounded-full bg-sky-400 shrink-0" />
                               <span>{bullet}</span>
                             </li>
                           ))}
@@ -121,7 +121,7 @@ export default function SolutionsSection() {
 
                         <button
                           onClick={() => navigate(pillar.link)}
-                          className="inline-flex items-center gap-2 bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold px-5 py-2.5 rounded-lg transition-all duration-200 cursor-pointer shadow-lg shadow-teal-500/20"
+                          className="inline-flex items-center gap-2 bg-[#0369a1] hover:bg-[#0284c7] text-white font-bold px-6 py-2.5 rounded-lg transition-all duration-200 cursor-pointer shadow-md"
                         >
                           <span>Explore Solution</span>
                           <ArrowRight className="w-4 h-4" />
@@ -155,13 +155,13 @@ export default function SolutionsSection() {
                     onClick={() => setActiveTab(pillar.id)}
                     className={`w-16 sm:w-20 md:w-24 lg:w-28 h-full flex flex-col items-center justify-between py-8 px-2 transition-all duration-300 relative border-r border-slate-700/40 cursor-pointer ${
                       isActive
-                        ? "bg-[#1d2b4a] text-teal-400 font-bold"
+                        ? "bg-[#1d2b4a] text-sky-400 font-bold"
                         : "bg-[#0b1426] hover:bg-slate-800/60 text-slate-300"
                     }`}
                   >
                     {/* Top Highlight Accent Bar */}
                     {isActive && (
-                      <div className="absolute top-0 left-0 w-full h-1.5 bg-teal-400"></div>
+                      <div className="absolute top-0 left-0 w-full h-1.5 bg-[#0369a1]"></div>
                     )}
 
                     <div className="p-2 rounded-full bg-slate-800/60 text-white mb-auto mt-2">
@@ -179,8 +179,8 @@ export default function SolutionsSection() {
           </div>
 
           {/* Bottom Scroll Explore Indicator */}
-          <div className="mt-4 flex items-center justify-center gap-2 text-teal-600 text-sm font-semibold cursor-pointer hover:opacity-80 transition-opacity">
-            <ArrowDown className="w-4 h-4 animate-bounce" />
+          <div className="mt-4 flex items-center justify-center gap-2 text-slate-400 text-sm font-semibold cursor-pointer hover:opacity-80 transition-opacity">
+            <ArrowDown className="w-4 h-4 animate-bounce text-sky-400" />
             <span>Scroll to explore</span>
           </div>
 
