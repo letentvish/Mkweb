@@ -28,7 +28,11 @@ import {
   TrendingUp,
   Activity,
   Layers,
-  Cpu
+  Cpu,
+  Check,
+  IndianRupee,
+  FolderGit2,
+  Lock
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import NewNavbar from "../Components/NewNavbar";
@@ -37,6 +41,7 @@ import NewFooter from "../Components/NewFooter";
 export default function PalbonPage() {
   const navigate = useNavigate();
   const [activeModelTab, setActiveModelTab] = useState("workforce");
+  const [activeArchTab, setActiveArchTab] = useState("single-record");
 
   const brandLogos = [
     { name: "BYJU'S", font: "font-black tracking-tighter text-slate-800" },
@@ -130,6 +135,30 @@ export default function PalbonPage() {
 
   const currentTabContent = modelTabData[activeModelTab];
 
+  // Architecture Tab Content Data
+  const archTabData = {
+    "single-record": {
+      anchor: "ANCHOR",
+      title: "One person, one record, one truth",
+      body: "An employee is not a separate entity in HR, payroll, and projects. They are a single record. A change in one place is a change everywhere, instantly.",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80"
+    },
+    "event-driven": {
+      anchor: "STREAM",
+      title: "Real-time triggers, zero manual intervention",
+      body: "Events propagate instantly across the entire architecture. When a project milestone completes, invoicing and commission schedules trigger automatically without human lag.",
+      image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80"
+    },
+    "shared-logic": {
+      anchor: "UNIFIED",
+      title: "Single source of truth for enterprise business rules",
+      body: "Define core calculations, compliance rules, and permissions once. Every module inherits the exact same business logic, preventing conflicting metrics across departments.",
+      image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80"
+    }
+  };
+
+  const currentArchContent = archTabData[activeArchTab];
+
   return (
     <div className="min-h-screen bg-[#F8FAFC] text-slate-900 font-sans overflow-x-hidden">
       
@@ -150,30 +179,25 @@ export default function PalbonPage() {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             {/* Left Column: Text & Primary CTAs */}
             <div className="lg:col-span-6 flex flex-col items-start space-y-6">
               
-              {/* Category Pill Tag */}
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-50 border border-sky-200 text-sky-700 text-xs font-bold tracking-wider uppercase font-poppins">
                 <span className="w-2 h-2 rounded-full bg-[#0284c7] animate-pulse" />
                 <span>PALBON INTEGRATED SOLUTIONS</span>
               </div>
 
-              {/* Main Hero Headline */}
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-extrabold text-slate-900 tracking-tight leading-[1.12]">
                 Build your <br />
                 <span className="text-[#0284c7]">enterprise operating system</span>
               </h1>
 
-              {/* Body Subtext */}
               <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-xl">
                 Unify your people, processes, data, and technology on one intelligent platform. Designed for the way modern enterprises operate.
               </p>
 
-              {/* Action Buttons */}
               <div className="flex flex-wrap items-center gap-4 pt-2">
                 <button
                   onClick={() => navigate("/contact")}
@@ -194,7 +218,6 @@ export default function PalbonPage() {
                 </button>
               </div>
 
-              {/* Social Proof Brand Bar */}
               <div className="pt-8 w-full border-t border-slate-200/80">
                 <p className="text-xs font-semibold uppercase tracking-wider text-slate-600 mb-4">
                   Trusted by forward-thinking organizations
@@ -212,8 +235,6 @@ export default function PalbonPage() {
 
             {/* Right Column: Central Executive & Connected Floating Telemetry Nodes */}
             <div className="lg:col-span-6 relative flex items-center justify-center min-h-[580px] lg:min-h-[640px]">
-              
-              {/* SVG Connected Flow Lines */}
               <div className="absolute inset-0 pointer-events-none z-10 hidden sm:block">
                 <svg className="w-full h-full" viewBox="0 0 600 600" fill="none">
                   <path d="M 300 300 L 220 140" stroke="#0284c7" strokeWidth="2" strokeDasharray="4 4" strokeOpacity="0.7" />
@@ -230,7 +251,6 @@ export default function PalbonPage() {
                 </svg>
               </div>
 
-              {/* Main Executive Photo */}
               <div className="relative z-20 w-full max-w-md mx-auto flex justify-center items-end">
                 <img 
                   src="/palbon_hero_executive.png" 
@@ -239,7 +259,6 @@ export default function PalbonPage() {
                 />
               </div>
 
-              {/* Central Hub Medallion: PALBON Unified Intelligence */}
               <motion.div
                 animate={{ scale: [1, 1.03, 1] }}
                 transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
@@ -410,7 +429,6 @@ export default function PalbonPage() {
       {/* SECTION 2: FRICTION (Dual Row Animated Image Marquee) */}
       <section className="py-20 lg:py-28 bg-white border-b border-slate-200/80 overflow-hidden relative" id="friction-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mb-12">
-          
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             <div className="lg:col-span-6 flex flex-col items-start space-y-3">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-[#6366f1] text-xs font-bold tracking-wider uppercase font-poppins">
@@ -446,7 +464,6 @@ export default function PalbonPage() {
               </div>
             </div>
           </div>
-
         </div>
 
         {/* Dual Infinite Looping Image Marquee Container */}
@@ -542,13 +559,10 @@ export default function PalbonPage() {
 
       {/* SECTION 3: CLARITY ("A single source of truth") */}
       <section className="py-24 lg:py-32 bg-[#101328] text-white relative overflow-hidden border-b border-indigo-950/80" id="clarity-section">
-        
-        {/* Glow Spheres */}
         <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-indigo-600/20 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-10 right-10 w-80 h-80 bg-purple-600/20 rounded-full blur-[100px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             {/* Left Narrative Column */}
@@ -585,7 +599,7 @@ export default function PalbonPage() {
                 </button>
               </div>
 
-              {/* Bottom Glass Metrics Pill (3 KPIs) */}
+              {/* Bottom Glass Metrics Pill */}
               <div className="mt-8 w-full bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-5 grid grid-cols-3 gap-4 text-left shadow-2xl">
                 <div className="flex items-center gap-3">
                   <div className="p-2.5 rounded-xl bg-indigo-500/20 text-indigo-400 shrink-0">
@@ -620,31 +634,24 @@ export default function PalbonPage() {
 
             </div>
 
-            {/* Right Diagram Column: Woman Executive, Glowing 3D P-Cube & 4 Connected Nodes */}
+            {/* Right Diagram Column */}
             <div className="lg:col-span-6 relative flex items-center justify-center min-h-[500px] lg:min-h-[580px]">
-              
-              {/* SVG Glowing Connected Network Lines */}
               <div className="absolute inset-0 pointer-events-none z-10">
                 <svg className="w-full h-full" viewBox="0 0 600 600" fill="none">
-                  {/* Top Left User Node to P-Cube */}
                   <path d="M 180 120 L 300 240" stroke="#818cf8" strokeWidth="2" strokeDasharray="3 3" strokeOpacity="0.8" />
                   <circle cx="180" cy="120" r="5" fill="#a7f3d0" />
 
-                  {/* Top Right Database Node to P-Cube */}
                   <path d="M 480 120 L 300 240" stroke="#818cf8" strokeWidth="2" strokeDasharray="3 3" strokeOpacity="0.8" />
                   <circle cx="480" cy="120" r="5" fill="#a7f3d0" />
 
-                  {/* Bottom Left Settings Node to P-Cube */}
                   <path d="M 160 400 L 300 240" stroke="#818cf8" strokeWidth="2" strokeDasharray="3 3" strokeOpacity="0.8" />
                   <circle cx="160" cy="400" r="5" fill="#a7f3d0" />
 
-                  {/* Bottom Right Analytics Node to P-Cube */}
                   <path d="M 490 380 L 300 240" stroke="#818cf8" strokeWidth="2" strokeDasharray="3 3" strokeOpacity="0.8" />
                   <circle cx="490" cy="380" r="5" fill="#a7f3d0" />
                 </svg>
               </div>
 
-              {/* Smiling Executive Photo */}
               <div className="relative z-20 w-full max-w-sm ml-auto mr-4 flex justify-end items-end">
                 <img 
                   src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=700&q=80" 
@@ -653,7 +660,6 @@ export default function PalbonPage() {
                 />
               </div>
 
-              {/* Glowing 3D Purple P-Cube Medallion in Center */}
               <motion.div
                 animate={{ scale: [1, 1.05, 1], rotate: [0, 2, 0, -2, 0] }}
                 transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
@@ -664,22 +670,18 @@ export default function PalbonPage() {
                 </div>
               </motion.div>
 
-              {/* Node 1: Top Left (PEOPLE) */}
               <div className="absolute top-6 left-8 z-30 p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white shadow-xl hover:scale-110 transition-transform">
                 <Users className="w-6 h-6 text-indigo-300" />
               </div>
 
-              {/* Node 2: Top Right (DATABASE) */}
               <div className="absolute top-6 right-8 z-30 p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white shadow-xl hover:scale-110 transition-transform">
                 <Database className="w-6 h-6 text-indigo-300" />
               </div>
 
-              {/* Node 3: Bottom Left (SETTINGS/WORKFLOWS) */}
               <div className="absolute bottom-16 left-4 z-30 p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white shadow-xl hover:scale-110 transition-transform">
                 <Settings className="w-6 h-6 text-indigo-300" />
               </div>
 
-              {/* Node 4: Bottom Right (ANALYTICS) */}
               <div className="absolute bottom-20 right-4 z-30 p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white shadow-xl hover:scale-110 transition-transform">
                 <BarChart2 className="w-6 h-6 text-indigo-300" />
               </div>
@@ -693,10 +695,9 @@ export default function PalbonPage() {
       </section>
 
       {/* SECTION 4: AI-POWERED ("Built for your model") */}
-      <section className="py-24 lg:py-32 bg-[#F8FAFC] text-slate-900 relative" id="solutions-section">
+      <section className="py-24 lg:py-32 bg-[#F8FAFC] text-slate-900 relative border-b border-slate-200" id="solutions-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
-          {/* Centered Header */}
           <div className="text-center max-w-3xl mx-auto mb-12 flex flex-col items-center space-y-4">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-[#6366f1] text-xs font-bold tracking-wider uppercase font-poppins">
               <span className="w-2 h-2 rounded-full bg-[#6366f1]" />
@@ -738,7 +739,7 @@ export default function PalbonPage() {
             >
               <span>Workforce</span>
               {activeModelTab === "workforce" && (
-                <motion.div layoutId="tab-underline" className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#6366f1]" />
+                <motion.div layoutId="tab-underline-model" className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#6366f1]" />
               )}
             </button>
 
@@ -750,7 +751,7 @@ export default function PalbonPage() {
             >
               <span>Configuration</span>
               {activeModelTab === "configuration" && (
-                <motion.div layoutId="tab-underline" className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#6366f1]" />
+                <motion.div layoutId="tab-underline-model" className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#6366f1]" />
               )}
             </button>
 
@@ -762,18 +763,14 @@ export default function PalbonPage() {
             >
               <span>Reasoning</span>
               {activeModelTab === "reasoning" && (
-                <motion.div layoutId="tab-underline" className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#6366f1]" />
+                <motion.div layoutId="tab-underline-model" className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#6366f1]" />
               )}
             </button>
           </div>
 
           {/* Dual Column Tab Showcase Card Container */}
           <div className="bg-white rounded-3xl shadow-xl border border-indigo-100/80 overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-stretch">
-            
-            {/* Left Graphic Side (3 Professionals Collaborating + 4 Floating Telemetry Glass Cards) */}
             <div className="lg:col-span-6 relative min-h-[420px] lg:min-h-[480px] p-6 flex items-center justify-center bg-slate-50">
-              
-              {/* Photo Background */}
               <div className="absolute inset-0 overflow-hidden">
                 <img 
                   src={currentTabContent.image}
@@ -783,7 +780,6 @@ export default function PalbonPage() {
                 <div className="absolute inset-0 bg-slate-950/20 backdrop-blur-[1px]" />
               </div>
 
-              {/* Connected Dotted Lines SVG */}
               <div className="absolute inset-0 pointer-events-none z-10">
                 <svg className="w-full h-full" viewBox="0 0 500 400" fill="none">
                   <path d="M 120 100 L 220 180" stroke="#a5b4fc" strokeWidth="2" strokeDasharray="4 4" />
@@ -797,7 +793,6 @@ export default function PalbonPage() {
                 </svg>
               </div>
 
-              {/* Floating Glass Card 1: Workforce Insights (Top Left) */}
               <div className="absolute top-4 left-4 z-20 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl shadow-xl border border-slate-200/80 w-36 text-center">
                 <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Workforce Insights</p>
                 <div className="relative w-12 h-12 mx-auto mb-1 flex items-center justify-center">
@@ -811,7 +806,6 @@ export default function PalbonPage() {
                 <span className="text-[9px] text-emerald-600 font-bold">+12% vs last month</span>
               </div>
 
-              {/* Floating Glass Card 2: Cost Efficiency (Top Right) */}
               <div className="absolute top-4 right-4 z-20 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl shadow-xl border border-slate-200/80 w-36 text-center">
                 <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Cost Efficiency</p>
                 <p className="font-poppins font-black text-2xl text-slate-900">32%</p>
@@ -819,7 +813,6 @@ export default function PalbonPage() {
                 <span className="text-[9px] text-emerald-600 font-bold">+18% vs last month</span>
               </div>
 
-              {/* Floating Glass Card 3: Productivity Score (Bottom Left) */}
               <div className="absolute bottom-4 left-4 z-20 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl shadow-xl border border-slate-200/80 w-40">
                 <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Productivity Score</p>
                 <p className="font-poppins font-black text-xl text-slate-900 mb-1">78<span className="text-xs text-slate-400">/100</span></p>
@@ -832,7 +825,6 @@ export default function PalbonPage() {
                 <span className="text-[9px] text-emerald-600 font-bold mt-1 block">+8% vs last month</span>
               </div>
 
-              {/* Floating Glass Card 4: Team Alignment (Bottom Right) */}
               <div className="absolute bottom-4 right-4 z-20 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl shadow-xl border border-slate-200/80 w-44">
                 <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2">Team Alignment</p>
                 <div className="flex items-center justify-between mb-1.5">
@@ -848,12 +840,9 @@ export default function PalbonPage() {
                   <span>High Alignment</span>
                 </div>
               </div>
-
             </div>
 
-            {/* Right Text Content Side */}
             <div className="lg:col-span-6 p-8 lg:p-12 flex flex-col justify-center items-start space-y-6">
-              
               <p className="text-xs font-extrabold uppercase tracking-widest text-[#6366f1] font-poppins">
                 {currentTabContent.category}
               </p>
@@ -878,6 +867,203 @@ export default function PalbonPage() {
                   className="text-[#6366f1] hover:text-[#4f46e5] font-bold text-sm inline-flex items-center gap-1.5 transition-colors cursor-pointer"
                 >
                   <span>Talk</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* SECTION 5: ARCHITECTURE ("The logic of one system") */}
+      <section className="py-24 lg:py-32 bg-white text-slate-900 relative" id="architecture-section">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          
+          {/* Centered Header */}
+          <div className="text-center max-w-3xl mx-auto mb-12 flex flex-col items-center space-y-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-[#6366f1] text-xs font-bold tracking-wider uppercase font-poppins">
+              <span className="w-2 h-2 rounded-full bg-[#6366f1]" />
+              <span>ARCHITECTURE</span>
+            </div>
+
+            <h2 className="text-4xl sm:text-5xl font-poppins font-extrabold text-slate-900 tracking-tight">
+              The logic of one system
+            </h2>
+
+            <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
+              Complexity is the enemy of execution. A unified structure eliminates the translation layer between departments, making the organization faster by design.
+            </p>
+
+            <div className="flex items-center gap-4 pt-2">
+              <button
+                onClick={() => navigate("/contact")}
+                className="px-6 py-2.5 rounded-full border border-indigo-300 hover:border-indigo-400 text-[#6366f1] font-semibold text-sm transition-all duration-200 shadow-sm"
+              >
+                Learn More
+              </button>
+              <button
+                onClick={() => navigate("/contact")}
+                className="text-[#6366f1] hover:text-[#4f46e5] font-bold text-sm inline-flex items-center gap-1.5 transition-colors"
+              >
+                <span>Talk to us</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+
+          {/* Interactive Filter Tabs */}
+          <div className="flex justify-center items-center gap-8 mb-12 border-b border-slate-200 pb-4">
+            <button
+              onClick={() => setActiveArchTab("single-record")}
+              className={`font-poppins font-bold text-base px-2 py-1 relative transition-colors ${
+                activeArchTab === "single-record" ? "text-[#6366f1]" : "text-slate-500 hover:text-slate-800"
+              }`}
+            >
+              <span>Single record</span>
+              {activeArchTab === "single-record" && (
+                <motion.div layoutId="tab-underline-arch" className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#6366f1]" />
+              )}
+            </button>
+
+            <button
+              onClick={() => setActiveArchTab("event-driven")}
+              className={`font-poppins font-bold text-base px-2 py-1 relative transition-colors ${
+                activeArchTab === "event-driven" ? "text-[#6366f1]" : "text-slate-500 hover:text-slate-800"
+              }`}
+            >
+              <span>Event driven</span>
+              {activeArchTab === "event-driven" && (
+                <motion.div layoutId="tab-underline-arch" className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#6366f1]" />
+              )}
+            </button>
+
+            <button
+              onClick={() => setActiveArchTab("shared-logic")}
+              className={`font-poppins font-bold text-base px-2 py-1 relative transition-colors ${
+                activeArchTab === "shared-logic" ? "text-[#6366f1]" : "text-slate-500 hover:text-slate-800"
+              }`}
+            >
+              <span>Shared logic</span>
+              {activeArchTab === "shared-logic" && (
+                <motion.div layoutId="tab-underline-arch" className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#6366f1]" />
+              )}
+            </button>
+          </div>
+
+          {/* Dual Column Tab Showcase Card Container */}
+          <div className="bg-white rounded-3xl shadow-xl border border-indigo-100/80 overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-stretch">
+            
+            {/* Left Column: Image & Connected Telemetry Overlays */}
+            <div className="lg:col-span-6 relative min-h-[440px] lg:min-h-[520px] p-6 flex items-center justify-center bg-slate-50 overflow-hidden">
+              
+              {/* Photo */}
+              <div className="absolute inset-0 overflow-hidden">
+                <img 
+                  src={currentArchContent.image}
+                  alt={currentArchContent.title} 
+                  className="w-full h-full object-cover transition-all duration-700"
+                />
+                <div className="absolute inset-0 bg-slate-950/15 backdrop-blur-[1px]" />
+              </div>
+
+              {/* Connected Dotted Lines SVG */}
+              <div className="absolute inset-0 pointer-events-none z-10">
+                <svg className="w-full h-full" viewBox="0 0 500 450" fill="none">
+                  <path d="M 230 140 L 320 180" stroke="#818cf8" strokeWidth="2" strokeDasharray="4 4" />
+                  <path d="M 320 180 L 230 280" stroke="#818cf8" strokeWidth="2" strokeDasharray="4 4" />
+                </svg>
+              </div>
+
+              {/* Top Floating Profile Glass Card: Rohan Mehta */}
+              <div className="absolute top-6 left-6 z-20 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl shadow-xl border border-slate-200/80 flex items-center gap-3">
+                <div className="w-9 h-9 rounded-full bg-slate-800 overflow-hidden shrink-0 border border-slate-200">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Rohan Mehta" className="w-full h-full object-cover" />
+                </div>
+                <div>
+                  <h4 className="font-poppins font-bold text-xs text-slate-900 leading-none mb-0.5">Rohan Mehta</h4>
+                  <p className="text-[10px] text-slate-500 font-medium">Employee ID: EMP-10234</p>
+                  <span className="inline-block mt-1 bg-emerald-50 text-emerald-600 text-[9px] font-bold px-2 py-0.5 rounded-full border border-emerald-200">Active</span>
+                </div>
+              </div>
+
+              {/* Connected Circle Checkmark Medallion */}
+              <div className="absolute top-36 left-48 z-30 w-8 h-8 rounded-full bg-[#6366f1] text-white shadow-lg flex items-center justify-center border-2 border-white">
+                <Check className="w-4 h-4" />
+              </div>
+
+              {/* Bottom Floating Department Status List Card */}
+              <div className="absolute bottom-6 left-6 z-20 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-slate-200/80 w-56 space-y-2.5">
+                <div className="flex items-center justify-between text-xs font-bold text-slate-800">
+                  <div className="flex items-center gap-2">
+                    <Users className="w-4 h-4 text-[#6366f1]" />
+                    <span>HR</span>
+                  </div>
+                  <span className="text-[9px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">● Up to date</span>
+                </div>
+
+                <div className="flex items-center justify-between text-xs font-bold text-slate-800 border-t border-slate-100 pt-2">
+                  <div className="flex items-center gap-2">
+                    <IndianRupee className="w-4 h-4 text-[#6366f1]" />
+                    <span>Payroll</span>
+                  </div>
+                  <span className="text-[9px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">● Up to date</span>
+                </div>
+
+                <div className="flex items-center justify-between text-xs font-bold text-slate-800 border-t border-slate-100 pt-2">
+                  <div className="flex items-center gap-2">
+                    <FolderGit2 className="w-4 h-4 text-[#6366f1]" />
+                    <span>Projects</span>
+                  </div>
+                  <span className="text-[9px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">● Up to date</span>
+                </div>
+
+                <div className="flex items-center justify-between text-xs font-bold text-slate-800 border-t border-slate-100 pt-2">
+                  <div className="flex items-center gap-2">
+                    <Lock className="w-4 h-4 text-[#6366f1]" />
+                    <span>Access</span>
+                  </div>
+                  <span className="text-[9px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">● Up to date</span>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Right Column: Tab Narrative */}
+            <div className="lg:col-span-6 p-8 lg:p-12 flex flex-col justify-center items-start space-y-6">
+              
+              <p className="text-xs font-extrabold uppercase tracking-widest text-[#6366f1] font-poppins">
+                {currentArchContent.anchor}
+              </p>
+
+              <h3 className="text-3xl sm:text-4xl font-poppins font-extrabold text-slate-900 tracking-tight leading-tight">
+                {currentArchContent.title.includes("truth") ? (
+                  <>
+                    One person, one record, <br />
+                    one <span className="text-[#6366f1]">truth</span>
+                  </>
+                ) : (
+                  currentArchContent.title
+                )}
+              </h3>
+
+              <p className="text-slate-600 text-base leading-relaxed">
+                {currentArchContent.body}
+              </p>
+
+              <div className="flex items-center gap-4 pt-2">
+                <button
+                  onClick={() => navigate("/contact")}
+                  className="px-6 py-2.5 rounded-full border border-indigo-300 hover:border-indigo-400 text-[#6366f1] font-semibold text-sm transition-all duration-200 shadow-sm cursor-pointer"
+                >
+                  Learn More
+                </button>
+                <button
+                  onClick={() => navigate("/contact")}
+                  className="text-[#6366f1] hover:text-[#4f46e5] font-bold text-sm inline-flex items-center gap-1.5 transition-colors cursor-pointer"
+                >
+                  <span>Talk to us</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
