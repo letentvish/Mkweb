@@ -5,13 +5,10 @@ import {
   Play, 
   Users, 
   Database, 
-  GitMerge, 
-  PieChart, 
   Boxes, 
   ShieldCheck, 
   Sparkles, 
   Zap, 
-  CheckCircle2,
   FileText,
   Clock,
   Puzzle,
@@ -24,11 +21,6 @@ import {
   ChevronRight,
   ArrowDown,
   Settings,
-  Shield,
-  TrendingUp,
-  Activity,
-  Layers,
-  Cpu,
   Check,
   IndianRupee,
   FolderGit2,
@@ -234,23 +226,30 @@ export default function PalbonPage() {
             </div>
 
             {/* Right Column: Central Executive & Connected Floating Telemetry Nodes */}
-            <div className="lg:col-span-6 relative flex items-center justify-center min-h-[580px] lg:min-h-[640px]">
+            <div className="lg:col-span-6 relative flex items-center justify-center min-h-[620px] lg:min-h-[660px]">
+              
+              {/* Connecting Lines SVG */}
               <div className="absolute inset-0 pointer-events-none z-10 hidden sm:block">
                 <svg className="w-full h-full" viewBox="0 0 600 600" fill="none">
-                  <path d="M 300 300 L 220 140" stroke="#0284c7" strokeWidth="2" strokeDasharray="4 4" strokeOpacity="0.7" />
-                  <circle cx="220" cy="140" r="4" fill="#0284c7" />
+                  {/* Hub to PEOPLE (Top-Left) */}
+                  <path d="M 300 310 L 110 80" stroke="#0066FF" strokeWidth="1.5" strokeDasharray="4 4" strokeOpacity="0.6" />
+                  <circle cx="110" cy="80" r="3.5" fill="#0066FF" />
 
-                  <path d="M 300 300 L 180 400" stroke="#0284c7" strokeWidth="2" strokeDasharray="4 4" strokeOpacity="0.7" />
-                  <circle cx="180" cy="400" r="4" fill="#0284c7" />
+                  {/* Hub to DATA (Bottom-Left) */}
+                  <path d="M 300 310 L 110 500" stroke="#0066FF" strokeWidth="1.5" strokeDasharray="4 4" strokeOpacity="0.6" />
+                  <circle cx="110" cy="500" r="3.5" fill="#0066FF" />
 
-                  <path d="M 300 300 L 450 180" stroke="#0284c7" strokeWidth="2" strokeDasharray="4 4" strokeOpacity="0.7" />
-                  <circle cx="450" cy="180" r="4" fill="#0284c7" />
+                  {/* Hub to PROCESSES (Top-Right) */}
+                  <path d="M 300 310 L 490 90" stroke="#0066FF" strokeWidth="1.5" strokeDasharray="4 4" strokeOpacity="0.6" />
+                  <circle cx="490" cy="90" r="3.5" fill="#0066FF" />
 
-                  <path d="M 300 300 L 420 440" stroke="#0284c7" strokeWidth="2" strokeDasharray="4 4" strokeOpacity="0.7" />
-                  <circle cx="420" cy="440" r="4" fill="#0284c7" />
+                  {/* Hub to OUTCOMES (Bottom-Right) */}
+                  <path d="M 300 310 L 490 500" stroke="#0066FF" strokeWidth="1.5" strokeDasharray="4 4" strokeOpacity="0.6" />
+                  <circle cx="490" cy="500" r="3.5" fill="#0066FF" />
                 </svg>
               </div>
 
+              {/* Central Executive Image */}
               <div className="relative z-20 w-full max-w-md mx-auto flex justify-center items-end">
                 <img 
                   src="/palbon_hero_executive.png" 
@@ -263,112 +262,112 @@ export default function PalbonPage() {
               <motion.div
                 animate={{ scale: [1, 1.03, 1] }}
                 transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                className="absolute z-30 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/95 backdrop-blur-xl border-2 border-[#0066FF] p-6 rounded-2xl shadow-2xl text-center w-36 h-36 flex flex-col items-center justify-center"
+                className="absolute z-40 top-[52%] left-[50%] -translate-x-1/2 -translate-y-1/2 bg-white/95 backdrop-blur-xl border-2 border-[#0066FF] p-4 rounded-2xl shadow-2xl text-center w-36 h-36 flex flex-col items-center justify-center"
               >
-                <div className="w-12 h-12 bg-[#0066FF] flex items-center justify-center rounded-xl mb-2 shadow-md">
+                <div className="w-11 h-11 bg-[#0066FF] flex items-center justify-center rounded-xl mb-1.5 shadow-md">
                   <span className="text-white font-extrabold text-2xl">P</span>
                 </div>
                 <p className="font-black text-xs text-[#0b1c30]">PALBON</p>
                 <p className="text-[7px] uppercase font-bold text-gray-400 tracking-tighter">Unified Intelligence</p>
               </motion.div>
 
-              {/* PEOPLE CARD */}
+              {/* 1. PEOPLE CARD (Top-Left) */}
               <motion.div
                 animate={{ y: [0, -8, 0] }}
                 transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut" }}
-                className="absolute top-0 left-0 sm:left-2 bg-white/90 backdrop-blur-md p-5 rounded-2xl shadow-xl border border-white/50 z-30 w-52"
+                className="absolute top-0 left-0 sm:-left-2 lg:-left-6 bg-white/90 backdrop-blur-md p-4 sm:p-5 rounded-2xl shadow-xl border border-white/60 z-30 w-48 sm:w-52"
               >
-                <div className="flex items-center gap-2 mb-3">
+                <div className="flex items-center gap-2 mb-2">
                   <div className="bg-blue-100 p-1.5 rounded-lg text-[#0066FF]">
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"></path></svg>
                   </div>
                   <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">People</span>
                 </div>
-                <p className="text-xs font-semibold text-slate-900 mb-3">Talent & Culture</p>
-                <div className="flex items-center -space-x-2 mb-3">
-                  <img alt="avatar" className="w-8 h-8 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80"/>
-                  <img alt="avatar" className="w-8 h-8 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80"/>
-                  <img alt="avatar" className="w-8 h-8 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&q=80"/>
-                  <div className="w-8 h-8 rounded-full bg-blue-50 border-2 border-white flex items-center justify-center text-[10px] font-bold text-[#0066FF]">+2k</div>
+                <p className="text-xs font-semibold text-slate-900 mb-2">Talent & Culture</p>
+                <div className="flex items-center -space-x-2 mb-2">
+                  <img alt="avatar" className="w-7 h-7 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80"/>
+                  <img alt="avatar" className="w-7 h-7 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80"/>
+                  <img alt="avatar" className="w-7 h-7 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&q=80"/>
+                  <div className="w-7 h-7 rounded-full bg-blue-50 border-2 border-white flex items-center justify-center text-[9px] font-bold text-[#0066FF]">+2k</div>
                 </div>
                 <div>
-                  <p className="text-lg font-bold text-[#0066FF] leading-none">+2.4k</p>
-                  <p className="text-[10px] text-gray-500 font-medium">Active Users</p>
+                  <p className="text-base font-bold text-[#0066FF] leading-none">+2.4k</p>
+                  <p className="text-[9px] text-gray-500 font-medium">Active Users</p>
                 </div>
               </motion.div>
 
-              {/* DATA CARD */}
+              {/* 2. DATA CARD (Bottom-Left) */}
               <motion.div
                 animate={{ y: [0, 8, 0] }}
                 transition={{ repeat: Infinity, duration: 5.2, ease: "easeInOut", delay: 0.5 }}
-                className="absolute bottom-6 left-2 sm:left-4 bg-white/90 backdrop-blur-md p-5 rounded-2xl shadow-xl border border-white/50 z-30 w-48"
+                className="absolute bottom-2 left-0 sm:-left-2 lg:-left-6 bg-white/90 backdrop-blur-md p-4 sm:p-5 rounded-2xl shadow-xl border border-white/60 z-30 w-44 sm:w-48"
               >
-                <div className="flex items-center gap-2 mb-3">
+                <div className="flex items-center gap-2 mb-2">
                   <div className="bg-blue-100 p-1.5 rounded-lg text-[#0066FF]">
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"></path></svg>
                   </div>
                   <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Data</span>
                 </div>
-                <p className="text-xs font-semibold text-slate-900 mb-4">Unified & Secure</p>
-                <div className="flex items-end gap-1 mb-3">
-                  <div className="w-3 bg-blue-100 h-6 rounded-t-sm"></div>
-                  <div className="w-3 bg-blue-200 h-10 rounded-t-sm"></div>
-                  <div className="w-3 bg-blue-400 h-8 rounded-t-sm"></div>
-                  <div className="w-3 bg-blue-300 h-12 rounded-t-sm"></div>
-                  <div className="w-3 bg-[#0066FF] h-16 rounded-t-sm"></div>
+                <p className="text-xs font-semibold text-slate-900 mb-3">Unified & Secure</p>
+                <div className="flex items-end gap-1 mb-2">
+                  <div className="w-2.5 bg-blue-100 h-5 rounded-t-sm"></div>
+                  <div className="w-2.5 bg-blue-200 h-8 rounded-t-sm"></div>
+                  <div className="w-2.5 bg-blue-400 h-7 rounded-t-sm"></div>
+                  <div className="w-2.5 bg-blue-300 h-10 rounded-t-sm"></div>
+                  <div className="w-2.5 bg-[#0066FF] h-14 rounded-t-sm"></div>
                 </div>
-                <p className="text-lg font-bold text-[#0066FF]">98.6%</p>
-                <p className="text-[10px] text-gray-500 font-medium">Data Accuracy</p>
+                <p className="text-base font-bold text-[#0066FF]">98.6%</p>
+                <p className="text-[9px] text-gray-500 font-medium">Data Accuracy</p>
               </motion.div>
 
-              {/* PROCESSES CARD */}
+              {/* 3. PROCESSES CARD (Top-Right) */}
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ repeat: Infinity, duration: 4.8, ease: "easeInOut", delay: 1 }}
-                className="absolute top-10 right-2 sm:right-4 bg-white/90 backdrop-blur-md p-5 rounded-2xl shadow-xl border border-white/50 z-30 w-44"
+                className="absolute top-2 right-0 sm:-right-2 lg:-right-6 bg-white/90 backdrop-blur-md p-4 sm:p-5 rounded-2xl shadow-xl border border-white/60 z-30 w-44 sm:w-48"
               >
-                <div className="flex items-center gap-2 mb-3">
+                <div className="flex items-center gap-2 mb-2">
                   <div className="bg-blue-100 p-1.5 rounded-lg text-[#0066FF]">
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path clipRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" fillRule="evenodd"></path></svg>
                   </div>
                   <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Processes</span>
                 </div>
-                <p className="text-xs font-semibold text-slate-900 mb-3">Workflows</p>
-                <div className="relative h-16 w-full mb-3 flex items-center justify-center">
-                  <div className="grid grid-cols-3 gap-2 w-full h-full p-2 opacity-70">
-                    <div className="border border-[#0066FF] rounded-sm h-4"></div>
-                    <div className="col-span-2 border border-[#0066FF] rounded-sm h-4"></div>
-                    <div className="col-span-2 border border-[#0066FF] rounded-sm h-4"></div>
-                    <div className="border border-[#0066FF] rounded-sm h-4 flex items-center justify-center">
+                <p className="text-xs font-semibold text-slate-900 mb-2">Workflows</p>
+                <div className="relative h-14 w-full mb-2 flex items-center justify-center">
+                  <div className="grid grid-cols-3 gap-1.5 w-full h-full p-1.5 opacity-70">
+                    <div className="border border-[#0066FF] rounded-sm h-3.5"></div>
+                    <div className="col-span-2 border border-[#0066FF] rounded-sm h-3.5"></div>
+                    <div className="col-span-2 border border-[#0066FF] rounded-sm h-3.5"></div>
+                    <div className="border border-[#0066FF] rounded-sm h-3.5 flex items-center justify-center">
                       <svg className="w-2 h-2 text-[#0066FF]" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg>
                     </div>
                   </div>
                 </div>
-                <p className="text-lg font-bold text-[#0066FF]">128</p>
-                <p className="text-[10px] text-gray-500 font-medium">Automated Workflows</p>
+                <p className="text-base font-bold text-[#0066FF]">128</p>
+                <p className="text-[9px] text-gray-500 font-medium">Automated Workflows</p>
               </motion.div>
 
-              {/* OUTCOMES CARD */}
+              {/* 4. OUTCOMES CARD (Bottom-Right) */}
               <motion.div
                 animate={{ y: [0, 8, 0] }}
                 transition={{ repeat: Infinity, duration: 4.2, ease: "easeInOut", delay: 1.5 }}
-                className="absolute bottom-8 right-2 sm:right-4 bg-white/90 backdrop-blur-md p-5 rounded-2xl shadow-xl border border-white/50 z-30 w-44 text-center"
+                className="absolute bottom-2 right-0 sm:-right-2 lg:-right-6 bg-white/90 backdrop-blur-md p-4 sm:p-5 rounded-2xl shadow-xl border border-white/60 z-30 w-44 sm:w-48 text-center"
               >
-                <div className="flex items-center gap-2 mb-3">
+                <div className="flex items-center gap-2 mb-2">
                   <div className="bg-blue-100 p-1.5 rounded-lg text-[#0066FF]">
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path><path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path></svg>
                   </div>
                   <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Outcomes</span>
                 </div>
-                <p className="text-xs font-semibold text-slate-900 mb-4">Business Impact</p>
-                <div className="relative w-20 h-20 mx-auto mb-3">
+                <p className="text-xs font-semibold text-slate-900 mb-2">Business Impact</p>
+                <div className="relative w-16 h-16 mx-auto mb-2">
                   <svg className="w-full h-full" viewBox="0 0 36 36">
                     <path className="text-gray-100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" strokeWidth="3"></path>
                     <path className="text-[#0066FF]" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" strokeDasharray="82, 100" strokeLinecap="round" strokeWidth="3"></path>
                     <text className="text-[8px] font-bold fill-slate-900" textAnchor="middle" x="18" y="20.35">82%</text>
                   </svg>
                 </div>
-                <p className="text-[10px] text-gray-500 font-medium text-center">Operational Efficiency</p>
+                <p className="text-[9px] text-gray-500 font-medium text-center">Operational Efficiency</p>
               </motion.div>
 
             </div>
