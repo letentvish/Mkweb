@@ -68,7 +68,7 @@ export default function NewNavbar() {
       category: "HRMS",
       icon: <Users className="w-4 h-4 text-sky-400" />,
       link: "/datanix",
-      capabilities: ["Total Talent Orchestration", "Automated Payroll Engine", "Performance Telemetry", "Workforce Analytics"],
+      featureTags: ["Talent Orchestration", "Automated Payroll", "Performance Telemetry", "Workforce Analytics"],
       statsLabel: "Payroll & HR",
       statsValue: "100% Automated"
     },
@@ -79,7 +79,7 @@ export default function NewNavbar() {
       category: "OPERATIONS",
       icon: <BarChart3 className="w-4 h-4 text-sky-400" />,
       link: "/carve",
-      capabilities: ["Financial Workflows", "Procurement Management", "Inventory Control", "Resource Allocation"],
+      featureTags: ["Financial Workflows", "Procurement Engine", "Inventory Control", "Resource Allocation"],
       statsLabel: "Efficiency Gain",
       statsValue: "3.4x Velocity"
     },
@@ -90,7 +90,7 @@ export default function NewNavbar() {
       category: "LEARNING",
       icon: <BookOpen className="w-4 h-4 text-sky-400" />,
       link: "/mile",
-      capabilities: ["AI Skill Pathways", "Career Trajectory Mapping", "Skill Gap Diagnostics", "Institutional L&D"],
+      featureTags: ["AI Skill Pathways", "Career Trajectories", "Skill Gap Diagnostics", "L&D Frameworks"],
       statsLabel: "Skill Retention",
       statsValue: "94% Mastery"
     },
@@ -101,7 +101,7 @@ export default function NewNavbar() {
       category: "MODULAR SUITE",
       icon: <Boxes className="w-4 h-4 text-sky-400" />,
       link: "/palbon",
-      capabilities: ["Build Your Own Stack", "Unified Data Model", "Single Sign-On (SSO)", "Zero Tool Friction"],
+      featureTags: ["Unified Data Model", "Zero Tool Friction", "Single Sign-On (SSO)", "Cross-Engine Sync"],
       statsLabel: "Consolidation",
       statsValue: "1 Single Stack"
     },
@@ -235,89 +235,230 @@ export default function NewNavbar() {
                         ))}
                       </div>
 
-                      {/* Right Pane: Live Interactive Dashboard Preview */}
+                      {/* Right Pane: Live Interactive Dashboard Preview & Feature Tags */}
                       <div className="col-span-6 pl-5 flex flex-col justify-between">
                         <div>
-                          <p className="text-xs font-bold text-slate-300 mb-3 font-poppins">
-                            {currentPreview.name} Preview
-                          </p>
+                          {/* Module Name & Feature Tags Bar */}
+                          <div className="mb-2">
+                            <p className="text-xs font-bold text-[#38bdf8] mb-1 font-poppins flex items-center justify-between">
+                              <span>{currentPreview.name} Preview</span>
+                              <span className="text-[10px] text-slate-400 font-normal">{currentPreview.statsValue}</span>
+                            </p>
 
-                          {/* Live Dashboard Mockup Card */}
-                          <div className="bg-white rounded-2xl p-4 text-slate-900 shadow-2xl border border-slate-200 text-left">
-                            
-                            {/* Dashboard Header */}
-                            <div className="flex items-center justify-between mb-3 pb-2 border-b border-slate-100">
-                              <h5 className="font-poppins font-bold text-xs text-slate-900">Dashboard</h5>
-                              <div className="flex items-center gap-1.5">
-                                <div className="w-2 h-2 rounded-full bg-emerald-500" />
-                                <div className="w-4 h-4 rounded-full bg-slate-200 text-[8px] font-bold text-slate-700 flex items-center justify-center">AS</div>
-                              </div>
+                            {/* Feature Tags List */}
+                            <div className="flex flex-wrap gap-1.5 mb-2.5">
+                              {currentPreview.featureTags.map((tag, idx) => (
+                                <span 
+                                  key={idx}
+                                  className="text-[9px] font-semibold text-slate-300 bg-[#161c33] border border-slate-700/80 px-2 py-0.5 rounded-full"
+                                >
+                                  {tag}
+                                </span>
+                              ))}
                             </div>
+                          </div>
 
-                            {/* 3 Metrics Row */}
-                            <div className="grid grid-cols-3 gap-2 mb-3">
-                              <div className="p-2 rounded-lg bg-slate-50 border border-slate-100">
-                                <p className="text-[9px] text-slate-400 font-semibold">Total Employees</p>
-                                <div className="flex items-baseline justify-between mt-0.5">
-                                  <span className="font-bold text-xs text-slate-900">2,650</span>
-                                  <span className="text-[8px] font-bold text-emerald-600">↑ 12.8%</span>
+                          {/* 4 Distinct Live Dashboard Mockup Cards */}
+                          {currentPreview.id === "nucleus" && (
+                            /* 1. NUCLEUS HRMS DASHBOARD */
+                            <div className="bg-white rounded-2xl p-3.5 text-slate-900 shadow-2xl border border-slate-200 text-left">
+                              <div className="flex items-center justify-between mb-2.5 pb-1.5 border-b border-slate-100">
+                                <h5 className="font-poppins font-bold text-xs text-slate-900">Workforce & Payroll Telemetry</h5>
+                                <div className="flex items-center gap-1">
+                                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                                  <span className="text-[8px] font-bold text-slate-500">Live</span>
                                 </div>
                               </div>
 
-                              <div className="p-2 rounded-lg bg-slate-50 border border-slate-100">
-                                <p className="text-[9px] text-slate-400 font-semibold">Active Today</p>
-                                <div className="flex items-baseline justify-between mt-0.5">
-                                  <span className="font-bold text-xs text-slate-900">1,842</span>
-                                  <span className="text-[8px] font-bold text-emerald-600">↑ 8.3%</span>
+                              <div className="grid grid-cols-3 gap-1.5 mb-2.5">
+                                <div className="p-1.5 rounded-lg bg-slate-50 border border-slate-100">
+                                  <p className="text-[8px] text-slate-400 font-semibold">Total Employees</p>
+                                  <p className="font-bold text-xs text-slate-900 mt-0.5">2,650 <span className="text-[8px] text-emerald-600 font-bold">↑ 12.8%</span></p>
+                                </div>
+                                <div className="p-1.5 rounded-lg bg-slate-50 border border-slate-100">
+                                  <p className="text-[8px] text-slate-400 font-semibold">Active Today</p>
+                                  <p className="font-bold text-xs text-slate-900 mt-0.5">1,842 <span className="text-[8px] text-emerald-600 font-bold">↑ 8.3%</span></p>
+                                </div>
+                                <div className="p-1.5 rounded-lg bg-slate-50 border border-slate-100">
+                                  <p className="text-[8px] text-slate-400 font-semibold">Avg Performance</p>
+                                  <p className="font-bold text-xs text-slate-900 mt-0.5">4.6/5 <span className="text-[8px] text-emerald-600 font-bold">↑ 6.1%</span></p>
                                 </div>
                               </div>
 
-                              <div className="p-2 rounded-lg bg-slate-50 border border-slate-100">
-                                <p className="text-[9px] text-slate-400 font-semibold">Avg Performance</p>
-                                <div className="flex items-baseline justify-between mt-0.5">
-                                  <span className="font-bold text-xs text-slate-900">4.6<span className="text-[9px] text-slate-400">/5</span></span>
-                                  <span className="text-[8px] font-bold text-emerald-600">↑ 6.1%</span>
-                                </div>
-                              </div>
-                            </div>
-
-                            {/* Charts Row */}
-                            <div className="grid grid-cols-2 gap-2 mb-3">
-                              {/* Line Trend */}
-                              <div className="p-2 rounded-lg bg-slate-50 border border-slate-100">
-                                <p className="text-[9px] font-bold text-slate-500 mb-1">Headcount Trend</p>
-                                <div className="h-10 w-full flex items-end">
-                                  <svg className="w-full h-8" viewBox="0 0 100 40">
+                              <div className="grid grid-cols-2 gap-1.5 mb-2.5">
+                                <div className="p-2 rounded-lg bg-slate-50 border border-slate-100">
+                                  <p className="text-[8px] font-bold text-slate-500 mb-1">Headcount Growth</p>
+                                  <svg className="w-full h-7" viewBox="0 0 100 40">
                                     <path d="M 0 35 Q 25 10 50 25 T 100 5" fill="none" stroke="#0284c7" strokeWidth="2" />
                                   </svg>
                                 </div>
-                              </div>
-
-                              {/* Donut Chart */}
-                              <div className="p-2 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-between">
-                                <div className="relative w-8 h-8 shrink-0">
-                                  <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
-                                    <circle cx="18" cy="18" r="14" fill="none" stroke="#e2e8f0" strokeWidth="6" />
-                                    <circle cx="18" cy="18" r="14" fill="none" stroke="#0284c7" strokeWidth="6" strokeDasharray="40 100" />
-                                    <circle cx="18" cy="18" r="14" fill="none" stroke="#6366f1" strokeWidth="6" strokeDasharray="25 100" strokeDashoffset="-40" />
-                                  </svg>
-                                </div>
-                                <div className="text-[8px] space-y-0.5 text-slate-600 font-medium">
-                                  <div className="flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-[#0284c7]" /><span>Eng: 40%</span></div>
-                                  <div className="flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-[#6366f1]" /><span>Prod: 25%</span></div>
+                                <div className="p-2 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-between">
+                                  <div className="relative w-7 h-7 shrink-0">
+                                    <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                                      <circle cx="18" cy="18" r="14" fill="none" stroke="#e2e8f0" strokeWidth="6" />
+                                      <circle cx="18" cy="18" r="14" fill="none" stroke="#0284c7" strokeWidth="6" strokeDasharray="40 100" />
+                                      <circle cx="18" cy="18" r="14" fill="none" stroke="#6366f1" strokeWidth="6" strokeDasharray="25 100" strokeDashoffset="-40" />
+                                    </svg>
+                                  </div>
+                                  <div className="text-[8px] space-y-0.5 text-slate-600 font-medium">
+                                    <div>Eng: 40%</div>
+                                    <div>Sales: 25%</div>
+                                  </div>
                                 </div>
                               </div>
-                            </div>
 
-                            {/* Recent Activity Mini Feed */}
-                            <div className="pt-2 border-t border-slate-100 space-y-1 text-[9px]">
-                              <div className="flex items-center justify-between text-slate-700">
-                                <span className="font-semibold flex items-center gap-1">👤 Joining <span className="text-[8px] text-slate-400 font-normal">24 New Employees</span></span>
-                                <span className="text-slate-400">2h ago</span>
+                              <div className="pt-1.5 border-t border-slate-100 text-[8px] text-slate-600 flex justify-between font-medium">
+                                <span>👤 Joining: 24 New Employees</span>
+                                <span className="text-emerald-600 font-bold">Payroll Cleared</span>
                               </div>
                             </div>
+                          )}
 
-                          </div>
+                          {currentPreview.id === "erp" && (
+                            /* 2. ERP OPERATIONS DASHBOARD */
+                            <div className="bg-white rounded-2xl p-3.5 text-slate-900 shadow-2xl border border-slate-200 text-left">
+                              <div className="flex items-center justify-between mb-2.5 pb-1.5 border-b border-slate-100">
+                                <h5 className="font-poppins font-bold text-xs text-slate-900">Financial & Operations Control</h5>
+                                <div className="flex items-center gap-1">
+                                  <div className="w-1.5 h-1.5 rounded-full bg-sky-500" />
+                                  <span className="text-[8px] font-bold text-slate-500">Real-time</span>
+                                </div>
+                              </div>
+
+                              <div className="grid grid-cols-3 gap-1.5 mb-2.5">
+                                <div className="p-1.5 rounded-lg bg-slate-50 border border-slate-100">
+                                  <p className="text-[8px] text-slate-400 font-semibold">Q3 Revenue</p>
+                                  <p className="font-bold text-xs text-slate-900 mt-0.5">$4.2M <span className="text-[8px] text-emerald-600 font-bold">↑ 18%</span></p>
+                                </div>
+                                <div className="p-1.5 rounded-lg bg-slate-50 border border-slate-100">
+                                  <p className="text-[8px] text-slate-400 font-semibold">Pending POs</p>
+                                  <p className="font-bold text-xs text-slate-900 mt-0.5">142 <span className="text-[8px] text-sky-600 font-bold">Auto</span></p>
+                                </div>
+                                <div className="p-1.5 rounded-lg bg-slate-50 border border-slate-100">
+                                  <p className="text-[8px] text-slate-400 font-semibold">Supply On-Time</p>
+                                  <p className="font-bold text-xs text-slate-900 mt-0.5">96.4% <span className="text-[8px] text-emerald-600 font-bold">High</span></p>
+                                </div>
+                              </div>
+
+                              {/* Revenue Bar Chart Visual */}
+                              <div className="p-2 rounded-lg bg-slate-50 border border-slate-100 mb-2.5">
+                                <div className="flex justify-between text-[8px] font-bold text-slate-500 mb-1">
+                                  <span>Monthly Cashflow & Procurement</span>
+                                  <span className="text-sky-600">$1.4M / Mo</span>
+                                </div>
+                                <div className="h-7 w-full flex items-end gap-1.5">
+                                  <div className="flex-1 bg-sky-200 h-[40%] rounded-t" />
+                                  <div className="flex-1 bg-sky-400 h-[65%] rounded-t" />
+                                  <div className="flex-1 bg-sky-300 h-[50%] rounded-t" />
+                                  <div className="flex-1 bg-indigo-500 h-[85%] rounded-t" />
+                                  <div className="flex-1 bg-sky-600 h-[100%] rounded-t" />
+                                </div>
+                              </div>
+
+                              <div className="pt-1.5 border-t border-slate-100 text-[8px] text-slate-600 flex justify-between font-medium">
+                                <span>📦 PO #9482 Approved</span>
+                                <span className="text-indigo-600 font-bold">$124,500 Vendor Clearance</span>
+                              </div>
+                            </div>
+                          )}
+
+                          {currentPreview.id === "magnetics" && (
+                            /* 3. MAGNETICS LXP DASHBOARD */
+                            <div className="bg-white rounded-2xl p-3.5 text-slate-900 shadow-2xl border border-slate-200 text-left">
+                              <div className="flex items-center justify-between mb-2.5 pb-1.5 border-b border-slate-100">
+                                <h5 className="font-poppins font-bold text-xs text-slate-900">Skill Telemetry & L&D Engine</h5>
+                                <div className="flex items-center gap-1">
+                                  <div className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
+                                  <span className="text-[8px] font-bold text-slate-500">AI Track</span>
+                                </div>
+                              </div>
+
+                              <div className="grid grid-cols-3 gap-1.5 mb-2.5">
+                                <div className="p-1.5 rounded-lg bg-slate-50 border border-slate-100">
+                                  <p className="text-[8px] text-slate-400 font-semibold">Active Learners</p>
+                                  <p className="font-bold text-xs text-slate-900 mt-0.5">8,920 <span className="text-[8px] text-emerald-600 font-bold">↑ 22%</span></p>
+                                </div>
+                                <div className="p-1.5 rounded-lg bg-slate-50 border border-slate-100">
+                                  <p className="text-[8px] text-slate-400 font-semibold">Completion</p>
+                                  <p className="font-bold text-xs text-slate-900 mt-0.5">94.2% <span className="text-[8px] text-emerald-600 font-bold">Top</span></p>
+                                </div>
+                                <div className="p-1.5 rounded-lg bg-slate-50 border border-slate-100">
+                                  <p className="text-[8px] text-slate-400 font-semibold">Badges Issued</p>
+                                  <p className="font-bold text-xs text-slate-900 mt-0.5">3,410 <span className="text-[8px] text-sky-600 font-bold">Verified</span></p>
+                                </div>
+                              </div>
+
+                              {/* Skill Competency Progress Bars */}
+                              <div className="p-2 rounded-lg bg-slate-50 border border-slate-100 mb-2.5 space-y-1.5">
+                                <div className="flex justify-between text-[8px] font-bold text-slate-600">
+                                  <span>AI Engineering</span>
+                                  <span>88% Mastery</span>
+                                </div>
+                                <div className="w-full h-1.5 bg-slate-200 rounded-full overflow-hidden">
+                                  <div className="h-full bg-indigo-500 w-[88%]" />
+                                </div>
+
+                                <div className="flex justify-between text-[8px] font-bold text-slate-600">
+                                  <span>Product Leadership</span>
+                                  <span>92% Mastery</span>
+                                </div>
+                                <div className="w-full h-1.5 bg-slate-200 rounded-full overflow-hidden">
+                                  <div className="h-full bg-sky-500 w-[92%]" />
+                                </div>
+                              </div>
+
+                              <div className="pt-1.5 border-t border-slate-100 text-[8px] text-slate-600 flex justify-between font-medium">
+                                <span>🎓 Masterclass Certified</span>
+                                <span className="text-indigo-600 font-bold">48 Executives Passed</span>
+                              </div>
+                            </div>
+                          )}
+
+                          {currentPreview.id === "palbon" && (
+                            /* 4. PALBON UNIFIED ENTERPRISE OS DASHBOARD */
+                            <div className="bg-white rounded-2xl p-3.5 text-slate-900 shadow-2xl border border-slate-200 text-left">
+                              <div className="flex items-center justify-between mb-2.5 pb-1.5 border-b border-slate-100">
+                                <h5 className="font-poppins font-bold text-xs text-slate-900">Unified Operating System</h5>
+                                <div className="flex items-center gap-1">
+                                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                                  <span className="text-[8px] font-bold text-emerald-600">100% Synced</span>
+                                </div>
+                              </div>
+
+                              <div className="grid grid-cols-3 gap-1.5 mb-2.5">
+                                <div className="p-1.5 rounded-lg bg-slate-50 border border-slate-100">
+                                  <p className="text-[8px] text-slate-400 font-semibold">Active Engines</p>
+                                  <p className="font-bold text-xs text-slate-900 mt-0.5">4 / 4 <span className="text-[8px] text-emerald-600 font-bold">Connected</span></p>
+                                </div>
+                                <div className="p-1.5 rounded-lg bg-slate-50 border border-slate-100">
+                                  <p className="text-[8px] text-slate-400 font-semibold">System Health</p>
+                                  <p className="font-bold text-xs text-slate-900 mt-0.5">99.99% <span className="text-[8px] text-emerald-600 font-bold">Optimal</span></p>
+                                </div>
+                                <div className="p-1.5 rounded-lg bg-slate-50 border border-slate-100">
+                                  <p className="text-[8px] text-slate-400 font-semibold">Data Velocity</p>
+                                  <p className="font-bold text-xs text-slate-900 mt-0.5">12.4k <span className="text-[8px] text-sky-600 font-bold">req/s</span></p>
+                                </div>
+                              </div>
+
+                              {/* Connected Ecosystem Matrix Nodes */}
+                              <div className="p-2 rounded-lg bg-slate-50 border border-slate-100 mb-2.5 flex items-center justify-between">
+                                <div className="flex items-center gap-1.5">
+                                  <span className="text-[9px] font-bold text-slate-800 bg-sky-100 text-sky-700 px-1.5 py-0.5 rounded">HRMS</span>
+                                  <span className="text-slate-300 text-xs">↔</span>
+                                  <span className="text-[9px] font-bold text-slate-800 bg-indigo-100 text-indigo-700 px-1.5 py-0.5 rounded">ERP</span>
+                                  <span className="text-slate-300 text-xs">↔</span>
+                                  <span className="text-[9px] font-bold text-slate-800 bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded">LXP</span>
+                                </div>
+                                <span className="text-[8px] font-extrabold text-emerald-600">Zero Lag</span>
+                              </div>
+
+                              <div className="pt-1.5 border-t border-slate-100 text-[8px] text-slate-600 flex justify-between font-medium">
+                                <span>⚡ Single Operating Stack</span>
+                                <span className="text-sky-600 font-bold">SSO Enabled</span>
+                              </div>
+                            </div>
+                          )}
+
                         </div>
 
                       </div>
