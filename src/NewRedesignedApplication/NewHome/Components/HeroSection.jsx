@@ -37,12 +37,12 @@ export default function HeroSection() {
           
           {/* Main Headline (3 Lines Strictly Non-Wrapping) */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-poppins font-extrabold text-[#0b1c30] leading-[1.12] tracking-tight">
-            <span className="text-[#6366f1] whitespace-nowrap block">Accelerate growth</span>
+            <span className="text-[#0369a1] whitespace-nowrap block">Accelerate growth</span>
             <span className="whitespace-nowrap block">through a unified</span>
             <span className="relative inline-block whitespace-nowrap block">
               ecosystem.
               {/* Curvy underline svg */}
-              <svg className="absolute -bottom-2 left-0 w-full h-3 text-[#6366f1]" viewBox="0 0 160 12" fill="none">
+              <svg className="absolute -bottom-2 left-0 w-full h-3 text-[#0369a1]" viewBox="0 0 160 12" fill="none">
                 <motion.path 
                   d="M2 6 Q 40 1 80 6 T 158 6" 
                   stroke="currentColor" 
@@ -65,7 +65,7 @@ export default function HeroSection() {
           <div className="flex flex-wrap items-center gap-4 pt-1">
             <button
               onClick={() => navigate("/about")}
-              className="bg-[#6366f1] hover:bg-[#4f46e5] text-white px-8 py-3.5 rounded-lg font-semibold inline-flex items-center gap-2 shadow-lg shadow-indigo-500/25 transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95"
+              className="bg-[#0369a1] hover:bg-[#0284c7] text-white px-8 py-3.5 rounded-lg font-semibold inline-flex items-center gap-2 shadow-lg shadow-sky-700/20 transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95"
             >
               <span>Learn more</span>
               <ArrowRight className="w-4 h-4" />
@@ -107,7 +107,7 @@ export default function HeroSection() {
               <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded-md">+14.2%</span>
             </div>
             <div className="h-10 w-full flex items-end">
-              <svg className="w-full h-full text-[#6366f1]" viewBox="0 0 100 40">
+              <svg className="w-full h-full text-[#0369a1]" viewBox="0 0 100 40">
                 <motion.path 
                   d="M0 35 L 25 28 L 50 32 L 75 14 L 100 6" 
                   fill="none" 
@@ -121,7 +121,7 @@ export default function HeroSection() {
               </svg>
             </div>
             <div className="mt-2 flex items-baseline justify-between">
-              <span className="text-2xl font-bold font-poppins text-[#6366f1]">78%</span>
+              <span className="text-2xl font-bold font-poppins text-[#0369a1]">78%</span>
               <p className="text-[11px] font-medium text-slate-400">Productivity Increase</p>
             </div>
           </motion.div>
@@ -144,7 +144,7 @@ export default function HeroSection() {
                   cy="18" 
                   fill="none" 
                   r="16" 
-                  stroke="#6366f1" 
+                  stroke="#0369a1" 
                   strokeDasharray="100, 100"
                   strokeLinecap="round" 
                   strokeWidth="4"
@@ -190,7 +190,7 @@ export default function HeroSection() {
                   initial={{ width: "0%" }}
                   animate={{ width: "64%" }}
                   transition={{ duration: 1.4, ease: "easeOut", delay: 0.8 }}
-                  className="h-full bg-[#6366f1] rounded-full"
+                  className="h-full bg-[#0369a1] rounded-full"
                 />
               </div>
             </div>
@@ -222,7 +222,7 @@ export default function HeroSection() {
             transition={{ repeat: Infinity, duration: 3.8, ease: "easeInOut", delay: 1.2 }}
             className="absolute right-12 bottom-32 z-40"
           >
-            <div className="w-11 h-11 rounded-full bg-indigo-600/80 border border-white/20 backdrop-blur-md flex items-center justify-center text-white shadow-xl hover:scale-110 transition-transform">
+            <div className="w-11 h-11 rounded-full bg-sky-700/80 border border-white/20 backdrop-blur-md flex items-center justify-center text-white shadow-xl hover:scale-110 transition-transform">
               <Box className="w-5 h-5" />
             </div>
           </motion.div>
