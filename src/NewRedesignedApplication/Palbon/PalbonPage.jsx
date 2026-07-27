@@ -103,29 +103,113 @@ export default function PalbonPage() {
   const loopRow1 = [...frictionRow1, ...frictionRow1, ...frictionRow1, ...frictionRow1];
   const loopRow2 = [...frictionRow2, ...frictionRow2, ...frictionRow2, ...frictionRow2];
 
-  // Model Tab Content Data
-  const modelTabData = {
+  // Intelligence Tab Content Data (Section 4)
+  const intelligenceTabData = {
     workforce: {
-      category: "AGILITY",
-      headline: "Start where the pain is sharpest, expand without disruption",
-      body: "You do not need a big bang replacement. Activate the features you need today. Add value modules as you evolve. The system grows with your reality, not against it.",
-      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
+      badge: "WORKFORCE INTELLIGENCE",
+      headline: "Organize & optimize your entire enterprise workforce.",
+      description: "PALBON delivers total visibility across headcount, performance, skill gaps, and talent mobility in a single unified view.",
+      topCard1Title: "Talent Telemetry",
+      topCard1Desc: "Track skills, performance, and succession",
+      topCard1Icon: <Users className="w-5 h-5 text-[#6366f1]" />,
+      topCard2Title: "Automated Payroll",
+      topCard2Desc: "Instant zero-lag payroll & compensation",
+      topCard2Icon: <Coins className="w-5 h-5 text-[#6366f1]" />,
+      engineLabel: "Palbon Workforce Engine",
+      engineSubtitle: "Orchestrates. Empowers. Retains.",
+      inputs: [
+        { tag: "HC", label: "Headcount", color: "bg-blue-50 text-blue-600" },
+        { tag: "PF", label: "Performance", color: "bg-emerald-50 text-emerald-600" },
+        { tag: "SK", label: "Skills", color: "bg-purple-50 text-purple-600" },
+        { tag: "ATT", label: "Attendance", color: "bg-amber-50 text-amber-600" },
+        { tag: "CMP", label: "Compensation", color: "bg-slate-100 text-slate-600" }
+      ],
+      outcomes: [
+        { icon: <Zap className="w-3.5 h-3.5 text-[#6366f1] shrink-0" />, label: "Talent Matching" },
+        { icon: <AlertTriangle className="w-3.5 h-3.5 text-rose-500 shrink-0" />, label: "Retention Risk" },
+        { icon: <Settings className="w-3.5 h-3.5 text-sky-500 shrink-0" />, label: "Skill Gap Analysis" },
+        { icon: <BarChart2 className="w-3.5 h-3.5 text-indigo-500 shrink-0" />, label: "Performance Ranks" }
+      ],
+      bottomCardTitle: "People-First Architecture",
+      bottomCardDesc: "Empowering leaders with real-time workforce telemetry.",
+      pillars: [
+        { icon: <Users className="w-5 h-5" />, title: "Talent Matching", desc: "AI-driven internal mobility & staffing." },
+        { icon: <Zap className="w-5 h-5" />, title: "Zero-Lag Payroll", desc: "Automated compensation & tax calculations." },
+        { icon: <BarChart2 className="w-5 h-5" />, title: "Skill Telemetry", desc: "Identify skill gaps and growth paths." },
+        { icon: <Lock className="w-5 h-5" />, title: "Enterprise Control", desc: "Role-based governance & compliance." }
+      ]
     },
     configuration: {
-      category: "CUSTOMIZATION",
-      headline: "Tailored workflows designed around your unique operating model",
-      body: "Configure logic, approval matrices, and data schemas without custom code. Adapt rules seamlessly as your organization scales across regions and business units.",
-      image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80"
+      badge: "MODULAR CONFIGURATION",
+      headline: "Your business model. Your operational rules.",
+      description: "No rigid single-purpose vendor boxes. Configure workflows, data schemas, and business logic without custom code.",
+      topCard1Title: "No-Code Rules",
+      topCard1Desc: "Define custom calculations and triggers",
+      topCard1Icon: <Settings className="w-5 h-5 text-[#6366f1]" />,
+      topCard2Title: "Zero-Lock-in",
+      topCard2Desc: "Your schemas remain 100% portable",
+      topCard2Icon: <Boxes className="w-5 h-5 text-[#6366f1]" />,
+      engineLabel: "Palbon Config Engine",
+      engineSubtitle: "Bends. Scales. Adapts.",
+      inputs: [
+        { tag: "SCH", label: "Data Schemas", color: "bg-blue-50 text-blue-600" },
+        { tag: "RUL", label: "Business Rules", color: "bg-emerald-50 text-emerald-600" },
+        { tag: "API", label: "Webhooks", color: "bg-purple-50 text-purple-600" },
+        { tag: "PERM", label: "Permissions", color: "bg-amber-50 text-amber-600" },
+        { tag: "LOG", label: "Event Logs", color: "bg-slate-100 text-slate-600" }
+      ],
+      outcomes: [
+        { icon: <Zap className="w-3.5 h-3.5 text-[#6366f1] shrink-0" />, label: "Dynamic Workflows" },
+        { icon: <AlertTriangle className="w-3.5 h-3.5 text-amber-500 shrink-0" />, label: "Custom Roles" },
+        { icon: <Settings className="w-3.5 h-3.5 text-sky-500 shrink-0" />, label: "Instant API Routes" },
+        { icon: <BarChart2 className="w-3.5 h-3.5 text-indigo-500 shrink-0" />, label: "Event Triggers" }
+      ],
+      bottomCardTitle: "Composable Architecture",
+      bottomCardDesc: "Adapt system logic dynamically as your enterprise scales.",
+      pillars: [
+        { icon: <Puzzle className="w-5 h-5" />, title: "Custom Workflows", desc: "Design multi-step business logic visually." },
+        { icon: <Zap className="w-5 h-5" />, title: "API Orchestration", desc: "Connect third-party enterprise tools instantly." },
+        { icon: <Lock className="w-5 h-5" />, title: "Granular Security", desc: "Attribute-level permission & access control." },
+        { icon: <Clock className="w-5 h-5" />, title: "Infinite Scale", desc: "Engineered for high-volume enterprise throughput." }
+      ]
     },
     reasoning: {
-      category: "INTELLIGENCE",
-      headline: "Autonomous decision support powered by unified enterprise context",
-      body: "AI agents synthesize signals across HR, ERP, and operations to highlight risk, recommend optimizations, and automate repetitive administrative work.",
-      image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80"
+      badge: "INTELLIGENCE",
+      headline: "Not just data. Reasoning that drives real outcomes.",
+      description: "PALBON doesn't just process data — it reasons over it. It connects the dots across systems, understands the why, and recommends the what's next.",
+      topCard1Title: "Context Aware",
+      topCard1Desc: "Understands roles, policies, and real-time context",
+      topCard1Icon: <Sparkles className="w-5 h-5 text-[#6366f1]" />,
+      topCard2Title: "Pattern Recognition",
+      topCard2Desc: "Detects patterns humans might miss",
+      topCard2Icon: <Puzzle className="w-5 h-5 text-[#6366f1]" />,
+      engineLabel: "Palbon Reasoning Engine",
+      engineSubtitle: "Analyzes. Correlates. Decides.",
+      inputs: [
+        { tag: "HR", label: "HR Data", color: "bg-blue-50 text-blue-600" },
+        { tag: "FI", label: "Finance Data", color: "bg-emerald-50 text-emerald-600" },
+        { tag: "PR", label: "Project Data", color: "bg-purple-50 text-purple-600" },
+        { tag: "LG", label: "System Logs", color: "bg-amber-50 text-amber-600" },
+        { tag: "EF", label: "External Feeds", color: "bg-slate-100 text-slate-600" }
+      ],
+      outcomes: [
+        { icon: <Zap className="w-3.5 h-3.5 text-[#6366f1] shrink-0" />, label: "Smart Recommendations" },
+        { icon: <AlertTriangle className="w-3.5 h-3.5 text-rose-500 shrink-0" />, label: "Risk Alerts" },
+        { icon: <Settings className="w-3.5 h-3.5 text-sky-500 shrink-0" />, label: "Automation Triggers" },
+        { icon: <BarChart2 className="w-3.5 h-3.5 text-indigo-500 shrink-0" />, label: "Actionable Insights" }
+      ],
+      bottomCardTitle: "Explainable & Transparent",
+      bottomCardDesc: "Every decision is traceable, explainable, and built for trust.",
+      pillars: [
+        { icon: <Sparkles className="w-5 h-5" />, title: "Deep Understanding", desc: "Connect data with context and intent." },
+        { icon: <Zap className="w-5 h-5" />, title: "Smarter Decisions", desc: "From insights to actions, faster." },
+        { icon: <Clock className="w-5 h-5" />, title: "Continuous Learning", desc: "Learns from outcomes over time." },
+        { icon: <Lock className="w-5 h-5" />, title: "Built for Trust", desc: "Transparent and enterprise-grade." }
+      ]
     }
   };
 
-  const currentTabContent = modelTabData[activeModelTab];
+  const currentIntelligenceTab = intelligenceTabData[activeModelTab] || intelligenceTabData.reasoning;
 
   // Architecture Tab Content Data
   const archTabData = {
@@ -743,37 +827,39 @@ export default function PalbonPage() {
                   <path d="M450 320 Q510 340 590 340" fill="none" stroke="#6366f1" strokeWidth="2" strokeDasharray="4 4" />
                 </svg>
 
-                {/* Top Cards: Context Aware & Pattern Recognition */}
+                {/* Top Cards: Dynamic per Tab */}
                 <div className="absolute top-4 left-0 w-full flex justify-between px-4 z-20">
                   <div className="bg-white p-3.5 sm:p-4 rounded-xl shadow-sm border border-slate-100 w-44 sm:w-48 text-left">
                     <div className="w-9 h-9 bg-indigo-50 rounded-lg flex items-center justify-center mb-2.5">
-                      <Sparkles className="w-5 h-5 text-[#6366f1]" />
+                      {currentIntelligenceTab.topCard1Icon}
                     </div>
-                    <h4 className="text-xs font-bold text-slate-900 mb-0.5">Context Aware</h4>
-                    <p className="text-[10px] text-slate-500 leading-relaxed font-medium">Understands roles, policies, and real-time context</p>
+                    <h4 className="text-xs font-bold text-slate-900 mb-0.5">{currentIntelligenceTab.topCard1Title}</h4>
+                    <p className="text-[10px] text-slate-500 leading-relaxed font-medium">{currentIntelligenceTab.topCard1Desc}</p>
                   </div>
 
                   <div className="bg-white p-3.5 sm:p-4 rounded-xl shadow-sm border border-slate-100 w-44 sm:w-48 text-left">
                     <div className="w-9 h-9 bg-indigo-50 rounded-lg flex items-center justify-center mb-2.5">
-                      <Puzzle className="w-5 h-5 text-[#6366f1]" />
+                      {currentIntelligenceTab.topCard2Icon}
                     </div>
-                    <h4 className="text-xs font-bold text-slate-900 mb-0.5">Pattern Recognition</h4>
-                    <p className="text-[10px] text-slate-500 leading-relaxed font-medium">Detects patterns humans might miss</p>
+                    <h4 className="text-xs font-bold text-slate-900 mb-0.5">{currentIntelligenceTab.topCard2Title}</h4>
+                    <p className="text-[10px] text-slate-500 leading-relaxed font-medium">{currentIntelligenceTab.topCard2Desc}</p>
                   </div>
                 </div>
 
-                {/* Center Engine Core */}
+                {/* Center Engine Core: Dynamic per Tab */}
                 <div className="relative flex flex-col items-center justify-center text-center z-20 my-auto">
-                  <div className="text-[10px] font-extrabold text-[#6366f1] uppercase tracking-widest mb-1">Palbon Reasoning Engine</div>
-                  <div className="text-[10px] text-slate-400 mb-5 italic font-medium">Analyzes. Correlates. Decides.</div>
+                  <div className="text-[10px] font-extrabold text-[#6366f1] uppercase tracking-widest mb-1">{currentIntelligenceTab.engineLabel}</div>
+                  <div className="text-[10px] text-slate-400 mb-5 italic font-medium">{currentIntelligenceTab.engineSubtitle}</div>
                   
                   <div className="relative flex items-center justify-center">
                     {/* Decorative Glow */}
                     <div className="absolute inset-0 bg-indigo-400/20 blur-2xl rounded-full scale-150" />
                     {/* Central Hexagon P Medallion */}
                     <motion.div 
-                      animate={{ scale: [1, 1.05, 1] }}
-                      transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+                      key={activeModelTab}
+                      initial={{ scale: 0.9, opacity: 0.8 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ duration: 0.3 }}
                       className="w-28 h-28 sm:w-32 sm:h-32 bg-white rounded-[24px] shadow-2xl flex items-center justify-center border-4 border-indigo-50 relative z-30"
                     >
                       <div className="w-16 h-16 rounded-2xl bg-indigo-600 text-white flex items-center justify-center shadow-lg">
@@ -783,77 +869,50 @@ export default function PalbonPage() {
                   </div>
                 </div>
 
-                {/* Left Column: Input Signals */}
-                <div className="absolute left-3 top-1/2 -translate-y-1/2 w-36 sm:w-40 bg-white border border-slate-100 rounded-xl shadow-sm p-3 space-y-2.5 text-left z-20">
-                  <h5 className="text-[10px] font-bold text-slate-700 border-b border-slate-100 pb-1.5 mb-1.5 uppercase tracking-wider">Input Signals</h5>
-                  
-                  <div className="flex items-center space-x-2">
-                    <span className="w-5 h-5 bg-blue-50 text-blue-600 rounded flex items-center justify-center text-[9px] font-bold">HR</span>
-                    <span className="text-[10px] text-slate-600 font-medium">HR Data</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <span className="w-5 h-5 bg-emerald-50 text-emerald-600 rounded flex items-center justify-center text-[9px] font-bold">FI</span>
-                    <span className="text-[10px] text-slate-600 font-medium">Finance Data</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <span className="w-5 h-5 bg-purple-50 text-purple-600 rounded flex items-center justify-center text-[9px] font-bold">PR</span>
-                    <span className="text-[10px] text-slate-600 font-medium">Project Data</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <span className="w-5 h-5 bg-amber-50 text-amber-600 rounded flex items-center justify-center text-[9px] font-bold">LG</span>
-                    <span className="text-[10px] text-slate-600 font-medium">System Logs</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <span className="w-5 h-5 bg-slate-100 text-slate-600 rounded flex items-center justify-center text-[9px] font-bold">EF</span>
-                    <span className="text-[10px] text-slate-600 font-medium">External Feeds</span>
-                  </div>
+                {/* Left Column: Input Signals (Dynamic per Tab) */}
+                <div className="absolute left-3 top-1/2 -translate-y-1/2 w-36 sm:w-40 bg-white border border-slate-100 rounded-xl shadow-sm p-3 space-y-2 text-left z-20">
+                  <h5 className="text-[10px] font-bold text-slate-700 border-b border-slate-100 pb-1.5 mb-1 uppercase tracking-wider">Input Signals</h5>
+                  {currentIntelligenceTab.inputs.map((inp, idx) => (
+                    <div key={idx} className="flex items-center space-x-2">
+                      <span className={`w-5 h-5 rounded flex items-center justify-center text-[9px] font-bold ${inp.color}`}>{inp.tag}</span>
+                      <span className="text-[10px] text-slate-600 font-medium">{inp.label}</span>
+                    </div>
+                  ))}
                 </div>
 
-                {/* Right Column: Outcomes */}
-                <div className="absolute right-3 top-1/2 -translate-y-1/2 w-40 sm:w-44 bg-white border border-slate-100 rounded-xl shadow-sm p-3 space-y-2.5 text-left z-20">
-                  <h5 className="text-[10px] font-bold text-slate-700 border-b border-slate-100 pb-1.5 mb-1.5 uppercase tracking-wider">Outcomes</h5>
-                  
-                  <div className="flex items-center space-x-2">
-                    <Zap className="w-3.5 h-3.5 text-[#6366f1] shrink-0" />
-                    <span className="text-[10px] text-slate-600 font-medium">Smart Recommendations</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <AlertTriangle className="w-3.5 h-3.5 text-rose-500 shrink-0" />
-                    <span className="text-[10px] text-slate-600 font-medium">Risk Alerts</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Settings className="w-3.5 h-3.5 text-sky-500 shrink-0" />
-                    <span className="text-[10px] text-slate-600 font-medium">Automation Triggers</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <BarChart2 className="w-3.5 h-3.5 text-indigo-500 shrink-0" />
-                    <span className="text-[10px] text-slate-600 font-medium">Actionable Insights</span>
-                  </div>
+                {/* Right Column: Outcomes (Dynamic per Tab) */}
+                <div className="absolute right-3 top-1/2 -translate-y-1/2 w-40 sm:w-44 bg-white border border-slate-100 rounded-xl shadow-sm p-3 space-y-2 text-left z-20">
+                  <h5 className="text-[10px] font-bold text-slate-700 border-b border-slate-100 pb-1.5 mb-1 uppercase tracking-wider">Outcomes</h5>
+                  {currentIntelligenceTab.outcomes.map((out, idx) => (
+                    <div key={idx} className="flex items-center space-x-2">
+                      {out.icon}
+                      <span className="text-[10px] text-slate-600 font-medium">{out.label}</span>
+                    </div>
+                  ))}
                 </div>
 
-                {/* Bottom Card: Transparency */}
+                {/* Bottom Card: Transparency (Dynamic per Tab) */}
                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-72 sm:w-80 bg-white p-3.5 rounded-xl shadow-sm border border-slate-100 flex items-center space-x-3.5 z-20 text-left">
                   <div className="w-9 h-9 bg-blue-50 rounded-lg shrink-0 flex items-center justify-center">
                     <ShieldCheck className="w-5 h-5 text-blue-600" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold text-slate-900 mb-0.5">Explainable & Transparent</h4>
-                    <p className="text-[10px] text-slate-500 leading-relaxed font-medium">Every decision is traceable, explainable, and built for trust.</p>
+                    <h4 className="text-xs font-bold text-slate-900 mb-0.5">{currentIntelligenceTab.bottomCardTitle}</h4>
+                    <p className="text-[10px] text-slate-500 leading-relaxed font-medium">{currentIntelligenceTab.bottomCardDesc}</p>
                   </div>
                 </div>
 
               </div>
 
-              {/* Right Column: Text Content Side */}
+              {/* Right Column: Text Content Side (Dynamic per Tab) */}
               <div className="lg:col-span-6 flex flex-col space-y-6 text-left">
                 <div className="space-y-3">
-                  <span className="text-xs font-bold text-[#6366f1] tracking-widest uppercase font-poppins">INTELLIGENCE</span>
+                  <span className="text-xs font-bold text-[#6366f1] tracking-widest uppercase font-poppins">{currentIntelligenceTab.badge}</span>
                   <h2 className="text-3xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-slate-900 leading-tight">
-                    Not just data. <br />
-                    Reasoning that <span className="text-[#6366f1]">drives real outcomes.</span>
+                    {currentIntelligenceTab.headline}
                   </h2>
                   <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal">
-                    PALBON doesn't just process data — it reasons over it. It connects the dots across systems, understands the why, and recommends the what's next.
+                    {currentIntelligenceTab.description}
                   </p>
                 </div>
 
@@ -878,47 +937,19 @@ export default function PalbonPage() {
                 {/* Divider */}
                 <hr className="border-slate-200/80 my-2" />
 
-                {/* Metrics Grid */}
+                {/* Metrics Grid (Dynamic per Tab) */}
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-2">
-                  <div className="space-y-2">
-                    <div className="text-[#6366f1]">
-                      <Sparkles className="w-5 h-5" />
+                  {currentIntelligenceTab.pillars.map((pil, idx) => (
+                    <div key={idx} className="space-y-2">
+                      <div className="text-[#6366f1]">
+                        {pil.icon}
+                      </div>
+                      <div>
+                        <h5 className="text-xs font-bold text-slate-900">{pil.title}</h5>
+                        <p className="text-[10px] text-slate-500 mt-0.5 leading-normal">{pil.desc}</p>
+                      </div>
                     </div>
-                    <div>
-                      <h5 className="text-xs font-bold text-slate-900">Deep Understanding</h5>
-                      <p className="text-[10px] text-slate-500 mt-0.5 leading-normal">Connect data with context and intent.</p>
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <div className="text-[#6366f1]">
-                      <Zap className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h5 className="text-xs font-bold text-slate-900">Smarter Decisions</h5>
-                      <p className="text-[10px] text-slate-500 mt-0.5 leading-normal">From insights to actions, faster.</p>
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <div className="text-[#6366f1]">
-                      <Clock className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h5 className="text-xs font-bold text-slate-900">Continuous Learning</h5>
-                      <p className="text-[10px] text-slate-500 mt-0.5 leading-normal">Learns from outcomes over time.</p>
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <div className="text-[#6366f1]">
-                      <Lock className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h5 className="text-xs font-bold text-slate-900">Built for Trust</h5>
-                      <p className="text-[10px] text-slate-500 mt-0.5 leading-normal">Transparent and enterprise-grade.</p>
-                    </div>
-                  </div>
+                  ))}
                 </div>
 
               </div>
