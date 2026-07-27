@@ -3,7 +3,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   ChevronDown, 
-  Cpu, 
   ArrowRight, 
   Menu, 
   X,
@@ -11,7 +10,11 @@ import {
   BarChart3,
   BookOpen,
   Boxes,
-  Zap
+  Zap,
+  CheckCircle2,
+  Cpu,
+  Layers,
+  Sparkles
 } from "lucide-react";
 import LogoLight from "../../Assets/MultipliersKraftLogoLight.png";
 
@@ -20,6 +23,7 @@ export default function NewNavbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [techDropdownOpen, setTechDropdownOpen] = useState(false);
   const [mobileTechOpen, setMobileTechOpen] = useState(false);
+  const [activeProduct, setActiveProduct] = useState("nucleus");
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -60,40 +64,50 @@ export default function NewNavbar() {
     {
       id: "nucleus",
       name: "Nucleus (HRMS)",
-      badge: "Core HRMS",
-      tagline: "Total talent lifecycle, workforce analytics, payroll & performance.",
-      icon: <Users className="w-5 h-5 text-sky-400" />,
-      color: "from-sky-500/20 to-blue-600/10 border-sky-500/30",
+      tagline: "Talent lifecycle, payroll & workforce analytics.",
+      category: "HRMS",
+      icon: <Users className="w-4 h-4 text-sky-400" />,
       link: "/datanix",
+      capabilities: ["Total Talent Orchestration", "Automated Payroll Engine", "Performance Telemetry", "Workforce Analytics"],
+      statsLabel: "Payroll & HR",
+      statsValue: "100% Automated"
     },
     {
       id: "erp",
       name: "ERP Solution",
-      badge: "Operations",
-      tagline: "Financial automation, procurement, inventory & B2B workflows.",
-      icon: <BarChart3 className="w-5 h-5 text-indigo-400" />,
-      color: "from-indigo-500/20 to-purple-600/10 border-indigo-500/30",
+      tagline: "Financial automation, procurement & B2B operations.",
+      category: "OPERATIONS",
+      icon: <BarChart3 className="w-4 h-4 text-sky-400" />,
       link: "/carve",
+      capabilities: ["Financial Workflows", "Procurement Management", "Inventory Control", "Resource Allocation"],
+      statsLabel: "Efficiency Gain",
+      statsValue: "3.4x Velocity"
     },
     {
       id: "magnetics",
       name: "Magnetics (LXP)",
-      badge: "Learning Platform",
-      tagline: "AI-driven skill telemetry, career paths & L&D frameworks.",
-      icon: <BookOpen className="w-5 h-5 text-teal-400" />,
-      color: "from-teal-500/20 to-emerald-600/10 border-teal-500/30",
+      tagline: "Learning, continuous capability & skill telemetry.",
+      category: "LEARNING",
+      icon: <BookOpen className="w-4 h-4 text-sky-400" />,
       link: "/mile",
+      capabilities: ["AI Skill Pathways", "Career Trajectory Mapping", "Skill Gap Diagnostics", "Institutional L&D"],
+      statsLabel: "Skill Retention",
+      statsValue: "94% Mastery"
     },
     {
       id: "m1",
       name: "M1 Integrated Stack",
-      badge: "Modular Cart",
-      tagline: "Custom assembly of HRMS, ERP & LXP into a single operating stack.",
-      icon: <Boxes className="w-5 h-5 text-amber-400" />,
-      color: "from-amber-500/20 to-orange-600/10 border-amber-500/30",
+      tagline: "Combine modules into one modular operating system.",
+      category: "MODULAR SUITE",
+      icon: <Boxes className="w-4 h-4 text-sky-400" />,
       link: "/assessment",
+      capabilities: ["Build Your Own Stack", "Unified Data Model", "Single Sign-On (SSO)", "Zero Tool Friction"],
+      statsLabel: "Consolidation",
+      statsValue: "1 Single Stack"
     },
   ];
+
+  const currentPreview = techProducts.find(p => p.id === activeProduct) || techProducts[0];
 
   return (
     <header 
@@ -128,7 +142,7 @@ export default function NewNavbar() {
               Home
             </Link>
 
-            {/* Technology Mega Dropdown (SaaS Suite) */}
+            {/* Technology Mega Dropdown (Linear / Atlassian Style) */}
             <div 
               className="relative"
               onMouseEnter={handleTechMouseEnter}
@@ -144,64 +158,129 @@ export default function NewNavbar() {
                 <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${techDropdownOpen ? "rotate-180 text-sky-400" : "text-slate-400"}`} />
               </button>
 
-              {/* Technology Mega Dropdown Menu */}
+              {/* Mega Dropdown Menu - Deep Navy Neutral Surface (#15192B) */}
               <AnimatePresence>
                 {techDropdownOpen && (
                   <motion.div
-                    initial={{ opacity: 0, y: 10, scale: 0.98 }}
+                    initial={{ opacity: 0, y: 8, scale: 0.99 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 8, scale: 0.98 }}
-                    transition={{ duration: 0.2, ease: "easeOut" }}
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[680px] bg-[#0c102b] border border-slate-700/80 rounded-2xl p-6 shadow-2xl backdrop-blur-2xl z-50"
+                    exit={{ opacity: 0, y: 6, scale: 0.99 }}
+                    transition={{ duration: 0.18, ease: "easeOut" }}
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[760px] bg-[#15192B] border border-slate-800/90 rounded-2xl shadow-2xl backdrop-blur-3xl z-50 overflow-hidden"
                   >
-                    {/* Header bar in dropdown */}
-                    <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-800">
-                      <div className="flex items-center gap-2">
-                        <Cpu className="w-4 h-4 text-sky-400" />
-                        <span className="text-xs font-bold tracking-widest text-slate-300 uppercase font-poppins">ENTERPRISE SAAS SUITE</span>
+                    {/* Header Bar */}
+                    <div className="px-6 py-4 border-b border-slate-800/80 flex items-center justify-between bg-[#111424]">
+                      <div>
+                        <h3 className="font-poppins font-bold text-sm text-white flex items-center gap-2">
+                          <Cpu className="w-4 h-4 text-sky-400" />
+                          <span>Enterprise SaaS Suite</span>
+                        </h3>
+                        <p className="text-xs text-slate-400 mt-0.5">One modular platform. Four connected business engines.</p>
                       </div>
-                      <span className="text-[11px] font-medium text-slate-400">4 Modular Engines</span>
+                      <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-widest bg-slate-800/80 px-2.5 py-1 rounded-md border border-slate-700/60">
+                        Modular Architecture
+                      </span>
                     </div>
 
-                    {/* 2-Column Product Grid */}
-                    <div className="grid grid-cols-2 gap-4">
-                      {techProducts.map((prod) => (
-                        <Link
-                          key={prod.id}
-                          to={prod.link}
-                          className={`group p-4 rounded-xl border bg-gradient-to-br transition-all duration-300 hover:scale-[1.02] ${prod.color}`}
-                        >
-                          <div className="flex items-center justify-between mb-2">
-                            <div className="flex items-center gap-2.5">
-                              <div className="p-2 rounded-lg bg-slate-900/80 border border-slate-700/80">
-                                {prod.icon}
-                              </div>
-                              <h4 className="font-poppins font-bold text-sm text-white group-hover:text-sky-300 transition-colors">
-                                {prod.name}
-                              </h4>
+                    {/* Dual-Pane Layout */}
+                    <div className="grid grid-cols-12 gap-0 p-4">
+                      
+                      {/* Left Pane: 4 Clean Modules List */}
+                      <div className="col-span-7 space-y-1.5 pr-4 border-r border-slate-800/60">
+                        {techProducts.map((prod) => (
+                          <Link
+                            key={prod.id}
+                            to={prod.link}
+                            onMouseEnter={() => setActiveProduct(prod.id)}
+                            className={`group flex items-start gap-3.5 p-3 rounded-xl border transition-all duration-200 ${
+                              activeProduct === prod.id 
+                                ? "bg-[#1d233c] border-sky-500/40 shadow-sm" 
+                                : "bg-transparent border-transparent hover:bg-[#1a1e33] hover:border-slate-800"
+                            }`}
+                          >
+                            <div className={`mt-0.5 p-2 rounded-lg border transition-colors ${
+                              activeProduct === prod.id
+                                ? "bg-sky-500/20 border-sky-500/40 text-sky-400"
+                                : "bg-slate-800/60 border-slate-700/60 text-slate-400 group-hover:text-slate-200"
+                            }`}>
+                              {prod.icon}
                             </div>
-                            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">
-                              {prod.badge}
+
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center justify-between">
+                                <h4 className={`font-poppins font-bold text-sm transition-colors ${
+                                  activeProduct === prod.id ? "text-white" : "text-slate-200 group-hover:text-white"
+                                }`}>
+                                  {prod.name}
+                                </h4>
+                                <span className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">
+                                  {prod.category}
+                                </span>
+                              </div>
+                              <p className="text-xs text-slate-400 mt-1 leading-snug truncate">
+                                {prod.tagline}
+                              </p>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+
+                      {/* Right Pane: Dynamic Live Product Preview Panel */}
+                      <div className="col-span-5 pl-5 flex flex-col justify-between py-2">
+                        <div>
+                          <div className="flex items-center justify-between mb-3 pb-2 border-b border-slate-800/60">
+                            <span className="text-[11px] font-bold text-sky-400 tracking-wider uppercase font-poppins">
+                              Capability Preview
+                            </span>
+                            <span className="text-[10px] font-semibold text-slate-400 bg-slate-800/80 px-2 py-0.5 rounded">
+                              {currentPreview.statsValue}
                             </span>
                           </div>
-                          <p className="text-xs text-slate-400 leading-relaxed pl-1">
-                            {prod.tagline}
-                          </p>
-                        </Link>
-                      ))}
+
+                          <h5 className="font-poppins font-bold text-sm text-white mb-2">
+                            {currentPreview.name}
+                          </h5>
+
+                          <div className="space-y-2 mb-4">
+                            {currentPreview.capabilities.map((cap, idx) => (
+                              <div key={idx} className="flex items-center gap-2 text-xs text-slate-300">
+                                <CheckCircle2 className="w-3.5 h-3.5 text-sky-400 shrink-0" />
+                                <span>{cap}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Mini Dashboard Spec Card */}
+                        <div className="bg-[#111424] border border-slate-800 p-3 rounded-xl flex items-center justify-between">
+                          <div>
+                            <p className="text-[10px] text-slate-400 uppercase font-semibold">{currentPreview.statsLabel}</p>
+                            <p className="text-xs font-bold text-white mt-0.5">{currentPreview.statsValue}</p>
+                          </div>
+                          <Link 
+                            to={currentPreview.link}
+                            className="p-1.5 rounded-lg bg-sky-500/20 text-sky-400 hover:bg-sky-500/30 transition-colors"
+                          >
+                            <ArrowRight className="w-4 h-4" />
+                          </Link>
+                        </div>
+
+                      </div>
+
                     </div>
 
-                    {/* Bottom CTA strip in dropdown */}
-                    <div className="mt-4 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs">
-                      <span className="text-slate-400">Looking to consolidate your software tools?</span>
+                    {/* Bottom Guidance Footer Bar */}
+                    <div className="px-6 py-3.5 bg-[#111424] border-t border-slate-800/80 flex items-center justify-between text-xs">
+                      <span className="text-slate-400">Need guidance configuring your enterprise modules?</span>
                       <Link 
-                        to="/assessment" 
+                        to="/contact" 
                         className="inline-flex items-center gap-1.5 font-bold text-sky-400 hover:text-sky-300 transition-colors"
                       >
-                        <span>Build M1 Custom Stack</span>
+                        <span>Talk to a Solution Architect</span>
                         <ArrowRight className="w-3.5 h-3.5" />
                       </Link>
                     </div>
+
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -313,7 +392,7 @@ export default function NewNavbar() {
                         {prod.icon}
                         <div>
                           <p className="font-bold text-xs text-white">{prod.name}</p>
-                          <p className="text-[11px] text-slate-400">{prod.badge}</p>
+                          <p className="text-[11px] text-slate-400">{prod.category}</p>
                         </div>
                       </Link>
                     ))}
@@ -356,7 +435,7 @@ export default function NewNavbar() {
                 }}
                 className="w-full text-center text-slate-300 border border-slate-700 py-2.5 rounded-lg font-semibold"
               >
-                Contact Us
+                Talk to a Solution Architect
               </button>
 
               <button
