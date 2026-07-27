@@ -4,7 +4,7 @@ import { ArrowRight, Users, Layers, GraduationCap } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export default function SolutionsSection() {
-  const [activeTab, setActiveTab] = useState(0); // 0: Consulting, 1: Technology (SaaS), 2: Academic
+  const [activeTab, setActiveTab] = useState(1); // 0: Organizational capability, 1: Digital platforms, 2: Academic alignment
   const [isPaused, setIsPaused] = useState(false);
   const navigate = useNavigate();
 
@@ -12,7 +12,7 @@ export default function SolutionsSection() {
     {
       id: 0,
       icon: <Users className="w-5 h-5 md:w-6 md:h-6" />,
-      verticalLabel: "CONSULTING",
+      verticalLabel: "Organizational capability",
       title: "Leadership & OD",
       bullets: [
         "Leadership Development",
@@ -25,7 +25,7 @@ export default function SolutionsSection() {
     {
       id: 1,
       icon: <Layers className="w-5 h-5 md:w-6 md:h-6" />,
-      verticalLabel: "TECHNOLOGY",
+      verticalLabel: "Digital platforms",
       title: "AI Enterprise Solutions",
       bullets: [
         "Nucleus — AI-Native HRMS",
@@ -38,7 +38,7 @@ export default function SolutionsSection() {
     {
       id: 2,
       icon: <GraduationCap className="w-5 h-5 md:w-6 md:h-6" />,
-      verticalLabel: "ACADEMIC SOLUTIONS",
+      verticalLabel: "Academic alignment",
       title: "Future-ready learning",
       bullets: [
         "Hyper-Personalised Skill Tracks",
@@ -136,8 +136,8 @@ export default function SolutionsSection() {
             </AnimatePresence>
           </div>
 
-          {/* Navigation Tabs Sidebar: 3 Vertical side-by-side strips on the right (Desktop >= 1024px) */}
-          <aside className="w-full lg:w-auto border-b lg:border-b-0 lg:border-l border-slate-700/60 flex flex-row lg:flex-col bg-[#0f1b33] z-20 shrink-0">
+          {/* Navigation Tabs Sidebar: 3 Vertical Strips Stacked Side-by-Side (flex-row) */}
+          <aside className="w-full lg:w-auto border-t lg:border-t-0 lg:border-l border-slate-700/60 flex flex-row bg-[#0b1426] z-20 shrink-0 h-auto lg:h-full">
             {pillars.map((pillar) => {
               const isActive = activeTab === pillar.id;
               return (
@@ -147,22 +147,22 @@ export default function SolutionsSection() {
                     setActiveTab(pillar.id);
                     setIsPaused(true);
                   }}
-                  className={`flex-1 lg:w-24 xl:w-28 h-14 sm:h-16 lg:h-full flex flex-row lg:flex-col items-center justify-center lg:justify-between py-2.5 sm:py-3 lg:py-8 px-3 sm:px-4 lg:px-2 transition-all duration-300 relative border-r lg:border-r-0 lg:border-b last:border-r-0 last:border-b-0 border-slate-700/40 cursor-pointer ${
+                  className={`flex-1 lg:w-24 xl:w-28 2xl:w-32 h-20 sm:h-24 lg:h-full flex flex-col items-center justify-between py-3 lg:py-8 px-2 transition-all duration-300 relative border-r border-slate-700/50 last:border-r-0 cursor-pointer ${
                     isActive
-                      ? "bg-[#1d2b4a] text-sky-400 font-bold"
-                      : "bg-[#0b1426] hover:bg-slate-800/60 text-slate-300"
+                      ? "bg-[#1e2a4a] text-sky-400 font-bold"
+                      : "bg-[#0b1426] hover:bg-slate-800/60 text-slate-300 font-medium"
                   }`}
                 >
-                  {/* Active Highlight Accent Bar */}
+                  {/* Top Highlight Indicator Bar */}
                   {isActive && (
-                    <div className="absolute top-0 left-0 w-full lg:w-1.5 h-1 lg:h-full bg-[#0369a1]"></div>
+                    <div className="absolute top-0 left-0 w-full h-1.5 bg-[#0369a1]"></div>
                   )}
 
-                  <div className="p-1.5 sm:p-2 rounded-full bg-slate-800/60 text-white lg:mb-auto lg:mt-2 shrink-0">
+                  <div className="p-1.5 sm:p-2 rounded-full bg-slate-800/60 text-white mt-1 shrink-0">
                     {pillar.icon}
                   </div>
 
-                  <span className="text-xs sm:text-sm lg:text-xs xl:text-sm font-semibold tracking-wide whitespace-nowrap ml-2 lg:ml-0 lg:[writing-mode:vertical-rl] lg:rotate-180 lg:pb-6">
+                  <span className="[writing-mode:vertical-rl] rotate-180 text-xs sm:text-sm lg:text-sm xl:text-base font-semibold tracking-wide whitespace-nowrap pb-4 sm:pb-6">
                     {pillar.verticalLabel}
                   </span>
                 </button>
