@@ -698,25 +698,232 @@ export default function PalbonPage() {
       <section className="py-24 lg:py-32 bg-[#F8FAFC] text-slate-900 relative border-b border-slate-200" id="solutions-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
-              </p>
-
-              <div className="flex items-center gap-4 pt-2">
-                <button
-                  onClick={() => navigate("/solutions")}
-                  className="px-6 py-2.5 rounded-full border border-slate-300 hover:border-slate-400 text-slate-800 font-semibold text-sm transition-all duration-200 shadow-sm cursor-pointer"
-                >
-                  Explore
-                </button>
-                <button
-                  onClick={() => navigate("/contact")}
-                  className="text-[#6366f1] hover:text-[#4f46e5] font-bold text-sm inline-flex items-center gap-1.5 transition-colors cursor-pointer"
-                >
-                  <span>Talk</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </div>
+          {/* Navigation Filter Tabs */}
+          <div className="flex justify-center mb-12">
+            <div className="flex space-x-8 border-b border-slate-200 px-4">
+              <button 
+                onClick={() => setActiveModelTab("workforce")}
+                className={`pb-2.5 font-semibold text-sm transition-colors relative ${
+                  activeModelTab === "workforce" ? "text-[#6366f1] border-b-2 border-[#6366f1]" : "text-slate-500 hover:text-[#6366f1]"
+                }`}
+              >
+                Workforce
+              </button>
+              <button 
+                onClick={() => setActiveModelTab("configuration")}
+                className={`pb-2.5 font-semibold text-sm transition-colors relative ${
+                  activeModelTab === "configuration" ? "text-[#6366f1] border-b-2 border-[#6366f1]" : "text-slate-500 hover:text-[#6366f1]"
+                }`}
+              >
+                Configuration
+              </button>
+              <button 
+                onClick={() => setActiveModelTab("reasoning")}
+                className={`pb-2.5 font-semibold text-sm transition-colors relative ${
+                  activeModelTab === "reasoning" ? "text-[#6366f1] border-b-2 border-[#6366f1]" : "text-slate-500 hover:text-[#6366f1]"
+                }`}
+              >
+                Reasoning
+              </button>
             </div>
+          </div>
 
+          {/* Main Feature Container */}
+          <div className="bg-white border border-indigo-100 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-sm overflow-hidden">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+              
+              {/* Left Column: Interactive Diagram */}
+              <div className="lg:col-span-6 relative h-[560px] sm:h-[600px] flex items-center justify-center bg-[#F8FAFF] rounded-2xl border border-indigo-50/80 p-4">
+                
+                {/* SVG Connecting Overlay Lines */}
+                <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-30">
+                  <path d="M160 300 Q240 300 300 280" fill="none" stroke="#6366f1" strokeWidth="2" strokeDasharray="4 4" />
+                  <path d="M160 340 Q240 340 300 300" fill="none" stroke="#6366f1" strokeWidth="2" strokeDasharray="4 4" />
+                  <path d="M450 280 Q510 300 590 300" fill="none" stroke="#6366f1" strokeWidth="2" strokeDasharray="4 4" />
+                  <path d="M450 320 Q510 340 590 340" fill="none" stroke="#6366f1" strokeWidth="2" strokeDasharray="4 4" />
+                </svg>
+
+                {/* Top Cards: Context Aware & Pattern Recognition */}
+                <div className="absolute top-4 left-0 w-full flex justify-between px-4 z-20">
+                  <div className="bg-white p-3.5 sm:p-4 rounded-xl shadow-sm border border-slate-100 w-44 sm:w-48 text-left">
+                    <div className="w-9 h-9 bg-indigo-50 rounded-lg flex items-center justify-center mb-2.5">
+                      <Sparkles className="w-5 h-5 text-[#6366f1]" />
+                    </div>
+                    <h4 className="text-xs font-bold text-slate-900 mb-0.5">Context Aware</h4>
+                    <p className="text-[10px] text-slate-500 leading-relaxed font-medium">Understands roles, policies, and real-time context</p>
+                  </div>
+
+                  <div className="bg-white p-3.5 sm:p-4 rounded-xl shadow-sm border border-slate-100 w-44 sm:w-48 text-left">
+                    <div className="w-9 h-9 bg-indigo-50 rounded-lg flex items-center justify-center mb-2.5">
+                      <Puzzle className="w-5 h-5 text-[#6366f1]" />
+                    </div>
+                    <h4 className="text-xs font-bold text-slate-900 mb-0.5">Pattern Recognition</h4>
+                    <p className="text-[10px] text-slate-500 leading-relaxed font-medium">Detects patterns humans might miss</p>
+                  </div>
+                </div>
+
+                {/* Center Engine Core */}
+                <div className="relative flex flex-col items-center justify-center text-center z-20 my-auto">
+                  <div className="text-[10px] font-extrabold text-[#6366f1] uppercase tracking-widest mb-1">Palbon Reasoning Engine</div>
+                  <div className="text-[10px] text-slate-400 mb-5 italic font-medium">Analyzes. Correlates. Decides.</div>
+                  
+                  <div className="relative flex items-center justify-center">
+                    {/* Decorative Glow */}
+                    <div className="absolute inset-0 bg-indigo-400/20 blur-2xl rounded-full scale-150" />
+                    {/* Central Hexagon P Medallion */}
+                    <motion.div 
+                      animate={{ scale: [1, 1.05, 1] }}
+                      transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+                      className="w-28 h-28 sm:w-32 sm:h-32 bg-white rounded-[24px] shadow-2xl flex items-center justify-center border-4 border-indigo-50 relative z-30"
+                    >
+                      <div className="w-16 h-16 rounded-2xl bg-indigo-600 text-white flex items-center justify-center shadow-lg">
+                        <span className="font-poppins font-black text-4xl">P</span>
+                      </div>
+                    </motion.div>
+                  </div>
+                </div>
+
+                {/* Left Column: Input Signals */}
+                <div className="absolute left-3 top-1/2 -translate-y-1/2 w-36 sm:w-40 bg-white border border-slate-100 rounded-xl shadow-sm p-3 space-y-2.5 text-left z-20">
+                  <h5 className="text-[10px] font-bold text-slate-700 border-b border-slate-100 pb-1.5 mb-1.5 uppercase tracking-wider">Input Signals</h5>
+                  
+                  <div className="flex items-center space-x-2">
+                    <span className="w-5 h-5 bg-blue-50 text-blue-600 rounded flex items-center justify-center text-[9px] font-bold">HR</span>
+                    <span className="text-[10px] text-slate-600 font-medium">HR Data</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <span className="w-5 h-5 bg-emerald-50 text-emerald-600 rounded flex items-center justify-center text-[9px] font-bold">FI</span>
+                    <span className="text-[10px] text-slate-600 font-medium">Finance Data</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <span className="w-5 h-5 bg-purple-50 text-purple-600 rounded flex items-center justify-center text-[9px] font-bold">PR</span>
+                    <span className="text-[10px] text-slate-600 font-medium">Project Data</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <span className="w-5 h-5 bg-amber-50 text-amber-600 rounded flex items-center justify-center text-[9px] font-bold">LG</span>
+                    <span className="text-[10px] text-slate-600 font-medium">System Logs</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <span className="w-5 h-5 bg-slate-100 text-slate-600 rounded flex items-center justify-center text-[9px] font-bold">EF</span>
+                    <span className="text-[10px] text-slate-600 font-medium">External Feeds</span>
+                  </div>
+                </div>
+
+                {/* Right Column: Outcomes */}
+                <div className="absolute right-3 top-1/2 -translate-y-1/2 w-40 sm:w-44 bg-white border border-slate-100 rounded-xl shadow-sm p-3 space-y-2.5 text-left z-20">
+                  <h5 className="text-[10px] font-bold text-slate-700 border-b border-slate-100 pb-1.5 mb-1.5 uppercase tracking-wider">Outcomes</h5>
+                  
+                  <div className="flex items-center space-x-2">
+                    <Zap className="w-3.5 h-3.5 text-[#6366f1] shrink-0" />
+                    <span className="text-[10px] text-slate-600 font-medium">Smart Recommendations</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <AlertTriangle className="w-3.5 h-3.5 text-rose-500 shrink-0" />
+                    <span className="text-[10px] text-slate-600 font-medium">Risk Alerts</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Settings className="w-3.5 h-3.5 text-sky-500 shrink-0" />
+                    <span className="text-[10px] text-slate-600 font-medium">Automation Triggers</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <BarChart2 className="w-3.5 h-3.5 text-indigo-500 shrink-0" />
+                    <span className="text-[10px] text-slate-600 font-medium">Actionable Insights</span>
+                  </div>
+                </div>
+
+                {/* Bottom Card: Transparency */}
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-72 sm:w-80 bg-white p-3.5 rounded-xl shadow-sm border border-slate-100 flex items-center space-x-3.5 z-20 text-left">
+                  <div className="w-9 h-9 bg-blue-50 rounded-lg shrink-0 flex items-center justify-center">
+                    <ShieldCheck className="w-5 h-5 text-blue-600" />
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-bold text-slate-900 mb-0.5">Explainable & Transparent</h4>
+                    <p className="text-[10px] text-slate-500 leading-relaxed font-medium">Every decision is traceable, explainable, and built for trust.</p>
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Right Column: Text Content Side */}
+              <div className="lg:col-span-6 flex flex-col space-y-6 text-left">
+                <div className="space-y-3">
+                  <span className="text-xs font-bold text-[#6366f1] tracking-widest uppercase font-poppins">INTELLIGENCE</span>
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-slate-900 leading-tight">
+                    Not just data. <br />
+                    Reasoning that <span className="text-[#6366f1]">drives real outcomes.</span>
+                  </h2>
+                  <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal">
+                    PALBON doesn't just process data — it reasons over it. It connects the dots across systems, understands the why, and recommends the what's next.
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-6 pt-2">
+                  <button 
+                    onClick={() => navigate("/contact")}
+                    className="bg-[#6366f1] hover:bg-[#4f46e5] text-white px-7 py-3.5 rounded-xl font-bold text-sm inline-flex items-center gap-2 shadow-lg shadow-indigo-500/25 transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95"
+                  >
+                    <span>See it in action</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+
+                  <button
+                    onClick={() => navigate("/contact")}
+                    className="text-slate-900 hover:text-[#6366f1] font-bold text-sm inline-flex items-center gap-2 transition-colors cursor-pointer"
+                  >
+                    <span>Talk to us</span>
+                    <ArrowRight className="w-4 h-4 text-[#6366f1]" />
+                  </button>
+                </div>
+
+                {/* Divider */}
+                <hr className="border-slate-200/80 my-2" />
+
+                {/* Metrics Grid */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-2">
+                  <div className="space-y-2">
+                    <div className="text-[#6366f1]">
+                      <Sparkles className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h5 className="text-xs font-bold text-slate-900">Deep Understanding</h5>
+                      <p className="text-[10px] text-slate-500 mt-0.5 leading-normal">Connect data with context and intent.</p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <div className="text-[#6366f1]">
+                      <Zap className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h5 className="text-xs font-bold text-slate-900">Smarter Decisions</h5>
+                      <p className="text-[10px] text-slate-500 mt-0.5 leading-normal">From insights to actions, faster.</p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <div className="text-[#6366f1]">
+                      <Clock className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h5 className="text-xs font-bold text-slate-900">Continuous Learning</h5>
+                      <p className="text-[10px] text-slate-500 mt-0.5 leading-normal">Learns from outcomes over time.</p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <div className="text-[#6366f1]">
+                      <Lock className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h5 className="text-xs font-bold text-slate-900">Built for Trust</h5>
+                      <p className="text-[10px] text-slate-500 mt-0.5 leading-normal">Transparent and enterprise-grade.</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
           </div>
 
         </div>
