@@ -130,19 +130,19 @@ export default function NewNavbar() {
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1 font-poppins text-sm font-medium text-slate-300">
+          <nav className="hidden lg:flex items-center gap-2 font-poppins text-sm font-medium text-slate-300">
             
             {/* Home */}
             <Link 
               to="/" 
-              className={`px-3.5 py-2 rounded-lg transition-colors hover:text-white hover:bg-slate-800/60 ${
-                location.pathname === "/" ? "text-white bg-slate-800/80 font-semibold" : ""
+              className={`px-4 py-2 rounded-full transition-colors hover:text-white hover:bg-slate-800/60 ${
+                location.pathname === "/" ? "text-white bg-[#15192B] border border-slate-700/80 font-semibold" : ""
               }`}
             >
               Home
             </Link>
 
-            {/* Technology Mega Dropdown (Linear / Atlassian Style) */}
+            {/* Technology Mega Dropdown */}
             <div 
               className="relative"
               onMouseEnter={handleTechMouseEnter}
@@ -150,55 +150,61 @@ export default function NewNavbar() {
               ref={dropdownRef}
             >
               <button 
-                className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg transition-colors hover:text-white hover:bg-slate-800/60 cursor-pointer ${
-                  location.pathname.startsWith("/technology") || techDropdownOpen ? "text-white bg-slate-800/80 font-semibold" : ""
+                className={`inline-flex items-center gap-2 px-5 py-2 rounded-full transition-all duration-200 cursor-pointer ${
+                  location.pathname.startsWith("/technology") || techDropdownOpen 
+                    ? "text-white bg-[#15192B] border border-slate-700/80 font-semibold shadow-md" 
+                    : "hover:text-white hover:bg-slate-800/60"
                 }`}
               >
                 <span>Technology (SaaS)</span>
                 <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${techDropdownOpen ? "rotate-180 text-sky-400" : "text-slate-400"}`} />
               </button>
 
-              {/* Mega Dropdown Menu - Deep Navy Neutral Surface (#15192B) */}
+              {/* Mega Dropdown Menu - Dark Deep Navy (#0c1021) */}
               <AnimatePresence>
                 {techDropdownOpen && (
                   <motion.div
                     initial={{ opacity: 0, y: 8, scale: 0.99 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 6, scale: 0.99 }}
-                    transition={{ duration: 0.18, ease: "easeOut" }}
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[760px] bg-[#15192B] border border-slate-800/90 rounded-2xl shadow-2xl backdrop-blur-3xl z-50 overflow-hidden"
+                    transition={{ duration: 0.2, ease: "easeOut" }}
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[840px] bg-[#0c1021] border border-slate-800/90 rounded-3xl shadow-2xl backdrop-blur-3xl z-50 overflow-hidden"
                   >
                     {/* Header Bar */}
-                    <div className="px-6 py-4 border-b border-slate-800/80 flex items-center justify-between bg-[#111424]">
-                      <div>
-                        <h3 className="font-poppins font-bold text-sm text-white flex items-center gap-2">
-                          <Cpu className="w-4 h-4 text-sky-400" />
-                          <span>Enterprise SaaS Suite</span>
-                        </h3>
-                        <p className="text-xs text-slate-400 mt-0.5">One modular platform. Four connected business engines.</p>
+                    <div className="px-6 py-4 border-b border-slate-800/80 flex items-center justify-between bg-[#080b18]">
+                      <div className="flex items-center gap-3">
+                        <div className="p-2 rounded-xl bg-indigo-500/20 text-indigo-400 border border-indigo-500/30">
+                          <Cpu className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <h3 className="font-poppins font-extrabold text-sm text-white uppercase tracking-wider flex items-center gap-2">
+                            ENTERPRISE SAAS SUITE
+                          </h3>
+                          <p className="text-xs text-slate-400 mt-0.5">One modular platform. Four connected business engines.</p>
+                        </div>
                       </div>
-                      <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-widest bg-slate-800/80 px-2.5 py-1 rounded-md border border-slate-700/60">
-                        Modular Architecture
+                      <span className="text-xs font-semibold text-slate-300 bg-[#161c33] border border-slate-700/80 px-3.5 py-1 rounded-full">
+                        4 Modules
                       </span>
                     </div>
 
                     {/* Dual-Pane Layout */}
-                    <div className="grid grid-cols-12 gap-0 p-4">
+                    <div className="grid grid-cols-12 gap-0 p-5">
                       
-                      {/* Left Pane: 4 Clean Modules List */}
-                      <div className="col-span-7 space-y-1.5 pr-4 border-r border-slate-800/60">
+                      {/* Left Pane: 4 Clean Module Cards */}
+                      <div className="col-span-6 space-y-2 pr-5 border-r border-slate-800/70">
                         {techProducts.map((prod) => (
                           <Link
                             key={prod.id}
                             to={prod.link}
                             onMouseEnter={() => setActiveProduct(prod.id)}
-                            className={`group flex items-start gap-3.5 p-3 rounded-xl border transition-all duration-200 ${
+                            className={`group flex items-center gap-3.5 p-3.5 rounded-2xl border transition-all duration-200 ${
                               activeProduct === prod.id 
-                                ? "bg-[#1d233c] border-sky-500/40 shadow-sm" 
-                                : "bg-transparent border-transparent hover:bg-[#1a1e33] hover:border-slate-800"
+                                ? "bg-[#141a33] border-sky-500/40 shadow-lg" 
+                                : "bg-[#0f1429]/60 border-slate-800/60 hover:bg-[#141a33]/80 hover:border-slate-700"
                             }`}
                           >
-                            <div className={`mt-0.5 p-2 rounded-lg border transition-colors ${
+                            <div className={`p-3 rounded-xl border transition-colors shrink-0 ${
                               activeProduct === prod.id
                                 ? "bg-sky-500/20 border-sky-500/40 text-sky-400"
                                 : "bg-slate-800/60 border-slate-700/60 text-slate-400 group-hover:text-slate-200"
@@ -207,62 +213,111 @@ export default function NewNavbar() {
                             </div>
 
                             <div className="flex-1 min-w-0">
-                              <div className="flex items-center justify-between">
+                              <div className="flex items-center gap-2">
                                 <h4 className={`font-poppins font-bold text-sm transition-colors ${
                                   activeProduct === prod.id ? "text-white" : "text-slate-200 group-hover:text-white"
                                 }`}>
                                   {prod.name}
                                 </h4>
-                                <span className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">
-                                  {prod.category}
+                                <span className="text-[9px] font-semibold text-slate-400 bg-slate-800/80 px-2 py-0.5 rounded-full border border-slate-700/60">
+                                  {prod.category === "HRMS" ? "Core HRMS" : prod.category === "OPERATIONS" ? "Operations" : prod.category === "LEARNING" ? "Learning Platform" : "Modular Bundle"}
                                 </span>
                               </div>
-                              <p className="text-xs text-slate-400 mt-1 leading-snug truncate">
+                              <p className="text-xs text-slate-400 mt-1 leading-relaxed line-clamp-2">
                                 {prod.tagline}
                               </p>
                             </div>
+
+                            <ArrowRight className={`w-4 h-4 shrink-0 transition-transform ${
+                              activeProduct === prod.id ? "text-sky-400 translate-x-1" : "text-slate-600 group-hover:text-slate-400"
+                            }`} />
                           </Link>
                         ))}
                       </div>
 
-                      {/* Right Pane: Dynamic Live Product Preview Panel */}
-                      <div className="col-span-5 pl-5 flex flex-col justify-between py-2">
+                      {/* Right Pane: Live Interactive Dashboard Preview */}
+                      <div className="col-span-6 pl-5 flex flex-col justify-between">
                         <div>
-                          <div className="flex items-center justify-between mb-3 pb-2 border-b border-slate-800/60">
-                            <span className="text-[11px] font-bold text-sky-400 tracking-wider uppercase font-poppins">
-                              Capability Preview
-                            </span>
-                            <span className="text-[10px] font-semibold text-slate-400 bg-slate-800/80 px-2 py-0.5 rounded">
-                              {currentPreview.statsValue}
-                            </span>
-                          </div>
+                          <p className="text-xs font-bold text-slate-300 mb-3 font-poppins">
+                            {currentPreview.name} Preview
+                          </p>
 
-                          <h5 className="font-poppins font-bold text-sm text-white mb-2">
-                            {currentPreview.name}
-                          </h5>
-
-                          <div className="space-y-2 mb-4">
-                            {currentPreview.capabilities.map((cap, idx) => (
-                              <div key={idx} className="flex items-center gap-2 text-xs text-slate-300">
-                                <CheckCircle2 className="w-3.5 h-3.5 text-sky-400 shrink-0" />
-                                <span>{cap}</span>
+                          {/* Live Dashboard Mockup Card */}
+                          <div className="bg-white rounded-2xl p-4 text-slate-900 shadow-2xl border border-slate-200 text-left">
+                            
+                            {/* Dashboard Header */}
+                            <div className="flex items-center justify-between mb-3 pb-2 border-b border-slate-100">
+                              <h5 className="font-poppins font-bold text-xs text-slate-900">Dashboard</h5>
+                              <div className="flex items-center gap-1.5">
+                                <div className="w-2 h-2 rounded-full bg-emerald-500" />
+                                <div className="w-4 h-4 rounded-full bg-slate-200 text-[8px] font-bold text-slate-700 flex items-center justify-center">AS</div>
                               </div>
-                            ))}
-                          </div>
-                        </div>
+                            </div>
 
-                        {/* Mini Dashboard Spec Card */}
-                        <div className="bg-[#111424] border border-slate-800 p-3 rounded-xl flex items-center justify-between">
-                          <div>
-                            <p className="text-[10px] text-slate-400 uppercase font-semibold">{currentPreview.statsLabel}</p>
-                            <p className="text-xs font-bold text-white mt-0.5">{currentPreview.statsValue}</p>
+                            {/* 3 Metrics Row */}
+                            <div className="grid grid-cols-3 gap-2 mb-3">
+                              <div className="p-2 rounded-lg bg-slate-50 border border-slate-100">
+                                <p className="text-[9px] text-slate-400 font-semibold">Total Employees</p>
+                                <div className="flex items-baseline justify-between mt-0.5">
+                                  <span className="font-bold text-xs text-slate-900">2,650</span>
+                                  <span className="text-[8px] font-bold text-emerald-600">↑ 12.8%</span>
+                                </div>
+                              </div>
+
+                              <div className="p-2 rounded-lg bg-slate-50 border border-slate-100">
+                                <p className="text-[9px] text-slate-400 font-semibold">Active Today</p>
+                                <div className="flex items-baseline justify-between mt-0.5">
+                                  <span className="font-bold text-xs text-slate-900">1,842</span>
+                                  <span className="text-[8px] font-bold text-emerald-600">↑ 8.3%</span>
+                                </div>
+                              </div>
+
+                              <div className="p-2 rounded-lg bg-slate-50 border border-slate-100">
+                                <p className="text-[9px] text-slate-400 font-semibold">Avg Performance</p>
+                                <div className="flex items-baseline justify-between mt-0.5">
+                                  <span className="font-bold text-xs text-slate-900">4.6<span className="text-[9px] text-slate-400">/5</span></span>
+                                  <span className="text-[8px] font-bold text-emerald-600">↑ 6.1%</span>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Charts Row */}
+                            <div className="grid grid-cols-2 gap-2 mb-3">
+                              {/* Line Trend */}
+                              <div className="p-2 rounded-lg bg-slate-50 border border-slate-100">
+                                <p className="text-[9px] font-bold text-slate-500 mb-1">Headcount Trend</p>
+                                <div className="h-10 w-full flex items-end">
+                                  <svg className="w-full h-8" viewBox="0 0 100 40">
+                                    <path d="M 0 35 Q 25 10 50 25 T 100 5" fill="none" stroke="#0284c7" strokeWidth="2" />
+                                  </svg>
+                                </div>
+                              </div>
+
+                              {/* Donut Chart */}
+                              <div className="p-2 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-between">
+                                <div className="relative w-8 h-8 shrink-0">
+                                  <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                                    <circle cx="18" cy="18" r="14" fill="none" stroke="#e2e8f0" strokeWidth="6" />
+                                    <circle cx="18" cy="18" r="14" fill="none" stroke="#0284c7" strokeWidth="6" strokeDasharray="40 100" />
+                                    <circle cx="18" cy="18" r="14" fill="none" stroke="#6366f1" strokeWidth="6" strokeDasharray="25 100" strokeDashoffset="-40" />
+                                  </svg>
+                                </div>
+                                <div className="text-[8px] space-y-0.5 text-slate-600 font-medium">
+                                  <div className="flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-[#0284c7]" /><span>Eng: 40%</span></div>
+                                  <div className="flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-[#6366f1]" /><span>Prod: 25%</span></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Recent Activity Mini Feed */}
+                            <div className="pt-2 border-t border-slate-100 space-y-1 text-[9px]">
+                              <div className="flex items-center justify-between text-slate-700">
+                                <span className="font-semibold flex items-center gap-1">👤 Joining <span className="text-[8px] text-slate-400 font-normal">24 New Employees</span></span>
+                                <span className="text-slate-400">2h ago</span>
+                              </div>
+                            </div>
+
                           </div>
-                          <Link 
-                            to={currentPreview.link}
-                            className="p-1.5 rounded-lg bg-sky-500/20 text-sky-400 hover:bg-sky-500/30 transition-colors"
-                          >
-                            <ArrowRight className="w-4 h-4" />
-                          </Link>
                         </div>
 
                       </div>
@@ -270,13 +325,13 @@ export default function NewNavbar() {
                     </div>
 
                     {/* Bottom Guidance Footer Bar */}
-                    <div className="px-6 py-3.5 bg-[#111424] border-t border-slate-800/80 flex items-center justify-between text-xs">
-                      <span className="text-slate-400">Need guidance configuring your enterprise modules?</span>
+                    <div className="px-6 py-3 bg-[#080b18] border-t border-slate-800/80 flex items-center justify-between text-xs">
+                      <span className="text-slate-400 font-medium">Need help choosing the right solution?</span>
                       <Link 
                         to="/contact" 
-                        className="inline-flex items-center gap-1.5 font-bold text-sky-400 hover:text-sky-300 transition-colors"
+                        className="inline-flex items-center gap-1.5 font-bold text-[#38bdf8] hover:text-sky-300 transition-colors"
                       >
-                        <span>Talk to a Solution Architect</span>
+                        <span>Talk to our solution architect</span>
                         <ArrowRight className="w-3.5 h-3.5" />
                       </Link>
                     </div>
@@ -289,8 +344,8 @@ export default function NewNavbar() {
             {/* Academics */}
             <Link 
               to="/mile" 
-              className={`px-3.5 py-2 rounded-lg transition-colors hover:text-white hover:bg-slate-800/60 ${
-                location.pathname === "/mile" ? "text-white bg-slate-800/80 font-semibold" : ""
+              className={`px-4 py-2 rounded-full transition-colors hover:text-white hover:bg-slate-800/60 ${
+                location.pathname === "/mile" ? "text-white bg-[#15192B] border border-slate-700/80 font-semibold" : ""
               }`}
             >
               Academics (MILE)
@@ -299,8 +354,8 @@ export default function NewNavbar() {
             {/* Consulting */}
             <Link 
               to="/corporate-consulting" 
-              className={`px-3.5 py-2 rounded-lg transition-colors hover:text-white hover:bg-slate-800/60 ${
-                location.pathname === "/corporate-consulting" ? "text-white bg-slate-800/80 font-semibold" : ""
+              className={`px-4 py-2 rounded-full transition-colors hover:text-white hover:bg-slate-800/60 ${
+                location.pathname === "/corporate-consulting" ? "text-white bg-[#15192B] border border-slate-700/80 font-semibold" : ""
               }`}
             >
               Consulting
@@ -309,8 +364,8 @@ export default function NewNavbar() {
             {/* About Company */}
             <Link 
               to="/about" 
-              className={`px-3.5 py-2 rounded-lg transition-colors hover:text-white hover:bg-slate-800/60 ${
-                location.pathname === "/about" ? "text-white bg-slate-800/80 font-semibold" : ""
+              className={`px-4 py-2 rounded-full transition-colors hover:text-white hover:bg-slate-800/60 ${
+                location.pathname === "/about" ? "text-white bg-[#15192B] border border-slate-700/80 font-semibold" : ""
               }`}
             >
               Company
@@ -322,14 +377,14 @@ export default function NewNavbar() {
           <div className="hidden lg:flex items-center gap-3">
             <button
               onClick={() => navigate("/contact")}
-              className="text-slate-300 hover:text-white border border-slate-700 hover:border-slate-500 px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 cursor-pointer"
+              className="bg-[#15192B] hover:bg-[#1c223a] text-white border border-slate-700/80 px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 cursor-pointer shadow-sm"
             >
               Contact Us
             </button>
 
             <button
               onClick={() => navigate("/palbon")}
-              className="bg-[#0369a1] hover:bg-[#0284c7] text-white px-5 py-2 rounded-lg text-sm font-semibold inline-flex items-center gap-2 shadow-md transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95"
+              className="bg-[#0369a1] hover:bg-[#0284c7] text-white px-6 py-2.5 rounded-full text-sm font-semibold inline-flex items-center gap-2 shadow-md transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95"
             >
               <Zap className="w-4 h-4 text-amber-300" />
               <span>Configure PALBON</span>
