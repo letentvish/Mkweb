@@ -76,10 +76,10 @@ export default function SolutionsSection() {
         </div>
 
         {/* Main Showcase Dark Container */}
-        <div className="w-full h-auto md:h-[460px] lg:h-[500px] xl:h-[540px] 2xl:h-[580px] bg-[#0b1426] text-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-slate-800/80 relative flex flex-col-reverse md:flex-row">
+        <div className="w-full h-auto lg:h-[500px] xl:h-[540px] 2xl:h-[580px] bg-[#0b1426] text-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-slate-800/80 relative flex flex-col-reverse lg:flex-row">
           
           {/* Active Card Content Area */}
-          <div className="flex-1 p-5 sm:p-6 md:p-8 lg:p-10 xl:p-12 relative flex flex-col justify-between overflow-hidden min-h-[380px] md:min-h-[440px]">
+          <div className="flex-1 p-5 sm:p-6 md:p-8 lg:p-10 xl:p-12 relative flex flex-col justify-between overflow-hidden min-h-[380px] lg:min-h-[440px]">
             <AnimatePresence mode="popLayout">
               {pillars.map((pillar) =>
                 pillar.id === activeTab ? (
@@ -89,7 +89,7 @@ export default function SolutionsSection() {
                     animate={{ x: "0%", opacity: 1 }}
                     exit={{ x: "-30%", opacity: 0 }}
                     transition={{ duration: 0.5, ease: [0.25, 0.8, 0.25, 1] }}
-                    className="absolute inset-0 p-5 sm:p-6 md:p-8 lg:p-10 xl:p-12 grid grid-cols-1 md:grid-cols-12 items-center gap-6 bg-[#0b1426] z-10 overflow-y-auto md:overflow-hidden"
+                    className="absolute inset-0 p-5 sm:p-6 md:p-8 lg:p-10 xl:p-12 grid grid-cols-1 md:grid-cols-12 items-center gap-6 bg-[#0b1426] z-10 overflow-y-auto lg:overflow-hidden"
                   >
                     {/* Left Column: Text & CTA */}
                     <div className="md:col-span-6 flex flex-col justify-center items-start z-10 text-left">
@@ -136,8 +136,8 @@ export default function SolutionsSection() {
             </AnimatePresence>
           </div>
 
-          {/* Navigation Tabs Sidebar: Responsive layout (Horizontal on mobile/tablet < 768px, Vertical side strips on md+) */}
-          <aside className="w-full md:w-auto border-b md:border-b-0 md:border-l border-slate-700/60 flex flex-row md:flex-col bg-[#0f1b33] z-20 shrink-0">
+          {/* Navigation Tabs Sidebar: Horizontal top bar on mobile/tablet (< 1024px), Vertical strips on desktop (>= 1024px) */}
+          <aside className="w-full lg:w-auto border-b lg:border-b-0 lg:border-l border-slate-700/60 flex flex-row lg:flex-col bg-[#0f1b33] z-20 shrink-0">
             {pillars.map((pillar) => {
               const isActive = activeTab === pillar.id;
               return (
@@ -147,22 +147,22 @@ export default function SolutionsSection() {
                     setActiveTab(pillar.id);
                     setIsPaused(true);
                   }}
-                  className={`flex-1 md:w-20 lg:w-24 xl:w-28 h-14 sm:h-16 md:h-full flex flex-row md:flex-col items-center justify-center md:justify-between py-2 sm:py-3 md:py-8 px-2 sm:px-4 md:px-2 transition-all duration-300 relative border-r md:border-r-0 md:border-b last:border-b-0 border-slate-700/40 cursor-pointer ${
+                  className={`flex-1 lg:w-24 xl:w-28 h-14 sm:h-16 lg:h-full flex flex-row lg:flex-col items-center justify-center lg:justify-between py-2.5 sm:py-3 lg:py-8 px-3 sm:px-4 lg:px-2 transition-all duration-300 relative border-r lg:border-r-0 lg:border-b last:border-r-0 last:border-b-0 border-slate-700/40 cursor-pointer ${
                     isActive
                       ? "bg-[#1d2b4a] text-sky-400 font-bold"
                       : "bg-[#0b1426] hover:bg-slate-800/60 text-slate-300"
                   }`}
                 >
-                  {/* Active Highlight Indicator Bar */}
+                  {/* Active Highlight Indicator Bar (horizontal top line on mobile/tablet, vertical left line on desktop) */}
                   {isActive && (
-                    <div className="absolute top-0 left-0 w-full md:w-1.5 h-1 md:h-full bg-[#0369a1]"></div>
+                    <div className="absolute top-0 left-0 w-full lg:w-1.5 h-1 lg:h-full bg-[#0369a1]"></div>
                   )}
 
-                  <div className="p-1.5 sm:p-2.5 rounded-full bg-slate-800/60 text-white md:mb-auto md:mt-2 shrink-0">
+                  <div className="p-1.5 sm:p-2 rounded-full bg-slate-800/60 text-white lg:mb-auto lg:mt-2 shrink-0">
                     {pillar.icon}
                   </div>
 
-                  <span className="text-xs sm:text-sm md:text-xs lg:text-sm md:[writing-mode:vertical-rl] md:rotate-180 font-semibold tracking-wide whitespace-nowrap md:pb-6 ml-2 md:ml-0">
+                  <span className="text-xs sm:text-sm lg:text-xs xl:text-sm font-semibold tracking-wide whitespace-nowrap ml-2 lg:ml-0 lg:[writing-mode:vertical-rl] lg:rotate-180 lg:pb-6">
                     {pillar.verticalLabel}
                   </span>
                 </button>
