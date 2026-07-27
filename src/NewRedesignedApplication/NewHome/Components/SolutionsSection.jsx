@@ -70,14 +70,14 @@ export default function SolutionsSection() {
   }, [scrollYProgress]);
 
   return (
-    <section ref={sectionRef} className="relative w-full min-h-screen lg:h-[220vh] bg-surface">
-      {/* Sticky Screen Viewport Container */}
-      <div className="lg:sticky lg:top-0 min-h-screen w-full flex flex-col justify-center items-center py-8 px-4 sm:px-6 md:px-8 lg:px-12 overflow-hidden">
+    <section ref={sectionRef} className="relative w-full py-10 sm:py-12 md:py-14 lg:py-0 lg:h-[220vh] bg-surface">
+      {/* Sticky Screen Viewport Container (Desktop only) */}
+      <div className="lg:sticky lg:top-0 lg:h-screen w-full flex flex-col justify-center items-center py-0 px-4 sm:px-6 md:px-8 lg:px-12 overflow-hidden">
         
         <div className="w-full max-w-6xl xl:max-w-7xl 2xl:max-w-[1440px] mx-auto flex flex-col items-center">
           
           {/* Section Header */}
-          <div className="w-full mb-6 text-left">
+          <div className="w-full mb-4 sm:mb-6 text-left">
             <p className="label-md mb-1 text-secondary">SOLUTIONS ARCHITECTURE</p>
             <h2 className="headline-lg text-on-surface text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-poppins font-extrabold">
               Core Business Pillars
@@ -178,8 +178,8 @@ export default function SolutionsSection() {
 
           </div>
 
-          {/* Bottom Scroll Explore Indicator */}
-          <div className="mt-4 flex items-center justify-center gap-2 text-slate-400 text-sm font-semibold cursor-pointer hover:opacity-80 transition-opacity">
+          {/* Bottom Scroll Explore Indicator (Desktop Only) */}
+          <div className="mt-4 hidden lg:flex items-center justify-center gap-2 text-slate-400 text-sm font-semibold cursor-pointer hover:opacity-80 transition-opacity">
             <ArrowDown className="w-4 h-4 animate-bounce text-sky-400" />
             <span>Scroll to explore</span>
           </div>
