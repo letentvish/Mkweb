@@ -85,10 +85,10 @@ export default function SolutionsSection() {
           </div>
 
           {/* Main Showcase Dark Container */}
-          <div className="w-full h-auto xl:h-[580px] 2xl:h-[620px] bg-[#0b1426] text-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-slate-800/80 relative flex flex-col-reverse xl:flex-row">
+          <div className="w-full h-auto md:h-[460px] lg:h-[500px] xl:h-[580px] 2xl:h-[620px] bg-[#0b1426] text-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-slate-800/80 relative flex flex-col-reverse xl:flex-row">
             
             {/* Active Card Content Area */}
-            <div className="flex-1 p-5 sm:p-8 lg:p-10 xl:p-14 relative flex flex-col justify-between overflow-hidden min-h-[420px] sm:min-h-[440px] xl:min-h-[500px]">
+            <div className="flex-1 p-5 sm:p-6 md:p-8 lg:p-10 xl:p-14 relative flex flex-col justify-between overflow-hidden min-h-[420px] md:min-h-[440px] xl:min-h-[500px]">
               <AnimatePresence mode="popLayout">
                 {pillars.map((pillar) =>
                   pillar.id === activeTab ? (
@@ -98,22 +98,22 @@ export default function SolutionsSection() {
                       animate={{ x: "0%", opacity: 1 }}
                       exit={{ x: "-30%", opacity: 0 }}
                       transition={{ duration: 0.55, ease: [0.25, 0.8, 0.25, 1] }}
-                      className="absolute inset-0 p-5 sm:p-8 lg:p-10 xl:p-14 grid grid-cols-1 xl:grid-cols-12 items-center gap-6 xl:gap-12 bg-[#0b1426] z-10 overflow-y-auto xl:overflow-hidden"
+                      className="absolute inset-0 p-5 sm:p-6 md:p-8 lg:p-10 xl:p-14 grid grid-cols-1 md:grid-cols-12 items-center gap-6 md:gap-6 xl:gap-12 bg-[#0b1426] z-10 overflow-y-auto md:overflow-hidden"
                     >
                       {/* Left Column: Text & CTA */}
-                      <div className="xl:col-span-6 flex flex-col justify-center items-start z-10 text-left">
-                        <div className="text-sky-400 mb-3 sm:mb-4 p-2.5 sm:p-3 rounded-xl bg-sky-500/10 inline-block border border-sky-500/20">
+                      <div className="md:col-span-6 flex flex-col justify-center items-start z-10 text-left">
+                        <div className="text-sky-400 mb-2 sm:mb-3 p-2 sm:p-2.5 rounded-xl bg-sky-500/10 inline-block border border-sky-500/20">
                           {pillar.icon}
                         </div>
 
-                        <h3 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-poppins font-bold tracking-tight text-white mb-3 sm:mb-5 leading-tight">
+                        <h3 className="text-xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-5xl font-poppins font-bold tracking-tight text-white mb-2 sm:mb-3 leading-tight">
                           {pillar.title}
                         </h3>
 
-                        <ul className="space-y-2.5 sm:space-y-3 mb-6 sm:mb-8">
+                        <ul className="space-y-2 mb-4 sm:mb-6">
                           {pillar.bullets.map((bullet, idx) => (
-                            <li key={idx} className="flex items-center gap-3 text-slate-200 text-xs sm:text-sm md:text-base xl:text-lg font-medium">
-                              <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-sky-400 shrink-0" />
+                            <li key={idx} className="flex items-center gap-2.5 text-slate-200 text-xs sm:text-xs md:text-sm xl:text-lg font-medium">
+                              <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-sky-400 shrink-0" />
                               <span>{bullet}</span>
                             </li>
                           ))}
@@ -121,16 +121,16 @@ export default function SolutionsSection() {
 
                         <button
                           onClick={() => navigate(pillar.link)}
-                          className="inline-flex items-center gap-2.5 bg-[#0369a1] hover:bg-[#0284c7] text-white font-bold px-5 sm:px-7 xl:px-8 py-2.5 sm:py-3 xl:py-3.5 rounded-xl transition-all duration-200 cursor-pointer shadow-md text-xs sm:text-sm xl:text-base hover:scale-105 active:scale-95"
+                          className="inline-flex items-center gap-2 bg-[#0369a1] hover:bg-[#0284c7] text-white font-bold px-4 sm:px-5 md:px-6 xl:px-8 py-2 sm:py-2.5 xl:py-3.5 rounded-xl transition-all duration-200 cursor-pointer shadow-md text-xs sm:text-xs md:text-sm xl:text-base hover:scale-105 active:scale-95"
                         >
                           <span>Explore Solution</span>
-                          <ArrowRight className="w-4 h-4 xl:w-5 xl:h-5" />
+                          <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 xl:w-5 xl:h-5" />
                         </button>
                       </div>
 
                       {/* Right Column: Clean Aligned Mockup Graphic */}
-                      <div className="xl:col-span-6 flex items-center justify-center relative w-full z-10">
-                        <div className="relative w-full max-w-md xl:max-w-lg 2xl:max-w-xl h-[180px] sm:h-[220px] lg:h-[300px] xl:h-[340px] 2xl:h-[380px] rounded-xl sm:rounded-2xl overflow-hidden border border-slate-700/80 bg-slate-900/90 shadow-2xl flex items-center justify-center group">
+                      <div className="md:col-span-6 flex items-center justify-center relative w-full z-10">
+                        <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md xl:max-w-lg 2xl:max-w-xl h-[160px] sm:h-[180px] md:h-[220px] lg:h-[260px] xl:h-[340px] 2xl:h-[380px] rounded-xl sm:rounded-2xl overflow-hidden border border-slate-700/80 bg-slate-900/90 shadow-2xl flex items-center justify-center group">
                           <img
                             src={pillar.mockup}
                             alt={pillar.title}
