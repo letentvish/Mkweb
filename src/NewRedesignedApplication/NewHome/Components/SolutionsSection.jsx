@@ -76,10 +76,44 @@ export default function SolutionsSection() {
         </div>
 
         {/* Main Showcase Dark Container */}
-        <div className="w-full h-auto lg:h-[500px] xl:h-[540px] 2xl:h-[580px] bg-[#0b1426] text-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-slate-800/80 relative flex flex-col-reverse lg:flex-row">
+        <div className="w-full h-auto bg-[#0b1426] text-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-slate-800/80 relative flex flex-col">
           
+          {/* Horizontal Pillars Navigation Bar (Stacked Horizontally across top) */}
+          <div className="w-full border-b border-slate-700/60 flex flex-row bg-[#0f1b33] z-20 shrink-0">
+            {pillars.map((pillar) => {
+              const isActive = activeTab === pillar.id;
+              return (
+                <button
+                  key={pillar.id}
+                  onClick={() => {
+                    setActiveTab(pillar.id);
+                    setIsPaused(true);
+                  }}
+                  className={`flex-1 h-14 sm:h-16 md:h-18 flex flex-row items-center justify-center gap-2 sm:gap-3 py-3 px-2 sm:px-6 transition-all duration-300 relative border-r last:border-r-0 border-slate-700/40 cursor-pointer ${
+                    isActive
+                      ? "bg-[#1d2b4a] text-sky-400 font-bold"
+                      : "bg-[#0b1426] hover:bg-slate-800/60 text-slate-300"
+                  }`}
+                >
+                  {/* Active Highlight Top Indicator Line */}
+                  {isActive && (
+                    <div className="absolute top-0 left-0 w-full h-1 bg-[#0369a1]"></div>
+                  )}
+
+                  <div className="p-1.5 sm:p-2 rounded-full bg-slate-800/60 text-white shrink-0">
+                    {pillar.icon}
+                  </div>
+
+                  <span className="text-xs sm:text-sm md:text-base font-semibold tracking-wide whitespace-nowrap">
+                    {pillar.verticalLabel}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
           {/* Active Card Content Area */}
-          <div className="flex-1 p-5 sm:p-6 md:p-8 lg:p-10 xl:p-12 relative flex flex-col justify-between overflow-hidden min-h-[380px] lg:min-h-[440px]">
+          <div className="w-full p-6 sm:p-8 md:p-10 lg:p-12 relative flex flex-col justify-between overflow-hidden min-h-[400px] md:min-h-[420px] lg:min-h-[460px]">
             <AnimatePresence mode="popLayout">
               {pillars.map((pillar) =>
                 pillar.id === activeTab ? (
@@ -89,7 +123,7 @@ export default function SolutionsSection() {
                     animate={{ x: "0%", opacity: 1 }}
                     exit={{ x: "-30%", opacity: 0 }}
                     transition={{ duration: 0.5, ease: [0.25, 0.8, 0.25, 1] }}
-                    className="absolute inset-0 p-5 sm:p-6 md:p-8 lg:p-10 xl:p-12 grid grid-cols-1 md:grid-cols-12 items-center gap-6 bg-[#0b1426] z-10 overflow-y-auto lg:overflow-hidden"
+                    className="absolute inset-0 p-6 sm:p-8 md:p-10 lg:p-12 grid grid-cols-1 md:grid-cols-12 items-center gap-6 bg-[#0b1426] z-10 overflow-y-auto md:overflow-hidden"
                   >
                     {/* Left Column: Text & CTA */}
                     <div className="md:col-span-6 flex flex-col justify-center items-start z-10 text-left">
@@ -97,7 +131,7 @@ export default function SolutionsSection() {
                         {pillar.icon}
                       </div>
 
-                      <h3 className="text-xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-4xl font-poppins font-bold tracking-tight text-white mb-2 sm:mb-3 leading-tight">
+                      <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-poppins font-bold tracking-tight text-white mb-2 sm:mb-3 leading-tight">
                         {pillar.title}
                       </h3>
 
@@ -121,7 +155,7 @@ export default function SolutionsSection() {
 
                     {/* Right Column: Clean Aligned Mockup Graphic */}
                     <div className="md:col-span-6 flex items-center justify-center relative w-full z-10">
-                      <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md xl:max-w-lg h-[160px] sm:h-[180px] md:h-[220px] lg:h-[260px] xl:h-[320px] rounded-xl sm:rounded-2xl overflow-hidden border border-slate-700/80 bg-slate-900/90 shadow-2xl flex items-center justify-center group">
+                      <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md xl:max-w-lg h-[160px] sm:h-[180px] md:h-[220px] lg:h-[260px] xl:h-[300px] rounded-xl sm:rounded-2xl overflow-hidden border border-slate-700/80 bg-slate-900/90 shadow-2xl flex items-center justify-center group">
                         <img
                           src={pillar.mockup}
                           alt={pillar.title}
@@ -135,40 +169,6 @@ export default function SolutionsSection() {
               )}
             </AnimatePresence>
           </div>
-
-          {/* Navigation Tabs Sidebar: Horizontal top bar on mobile/tablet (< 1024px), Vertical strips on desktop (>= 1024px) */}
-          <aside className="w-full lg:w-auto border-b lg:border-b-0 lg:border-l border-slate-700/60 flex flex-row lg:flex-col bg-[#0f1b33] z-20 shrink-0">
-            {pillars.map((pillar) => {
-              const isActive = activeTab === pillar.id;
-              return (
-                <button
-                  key={pillar.id}
-                  onClick={() => {
-                    setActiveTab(pillar.id);
-                    setIsPaused(true);
-                  }}
-                  className={`flex-1 lg:w-24 xl:w-28 h-14 sm:h-16 lg:h-full flex flex-row lg:flex-col items-center justify-center lg:justify-between py-2.5 sm:py-3 lg:py-8 px-3 sm:px-4 lg:px-2 transition-all duration-300 relative border-r lg:border-r-0 lg:border-b last:border-r-0 last:border-b-0 border-slate-700/40 cursor-pointer ${
-                    isActive
-                      ? "bg-[#1d2b4a] text-sky-400 font-bold"
-                      : "bg-[#0b1426] hover:bg-slate-800/60 text-slate-300"
-                  }`}
-                >
-                  {/* Active Highlight Indicator Bar (horizontal top line on mobile/tablet, vertical left line on desktop) */}
-                  {isActive && (
-                    <div className="absolute top-0 left-0 w-full lg:w-1.5 h-1 lg:h-full bg-[#0369a1]"></div>
-                  )}
-
-                  <div className="p-1.5 sm:p-2 rounded-full bg-slate-800/60 text-white lg:mb-auto lg:mt-2 shrink-0">
-                    {pillar.icon}
-                  </div>
-
-                  <span className="text-xs sm:text-sm lg:text-xs xl:text-sm font-semibold tracking-wide whitespace-nowrap ml-2 lg:ml-0 lg:[writing-mode:vertical-rl] lg:rotate-180 lg:pb-6">
-                    {pillar.verticalLabel}
-                  </span>
-                </button>
-              );
-            })}
-          </aside>
 
         </div>
 
