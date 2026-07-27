@@ -95,8 +95,8 @@ export default function NewNavbar() {
       statsValue: "94% Mastery"
     },
     {
-      id: "m1",
-      name: "M1 Integrated Stack",
+      id: "palbon",
+      name: "PALBON Suites",
       tagline: "Combine modules into one modular operating system.",
       category: "MODULAR SUITE",
       icon: <Boxes className="w-4 h-4 text-sky-400" />,
@@ -332,7 +332,7 @@ export default function NewNavbar() {
               className="bg-[#0369a1] hover:bg-[#0284c7] text-white px-5 py-2 rounded-lg text-sm font-semibold inline-flex items-center gap-2 shadow-md transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95"
             >
               <Zap className="w-4 h-4 text-amber-300" />
-              <span>Configure M1</span>
+              <span>Configure PALBON</span>
             </button>
           </div>
 
@@ -446,7 +446,7 @@ export default function NewNavbar() {
                 className="w-full text-center bg-[#0369a1] text-white py-2.5 rounded-lg font-semibold flex items-center justify-center gap-2"
               >
                 <Zap className="w-4 h-4 text-amber-300" />
-                <span>Configure M1 Stack</span>
+                <span>Configure PALBON</span>
               </button>
             </div>
           </motion.div>
