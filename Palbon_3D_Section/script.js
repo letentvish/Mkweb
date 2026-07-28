@@ -89,22 +89,26 @@ function createDefaultTexture(name, hexColor) {
   // 1. Soft Ambient Colored Glow Shadow
   ctx.save();
   ctx.shadowColor   = hexColor;
-  ctx.shadowBlur    = 32;
-  ctx.shadowOffsetX = 0; ctx.shadowOffsetY = 12;
+  ctx.shadowBlur    = 24;
+  ctx.shadowOffsetX = 0; ctx.shadowOffsetY = 8;
   rr(px, py, pw, ph, rad);
-  ctx.fillStyle = '#ffffff';
+  ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
   ctx.fill();
   ctx.restore();
 
-  // 2. PURE BRIGHT WHITE GLASS CARD (Zero Gray!)
+  // 2. ULTRA-TRANSLUCENT GLASS CARD (5% White Visibility!)
   rr(px, py, pw, ph, rad);
-  ctx.fillStyle = '#ffffff';
+  const glassBg = ctx.createLinearGradient(px, py, px + pw, py + ph);
+  glassBg.addColorStop(0,   'rgba(255, 255, 255, 0.08)');
+  glassBg.addColorStop(0.5, 'rgba(255, 255, 255, 0.04)');
+  glassBg.addColorStop(1,   'rgba(255, 255, 255, 0.06)');
+  ctx.fillStyle = glassBg;
   ctx.fill();
 
   // 3. Top Specular Glass Reflection Highlight
   rr(px, py, pw, ph * 0.45, rad);
   const hlGrad = ctx.createLinearGradient(px, py, px, py + ph * 0.45);
-  hlGrad.addColorStop(0, 'rgba(255, 255, 255, 1.0)');
+  hlGrad.addColorStop(0, 'rgba(255, 255, 255, 0.15)');
   hlGrad.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
   ctx.fillStyle = hlGrad;
   ctx.fill();
@@ -123,10 +127,10 @@ function createDefaultTexture(name, hexColor) {
   ctx.fillRect(px, py, 22, ph);
   ctx.restore();
 
-  // 6. Top Left Module Pill Badge
+  // 6. Top Left Module Pill Badge (5% Glass Tint)
   const badgeX = px + 44, badgeY = py + 28, badgeW = 240, badgeH = 50;
   rr(badgeX, badgeY, badgeW, badgeH, 25);
-  ctx.fillStyle = '#ffffff';
+  ctx.fillStyle = 'rgba(255, 255, 255, 0.10)';
   ctx.fill();
   ctx.strokeStyle = hexColor;
   ctx.lineWidth = 2.5;
@@ -152,7 +156,7 @@ function createDefaultTexture(name, hexColor) {
   ctx.fillText(name, px + 44, py + 104);
 
   // 8. Bottom Sci-Fi Hover Prompt Pill
-  ctx.fillStyle = '#475569';
+  ctx.fillStyle = '#334155';
   ctx.font = '700 22px Inter, system-ui, sans-serif';
   ctx.fillText('✦ Hover to expand telemetry', px + 44, py + ph - 48);
 
@@ -185,16 +189,20 @@ function createHoverTexture(name, subtitle, hexColor) {
   // Sci-Fi Tech Neon Glow Drop Shadow
   ctx.save();
   ctx.shadowColor   = hexColor;
-  ctx.shadowBlur    = 48;
-  ctx.shadowOffsetX = 0; ctx.shadowOffsetY = 12;
+  ctx.shadowBlur    = 36;
+  ctx.shadowOffsetX = 0; ctx.shadowOffsetY = 10;
   rr(px, py, pw, ph, rad);
-  ctx.fillStyle = '#ffffff';
+  ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
   ctx.fill();
   ctx.restore();
 
-  // Pure White Card Base
+  // 5% White Glass Base
   rr(px, py, pw, ph, rad);
-  ctx.fillStyle = '#ffffff';
+  const glassBg = ctx.createLinearGradient(px, py, px + pw, py + ph);
+  glassBg.addColorStop(0,   'rgba(255, 255, 255, 0.10)');
+  glassBg.addColorStop(0.5, 'rgba(255, 255, 255, 0.05)');
+  glassBg.addColorStop(1,   'rgba(255, 255, 255, 0.08)');
+  ctx.fillStyle = glassBg;
   ctx.fill();
 
   // Sci-Fi Outer Glowing Neon Border
@@ -220,7 +228,7 @@ function createHoverTexture(name, subtitle, hexColor) {
   // Sci-Fi Top Status Bar [ SYS_ONLINE // MODULE_NAME ]
   const barX = px + 36, barY = py + 30, barW = pw - 72, barH = 48;
   rr(barX, barY, barW, barH, 14);
-  ctx.fillStyle = '#ffffff';
+  ctx.fillStyle = 'rgba(255, 255, 255, 0.10)';
   ctx.fill();
   ctx.strokeStyle = hexColor;
   ctx.lineWidth = 2;
@@ -239,12 +247,12 @@ function createHoverTexture(name, subtitle, hexColor) {
   ctx.textBaseline = 'top';
   ctx.fillText(name, px + 36, py + 98);
 
-  // Sci-Fi Tech HUD Paragraph Box (Dynamic Hover Telemetry Reveal)
+  // Sci-Fi Tech HUD Paragraph Box (Dynamic Hover Telemetry Reveal - 5% Glass)
   const boxX = px + 36, boxY = py + 188, boxW = pw - 72, boxH = ph - 210;
   rr(boxX, boxY, boxW, boxH, 20);
-  ctx.fillStyle = '#ffffff';
+  ctx.fillStyle = 'rgba(255, 255, 255, 0.12)';
   ctx.fill();
-  ctx.strokeStyle = hexColor + '80';
+  ctx.strokeStyle = hexColor + '90';
   ctx.lineWidth = 2.5;
   ctx.stroke();
 
