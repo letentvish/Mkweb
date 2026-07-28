@@ -157,29 +157,30 @@ function renderAnimatedCardCanvas(cv, ctx, mod, progress) {
     { label: 'Security AI',   badge: 'Verified' }
   ];
 
-  // 1. Soft Ambient Colored Glow Shadow
+  // 1. Soft Frosted Blur Glow Shadow
   ctx.save();
   ctx.shadowColor   = hexColor;
-  ctx.shadowBlur    = 24 + progress * 16;
-  ctx.shadowOffsetX = 0; ctx.shadowOffsetY = 8 + progress * 6;
+  ctx.shadowBlur    = 36 + progress * 20;
+  ctx.shadowOffsetX = 0; ctx.shadowOffsetY = 10 + progress * 8;
+  ctx.filter        = 'blur(10px)';
   rr(px, py, pw, ph, rad);
-  ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
+  ctx.fillStyle     = 'rgba(255, 255, 255, 0.40)';
   ctx.fill();
   ctx.restore();
 
-  // 2. ULTRA-TRANSLUCENT GLASS CARD (5% White Opacity Glass)
+  // 2. FROSTED GLASS BACKGROUND (Real Glass Blur & Frosted Sheen!)
   rr(px, py, pw, ph, rad);
   const glassBg = ctx.createLinearGradient(px, py, px + pw, py + ph);
-  glassBg.addColorStop(0,   `rgba(255, 255, 255, ${0.08 + progress * 0.04})`);
-  glassBg.addColorStop(0.5, `rgba(255, 255, 255, ${0.04 + progress * 0.03})`);
-  glassBg.addColorStop(1,   `rgba(255, 255, 255, ${0.06 + progress * 0.03})`);
+  glassBg.addColorStop(0,   `rgba(255, 255, 255, ${0.38 + progress * 0.10})`);
+  glassBg.addColorStop(0.5, `rgba(241, 245, 249, ${0.26 + progress * 0.08})`);
+  glassBg.addColorStop(1,   `rgba(255, 255, 255, ${0.32 + progress * 0.10})`);
   ctx.fillStyle = glassBg;
   ctx.fill();
 
-  // 3. Top Specular Glass Reflection
-  rr(px, py, pw, ph * 0.35, rad);
-  const hlGrad = ctx.createLinearGradient(px, py, px, py + ph * 0.35);
-  hlGrad.addColorStop(0, 'rgba(255, 255, 255, 0.18)');
+  // 3. Top Specular Frost Glass Reflection
+  rr(px, py, pw, ph * 0.40, rad);
+  const hlGrad = ctx.createLinearGradient(px, py, px, py + ph * 0.40);
+  hlGrad.addColorStop(0, 'rgba(255, 255, 255, 0.65)');
   hlGrad.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
   ctx.fillStyle = hlGrad;
   ctx.fill();
@@ -216,7 +217,7 @@ function renderAnimatedCardCanvas(cv, ctx, mod, progress) {
   // 7. Top Left Status Pill Badge
   const badgeX = px + 44, badgeY = py + 28, badgeW = 280, badgeH = 50;
   rr(badgeX, badgeY, badgeW, badgeH, 25);
-  ctx.fillStyle = 'rgba(255, 255, 255, 0.10)';
+  ctx.fillStyle = 'rgba(255, 255, 255, 0.45)';
   ctx.fill();
   ctx.strokeStyle = hexColor;
   ctx.lineWidth = 2.5;
@@ -277,11 +278,11 @@ function renderAnimatedCardCanvas(cv, ctx, mod, progress) {
       ctx.save();
       ctx.globalAlpha = itemProg;
 
-      // Lower Item Container Box (Light 5% Glass Fill)
+      // Lower Item Container Box (Frosted Glass Fill)
       rr(itemX, itemY, itemW, itemHeight, 16);
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.35)';
       ctx.fill();
-      ctx.strokeStyle = hexColor + '40';
+      ctx.strokeStyle = hexColor + '60';
       ctx.lineWidth = 2;
       ctx.stroke();
 
