@@ -525,15 +525,15 @@ export default function PalbonPage() {
 
               {/* Main Headline */}
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-extrabold text-slate-900 tracking-tight leading-[1.12] max-w-4xl mx-auto">
-                One Integrated Tech Stack <br className="hidden sm:block" />
+                Build your <br className="hidden sm:block" />
                 <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                  to Run Your Enterprise
+                  enterprise operating system
                 </span>
               </h1>
 
               {/* Subheading */}
               <p className="text-slate-700 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto mt-4 font-medium">
-                PALBON unifies HRMS, ERP, and learning in a single intelligent ecosystem so leaders can make smarter decisions, accelerate growth, and stay future-ready.
+                Unify your people, processes, data, and technology on one intelligent platform. Designed for the way modern enterprises operate.
               </p>
             </div>
 
