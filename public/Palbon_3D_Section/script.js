@@ -241,26 +241,32 @@ function renderAnimatedCardCanvas(cv, ctx, mod, progress) {
   ctx.textBaseline = 'top';
   ctx.fillText(name, px + 44, py + 98);
 
-  // 9. TYPEWRITER SUBTITLE EFFECT
-  const fullSub = subtitle;
-  const typedLength = Math.floor(progress * fullSub.length);
-  const currentSub = fullSub.substring(0, typedLength);
-  const cursor = (progress > 0.1 && progress < 0.98 && Math.floor(Date.now() / 250) % 2 === 0) ? ' █' : '';
-
-  ctx.fillStyle    = hexColor;
-  ctx.font         = '800 32px Inter, monospace';
-  ctx.textAlign    = 'left';
-  ctx.textBaseline = 'top';
-  ctx.fillText(`> ${currentSub}${cursor}`, px + 44, py + 188);
-
-  // 10. LOWER CARD SLIDING SECTION (Items list & slide down with staggered motion!)
+  // 9. TYPEWRITER SUBTITLE EFFECT (Types out AFTER container has opened!)
   if (progress > 0.25) {
+    const textProg = Math.max(0, Math.min(1, (progress - 0.25) / 0.40));
+    const fullSub = subtitle;
+    const typedLength = Math.floor(textProg * fullSub.length);
+    const currentSub = fullSub.substring(0, typedLength);
+    const cursor = (textProg > 0.1 && textProg < 0.98 && Math.floor(Date.now() / 250) % 2 === 0) ? ' █' : '';
+
+    ctx.save();
+    ctx.globalAlpha = Math.min(1, textProg * 2);
+    ctx.fillStyle    = hexColor;
+    ctx.font         = '800 32px Inter, monospace';
+    ctx.textAlign    = 'left';
+    ctx.textBaseline = 'top';
+    ctx.fillText(`> ${currentSub}${cursor}`, px + 44, py + 188);
+    ctx.restore();
+  }
+
+  // 10. LOWER CARD SLIDING SECTION (Items list & slide down AFTER typewriter finishes!)
+  if (progress > 0.50) {
     const listStartY = py + 242;
     const itemHeight = 60;
     
     items.forEach((item, k) => {
-      const itemDelay = 0.25 + k * 0.18;
-      const itemProg = Math.max(0, Math.min(1, (progress - itemDelay) / 0.35));
+      const itemDelay = 0.50 + k * 0.15;
+      const itemProg = Math.max(0, Math.min(1, (progress - itemDelay) / 0.25));
       if (itemProg <= 0) return;
 
       const slideOffset = (1 - itemProg) * 35;
@@ -833,7 +839,7 @@ function animate(){
       let hp = lbl.userData.hoverProgress || 0;
       const targetHp = isHovered ? 1.0 : 0.0;
       
-      hp += (targetHp - hp) * 0.14;
+      hp += (targetHp - hp) * 0.07;
       lbl.userData.hoverProgress = hp;
 
       if (Math.abs(hp - (lbl.userData.lastHp || -1)) > 0.003) {
