@@ -66,10 +66,11 @@ scene.add(blueAccent);
 
 // ─── 3D CRISP LABEL SPRITE ──────────────────────────────────────────────────
 // ─── 3D CRISP ULTRA-PREMIUM GLASSMORPHISM LABEL SPRITE ─────────────────────
-function makeLabelSprite(name, subtitle, hexColor, worldW = 3.6) {
-  const CW = 1024, CH = 320;
-  const cv  = document.createElement('canvas');
-  cv.width  = CW; cv.height = CH;
+// ─── 3D INTERACTIVE SCI-FI HUD LABEL SPRITE (DEFAULT & HOVER STATES) ─────────
+function createDefaultTexture(name, hexColor) {
+  const CW = 1024, CH = 340;
+  const cv = document.createElement('canvas');
+  cv.width = CW; cv.height = CH;
   const ctx = cv.getContext('2d');
 
   const rr = (x, y, w, h, r) => {
@@ -85,24 +86,20 @@ function makeLabelSprite(name, subtitle, hexColor, worldW = 3.6) {
 
   // 1. Soft Ambient Blur Drop Shadow
   ctx.save();
-  ctx.shadowColor   = 'rgba(15, 23, 42, 0.18)';
-  ctx.shadowBlur    = 32;
-  ctx.shadowOffsetX = 0; ctx.shadowOffsetY = 14;
+  ctx.shadowColor   = 'rgba(15, 23, 42, 0.25)';
+  ctx.shadowBlur    = 36;
+  ctx.shadowOffsetX = 0; ctx.shadowOffsetY = 16;
   rr(px, py, pw, ph, rad);
   ctx.fillStyle = '#ffffff';
   ctx.fill();
   ctx.restore();
 
-  // 2. Ultra-Smooth Frosted White Glass Gradient Background
+  // 2. PURE WHITE CRYSTAL GLASS CARD (Zero Gray!)
   rr(px, py, pw, ph, rad);
-  const bgGrad = ctx.createLinearGradient(px, py, px + pw, py + ph);
-  bgGrad.addColorStop(0,   'rgba(255, 255, 255, 0.98)');
-  bgGrad.addColorStop(0.5, 'rgba(248, 250, 252, 0.96)');
-  bgGrad.addColorStop(1,   'rgba(241, 245, 249, 0.98)');
-  ctx.fillStyle = bgGrad;
+  ctx.fillStyle = '#ffffff';
   ctx.fill();
 
-  // 3. Glossy Specular Glass Reflection Top Highlight
+  // 3. Top Specular Glass Reflection
   rr(px, py, pw, ph * 0.45, rad);
   const hlGrad = ctx.createLinearGradient(px, py, px, py + ph * 0.45);
   hlGrad.addColorStop(0, 'rgba(255, 255, 255, 0.95)');
@@ -110,80 +107,185 @@ function makeLabelSprite(name, subtitle, hexColor, worldW = 3.6) {
   ctx.fillStyle = hlGrad;
   ctx.fill();
 
-  // 4. Subtle Border with Accent Color Glow
+  // 4. Vibrant Outer Border
   rr(px, py, pw, ph, rad);
-  ctx.strokeStyle = hexColor + '50';
-  ctx.lineWidth   = 3.5;
+  ctx.strokeStyle = hexColor;
+  ctx.lineWidth   = 4.5;
   ctx.stroke();
 
-  // 5. Left Vertical Accent Color Pillar Strip
+  // 5. Left Vertical Accent Color Strip
   ctx.save();
   rr(px, py, pw, ph, rad);
   ctx.clip();
-  const barGrad = ctx.createLinearGradient(px, py, px, py + ph);
-  barGrad.addColorStop(0, hexColor);
-  barGrad.addColorStop(1, hexColor + '99');
-  ctx.fillStyle = barGrad;
-  ctx.fillRect(px, py, 16, ph);
+  ctx.fillStyle = hexColor;
+  ctx.fillRect(px, py, 20, ph);
   ctx.restore();
 
   // 6. Top Left Module Pill Badge
-  const badgeX = px + 40, badgeY = py + 26, badgeW = 230, badgeH = 46;
-  rr(badgeX, badgeY, badgeW, badgeH, 23);
+  const badgeX = px + 44, badgeY = py + 28, badgeW = 240, badgeH = 50;
+  rr(badgeX, badgeY, badgeW, badgeH, 25);
   ctx.fillStyle = hexColor + '18';
   ctx.fill();
-  ctx.strokeStyle = hexColor + '45';
-  ctx.lineWidth = 2;
+  ctx.strokeStyle = hexColor + '50';
+  ctx.lineWidth = 2.5;
   ctx.stroke();
 
-  // Badge Pulsing Status Dot
+  // Badge Status Dot
   ctx.beginPath();
-  ctx.arc(badgeX + 24, badgeY + 23, 6, 0, Math.PI * 2);
+  ctx.arc(badgeX + 26, badgeY + 25, 7, 0, Math.PI * 2);
   ctx.fillStyle = hexColor;
   ctx.fill();
 
-  // Badge Label
   ctx.fillStyle = hexColor;
-  ctx.font = '700 20px Inter, system-ui, sans-serif';
+  ctx.font = '800 22px Inter, system-ui, sans-serif';
   ctx.textAlign = 'left';
   ctx.textBaseline = 'middle';
-  ctx.fillText('ENTERPRISE', badgeX + 40, badgeY + 23);
+  ctx.fillText('ENTERPRISE', badgeX + 44, badgeY + 25);
 
-  // 7. Main Title - High-Contrast Deep Navy Bold Typography
+  // 7. HUGE BOLD HIGH-CONTRAST TITLE ONLY
   ctx.fillStyle    = '#0F172A';
-  ctx.font         = '800 58px Inter, system-ui, sans-serif';
+  ctx.font         = '900 78px Inter, system-ui, sans-serif';
   ctx.textAlign    = 'left';
   ctx.textBaseline = 'top';
-  ctx.fillText(name, px + 40, py + 86);
+  ctx.fillText(name, px + 44, py + 104);
 
-  // 8. Sleek Subtle Horizontal Divider
-  ctx.beginPath();
-  ctx.moveTo(px + 40, py + 170);
-  ctx.lineTo(px + pw - 40, py + 170);
-  ctx.strokeStyle = 'rgba(15, 23, 42, 0.08)';
-  ctx.lineWidth = 2;
-  ctx.stroke();
-
-  // 9. Subtitle Description Text
-  ctx.fillStyle    = '#475569';
-  ctx.font         = '600 30px Inter, system-ui, sans-serif';
-  ctx.textAlign    = 'left';
-  ctx.textBaseline = 'top';
-  ctx.fillText(subtitle, px + 40, py + 190);
+  // 8. Bottom Sci-Fi Hover Prompt Pill
+  ctx.fillStyle = '#64748B';
+  ctx.font = '700 22px Inter, system-ui, sans-serif';
+  ctx.fillText('✦ Hover to expand telemetry', px + 44, py + ph - 48);
 
   const texture = new THREE.CanvasTexture(cv);
   texture.minFilter = THREE.LinearFilter;
   texture.magFilter = THREE.LinearFilter;
+  return texture;
+}
+
+function createHoverTexture(name, subtitle, hexColor) {
+  const CW = 1024, CH = 520;
+  const cv = document.createElement('canvas');
+  cv.width = CW; cv.height = CH;
+  const ctx = cv.getContext('2d');
+
+  const rr = (x, y, w, h, r) => {
+    ctx.beginPath();
+    ctx.moveTo(x+r,y); ctx.lineTo(x+w-r,y);
+    ctx.quadraticCurveTo(x+w,y,x+w,y+r); ctx.lineTo(x+w,y+h-r);
+    ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h); ctx.lineTo(x+r,y+h);
+    ctx.quadraticCurveTo(x,y+h,x,y+h-r); ctx.lineTo(x,y+r);
+    ctx.quadraticCurveTo(x,y,x+r,y); ctx.closePath();
+  };
+
+  const px = 20, py = 20, pw = CW - 40, ph = CH - 40, rad = 32;
+
+  // Sci-Fi Tech Glow Drop Shadow
+  ctx.save();
+  ctx.shadowColor   = hexColor;
+  ctx.shadowBlur    = 44;
+  ctx.shadowOffsetX = 0; ctx.shadowOffsetY = 12;
+  rr(px, py, pw, ph, rad);
+  ctx.fillStyle = '#ffffff';
+  ctx.fill();
+  ctx.restore();
+
+  // Pure White Card Base
+  rr(px, py, pw, ph, rad);
+  ctx.fillStyle = '#ffffff';
+  ctx.fill();
+
+  // Sci-Fi Outer Neon Border
+  rr(px, py, pw, ph, rad);
+  ctx.strokeStyle = hexColor;
+  ctx.lineWidth   = 5;
+  ctx.stroke();
+
+  // Sci-Fi Tech Corner Brackets [ ]
+  const bw = 28;
+  ctx.strokeStyle = hexColor;
+  ctx.lineWidth = 6;
+
+  // Top Left Bracket
+  ctx.beginPath(); ctx.moveTo(px + bw, py + 14); ctx.lineTo(px + 14, py + 14); ctx.lineTo(px + 14, py + bw); ctx.stroke();
+  // Top Right Bracket
+  ctx.beginPath(); ctx.moveTo(px + pw - bw, py + 14); ctx.lineTo(px + pw - 14, py + 14); ctx.lineTo(px + pw - 14, py + bw); ctx.stroke();
+  // Bottom Left Bracket
+  ctx.beginPath(); ctx.moveTo(px + bw, py + ph - 14); ctx.lineTo(px + 14, py + ph - 14); ctx.lineTo(px + 14, py + ph - bw); ctx.stroke();
+  // Bottom Right Bracket
+  ctx.beginPath(); ctx.moveTo(px + pw - bw, py + ph - 14); ctx.lineTo(px + pw - 14, py + ph - 14); ctx.lineTo(px + pw - 14, py + ph - bw); ctx.stroke();
+
+  // Sci-Fi Top Status Bar [ SYS_ONLINE // MODULE_NAME ]
+  const barX = px + 36, barY = py + 30, barW = pw - 72, barH = 48;
+  rr(barX, barY, barW, barH, 14);
+  ctx.fillStyle = hexColor + '18';
+  ctx.fill();
+  ctx.strokeStyle = hexColor + '70';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  ctx.fillStyle = hexColor;
+  ctx.font = '800 20px monospace';
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(`[ SYS_ONLINE // ${name.toUpperCase().replace(/\s+/g, '_')} ]`, barX + 24, barY + 24);
+
+  // Large Bold Title
+  ctx.fillStyle    = '#0F172A';
+  ctx.font         = '900 68px Inter, system-ui, sans-serif';
+  ctx.textAlign    = 'left';
+  ctx.textBaseline = 'top';
+  ctx.fillText(name, px + 36, py + 98);
+
+  // Sci-Fi Tech HUD Paragraph Box (Dynamic Hover Telemetry Reveal)
+  const boxX = px + 36, boxY = py + 188, boxW = pw - 72, boxH = ph - 210;
+  rr(boxX, boxY, boxW, boxH, 20);
+  const boxGrad = ctx.createLinearGradient(boxX, boxY, boxX, boxY + boxH);
+  boxGrad.addColorStop(0, hexColor + '15');
+  boxGrad.addColorStop(1, hexColor + '05');
+  ctx.fillStyle = boxGrad;
+  ctx.fill();
+  ctx.strokeStyle = hexColor + '45';
+  ctx.lineWidth = 2.5;
+  ctx.stroke();
+
+  // Sci-Fi Glowing Bullet Dot
+  ctx.beginPath();
+  ctx.arc(boxX + 32, boxY + 36, 8, 0, Math.PI * 2);
+  ctx.fillStyle = hexColor;
+  ctx.fill();
+
+  // Subtitle Paragraph Text inside HUD Box
+  ctx.fillStyle    = '#1E293B';
+  ctx.font         = '700 32px Inter, system-ui, sans-serif';
+  ctx.textAlign    = 'left';
+  ctx.textBaseline = 'top';
+  ctx.fillText(subtitle, boxX + 54, boxY + 22);
+
+  const texture = new THREE.CanvasTexture(cv);
+  texture.minFilter = THREE.LinearFilter;
+  texture.magFilter = THREE.LinearFilter;
+  return texture;
+}
+
+function makeLabelSprite(name, subtitle, hexColor, worldW = 3.2) {
+  const defaultTex = createDefaultTexture(name, hexColor);
+  const hoverTex   = createHoverTexture(name, subtitle, hexColor);
 
   const mat = new THREE.SpriteMaterial({
-    map: texture,
+    map: defaultTex,
     transparent: true,
     depthTest: false,
     depthWrite: false,
   });
+
   const sprite = new THREE.Sprite(mat);
-  sprite.scale.set(worldW, worldW * (CH / CW), 1);
+  sprite.scale.set(worldW, worldW * (340 / 1024), 1);
   sprite.renderOrder = 10;
+
+  sprite.userData = {
+    defaultTex,
+    hoverTex,
+    isHovered: false
+  };
+
   return sprite;
 }
 
@@ -629,18 +731,37 @@ function animate(){
   });
   const scan=hub.getObjectByName('scan'); if(scan) scan.rotation.z=t*0.22;
 
-  nodes.forEach((node,i)=>{
+  nodes.forEach((node, i) => {
     const isHovered = (node === hoveredNodeGroup);
-    const targetScale = isHovered ? 1.30 : 1.0;
+    const targetScale = isHovered ? 1.35 : 1.0;
 
     node.scale.x += (targetScale - node.scale.x) * 0.14;
     node.scale.y += (targetScale - node.scale.y) * 0.14;
     node.scale.z += (targetScale - node.scale.z) * 0.14;
 
     const basePosY = Math.sin(t * 0.45 + i * 1.1) * 0.16;
-    node.position.y += ((isHovered ? basePosY + 0.35 : basePosY) - node.position.y) * 0.14;
+    node.position.y += ((isHovered ? basePosY + 0.42 : basePosY) - node.position.y) * 0.14;
 
-    const icon=node.getObjectByName('icon'); if(icon) icon.rotation.y=t*0.22+i*0.55;
+    const lbl = node.getObjectByName('label');
+    if (lbl && lbl.userData) {
+      if (isHovered && !lbl.userData.isHovered) {
+        lbl.material.map = lbl.userData.hoverTex;
+        lbl.material.needsUpdate = true;
+        lbl.userData.isHovered = true;
+      } else if (!isHovered && lbl.userData.isHovered) {
+        lbl.material.map = lbl.userData.defaultTex;
+        lbl.material.needsUpdate = true;
+        lbl.userData.isHovered = false;
+      }
+
+      const baseW = isHovered ? 4.2 : 3.2;
+      const aspect = isHovered ? (520 / 1024) : (340 / 1024);
+      lbl.scale.x += (baseW - lbl.scale.x) * 0.14;
+      lbl.scale.y += ((baseW * aspect) - lbl.scale.y) * 0.14;
+    }
+
+    const icon = node.getObjectByName('icon');
+    if (icon) icon.rotation.y = t * 0.22 + i * 0.55;
   });
 
   beams.forEach(beam=>{
