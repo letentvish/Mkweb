@@ -19,8 +19,8 @@ const getH = () => container.clientHeight || window.innerHeight;
 
 const scene  = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(45, getW() / getH(), 0.1, 1000);
-camera.position.set(0, 14, 21.5);
-camera.lookAt(0, 1.4, 0);
+camera.position.set(0, 7.8, 13.8);
+camera.lookAt(0, 0.4, 0);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setSize(getW(), getH());
@@ -28,7 +28,7 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.0;
+renderer.toneMappingExposure = 1.1;
 container.appendChild(renderer.domElement);
 
 // ─── TRANSPARENT BACKGROUND ──────────────────────────────────
@@ -40,11 +40,11 @@ controls.enableDamping   = true;
 controls.dampingFactor   = 0.05;
 controls.enableZoom      = false;
 controls.maxPolarAngle   = Math.PI / 2.05;
-controls.minDistance     = 6;
+controls.minDistance     = 4;
 controls.maxDistance     = 30;
 controls.autoRotate      = true;
-controls.autoRotateSpeed = 0.3;
-controls.target.set(0, 1.4, 0);
+controls.autoRotateSpeed = 0.35;
+controls.target.set(0, 0.4, 0);
 
 // ─── LIGHTING ──────────────────────────────────────────────────────────────
 scene.add(new THREE.AmbientLight(0xffffff, 2.2));
@@ -223,19 +223,24 @@ function createRoundedShapeGeometry(w, d, r = 0.35) {
   return new THREE.ShapeGeometry(shape, 16);
 }
 
-function neoMat(colorHex = 0xf4f8ff) {
+function glassMat(colorHex = 0x3b82f6) {
   return new THREE.MeshPhysicalMaterial({
-    color:              colorHex,
-    emissive:           0xdbeafe,
-    emissiveIntensity:  0.08,
-    metalness:          0.0,
-    roughness:          0.1,
+    color:              0xffffff,
+    emissive:           colorHex,
+    emissiveIntensity:  0.15,
+    transmission:       0.92,   // 92% crystal clear glass refraction!
+    opacity:            0.88,
+    transparent:        true,
+    roughness:          0.04,
+    ior:                1.54,   // Glass Refractive Index
+    thickness:          0.55,
     clearcoat:          1.0,
-    clearcoatRoughness: 0.05,
+    clearcoatRoughness: 0.03,
+    reflectivity:       0.95,
   });
 }
 
-function buildSlab(w, d, colorHex = 0xf4f8ff, cornerRadius = 0.35) {
+function buildSlab(w, d, colorHex = 0x3b82f6, cornerRadius = 0.35) {
   const H = 0.32;
   const g = new THREE.Group();
 
@@ -256,8 +261,8 @@ function buildSlab(w, d, colorHex = 0xf4f8ff, cornerRadius = 0.35) {
   sh2.position.set(0.1, -H/2 - 0.08, 0.1);
   g.add(sh2);
 
-  // Main Rounded Body
-  const body = new THREE.Mesh(createRoundedSlabGeometry(w, H, d, cornerRadius), neoMat(colorHex));
+  // Main Rounded Glass Body
+  const body = new THREE.Mesh(createRoundedSlabGeometry(w, H, d, cornerRadius), glassMat(colorHex));
   body.castShadow    = true;
   body.receiveShadow = true;
   g.add(body);
@@ -553,17 +558,31 @@ MODULES.forEach(mod=>{
   scene.add(beam); beams.push(beam);
 });
 
-// ─── MOUSE MOVE CAMERA SHIFT LISTENER ──────────────────────────────────────
+// ─── MOUSE MOVE CAMERA SHIFT & RAYCASTER LISTENER ─────────────────────────
 let targetMouseX = 0;
 let currentMouseX = 0;
+const raycaster  = new THREE.Raycaster();
+const mouseVec   = new THREE.Vector2(-999, -999);
+
+function updateMouseVector(clientX, clientY) {
+  const rect = renderer.domElement.getBoundingClientRect();
+  const x = clientX - rect.left;
+  const y = clientY - rect.top;
+  mouseVec.x = (x / rect.width) * 2 - 1;
+  mouseVec.y = -(y / rect.height) * 2 + 1;
+}
 
 window.addEventListener('mousemove', (e) => {
   targetMouseX = (e.clientX / window.innerWidth) * 2 - 1;
+  updateMouseVector(e.clientX, e.clientY);
 });
 
 window.addEventListener('message', (e) => {
   if (e.data && typeof e.data.mouseX === 'number') {
     targetMouseX = e.data.mouseX;
+  }
+  if (e.data && typeof e.data.clientX === 'number' && typeof e.data.clientY === 'number') {
+    updateMouseVector(e.data.clientX, e.data.clientY);
   }
 });
 
@@ -577,7 +596,23 @@ function animate(){
   currentMouseX += (targetMouseX - currentMouseX) * 0.06;
   const targetCamX = currentMouseX * 5.5;
   camera.position.x += (targetCamX - camera.position.x) * 0.05;
-  camera.lookAt(0, 1.4, 0);
+  camera.lookAt(0, 0.4, 0);
+
+  // ─── RAYCAST HOVER & CARD ZOOM DETECT ──────────────────────────────────────
+  raycaster.setFromCamera(mouseVec, camera);
+  const intersects = raycaster.intersectObjects(nodes, true);
+  
+  let hoveredNodeGroup = null;
+  if (intersects.length > 0) {
+    let obj = intersects[0].object;
+    while (obj && obj !== scene) {
+      if (nodes.includes(obj)) {
+        hoveredNodeGroup = obj;
+        break;
+      }
+      obj = obj.parent;
+    }
+  }
 
   const core=hub.getObjectByName('core');
   const pLabel=hub.getObjectByName('pLabel');
@@ -593,7 +628,16 @@ function animate(){
   const scan=hub.getObjectByName('scan'); if(scan) scan.rotation.z=t*0.22;
 
   nodes.forEach((node,i)=>{
-    node.position.y=Math.sin(t*0.45+i*1.1)*0.16;
+    const isHovered = (node === hoveredNodeGroup);
+    const targetScale = isHovered ? 1.30 : 1.0;
+
+    node.scale.x += (targetScale - node.scale.x) * 0.14;
+    node.scale.y += (targetScale - node.scale.y) * 0.14;
+    node.scale.z += (targetScale - node.scale.z) * 0.14;
+
+    const basePosY = Math.sin(t * 0.45 + i * 1.1) * 0.16;
+    node.position.y += ((isHovered ? basePosY + 0.35 : basePosY) - node.position.y) * 0.14;
+
     const icon=node.getObjectByName('icon'); if(icon) icon.rotation.y=t*0.22+i*0.55;
   });
 

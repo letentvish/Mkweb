@@ -41,7 +41,11 @@ export default function PalbonPage() {
   const handleHeroMouseMove = (e) => {
     if (heroVersion === "v2" && palbon3dIframeRef.current?.contentWindow) {
       const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-      palbon3dIframeRef.current.contentWindow.postMessage({ mouseX }, '*');
+      palbon3dIframeRef.current.contentWindow.postMessage({
+        mouseX,
+        clientX: e.clientX,
+        clientY: e.clientY
+      }, '*');
     }
   };
 
@@ -290,12 +294,12 @@ export default function PalbonPage() {
 
         {/* Full Hero 3D WebGL Background when Hero V2 is active */}
         {heroVersion === "v2" && (
-          <div className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none pt-32 sm:pt-36 lg:pt-40">
+          <div className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-auto pt-24 sm:pt-28 lg:pt-32">
             <iframe
               ref={palbon3dIframeRef}
               src="/Palbon_3D_Section/index.html"
               title="PALBON Interactive 3D Architecture Background"
-              className="w-full h-full border-0 bg-transparent pointer-events-none"
+              className="w-full h-full border-0 bg-transparent pointer-events-auto"
             />
           </div>
         )}
