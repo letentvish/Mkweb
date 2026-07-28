@@ -232,7 +232,9 @@ function renderAnimatedCardCanvas(cv, ctx, mod, progress) {
   ctx.font = '800 22px Inter, monospace';
   ctx.textAlign = 'left';
   ctx.textBaseline = 'middle';
-  const badgeText = progress > 0.4 ? `[ SYS_ONLINE // ${name.toUpperCase().replace(/\s+/g, '_')} ]` : 'ENTERPRISE';
+  const badgeText = progress > 0.4 
+    ? (mod.isHub ? '[ SYS_CORE // PALBON_UNIFIED_INTELLIGENCE ]' : `[ SYS_ONLINE // ${name.toUpperCase().replace(/\s+/g, '_')} ]`)
+    : (mod.isHub ? '★ CENTRAL ECOSYSTEM' : 'ENTERPRISE');
   ctx.fillText(badgeText, badgeX + 44, badgeY + 25);
 
   // 8. BOLD TITLE
@@ -585,9 +587,25 @@ function buildIcon(type, color) {
   }[type] || ((c) => new THREE.Group()))(color);
 }
 
+// ─── PALBON CENTRAL HUB MODULE DATA ──────────────────────────────────────────
+const PALBON_HUB_MODULE = {
+  name: 'PALBON SUITE',
+  subtitle: 'Unified HRMS, ERP & Learning Core',
+  color: 0x6366f1, hex: '#6366f1', icon: 'palbon',
+  pos: [0, 0, 0],
+  isHub: true,
+  items: [
+    { label: 'Unified Data Mesh',     badge: '100% Synced' },
+    { label: 'Autonomous Reasoning',  badge: 'Active AI' },
+    { label: 'Zero-Trust Security',   badge: 'Verified' }
+  ]
+};
+
 // ─── CENTRAL HUB ────────────────────────────────────────────────────────────
 function buildHub() {
   const hub = new THREE.Group();
+  hub.userData.isNode = true;
+  hub.userData.mod = PALBON_HUB_MODULE;
 
   [
     { w:4.0, d:4.0, y:0,    c:0xeef5fc, r:0.48 },
@@ -630,8 +648,8 @@ function buildHub() {
   );
   scan.name='scan'; scan.rotation.x=Math.PI/2; scan.position.y=0.08; hub.add(scan);
 
-  const lbl=makeLabelSprite('PALBON SUITES','Unified Business Intelligence','#2563eb',3.0);
-  lbl.name='hubLabel'; lbl.position.set(0,2.6,0); hub.add(lbl);
+  const lbl=makeLabelSprite(PALBON_HUB_MODULE, 3.4);
+  lbl.name='label'; lbl.position.set(0,2.7,0); hub.add(lbl);
 
   const pl=new THREE.PointLight(0x3b82f6,2.5,10); pl.position.set(0,1.6,0); hub.add(pl);
   return hub;
@@ -738,7 +756,7 @@ const worldGroup = new THREE.Group();
 scene.add(worldGroup);
 
 const hub   = buildHub();
-const nodes = [];
+const nodes = [hub];
 const beams = [];
 worldGroup.add(hub);
 worldGroup.add(buildParticles());
