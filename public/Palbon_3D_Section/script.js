@@ -79,8 +79,8 @@ const getH = () => container.clientHeight || window.innerHeight;
 
 const scene  = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(45, getW() / getH(), 0.1, 1000);
-camera.position.set(0, 9.5, 16.5);
-camera.lookAt(0, -0.6, 0);
+camera.position.set(0, 12, 18);
+camera.lookAt(0, -2.0, 0);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setSize(getW(), getH());
@@ -104,7 +104,7 @@ controls.minDistance     = 4;
 controls.maxDistance     = 30;
 controls.autoRotate      = true;
 controls.autoRotateSpeed = 0.35;
-controls.target.set(0, -0.6, 0);
+controls.target.set(0, -2.0, 0);
 
 // ─── LIGHTING ──────────────────────────────────────────────────────────────
 scene.add(new THREE.AmbientLight(0xffffff, 2.2));
@@ -589,15 +589,15 @@ function buildIcon(type, color) {
 
 // ─── PALBON CENTRAL HUB MODULE DATA ──────────────────────────────────────────
 const PALBON_HUB_MODULE = {
-  name: 'PALBON SUITE',
-  subtitle: 'Unified HRMS, ERP & Learning Core',
+  name: 'PALBON ECOSYSTEM',
+  subtitle: 'Assemble your platform — one module at a time',
   color: 0x6366f1, hex: '#6366f1', icon: 'palbon',
   pos: [0, 0, 0],
   isHub: true,
   items: [
-    { label: 'Unified Data Mesh',     badge: '100% Synced' },
-    { label: 'Autonomous Reasoning',  badge: 'Active AI' },
-    { label: 'Zero-Trust Security',   badge: 'Verified' }
+    { label: 'Modular Marketplace',   badge: 'Select Capabilities' },
+    { label: 'Composable Stack',      badge: 'Zero Bloat' },
+    { label: 'Unified Freedom',       badge: 'Pay Per Module' }
   ]
 };
 
@@ -810,7 +810,7 @@ function animate(){
   // Smooth lerp mouse shift + continuous 360-degree auto rotation
   currentMouseX += (targetMouseX - currentMouseX) * 0.06;
   worldGroup.rotation.y = t * 0.15 + currentMouseX * 0.35;
-  camera.lookAt(0, -0.4, 0);
+  camera.lookAt(0, -2.0, 0);
 
   // ─── RAYCAST HOVER & CARD ZOOM DETECT ──────────────────────────────────────
   raycaster.setFromCamera(mouseVec, camera);
