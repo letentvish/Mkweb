@@ -294,7 +294,7 @@ export default function PalbonPage() {
 
         {/* Full Hero 3D WebGL Background when Hero V2 is active */}
         {heroVersion === "v2" && (
-          <div className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-auto pt-80 sm:pt-96 lg:pt-[440px]">
+          <div className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-auto pt-60 sm:pt-64 lg:pt-72">
             <iframe
               ref={palbon3dIframeRef}
               src="/Palbon_3D_Section/index.html"

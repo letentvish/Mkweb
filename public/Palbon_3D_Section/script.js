@@ -79,8 +79,8 @@ const getH = () => container.clientHeight || window.innerHeight;
 
 const scene  = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(45, getW() / getH(), 0.1, 1000);
-camera.position.set(0, 12, 18);
-camera.lookAt(0, -2.0, 0);
+camera.position.set(0, 9.5, 16.5);
+camera.lookAt(0, -0.6, 0);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setSize(getW(), getH());
@@ -104,7 +104,7 @@ controls.minDistance     = 4;
 controls.maxDistance     = 30;
 controls.autoRotate      = true;
 controls.autoRotateSpeed = 0.35;
-controls.target.set(0, -2.0, 0);
+controls.target.set(0, -0.6, 0);
 
 // ─── LIGHTING ──────────────────────────────────────────────────────────────
 scene.add(new THREE.AmbientLight(0xffffff, 2.2));
@@ -649,7 +649,7 @@ function buildHub() {
   scan.name='scan'; scan.rotation.x=Math.PI/2; scan.position.y=0.08; hub.add(scan);
 
   const lbl=makeLabelSprite(PALBON_HUB_MODULE, 3.4);
-  lbl.name='label'; lbl.position.set(0,2.7,0); hub.add(lbl);
+  lbl.name='label'; lbl.position.set(0, 0.9, 0); hub.add(lbl);
 
   const pl=new THREE.PointLight(0x3b82f6,2.5,10); pl.position.set(0,1.6,0); hub.add(pl);
   return hub;
@@ -810,7 +810,7 @@ function animate(){
   // Smooth lerp mouse shift + continuous 360-degree auto rotation
   currentMouseX += (targetMouseX - currentMouseX) * 0.06;
   worldGroup.rotation.y = t * 0.15 + currentMouseX * 0.35;
-  camera.lookAt(0, -2.0, 0);
+  camera.lookAt(0, -0.6, 0);
 
   // ─── RAYCAST HOVER & CARD ZOOM DETECT ──────────────────────────────────────
   raycaster.setFromCamera(mouseVec, camera);
