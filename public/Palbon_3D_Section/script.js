@@ -19,8 +19,8 @@ const getH = () => container.clientHeight || window.innerHeight;
 
 const scene  = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(45, getW() / getH(), 0.1, 1000);
-camera.position.set(0, 7.8, 13.8);
-camera.lookAt(0, 0.4, 0);
+camera.position.set(0, 9.5, 16.5);
+camera.lookAt(0, -0.6, 0);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setSize(getW(), getH());
@@ -44,7 +44,7 @@ controls.minDistance     = 4;
 controls.maxDistance     = 30;
 controls.autoRotate      = true;
 controls.autoRotateSpeed = 0.35;
-controls.target.set(0, 0.4, 0);
+controls.target.set(0, -0.6, 0);
 
 // ─── LIGHTING ──────────────────────────────────────────────────────────────
 scene.add(new THREE.AmbientLight(0xffffff, 2.2));
@@ -438,8 +438,8 @@ function buildHub() {
   );
   scan.name='scan'; scan.rotation.x=Math.PI/2; scan.position.y=0.08; hub.add(scan);
 
-  const lbl=makeLabelSprite('PALBON SUITES','Unified Business Intelligence','#2563eb',4.4);
-  lbl.name='hubLabel'; lbl.position.set(0,2.85,0); hub.add(lbl);
+  const lbl=makeLabelSprite('PALBON SUITES','Unified Business Intelligence','#2563eb',3.0);
+  lbl.name='hubLabel'; lbl.position.set(0,2.6,0); hub.add(lbl);
 
   const pl=new THREE.PointLight(0x3b82f6,2.5,10); pl.position.set(0,1.6,0); hub.add(pl);
   return hub;
@@ -448,6 +448,8 @@ function buildHub() {
 // ─── MODULE NODE ────────────────────────────────────────────────────────────
 function buildNode(mod) {
   const g = new THREE.Group();
+  g.userData.isNode = true;
+  g.userData.mod = mod;
 
   const s1=buildSlab(2.4,2.4,0xeef5fc,0.36); s1.position.y=0; g.add(s1);
   const s2=buildSlab(1.9,1.9,0xf4f8fe,0.28); s2.position.y=0.34; g.add(s2);
@@ -467,8 +469,8 @@ function buildNode(mod) {
   const icon=buildIcon(mod.icon,mod.color);
   icon.name='icon'; icon.position.set(0,0.82,0); g.add(icon);
 
-  const lbl=makeLabelSprite(mod.name,mod.subtitle,mod.hex,3.2);
-  lbl.name='label'; lbl.position.set(0,2.2,0); g.add(lbl);
+  const lbl=makeLabelSprite(mod.name,mod.subtitle,mod.hex,2.3);
+  lbl.name='label'; lbl.position.set(0,2.1,0); g.add(lbl);
 
   return g;
 }

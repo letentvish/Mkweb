@@ -294,7 +294,7 @@ export default function PalbonPage() {
 
         {/* Full Hero 3D WebGL Background when Hero V2 is active */}
         {heroVersion === "v2" && (
-          <div className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-auto pt-24 sm:pt-28 lg:pt-32">
+          <div className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-auto pt-60 sm:pt-64 lg:pt-72">
             <iframe
               ref={palbon3dIframeRef}
               src="/Palbon_3D_Section/index.html"
@@ -514,7 +514,7 @@ export default function PalbonPage() {
 
         {/* HERO VERSION 2 (PALBON 3D BACKGROUND) */}
         {heroVersion === "v2" && (
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center min-h-[660px] lg:min-h-[740px] flex flex-col justify-start pointer-events-none pb-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center min-h-[760px] lg:min-h-[860px] flex flex-col justify-start pointer-events-none pb-12">
             
             {/* Header Content */}
             <div className="pointer-events-auto pt-2">
