@@ -525,19 +525,19 @@ export default function PalbonPage() {
           </div>
         )}
 
-        {/* HERO VERSION 2 (PALBON 3D BACKGROUND WITH FLOATING DASHBOARD CARDS) */}
+        {/* HERO VERSION 2 (PALBON 3D BACKGROUND) */}
         {heroVersion === "v2" && (
-          <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center min-h-[780px] lg:min-h-[880px] flex flex-col justify-between pointer-events-none pb-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center min-h-[760px] lg:min-h-[860px] flex flex-col justify-start pointer-events-none pb-12">
             
-            {/* Center Header Content & CTAs */}
-            <div className="pointer-events-auto pt-2 max-w-4xl mx-auto z-30">
+            {/* Header Content */}
+            <div className="pointer-events-auto pt-2">
               {/* Top Pill Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-slate-300/80 text-[#01182F] text-xs font-bold tracking-widest uppercase mb-4 shadow-sm">
                 UNIFIED. INTELLIGENT. IMPACTFUL.
               </div>
 
               {/* Main Headline */}
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-extrabold text-[#01182F] tracking-tight leading-[1.12]">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-extrabold text-[#01182F] tracking-tight leading-[1.12] max-w-4xl mx-auto">
                 Build your <br className="hidden sm:block" />
                 <span className="bg-gradient-to-r from-[#01182F] via-[#0284c7] to-[#01182F] bg-clip-text text-transparent">
                   enterprise operating system
@@ -545,200 +545,9 @@ export default function PalbonPage() {
               </h1>
 
               {/* Subheading */}
-              <p className="text-slate-700 text-base sm:text-lg leading-relaxed mt-4 font-medium max-w-3xl mx-auto">
+              <p className="text-slate-700 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto mt-4 font-medium">
                 Unify your people, processes, data, and technology on one intelligent platform. Designed for the way modern enterprises operate.
               </p>
-
-              {/* Center CTAs */}
-              <div className="flex flex-wrap items-center justify-center gap-4 mt-6">
-                <button
-                  onClick={() => navigate("/contact")}
-                  className="bg-[#01182F] hover:bg-[#032952] text-white font-bold px-7 py-3.5 rounded-full inline-flex items-center gap-2 shadow-xl shadow-slate-900/20 transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95"
-                >
-                  <span>Request a Demo</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={() => {
-                    const el = document.getElementById("palbon-modules");
-                    if (el) el.scrollIntoView({ behavior: "smooth" });
-                  }}
-                  className="bg-white/90 hover:bg-white text-[#01182F] border border-slate-300 font-bold px-6 py-3.5 rounded-full inline-flex items-center gap-2 shadow-md backdrop-blur-md transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95"
-                >
-                  <span>Explore the Ecosystem</span>
-                </button>
-              </div>
-            </div>
-
-            {/* Left Column Floating Glass Cards */}
-            <div className="hidden lg:flex flex-col gap-5 absolute left-4 lg:left-8 top-32 w-72 lg:w-80 z-20 pointer-events-auto text-left">
-              
-              {/* Card 1: Workforce Overview */}
-              <div className="bg-white/85 backdrop-blur-xl border border-slate-200/90 shadow-xl shadow-slate-900/5 rounded-2xl p-5 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-[#0284c7] animate-pulse" />
-                    <span className="text-xs font-extrabold text-slate-800 tracking-wide uppercase">Workforce Overview</span>
-                  </div>
-                  <span className="text-slate-400 font-bold text-sm">•••</span>
-                </div>
-                <div className="flex items-center justify-between gap-4">
-                  <div className="relative w-20 h-20 shrink-0">
-                    <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
-                      <path className="text-slate-100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" strokeWidth="3.5" />
-                      <path className="text-[#0284c7]" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" strokeDasharray="94, 100" strokeLinecap="round" strokeWidth="3.5" />
-                    </svg>
-                    <div className="absolute inset-0 flex flex-col items-center justify-center">
-                      <span className="text-sm font-black text-[#01182F]">94%</span>
-                      <span className="text-[8px] font-bold text-slate-500 uppercase">Active</span>
-                    </div>
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="inline-flex items-center text-xs font-bold text-emerald-600 gap-1 bg-emerald-50 px-2 py-0.5 rounded-md w-fit">
-                      <TrendingUp className="w-3.5 h-3.5" /> ↑ 12%
-                    </span>
-                    <span className="text-[11px] font-medium text-slate-500 mt-1">vs last quarter</span>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2 mt-4 pt-3 border-t border-slate-100">
-                  <div className="flex -space-x-2">
-                    <img className="w-6 h-6 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Avatar" />
-                    <img className="w-6 h-6 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Avatar" />
-                    <img className="w-6 h-6 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt="Avatar" />
-                  </div>
-                  <span className="text-[11px] font-bold text-slate-600">+2.4k more</span>
-                </div>
-              </div>
-
-              {/* Card 2: System Status */}
-              <div className="bg-white/85 backdrop-blur-xl border border-slate-200/90 shadow-xl shadow-slate-900/5 rounded-2xl p-5 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-2">
-                    <ShieldCheck className="w-4 h-4 text-[#01182F]" />
-                    <span className="text-xs font-extrabold text-slate-800 tracking-wide uppercase">System Status</span>
-                  </div>
-                  <span className="text-slate-400 font-bold text-sm">•••</span>
-                </div>
-                <div className="flex items-baseline justify-between">
-                  <span className="text-2xl font-black text-[#01182F]">100%</span>
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-[10px] font-bold">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" /> Healthy
-                  </span>
-                </div>
-                <p className="text-[11px] font-medium text-slate-500 mt-1">Systems Operational</p>
-                <p className="text-[11px] text-slate-600 mt-3 pt-2 border-t border-slate-100 font-medium">
-                  All critical systems are running smoothly
-                </p>
-              </div>
-
-            </div>
-
-            {/* Right Column Floating Glass Cards */}
-            <div className="hidden lg:flex flex-col gap-5 absolute right-4 lg:right-8 top-32 w-72 lg:w-80 z-20 pointer-events-auto text-left">
-              
-              {/* Card 1: Enterprise Performance */}
-              <div className="bg-white/85 backdrop-blur-xl border border-slate-200/90 shadow-xl shadow-slate-900/5 rounded-2xl p-5 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-2">
-                    <TrendingUp className="w-4 h-4 text-[#0284c7]" />
-                    <span className="text-xs font-extrabold text-slate-800 tracking-wide uppercase">Enterprise Performance</span>
-                  </div>
-                  <span className="text-slate-400 font-bold text-sm">•••</span>
-                </div>
-                <span className="text-[11px] font-medium text-slate-500">Revenue Growth</span>
-                <div className="flex items-baseline justify-between mt-0.5">
-                  <span className="text-2xl font-black text-[#01182F]">24.8%</span>
-                  <span className="text-xs font-bold text-emerald-600">↑ 8.6%</span>
-                </div>
-                <span className="text-[10px] text-slate-400 block mb-3">vs last quarter</span>
-                {/* Sparkline Graph */}
-                <div className="w-full h-12 pt-1">
-                  <svg className="w-full h-full overflow-visible" viewBox="0 0 200 40">
-                    <path d="M0 32 L30 25 L60 28 L90 18 L120 22 L150 12 L180 20 L200 5" fill="none" stroke="#0284c7" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                    <circle cx="200" cy="5" r="4" fill="#0284c7" />
-                  </svg>
-                  <div className="flex justify-between text-[8px] font-bold text-slate-400 mt-1">
-                    <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Card 2: AI Insights */}
-              <div className="bg-white/85 backdrop-blur-xl border border-slate-200/90 shadow-xl shadow-slate-900/5 rounded-2xl p-5 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-2">
-                    <Sparkles className="w-4 h-4 text-purple-600" />
-                    <span className="text-xs font-extrabold text-slate-800 tracking-wide uppercase">AI Insights</span>
-                  </div>
-                  <span className="text-slate-400 font-bold text-sm">•••</span>
-                </div>
-                <div className="flex items-baseline gap-2">
-                  <span className="text-2xl font-black text-[#01182F]">24</span>
-                  <span className="text-xs font-bold text-slate-700">New Insights</span>
-                </div>
-                <p className="text-[11px] font-medium text-slate-500 mt-1 leading-snug">
-                  Actionable recommendations across your ecosystem
-                </p>
-                <button
-                  onClick={() => navigate("/contact")}
-                  className="mt-4 w-full bg-[#01182F] hover:bg-[#032952] text-white font-bold py-2.5 px-4 rounded-xl text-xs inline-flex items-center justify-center gap-1.5 transition-all shadow-md cursor-pointer hover:scale-[1.02]"
-                >
-                  <span>View Insights</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
-
-            </div>
-
-            {/* Bottom Row Metric Stat Bars */}
-            <div className="w-full flex flex-col md:flex-row items-center justify-between gap-4 pointer-events-auto z-30 pt-8 max-w-5xl mx-auto">
-              
-              {/* Bottom Left Metric Bar */}
-              <div className="w-full md:w-auto bg-white/90 backdrop-blur-xl border border-slate-200/90 shadow-lg shadow-slate-900/5 rounded-2xl px-6 py-3.5 flex items-center justify-between gap-6 text-xs font-bold text-slate-700">
-                <div className="flex items-center gap-2.5">
-                  <Users className="w-4 h-4 text-[#0284c7]" />
-                  <div className="text-left">
-                    <span className="text-[#01182F] font-black text-sm block leading-none">14.6k</span>
-                    <span className="text-[10px] text-slate-500 font-medium">Active Users <span className="text-emerald-600 font-bold">↑ 18%</span></span>
-                  </div>
-                </div>
-                <div className="h-6 w-px bg-slate-200" />
-                <div className="flex items-center gap-2.5">
-                  <Layers className="w-4 h-4 text-[#7c3aed]" />
-                  <div className="text-left">
-                    <span className="text-[#01182F] font-black text-sm block leading-none">128</span>
-                    <span className="text-[10px] text-slate-500 font-medium">Connected Systems <span className="text-emerald-600 font-bold">↑ 22%</span></span>
-                  </div>
-                </div>
-                <div className="h-6 w-px bg-slate-200" />
-                <div className="flex items-center gap-2.5">
-                  <Zap className="w-4 h-4 text-amber-500" />
-                  <div className="text-left">
-                    <span className="text-emerald-600 font-black text-sm block leading-none">42%</span>
-                    <span className="text-[10px] text-slate-500 font-medium">Cost Saved <span className="text-emerald-600 font-bold">↑ 15%</span></span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Bottom Right Metric Bar */}
-              <div className="w-full md:w-auto bg-white/90 backdrop-blur-xl border border-slate-200/90 shadow-lg shadow-slate-900/5 rounded-2xl px-6 py-3.5 flex items-center justify-between gap-6 text-xs font-bold text-slate-700">
-                <div className="flex items-center gap-2.5">
-                  <Activity className="w-4 h-4 text-emerald-600" />
-                  <div className="text-left">
-                    <span className="text-[#01182F] font-black text-sm block leading-none">96.7%</span>
-                    <span className="text-[10px] text-slate-500 font-medium">Process Efficiency <span className="text-emerald-600 font-bold">↑ 11%</span></span>
-                  </div>
-                </div>
-                <div className="h-6 w-px bg-slate-200" />
-                <div className="flex items-center gap-2.5">
-                  <Cpu className="w-4 h-4 text-[#0284c7]" />
-                  <div className="text-left">
-                    <span className="text-[#01182F] font-black text-sm block leading-none">78%</span>
-                    <span className="text-[10px] text-slate-500 font-medium">Automated Workflows</span>
-                  </div>
-                </div>
-              </div>
-
             </div>
 
           </div>
