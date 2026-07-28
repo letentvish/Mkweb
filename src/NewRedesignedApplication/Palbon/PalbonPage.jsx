@@ -519,14 +519,14 @@ export default function PalbonPage() {
             {/* Header Content */}
             <div className="pointer-events-auto pt-2">
               {/* Top Pill Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50/90 backdrop-blur-md border border-indigo-200/80 text-[#6366f1] text-xs font-bold tracking-widest uppercase mb-4 shadow-sm">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-100/90 backdrop-blur-md border border-slate-300 text-[#01182F] text-xs font-bold tracking-widest uppercase mb-4 shadow-sm">
                 UNIFIED. INTELLIGENT. IMPACTFUL.
               </div>
 
               {/* Main Headline */}
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-extrabold text-slate-900 tracking-tight leading-[1.12] max-w-4xl mx-auto">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-extrabold text-[#01182F] tracking-tight leading-[1.12] max-w-4xl mx-auto">
                 Build your <br className="hidden sm:block" />
-                <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-[#01182F] via-[#0284c7] to-[#01182F] bg-clip-text text-transparent">
                   enterprise operating system
                 </span>
               </h1>

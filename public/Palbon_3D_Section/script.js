@@ -2,12 +2,12 @@
 const THREE = window.THREE;
 const OrbitControls = THREE.OrbitControls;
 
-// ─── MODULE DATA (HIGH-CONTRAST DUAL-TONE 3D ICON & PLATFORM PALETTE) ─────────
+// ─── MODULE DATA (PRIMARY BRAND PALETTE: #01182F MIDNIGHT BLUE) ───────────────
 const MODULES = [
   { 
     name: 'HRMS',           
     subtitle: 'Manage People',       
-    color: 0x0ea5e9, hex: '#0ea5e9', icon: 'hrms', iconColor: 0xf59e0b,      
+    color: 0x01182F, hex: '#01182F', icon: 'hrms', iconColor: 0x01182F, accentColor: 0x0ea5e9,      
     pos: [-4.6, 0, -3.4],
     items: [
       { label: 'Talent Management', badge: 'Up to date' },
@@ -18,7 +18,7 @@ const MODULES = [
   { 
     name: 'ERP',            
     subtitle: 'Run Business',        
-    color: 0x7c3aed, hex: '#7c3aed', icon: 'erp', iconColor: 0x10b981,       
+    color: 0x01182F, hex: '#01182F', icon: 'erp', iconColor: 0x01182F, accentColor: 0x7c3aed,       
     pos: [ 4.6, 0, -3.4],
     items: [
       { label: 'General Ledger',   badge: 'Up to date' },
@@ -29,7 +29,7 @@ const MODULES = [
   { 
     name: 'Learning (LXP)', 
     subtitle: 'Develop Talent',      
-    color: 0x0891b2, hex: '#0891b2', icon: 'learning', iconColor: 0xf97316,  
+    color: 0x01182F, hex: '#01182F', icon: 'learning', iconColor: 0x01182F, accentColor: 0x0891b2,  
     pos: [-6.4, 0,  0.2],
     items: [
       { label: 'HR & Skills',      badge: 'Up to date' },
@@ -40,7 +40,7 @@ const MODULES = [
   { 
     name: 'CRM',            
     subtitle: 'Build Relationships', 
-    color: 0x2563eb, hex: '#2563eb', icon: 'crm', iconColor: 0xf43f5e,       
+    color: 0x01182F, hex: '#01182F', icon: 'crm', iconColor: 0x01182F, accentColor: 0x2563eb,       
     pos: [ 6.4, 0,  0.2],
     items: [
       { label: 'Deal Pipeline',    badge: 'Up to date' },
@@ -51,7 +51,7 @@ const MODULES = [
   { 
     name: 'Analytics & AI', 
     subtitle: 'Drive Insights',      
-    color: 0x0284c7, hex: '#0284c7', icon: 'analytics', iconColor: 0xa855f7, 
+    color: 0x01182F, hex: '#01182F', icon: 'analytics', iconColor: 0x01182F, accentColor: 0x0284c7, 
     pos: [-4.6, 0,  3.8],
     items: [
       { label: 'Predictive BI',    badge: 'Up to date' },
@@ -62,7 +62,7 @@ const MODULES = [
   { 
     name: 'Operations',     
     subtitle: 'Streamline Work',     
-    color: 0x4f46e5, hex: '#4f46e5', icon: 'operations', iconColor: 0xeab308, 
+    color: 0x01182F, hex: '#01182F', icon: 'operations', iconColor: 0x01182F, accentColor: 0x4f46e5, 
     pos: [ 4.6, 0,  3.8],
     items: [
       { label: 'Supply Pipeline',  badge: 'Up to date' },
@@ -244,7 +244,7 @@ function renderAnimatedCardCanvas(cv, ctx, mod, progress) {
   ctx.fillText(badgeText, badgeX + 44, badgeY + 25);
 
   // 8. BOLD TITLE
-  ctx.fillStyle    = '#0F172A';
+  ctx.fillStyle    = '#01182F';
   ctx.font         = '900 76px Inter, system-ui, sans-serif';
   ctx.textAlign    = 'left';
   ctx.textBaseline = 'top';
@@ -260,7 +260,7 @@ function renderAnimatedCardCanvas(cv, ctx, mod, progress) {
 
     ctx.save();
     ctx.globalAlpha = Math.min(1, textProg * 2);
-    ctx.fillStyle    = hexColor;
+    ctx.fillStyle    = '#01182F';
     ctx.font         = '800 32px Inter, monospace';
     ctx.textAlign    = 'left';
     ctx.textBaseline = 'top';
@@ -297,11 +297,11 @@ function renderAnimatedCardCanvas(cv, ctx, mod, progress) {
       // Left Bullet Dot
       ctx.beginPath();
       ctx.arc(itemX + 28, itemY + itemHeight / 2, 6, 0, Math.PI * 2);
-      ctx.fillStyle = hexColor;
+      ctx.fillStyle = '#01182F';
       ctx.fill();
 
       // Item Title Label
-      ctx.fillStyle = '#0F172A';
+      ctx.fillStyle = '#01182F';
       ctx.font = '700 24px Inter, system-ui, sans-serif';
       ctx.textAlign = 'left';
       ctx.textBaseline = 'middle';
@@ -488,16 +488,16 @@ function buildSlab(w, d, colorHex = 0x3b82f6, cornerRadius = 0.35) {
   return g;
 }
 
-// ─── RELATABLE 3D ICONS (HIGH-CONTRAST DUAL-TONE) ───────────────────────────
+// ─── RELATABLE 3D ICONS (PRIMARY BRAND COLOR: #01182F MIDNIGHT BLUE) ────────
 function iMat(c) {
   return new THREE.MeshPhysicalMaterial({
-    color: c, emissive: c, emissiveIntensity: 0.65,
-    metalness: 0.40, roughness: 0.15, clearcoat: 1.0, clearcoatRoughness: 0.03,
+    color: 0x01182F, emissive: 0x01182F, emissiveIntensity: 0.15,
+    metalness: 0.85, roughness: 0.10, clearcoat: 1.0, clearcoatRoughness: 0.02,
   });
 }
 function accentMat(c) {
   return new THREE.MeshPhysicalMaterial({
-    color: 0xffd700, emissive: c, emissiveIntensity: 0.85,
+    color: 0x01182F, emissive: 0x0ea5e9, emissiveIntensity: 0.65,
     metalness: 0.70, roughness: 0.05, clearcoat: 1.0,
   });
 }
