@@ -4,12 +4,72 @@ const OrbitControls = THREE.OrbitControls;
 
 // ─── MODULE DATA ────────────────────────────────────────────────────────────
 const MODULES = [
-  { name: 'HRMS',           subtitle: 'Manage People',       color: 0x0ea5e9, hex: '#0ea5e9', icon: 'hrms',       pos: [-4.6, 0, -3.4] },
-  { name: 'ERP',            subtitle: 'Run Business',        color: 0x7c3aed, hex: '#7c3aed', icon: 'erp',        pos: [ 4.6, 0, -3.4] },
-  { name: 'Learning (LXP)', subtitle: 'Develop Talent',      color: 0x0891b2, hex: '#0891b2', icon: 'learning',   pos: [-6.4, 0,  0.2] },
-  { name: 'CRM',            subtitle: 'Build Relationships', color: 0x2563eb, hex: '#2563eb', icon: 'crm',        pos: [ 6.4, 0,  0.2] },
-  { name: 'Analytics & AI', subtitle: 'Drive Insights',      color: 0x0284c7, hex: '#0284c7', icon: 'analytics',  pos: [-4.6, 0,  3.8] },
-  { name: 'Operations',     subtitle: 'Streamline Work',     color: 0x4f46e5, hex: '#4f46e5', icon: 'operations', pos: [ 4.6, 0,  3.8] },
+  { 
+    name: 'HRMS',           
+    subtitle: 'Manage People',       
+    color: 0x0ea5e9, hex: '#0ea5e9', icon: 'hrms',       
+    pos: [-4.6, 0, -3.4],
+    items: [
+      { label: 'Talent Management', badge: 'Up to date' },
+      { label: 'Payroll Engine',    badge: 'Active' },
+      { label: 'Workforce AI',      badge: 'Synced' }
+    ]
+  },
+  { 
+    name: 'ERP',            
+    subtitle: 'Run Business',        
+    color: 0x7c3aed, hex: '#7c3aed', icon: 'erp',        
+    pos: [ 4.6, 0, -3.4],
+    items: [
+      { label: 'General Ledger',   badge: 'Up to date' },
+      { label: 'Real-Time Audit',  badge: 'Verified' },
+      { label: 'Tax Compliance',   badge: 'Active' }
+    ]
+  },
+  { 
+    name: 'Learning (LXP)', 
+    subtitle: 'Develop Talent',      
+    color: 0x0891b2, hex: '#0891b2', icon: 'learning',   
+    pos: [-6.4, 0,  0.2],
+    items: [
+      { label: 'HR & Skills',      badge: 'Up to date' },
+      { label: 'Course Engine',    badge: 'Active' },
+      { label: 'Certifications',   badge: 'Verified' }
+    ]
+  },
+  { 
+    name: 'CRM',            
+    subtitle: 'Build Relationships', 
+    color: 0x2563eb, hex: '#2563eb', icon: 'crm',        
+    pos: [ 6.4, 0,  0.2],
+    items: [
+      { label: 'Deal Pipeline',    badge: 'Up to date' },
+      { label: 'Customer Mesh',    badge: 'Active' },
+      { label: 'Lead Scoring AI',  badge: 'Live' }
+    ]
+  },
+  { 
+    name: 'Analytics & AI', 
+    subtitle: 'Drive Insights',      
+    color: 0x0284c7, hex: '#0284c7', icon: 'analytics',  
+    pos: [-4.6, 0,  3.8],
+    items: [
+      { label: 'Predictive BI',    badge: 'Up to date' },
+      { label: 'Neural Core',      badge: 'Online' },
+      { label: 'Data Lake Sync',   badge: 'Active' }
+    ]
+  },
+  { 
+    name: 'Operations',     
+    subtitle: 'Streamline Work',     
+    color: 0x4f46e5, hex: '#4f46e5', icon: 'operations', 
+    pos: [ 4.6, 0,  3.8],
+    items: [
+      { label: 'Supply Pipeline',  badge: 'Up to date' },
+      { label: 'Logistics Mesh',   badge: 'Active' },
+      { label: 'Inventory Engine', badge: 'Verified' }
+    ]
+  },
 ];
 
 // ─── SCENE / CAMERA / RENDERER SETUP ─────────────────────────────────────────
@@ -66,14 +126,17 @@ scene.add(blueAccent);
 
 // ─── 3D CRISP LABEL SPRITE ──────────────────────────────────────────────────
 // ─── 3D CRISP ULTRA-PREMIUM GLASSMORPHISM LABEL SPRITE ─────────────────────
-// ─── 3D INTERACTIVE SCI-FI HUD LABEL SPRITE (DEFAULT & HOVER STATES) ─────────
-function createDefaultTexture(name, hexColor) {
-  const CW = 1024, CH = 340;
-  const cv = document.createElement('canvas');
-  cv.width = CW; cv.height = CH;
-  const ctx = cv.getContext('2d');
+// ─── DYNAMIC ANIMATED SCI-FI HUD CARD CANVAS RENDERER ─────────────────────────
+function renderAnimatedCardCanvas(cv, ctx, mod, progress) {
+  const CW = 1024;
+  const currentCH = Math.round(340 + progress * 280);
+  
+  if (cv.height !== currentCH) {
+    cv.height = currentCH;
+  }
+  cv.width = CW;
 
-  ctx.clearRect(0, 0, CW, CH);
+  ctx.clearRect(0, 0, CW, currentCH);
 
   const rr = (x, y, w, h, r) => {
     ctx.beginPath();
@@ -84,42 +147,65 @@ function createDefaultTexture(name, hexColor) {
     ctx.quadraticCurveTo(x,y,x+r,y); ctx.closePath();
   };
 
-  const px = 24, py = 20, pw = CW - 48, ph = CH - 40, rad = 36;
+  const px = 24, py = 20, pw = CW - 48, ph = currentCH - 40, rad = 36;
+  const hexColor = mod.hex || '#2563eb';
+  const name = mod.name || 'MODULE';
+  const subtitle = mod.subtitle || 'Enterprise Tech';
+  const items = mod.items || [
+    { label: 'System Status', badge: 'Up to date' },
+    { label: 'Workflows',     badge: 'Active' },
+    { label: 'Security AI',   badge: 'Verified' }
+  ];
 
   // 1. Soft Ambient Colored Glow Shadow
   ctx.save();
   ctx.shadowColor   = hexColor;
-  ctx.shadowBlur    = 24;
-  ctx.shadowOffsetX = 0; ctx.shadowOffsetY = 8;
+  ctx.shadowBlur    = 24 + progress * 16;
+  ctx.shadowOffsetX = 0; ctx.shadowOffsetY = 8 + progress * 6;
   rr(px, py, pw, ph, rad);
   ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
   ctx.fill();
   ctx.restore();
 
-  // 2. ULTRA-TRANSLUCENT GLASS CARD (5% White Visibility!)
+  // 2. ULTRA-TRANSLUCENT GLASS CARD (5% White Opacity Glass)
   rr(px, py, pw, ph, rad);
   const glassBg = ctx.createLinearGradient(px, py, px + pw, py + ph);
-  glassBg.addColorStop(0,   'rgba(255, 255, 255, 0.08)');
-  glassBg.addColorStop(0.5, 'rgba(255, 255, 255, 0.04)');
-  glassBg.addColorStop(1,   'rgba(255, 255, 255, 0.06)');
+  glassBg.addColorStop(0,   `rgba(255, 255, 255, ${0.08 + progress * 0.04})`);
+  glassBg.addColorStop(0.5, `rgba(255, 255, 255, ${0.04 + progress * 0.03})`);
+  glassBg.addColorStop(1,   `rgba(255, 255, 255, ${0.06 + progress * 0.03})`);
   ctx.fillStyle = glassBg;
   ctx.fill();
 
-  // 3. Top Specular Glass Reflection Highlight
-  rr(px, py, pw, ph * 0.45, rad);
-  const hlGrad = ctx.createLinearGradient(px, py, px, py + ph * 0.45);
-  hlGrad.addColorStop(0, 'rgba(255, 255, 255, 0.15)');
+  // 3. Top Specular Glass Reflection
+  rr(px, py, pw, ph * 0.35, rad);
+  const hlGrad = ctx.createLinearGradient(px, py, px, py + ph * 0.35);
+  hlGrad.addColorStop(0, 'rgba(255, 255, 255, 0.18)');
   hlGrad.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
   ctx.fillStyle = hlGrad;
   ctx.fill();
 
-  // 4. Glowing Vibrant Glass Edge Border
+  // 4. Glowing Neon Outer Border
   rr(px, py, pw, ph, rad);
   ctx.strokeStyle = hexColor;
-  ctx.lineWidth   = 5;
+  ctx.lineWidth   = 5 + progress * 1.5;
   ctx.stroke();
 
-  // 5. Left Vertical Accent Color Pillar Strip
+  // 5. Sci-Fi Tech Corner Brackets [ ]
+  if (progress > 0.1) {
+    const bracketAlpha = Math.min(1, (progress - 0.1) / 0.4);
+    ctx.save();
+    ctx.globalAlpha = bracketAlpha;
+    const bw = 28;
+    ctx.strokeStyle = hexColor;
+    ctx.lineWidth = 6;
+    ctx.beginPath(); ctx.moveTo(px + bw, py + 14); ctx.lineTo(px + 14, py + 14); ctx.lineTo(px + 14, py + bw); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(px + pw - bw, py + 14); ctx.lineTo(px + pw - 14, py + 14); ctx.lineTo(px + pw - 14, py + bw); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(px + bw, py + ph - 14); ctx.lineTo(px + 14, py + ph - 14); ctx.lineTo(px + 14, py + ph - bw); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(px + pw - bw, py + ph - 14); ctx.lineTo(px + pw - 14, py + ph - 14); ctx.lineTo(px + pw - 14, py + ph - bw); ctx.stroke();
+    ctx.restore();
+  }
+
+  // 6. Left Vertical Accent Color Pillar Strip
   ctx.save();
   rr(px, py, pw, ph, rad);
   ctx.clip();
@@ -127,8 +213,8 @@ function createDefaultTexture(name, hexColor) {
   ctx.fillRect(px, py, 22, ph);
   ctx.restore();
 
-  // 6. Top Left Module Pill Badge (5% Glass Tint)
-  const badgeX = px + 44, badgeY = py + 28, badgeW = 240, badgeH = 50;
+  // 7. Top Left Status Pill Badge
+  const badgeX = px + 44, badgeY = py + 28, badgeW = 280, badgeH = 50;
   rr(badgeX, badgeY, badgeW, badgeH, 25);
   ctx.fillStyle = 'rgba(255, 255, 255, 0.10)';
   ctx.fill();
@@ -136,156 +222,138 @@ function createDefaultTexture(name, hexColor) {
   ctx.lineWidth = 2.5;
   ctx.stroke();
 
-  // Badge Status Dot
   ctx.beginPath();
   ctx.arc(badgeX + 26, badgeY + 25, 7, 0, Math.PI * 2);
   ctx.fillStyle = hexColor;
   ctx.fill();
 
   ctx.fillStyle = hexColor;
-  ctx.font = '800 22px Inter, system-ui, sans-serif';
+  ctx.font = '800 22px Inter, monospace';
   ctx.textAlign = 'left';
   ctx.textBaseline = 'middle';
-  ctx.fillText('ENTERPRISE', badgeX + 44, badgeY + 25);
+  const badgeText = progress > 0.4 ? `[ SYS_ONLINE // ${name.toUpperCase().replace(/\s+/g, '_')} ]` : 'ENTERPRISE';
+  ctx.fillText(badgeText, badgeX + 44, badgeY + 25);
 
-  // 7. HUGE BOLD HIGH-CONTRAST TITLE ONLY
+  // 8. BOLD TITLE
   ctx.fillStyle    = '#0F172A';
-  ctx.font         = '900 80px Inter, system-ui, sans-serif';
+  ctx.font         = '900 76px Inter, system-ui, sans-serif';
   ctx.textAlign    = 'left';
   ctx.textBaseline = 'top';
-  ctx.fillText(name, px + 44, py + 104);
+  ctx.fillText(name, px + 44, py + 98);
 
-  // 8. Bottom Sci-Fi Hover Prompt Pill
-  ctx.fillStyle = '#334155';
-  ctx.font = '700 22px Inter, system-ui, sans-serif';
-  ctx.fillText('✦ Hover to expand telemetry', px + 44, py + ph - 48);
+  // 9. TYPEWRITER SUBTITLE EFFECT
+  const fullSub = subtitle;
+  const typedLength = Math.floor(progress * fullSub.length);
+  const currentSub = fullSub.substring(0, typedLength);
+  const cursor = (progress > 0.1 && progress < 0.98 && Math.floor(Date.now() / 250) % 2 === 0) ? ' █' : '';
 
-  const texture = new THREE.CanvasTexture(cv);
-  texture.minFilter = THREE.LinearFilter;
-  texture.magFilter = THREE.LinearFilter;
-  texture.premultipliedAlpha = false;
-  return texture;
+  ctx.fillStyle    = hexColor;
+  ctx.font         = '800 32px Inter, monospace';
+  ctx.textAlign    = 'left';
+  ctx.textBaseline = 'top';
+  ctx.fillText(`> ${currentSub}${cursor}`, px + 44, py + 188);
+
+  // 10. LOWER CARD SLIDING SECTION (Items list & slide down with staggered motion!)
+  if (progress > 0.25) {
+    const listStartY = py + 242;
+    const itemHeight = 60;
+    
+    items.forEach((item, k) => {
+      const itemDelay = 0.25 + k * 0.18;
+      const itemProg = Math.max(0, Math.min(1, (progress - itemDelay) / 0.35));
+      if (itemProg <= 0) return;
+
+      const slideOffset = (1 - itemProg) * 35;
+      const itemY = listStartY + k * (itemHeight + 12) + slideOffset;
+      const itemX = px + 44;
+      const itemW = pw - 88;
+
+      ctx.save();
+      ctx.globalAlpha = itemProg;
+
+      // Lower Item Container Box (Light 5% Glass Fill)
+      rr(itemX, itemY, itemW, itemHeight, 16);
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
+      ctx.fill();
+      ctx.strokeStyle = hexColor + '40';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      // Left Bullet Dot
+      ctx.beginPath();
+      ctx.arc(itemX + 28, itemY + itemHeight / 2, 6, 0, Math.PI * 2);
+      ctx.fillStyle = hexColor;
+      ctx.fill();
+
+      // Item Title Label
+      ctx.fillStyle = '#0F172A';
+      ctx.font = '700 24px Inter, system-ui, sans-serif';
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(item.label, itemX + 50, itemY + itemHeight / 2);
+
+      // Right Green Pill Badge ("• Up to date") - Inspired directly by User Image!
+      const badgeText = `• ${item.badge}`;
+      ctx.font = '700 20px Inter, system-ui, sans-serif';
+      const bwTextW = ctx.measureText(badgeText).width;
+      const pillW = bwTextW + 32;
+      const pillH = 36;
+      const pillX = itemX + itemW - pillW - 20;
+      const pillY = itemY + (itemHeight - pillH) / 2;
+
+      rr(pillX, pillY, pillW, pillH, 18);
+      ctx.fillStyle = 'rgba(16, 185, 129, 0.12)';
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(16, 185, 129, 0.60)';
+      ctx.lineWidth = 1.8;
+      ctx.stroke();
+
+      ctx.fillStyle = '#059669';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(badgeText, pillX + pillW / 2, pillY + pillH / 2);
+
+      ctx.restore();
+    });
+  }
+
+  // 11. Bottom Prompt (Visible when collapsed)
+  if (progress < 0.4) {
+    ctx.save();
+    ctx.globalAlpha = 1 - (progress / 0.4);
+    ctx.fillStyle = '#334155';
+    ctx.font = '700 22px Inter, system-ui, sans-serif';
+    ctx.fillText('✦ Hover to expand telemetry', px + 44, py + ph - 48);
+    ctx.restore();
+  }
 }
 
-function createHoverTexture(name, subtitle, hexColor) {
-  const CW = 1024, CH = 520;
+function makeLabelSprite(modOrName, subtitle, hexColor, worldW = 3.2) {
+  let mod;
+  if (typeof modOrName === 'object') {
+    mod = modOrName;
+  } else {
+    mod = { name: modOrName, subtitle, hex: hexColor, color: hexColor, items: [] };
+  }
+
   const cv = document.createElement('canvas');
-  cv.width = CW; cv.height = CH;
+  cv.width = 1024;
+  cv.height = 340;
   const ctx = cv.getContext('2d');
 
-  ctx.clearRect(0, 0, CW, CH);
-
-  const rr = (x, y, w, h, r) => {
-    ctx.beginPath();
-    ctx.moveTo(x+r,y); ctx.lineTo(x+w-r,y);
-    ctx.quadraticCurveTo(x+w,y,x+w,y+r); ctx.lineTo(x+w,y+h-r);
-    ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h); ctx.lineTo(x+r,y+h);
-    ctx.quadraticCurveTo(x,y+h,x,y+h-r); ctx.lineTo(x,y+r);
-    ctx.quadraticCurveTo(x,y,x+r,y); ctx.closePath();
-  };
-
-  const px = 20, py = 20, pw = CW - 40, ph = CH - 40, rad = 32;
-
-  // Sci-Fi Tech Neon Glow Drop Shadow
-  ctx.save();
-  ctx.shadowColor   = hexColor;
-  ctx.shadowBlur    = 36;
-  ctx.shadowOffsetX = 0; ctx.shadowOffsetY = 10;
-  rr(px, py, pw, ph, rad);
-  ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
-  ctx.fill();
-  ctx.restore();
-
-  // 5% White Glass Base
-  rr(px, py, pw, ph, rad);
-  const glassBg = ctx.createLinearGradient(px, py, px + pw, py + ph);
-  glassBg.addColorStop(0,   'rgba(255, 255, 255, 0.10)');
-  glassBg.addColorStop(0.5, 'rgba(255, 255, 255, 0.05)');
-  glassBg.addColorStop(1,   'rgba(255, 255, 255, 0.08)');
-  ctx.fillStyle = glassBg;
-  ctx.fill();
-
-  // Sci-Fi Outer Glowing Neon Border
-  rr(px, py, pw, ph, rad);
-  ctx.strokeStyle = hexColor;
-  ctx.lineWidth   = 5.5;
-  ctx.stroke();
-
-  // Sci-Fi Tech Corner Brackets [ ]
-  const bw = 28;
-  ctx.strokeStyle = hexColor;
-  ctx.lineWidth = 6;
-
-  // Top Left Bracket
-  ctx.beginPath(); ctx.moveTo(px + bw, py + 14); ctx.lineTo(px + 14, py + 14); ctx.lineTo(px + 14, py + bw); ctx.stroke();
-  // Top Right Bracket
-  ctx.beginPath(); ctx.moveTo(px + pw - bw, py + 14); ctx.lineTo(px + pw - 14, py + 14); ctx.lineTo(px + pw - 14, py + bw); ctx.stroke();
-  // Bottom Left Bracket
-  ctx.beginPath(); ctx.moveTo(px + bw, py + ph - 14); ctx.lineTo(px + 14, py + ph - 14); ctx.lineTo(px + 14, py + ph - bw); ctx.stroke();
-  // Bottom Right Bracket
-  ctx.beginPath(); ctx.moveTo(px + pw - bw, py + ph - 14); ctx.lineTo(px + pw - 14, py + ph - 14); ctx.lineTo(px + pw - 14, py + ph - bw); ctx.stroke();
-
-  // Sci-Fi Top Status Bar [ SYS_ONLINE // MODULE_NAME ]
-  const barX = px + 36, barY = py + 30, barW = pw - 72, barH = 48;
-  rr(barX, barY, barW, barH, 14);
-  ctx.fillStyle = 'rgba(255, 255, 255, 0.10)';
-  ctx.fill();
-  ctx.strokeStyle = hexColor;
-  ctx.lineWidth = 2;
-  ctx.stroke();
-
-  ctx.fillStyle = hexColor;
-  ctx.font = '800 20px monospace';
-  ctx.textAlign = 'left';
-  ctx.textBaseline = 'middle';
-  ctx.fillText(`[ SYS_ONLINE // ${name.toUpperCase().replace(/\s+/g, '_')} ]`, barX + 24, barY + 24);
-
-  // Large Bold Title
-  ctx.fillStyle    = '#0F172A';
-  ctx.font         = '900 70px Inter, system-ui, sans-serif';
-  ctx.textAlign    = 'left';
-  ctx.textBaseline = 'top';
-  ctx.fillText(name, px + 36, py + 98);
-
-  // Sci-Fi Tech HUD Paragraph Box (Dynamic Hover Telemetry Reveal - 5% Glass)
-  const boxX = px + 36, boxY = py + 188, boxW = pw - 72, boxH = ph - 210;
-  rr(boxX, boxY, boxW, boxH, 20);
-  ctx.fillStyle = 'rgba(255, 255, 255, 0.12)';
-  ctx.fill();
-  ctx.strokeStyle = hexColor + '90';
-  ctx.lineWidth = 2.5;
-  ctx.stroke();
-
-  // Sci-Fi Glowing Bullet Dot
-  ctx.beginPath();
-  ctx.arc(boxX + 32, boxY + 36, 8, 0, Math.PI * 2);
-  ctx.fillStyle = hexColor;
-  ctx.fill();
-
-  // Subtitle Paragraph Text inside HUD Box
-  ctx.fillStyle    = '#0F172A';
-  ctx.font         = '700 32px Inter, system-ui, sans-serif';
-  ctx.textAlign    = 'left';
-  ctx.textBaseline = 'top';
-  ctx.fillText(subtitle, boxX + 54, boxY + 22);
+  renderAnimatedCardCanvas(cv, ctx, mod, 0);
 
   const texture = new THREE.CanvasTexture(cv);
   texture.minFilter = THREE.LinearFilter;
   texture.magFilter = THREE.LinearFilter;
   texture.premultipliedAlpha = false;
-  return texture;
-}
-
-function makeLabelSprite(name, subtitle, hexColor, worldW = 3.2) {
-  const defaultTex = createDefaultTexture(name, hexColor);
-  const hoverTex   = createHoverTexture(name, subtitle, hexColor);
 
   const mat = new THREE.SpriteMaterial({
-    map: defaultTex,
+    map: texture,
     transparent: true,
     depthTest: false,
     depthWrite: false,
-    toneMapped: false // Prevents ACESFilmic toneMapping from turning card backgrounds gray!
+    toneMapped: false
   });
 
   const sprite = new THREE.Sprite(mat);
@@ -293,9 +361,12 @@ function makeLabelSprite(name, subtitle, hexColor, worldW = 3.2) {
   sprite.renderOrder = 10;
 
   sprite.userData = {
-    defaultTex,
-    hoverTex,
-    isHovered: false
+    cv,
+    ctx,
+    mod,
+    worldW,
+    hoverProgress: 0,
+    lastHp: -1
   };
 
   return sprite;
@@ -583,7 +654,7 @@ function buildNode(mod) {
   const icon=buildIcon(mod.icon,mod.color);
   icon.name='icon'; icon.position.set(0,0.82,0); g.add(icon);
 
-  const lbl=makeLabelSprite(mod.name,mod.subtitle,mod.hex,2.3);
+  const lbl=makeLabelSprite(mod, 3.2);
   lbl.name='label'; lbl.position.set(0,2.1,0); g.add(lbl);
 
   return g;
@@ -758,18 +829,23 @@ function animate(){
 
     const lbl = node.getObjectByName('label');
     if (lbl && lbl.userData) {
-      if (isHovered && !lbl.userData.isHovered) {
-        lbl.material.map = lbl.userData.hoverTex;
-        lbl.material.needsUpdate = true;
-        lbl.userData.isHovered = true;
-      } else if (!isHovered && lbl.userData.isHovered) {
-        lbl.material.map = lbl.userData.defaultTex;
-        lbl.material.needsUpdate = true;
-        lbl.userData.isHovered = false;
+      const mod = lbl.userData.mod;
+      let hp = lbl.userData.hoverProgress || 0;
+      const targetHp = isHovered ? 1.0 : 0.0;
+      
+      hp += (targetHp - hp) * 0.14;
+      lbl.userData.hoverProgress = hp;
+
+      if (Math.abs(hp - (lbl.userData.lastHp || -1)) > 0.003) {
+        lbl.userData.lastHp = hp;
+        renderAnimatedCardCanvas(lbl.userData.cv, lbl.userData.ctx, mod, hp);
+        lbl.material.map.needsUpdate = true;
       }
 
-      const baseW = isHovered ? 4.2 : 3.2;
-      const aspect = isHovered ? (520 / 1024) : (340 / 1024);
+      const currentCH = 340 + hp * 280;
+      const baseW = isHovered ? 4.5 : 3.2;
+      const aspect = currentCH / 1024;
+
       lbl.scale.x += (baseW - lbl.scale.x) * 0.14;
       lbl.scale.y += ((baseW * aspect) - lbl.scale.y) * 0.14;
     }
