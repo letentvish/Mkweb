@@ -254,10 +254,19 @@ export default function PalbonPage() {
       
       {/* Global Navigation Bar */}
       <NewNavbar />      {/* SECTION 1: HERO (WITH VERSION TOGGLE) */}
-      <section onMouseMove={handleHeroMouseMove} className="relative pt-24 pb-16 lg:pt-28 lg:pb-24 overflow-hidden border-b border-slate-200/80 bg-gradient-to-b from-[#F8FAFC] via-[#F1F5F9] to-white">
+      <section onMouseMove={handleHeroMouseMove} className="relative pt-24 pb-16 lg:pt-28 lg:pb-24 overflow-hidden border-b border-slate-200/80 bg-slate-900">
         
-        {/* Tech Node Vector Background */}
-        <div className="absolute inset-0 pointer-events-none opacity-40">
+        {/* Hero Background Image */}
+        <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+          <img 
+            src="/background.png" 
+            alt="Hero Background" 
+            className="w-full h-full object-cover object-center opacity-95"
+          />
+        </div>
+
+        {/* Tech Node Vector Overlay */}
+        <div className="absolute inset-0 pointer-events-none opacity-25 z-0">
           <svg className="w-full h-full" viewBox="0 0 1200 800" fill="none">
             <pattern id="dot-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
               <circle cx="2" cy="2" r="1.5" fill="#94A3B8" opacity="0.4" />
