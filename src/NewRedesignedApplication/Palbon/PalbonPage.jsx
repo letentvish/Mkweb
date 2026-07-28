@@ -24,7 +24,11 @@ import {
   Check,
   IndianRupee,
   FolderGit2,
-  Lock
+  Lock,
+  Cpu,
+  Share2,
+  BookOpen,
+  User
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import NewNavbar from "../Components/NewNavbar";
@@ -32,6 +36,7 @@ import NewFooter from "../Components/NewFooter";
 
 export default function PalbonPage() {
   const navigate = useNavigate();
+  const [heroVersion, setHeroVersion] = useState("v2"); // "v1" | "v2"
   const [activeModelTab, setActiveModelTab] = useState("workforce");
   const [activeArchTab, setActiveArchTab] = useState("single-record");
 
@@ -239,10 +244,8 @@ export default function PalbonPage() {
     <div className="min-h-screen bg-[#F8FAFC] text-slate-900 font-sans overflow-x-hidden">
       
       {/* Global Navigation Bar */}
-      <NewNavbar />
-
-      {/* SECTION 1: HERO */}
-      <section className="relative pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden border-b border-slate-200/80 bg-gradient-to-b from-[#F8FAFC] via-[#F1F5F9] to-white">
+      <NewNavbar />      {/* SECTION 1: HERO (WITH VERSION TOGGLE) */}
+      <section className="relative pt-24 pb-16 lg:pt-28 lg:pb-24 overflow-hidden border-b border-slate-200/80 bg-gradient-to-b from-[#F8FAFC] via-[#F1F5F9] to-white">
         
         {/* Tech Node Vector Background */}
         <div className="absolute inset-0 pointer-events-none opacity-40">
@@ -254,211 +257,509 @@ export default function PalbonPage() {
           </svg>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
-            {/* Left Column: Text & Primary CTAs */}
-            <div className="lg:col-span-6 flex flex-col items-start space-y-6">
+        {/* Hero Version Toggle Control */}
+        <div className="flex justify-center mb-8 relative z-30">
+          <div className="inline-flex p-1 bg-white/90 backdrop-blur-md border border-slate-300/80 shadow-md rounded-full">
+            <button
+              onClick={() => setHeroVersion("v1")}
+              className={`px-5 py-2 rounded-full text-xs font-extrabold transition-all duration-200 cursor-pointer ${
+                heroVersion === "v1"
+                  ? "bg-[#0284c7] text-white shadow-md"
+                  : "text-slate-600 hover:text-slate-900"
+              }`}
+            >
+              Hero V1 (Executive Matrix)
+            </button>
+            <button
+              onClick={() => setHeroVersion("v2")}
+              className={`px-5 py-2 rounded-full text-xs font-extrabold transition-all duration-200 cursor-pointer ${
+                heroVersion === "v2"
+                  ? "bg-[#6366f1] text-white shadow-md"
+                  : "text-slate-600 hover:text-slate-900"
+              }`}
+            >
+              Hero V2 (Integrated Stack Architecture)
+            </button>
+          </div>
+        </div>
+
+        {/* HERO VERSION 1 */}
+        {heroVersion === "v1" && (
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-50 border border-sky-200 text-sky-700 text-xs font-bold tracking-wider uppercase font-poppins">
-                <span className="w-2 h-2 rounded-full bg-[#0284c7] animate-pulse" />
-                <span>PALBON INTEGRATED SOLUTIONS</span>
-              </div>
-
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-extrabold text-slate-900 tracking-tight leading-[1.12]">
-                Build your <br />
-                <span className="text-[#0284c7]">enterprise operating system</span>
-              </h1>
-
-              <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-xl">
-                Unify your people, processes, data, and technology on one intelligent platform. Designed for the way modern enterprises operate.
-              </p>
-
-              <div className="flex flex-wrap items-center gap-4 pt-2">
-                <button
-                  onClick={() => navigate("/contact")}
-                  className="bg-[#0284c7] hover:bg-[#0369a1] text-white font-bold px-7 py-3.5 rounded-full inline-flex items-center gap-2 shadow-lg shadow-sky-500/25 transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95"
-                >
-                  <span>Book Architecture Review</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-
-                <button
-                  onClick={() => navigate("/contact")}
-                  className="bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-bold px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-all duration-200 cursor-pointer shadow-sm hover:scale-105 active:scale-95"
-                >
-                  <div className="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-[#0284c7]">
-                    <Play className="w-3 h-3 fill-current ml-0.5" />
-                  </div>
-                  <span>Watch Overview</span>
-                </button>
-              </div>
-
-              <div className="pt-8 w-full border-t border-slate-200/80">
-                <p className="text-xs font-semibold uppercase tracking-wider text-slate-600 mb-4">
-                  Trusted by forward-thinking organizations
-                </p>
-                <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
-                  {brandLogos.map((brand, idx) => (
-                    <span key={idx} className={`text-base md:text-lg opacity-80 hover:opacity-100 transition-opacity ${brand.font}`}>
-                      {brand.name}
-                    </span>
-                  ))}
+              {/* Left Column: Text & Primary CTAs */}
+              <div className="lg:col-span-6 flex flex-col items-start space-y-6">
+                
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-50 border border-sky-200 text-sky-700 text-xs font-bold tracking-wider uppercase font-poppins">
+                  <span className="w-2 h-2 rounded-full bg-[#0284c7] animate-pulse" />
+                  <span>PALBON INTEGRATED SOLUTIONS</span>
                 </div>
+
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-extrabold text-slate-900 tracking-tight leading-[1.12]">
+                  Build your <br />
+                  <span className="text-[#0284c7]">enterprise operating system</span>
+                </h1>
+
+                <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-xl">
+                  Unify your people, processes, data, and technology on one intelligent platform. Designed for the way modern enterprises operate.
+                </p>
+
+                <div className="flex flex-wrap items-center gap-4 pt-2">
+                  <button
+                    onClick={() => navigate("/contact")}
+                    className="bg-[#0284c7] hover:bg-[#0369a1] text-white font-bold px-7 py-3.5 rounded-full inline-flex items-center gap-2 shadow-lg shadow-sky-500/25 transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95"
+                  >
+                    <span>Book Architecture Review</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+
+                  <button
+                    onClick={() => navigate("/contact")}
+                    className="bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-bold px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-all duration-200 cursor-pointer shadow-sm hover:scale-105 active:scale-95"
+                  >
+                    <div className="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-[#0284c7]">
+                      <Play className="w-3 h-3 fill-current ml-0.5" />
+                    </div>
+                    <span>Watch Overview</span>
+                  </button>
+                </div>
+
+                <div className="pt-8 w-full border-t border-slate-200/80">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-slate-600 mb-4">
+                    Trusted by forward-thinking organizations
+                  </p>
+                  <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
+                    {brandLogos.map((brand, idx) => (
+                      <span key={idx} className={`text-base md:text-lg opacity-80 hover:opacity-100 transition-opacity ${brand.font}`}>
+                        {brand.name}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Right Column: Central Executive & Connected Floating Telemetry Nodes */}
+              <div className="lg:col-span-6 relative flex items-center justify-center min-h-[620px] lg:min-h-[660px]">
+                
+                {/* Connecting Lines SVG */}
+                <div className="absolute inset-0 pointer-events-none z-10 hidden sm:block">
+                  <svg className="w-full h-full" viewBox="0 0 600 600" fill="none">
+                    {/* Hub to PEOPLE (Top-Left) */}
+                    <path d="M 300 310 L 110 80" stroke="#0066FF" strokeWidth="1.5" strokeDasharray="4 4" strokeOpacity="0.6" />
+                    <circle cx="110" cy="80" r="3.5" fill="#0066FF" />
+
+                    {/* Hub to DATA (Bottom-Left) */}
+                    <path d="M 300 310 L 110 500" stroke="#0066FF" strokeWidth="1.5" strokeDasharray="4 4" strokeOpacity="0.6" />
+                    <circle cx="110" cy="500" r="3.5" fill="#0066FF" />
+
+                    {/* Hub to PROCESSES (Top-Right) */}
+                    <path d="M 300 310 L 490 90" stroke="#0066FF" strokeWidth="1.5" strokeDasharray="4 4" strokeOpacity="0.6" />
+                    <circle cx="490" cy="90" r="3.5" fill="#0066FF" />
+
+                    {/* Hub to OUTCOMES (Bottom-Right) */}
+                    <path d="M 300 310 L 490 500" stroke="#0066FF" strokeWidth="1.5" strokeDasharray="4 4" strokeOpacity="0.6" />
+                    <circle cx="490" cy="500" r="3.5" fill="#0066FF" />
+                  </svg>
+                </div>
+
+                {/* Central Executive Image */}
+                <div className="relative z-20 w-full max-w-md mx-auto flex justify-center items-end">
+                  <img 
+                    src="/palbon_hero_executive.png" 
+                    alt="PALBON Executive holding digital tablet" 
+                    className="max-h-[520px] lg:max-h-[580px] w-auto object-contain object-bottom drop-shadow-2xl"
+                  />
+                </div>
+
+                {/* Central Hub Medallion: PALBON Unified Intelligence */}
+                <motion.div
+                  animate={{ scale: [1, 1.03, 1] }}
+                  transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+                  className="absolute z-40 top-[52%] left-[50%] -translate-x-1/2 -translate-y-1/2 bg-white/95 backdrop-blur-xl border-2 border-[#0066FF] p-4 rounded-2xl shadow-2xl text-center w-36 h-36 flex flex-col items-center justify-center"
+                >
+                  <div className="w-11 h-11 bg-[#0066FF] flex items-center justify-center rounded-xl mb-1.5 shadow-md">
+                    <span className="text-white font-extrabold text-2xl">P</span>
+                  </div>
+                  <p className="font-black text-xs text-[#0b1c30]">PALBON</p>
+                  <p className="text-[7px] uppercase font-bold text-gray-400 tracking-tighter">Unified Intelligence</p>
+                </motion.div>
+
+                {/* 1. PEOPLE CARD (Top-Left) */}
+                <motion.div
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut" }}
+                  className="absolute top-0 left-0 sm:-left-2 lg:-left-6 bg-white/90 backdrop-blur-md p-4 sm:p-5 rounded-2xl shadow-xl border border-white/60 z-30 w-48 sm:w-52"
+                >
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="bg-blue-100 p-1.5 rounded-lg text-[#0066FF]">
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"></path></svg>
+                    </div>
+                    <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">People</span>
+                  </div>
+                  <p className="text-xs font-semibold text-slate-900 mb-2">Talent & Culture</p>
+                  <div className="flex items-center -space-x-2 mb-2">
+                    <img alt="avatar" className="w-7 h-7 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80"/>
+                    <img alt="avatar" className="w-7 h-7 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80"/>
+                    <img alt="avatar" className="w-7 h-7 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&q=80"/>
+                    <div className="w-7 h-7 rounded-full bg-blue-50 border-2 border-white flex items-center justify-center text-[9px] font-bold text-[#0066FF]">+2k</div>
+                  </div>
+                  <div>
+                    <p className="text-base font-bold text-[#0066FF] leading-none">+2.4k</p>
+                    <p className="text-[9px] text-gray-500 font-medium">Active Users</p>
+                  </div>
+                </motion.div>
+
+                {/* 2. DATA CARD (Bottom-Left) */}
+                <motion.div
+                  animate={{ y: [0, 8, 0] }}
+                  transition={{ repeat: Infinity, duration: 5.2, ease: "easeInOut", delay: 0.5 }}
+                  className="absolute bottom-2 left-0 sm:-left-2 lg:-left-6 bg-white/90 backdrop-blur-md p-4 sm:p-5 rounded-2xl shadow-xl border border-white/60 z-30 w-44 sm:w-48"
+                >
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="bg-blue-100 p-1.5 rounded-lg text-[#0066FF]">
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"></path></svg>
+                    </div>
+                    <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Data</span>
+                  </div>
+                  <p className="text-xs font-semibold text-slate-900 mb-3">Unified & Secure</p>
+                  <div className="flex items-end gap-1 mb-2">
+                    <div className="w-2.5 bg-blue-100 h-5 rounded-t-sm"></div>
+                    <div className="w-2.5 bg-blue-200 h-8 rounded-t-sm"></div>
+                    <div className="w-2.5 bg-blue-400 h-7 rounded-t-sm"></div>
+                    <div className="w-2.5 bg-blue-300 h-10 rounded-t-sm"></div>
+                    <div className="w-2.5 bg-[#0066FF] h-14 rounded-t-sm"></div>
+                  </div>
+                  <p className="text-base font-bold text-[#0066FF]">98.6%</p>
+                  <p className="text-[9px] text-gray-500 font-medium">Data Accuracy</p>
+                </motion.div>
+
+                {/* 3. PROCESSES CARD (Top-Right) */}
+                <motion.div
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ repeat: Infinity, duration: 4.8, ease: "easeInOut", delay: 1 }}
+                  className="absolute top-2 right-0 sm:-right-2 lg:-right-6 bg-white/90 backdrop-blur-md p-4 sm:p-5 rounded-2xl shadow-xl border border-white/60 z-30 w-44 sm:w-48"
+                >
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="bg-blue-100 p-1.5 rounded-lg text-[#0066FF]">
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path clipRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" fillRule="evenodd"></path></svg>
+                    </div>
+                    <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Processes</span>
+                  </div>
+                  <p className="text-xs font-semibold text-slate-900 mb-2">Workflows</p>
+                  <div className="relative h-14 w-full mb-2 flex items-center justify-center">
+                    <div className="grid grid-cols-3 gap-1.5 w-full h-full p-1.5 opacity-70">
+                      <div className="border border-[#0066FF] rounded-sm h-3.5"></div>
+                      <div className="col-span-2 border border-[#0066FF] rounded-sm h-3.5"></div>
+                      <div className="col-span-2 border border-[#0066FF] rounded-sm h-3.5"></div>
+                      <div className="border border-[#0066FF] rounded-sm h-3.5 flex items-center justify-center">
+                        <svg className="w-2 h-2 text-[#0066FF]" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg>
+                      </div>
+                    </div>
+                  </div>
+                  <p className="text-base font-bold text-[#0066FF]">128</p>
+                  <p className="text-[9px] text-gray-500 font-medium">Automated Workflows</p>
+                </motion.div>
+
+                {/* 4. OUTCOMES CARD (Bottom-Right) */}
+                <motion.div
+                  animate={{ y: [0, 8, 0] }}
+                  transition={{ repeat: Infinity, duration: 4.2, ease: "easeInOut", delay: 1.5 }}
+                  className="absolute bottom-2 right-0 sm:-right-2 lg:-right-6 bg-white/90 backdrop-blur-md p-4 sm:p-5 rounded-2xl shadow-xl border border-white/60 z-30 w-44 sm:w-48 text-center"
+                >
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="bg-blue-100 p-1.5 rounded-lg text-[#0066FF]">
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path><path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path></svg>
+                    </div>
+                    <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Outcomes</span>
+                  </div>
+                  <p className="text-xs font-semibold text-slate-900 mb-2">Business Impact</p>
+                  <div className="relative w-16 h-16 mx-auto mb-2">
+                    <svg className="w-full h-full" viewBox="0 0 36 36">
+                      <path className="text-gray-100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" strokeWidth="3"></path>
+                      <path className="text-[#0066FF]" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" strokeDasharray="82, 100" strokeLinecap="round" strokeWidth="3"></path>
+                      <text className="text-[8px] font-bold fill-slate-900" textAnchor="middle" x="18" y="20.35">82%</text>
+                    </svg>
+                  </div>
+                  <p className="text-[9px] text-gray-500 font-medium text-center">Operational Efficiency</p>
+                </motion.div>
+
               </div>
 
             </div>
+          </div>
+        )}
 
-            {/* Right Column: Central Executive & Connected Floating Telemetry Nodes */}
-            <div className="lg:col-span-6 relative flex items-center justify-center min-h-[620px] lg:min-h-[660px]">
+        {/* HERO VERSION 2 (INTEGRATED ARCHITECTURE DIAGRAM & EXECUTIVE PERSONAS) */}
+        {heroVersion === "v2" && (
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            
+            {/* Top Pill Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50 border border-indigo-200/80 text-[#6366f1] text-xs font-bold tracking-widest uppercase mb-4">
+              UNIFIED. INTELLIGENT. IMPACTFUL.
+            </div>
+
+            {/* Main Headline */}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-extrabold text-slate-900 tracking-tight leading-[1.12] max-w-4xl mx-auto">
+              One Integrated Tech Stack <br className="hidden sm:block" />
+              <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                to Run Your Enterprise
+              </span>
+            </h1>
+
+            {/* Subheading */}
+            <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto mt-4">
+              PALBON unifies HRMS, ERP, and learning in a single intelligent ecosystem so leaders can make smarter decisions, accelerate growth, and stay future-ready.
+            </p>
+
+            {/* Central 3D Ecosystem Diagram (HRMS, ERP, LXP Podiums & PALBON Hub) */}
+            <div className="relative w-full max-w-5xl mx-auto mt-12 mb-12 py-10 px-4 flex flex-col items-center">
               
-              {/* Connecting Lines SVG */}
-              <div className="absolute inset-0 pointer-events-none z-10 hidden sm:block">
-                <svg className="w-full h-full" viewBox="0 0 600 600" fill="none">
-                  {/* Hub to PEOPLE (Top-Left) */}
-                  <path d="M 300 310 L 110 80" stroke="#0066FF" strokeWidth="1.5" strokeDasharray="4 4" strokeOpacity="0.6" />
-                  <circle cx="110" cy="80" r="3.5" fill="#0066FF" />
-
-                  {/* Hub to DATA (Bottom-Left) */}
-                  <path d="M 300 310 L 110 500" stroke="#0066FF" strokeWidth="1.5" strokeDasharray="4 4" strokeOpacity="0.6" />
-                  <circle cx="110" cy="500" r="3.5" fill="#0066FF" />
-
-                  {/* Hub to PROCESSES (Top-Right) */}
-                  <path d="M 300 310 L 490 90" stroke="#0066FF" strokeWidth="1.5" strokeDasharray="4 4" strokeOpacity="0.6" />
-                  <circle cx="490" cy="90" r="3.5" fill="#0066FF" />
-
-                  {/* Hub to OUTCOMES (Bottom-Right) */}
-                  <path d="M 300 310 L 490 500" stroke="#0066FF" strokeWidth="1.5" strokeDasharray="4 4" strokeOpacity="0.6" />
-                  <circle cx="490" cy="500" r="3.5" fill="#0066FF" />
-                </svg>
+              {/* Outer Floating Feature Nodes (4 Corners) */}
+              {/* Top Left: Unified Data */}
+              <div className="absolute top-2 left-2 sm:left-8 flex items-center gap-3 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-slate-200/80 z-20 hover:scale-105 transition-transform">
+                <div className="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+                  <Database className="w-5 h-5" />
+                </div>
+                <span className="text-xs font-bold text-slate-800">Unified Data</span>
               </div>
 
-              {/* Central Executive Image */}
-              <div className="relative z-20 w-full max-w-md mx-auto flex justify-center items-end">
-                <img 
-                  src="/palbon_hero_executive.png" 
-                  alt="PALBON Executive holding digital tablet" 
-                  className="max-h-[520px] lg:max-h-[580px] w-auto object-contain object-bottom drop-shadow-2xl"
-                />
+              {/* Bottom Left: Security & Compliance */}
+              <div className="absolute bottom-12 left-2 sm:left-8 flex items-center gap-3 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-slate-200/80 z-20 hover:scale-105 transition-transform">
+                <div className="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                  <ShieldCheck className="w-5 h-5" />
+                </div>
+                <span className="text-xs font-bold text-slate-800">Security & Compliance</span>
               </div>
 
-              {/* Central Hub Medallion: PALBON Unified Intelligence */}
-              <motion.div
-                animate={{ scale: [1, 1.03, 1] }}
-                transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                className="absolute z-40 top-[52%] left-[50%] -translate-x-1/2 -translate-y-1/2 bg-white/95 backdrop-blur-xl border-2 border-[#0066FF] p-4 rounded-2xl shadow-2xl text-center w-36 h-36 flex flex-col items-center justify-center"
-              >
-                <div className="w-11 h-11 bg-[#0066FF] flex items-center justify-center rounded-xl mb-1.5 shadow-md">
-                  <span className="text-white font-extrabold text-2xl">P</span>
+              {/* Top Right: AI-Powered Intelligence */}
+              <div className="absolute top-2 right-2 sm:right-8 flex items-center gap-3 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-slate-200/80 z-20 hover:scale-105 transition-transform">
+                <div className="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
+                  <Cpu className="w-5 h-5" />
                 </div>
-                <p className="font-black text-xs text-[#0b1c30]">PALBON</p>
-                <p className="text-[7px] uppercase font-bold text-gray-400 tracking-tighter">Unified Intelligence</p>
-              </motion.div>
+                <span className="text-xs font-bold text-slate-800">AI-Powered Intelligence</span>
+              </div>
 
-              {/* 1. PEOPLE CARD (Top-Left) */}
-              <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut" }}
-                className="absolute top-0 left-0 sm:-left-2 lg:-left-6 bg-white/90 backdrop-blur-md p-4 sm:p-5 rounded-2xl shadow-xl border border-white/60 z-30 w-48 sm:w-52"
-              >
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="bg-blue-100 p-1.5 rounded-lg text-[#0066FF]">
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"></path></svg>
-                  </div>
-                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">People</span>
+              {/* Bottom Right: Seamless Integrations */}
+              <div className="absolute bottom-12 right-2 sm:right-8 flex items-center gap-3 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-slate-200/80 z-20 hover:scale-105 transition-transform">
+                <div className="w-9 h-9 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center">
+                  <Share2 className="w-5 h-5" />
                 </div>
-                <p className="text-xs font-semibold text-slate-900 mb-2">Talent & Culture</p>
-                <div className="flex items-center -space-x-2 mb-2">
-                  <img alt="avatar" className="w-7 h-7 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80"/>
-                  <img alt="avatar" className="w-7 h-7 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80"/>
-                  <img alt="avatar" className="w-7 h-7 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&q=80"/>
-                  <div className="w-7 h-7 rounded-full bg-blue-50 border-2 border-white flex items-center justify-center text-[9px] font-bold text-[#0066FF]">+2k</div>
-                </div>
-                <div>
-                  <p className="text-base font-bold text-[#0066FF] leading-none">+2.4k</p>
-                  <p className="text-[9px] text-gray-500 font-medium">Active Users</p>
-                </div>
-              </motion.div>
+                <span className="text-xs font-bold text-slate-800">Seamless Integrations</span>
+              </div>
 
-              {/* 2. DATA CARD (Bottom-Left) */}
-              <motion.div
-                animate={{ y: [0, 8, 0] }}
-                transition={{ repeat: Infinity, duration: 5.2, ease: "easeInOut", delay: 0.5 }}
-                className="absolute bottom-2 left-0 sm:-left-2 lg:-left-6 bg-white/90 backdrop-blur-md p-4 sm:p-5 rounded-2xl shadow-xl border border-white/60 z-30 w-44 sm:w-48"
-              >
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="bg-blue-100 p-1.5 rounded-lg text-[#0066FF]">
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"></path></svg>
-                  </div>
-                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Data</span>
-                </div>
-                <p className="text-xs font-semibold text-slate-900 mb-3">Unified & Secure</p>
-                <div className="flex items-end gap-1 mb-2">
-                  <div className="w-2.5 bg-blue-100 h-5 rounded-t-sm"></div>
-                  <div className="w-2.5 bg-blue-200 h-8 rounded-t-sm"></div>
-                  <div className="w-2.5 bg-blue-400 h-7 rounded-t-sm"></div>
-                  <div className="w-2.5 bg-blue-300 h-10 rounded-t-sm"></div>
-                  <div className="w-2.5 bg-[#0066FF] h-14 rounded-t-sm"></div>
-                </div>
-                <p className="text-base font-bold text-[#0066FF]">98.6%</p>
-                <p className="text-[9px] text-gray-500 font-medium">Data Accuracy</p>
-              </motion.div>
+              {/* Connecting SVG Paths */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none z-0 hidden lg:block" viewBox="0 0 1000 500" fill="none">
+                <path d="M 300 210 Q 400 180 500 240" stroke="#06b6d4" strokeWidth="2.5" strokeDasharray="5 5" strokeOpacity="0.8" />
+                <circle cx="300" cy="210" r="4" fill="#06b6d4" />
+                
+                <path d="M 700 210 Q 600 180 500 240" stroke="#6366f1" strokeWidth="2.5" strokeDasharray="5 5" strokeOpacity="0.8" />
+                <circle cx="700" cy="210" r="4" fill="#6366f1" />
+                
+                <path d="M 500 370 L 500 280" stroke="#38bdf8" strokeWidth="2.5" strokeDasharray="5 5" strokeOpacity="0.8" />
+                <circle cx="500" cy="370" r="4" fill="#38bdf8" />
+              </svg>
 
-              {/* 3. PROCESSES CARD (Top-Right) */}
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ repeat: Infinity, duration: 4.8, ease: "easeInOut", delay: 1 }}
-                className="absolute top-2 right-0 sm:-right-2 lg:-right-6 bg-white/90 backdrop-blur-md p-4 sm:p-5 rounded-2xl shadow-xl border border-white/60 z-30 w-44 sm:w-48"
-              >
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="bg-blue-100 p-1.5 rounded-lg text-[#0066FF]">
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path clipRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" fillRule="evenodd"></path></svg>
+              {/* 3-Pillar Podiums Layout Grid */}
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-12 items-center w-full relative z-10">
+
+                {/* LEFT PODIUM: HRMS */}
+                <div className="flex flex-col items-center">
+                  <div className="w-full max-w-sm bg-white/95 backdrop-blur-xl border border-slate-200/90 rounded-2xl p-5 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 text-left">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-10 h-10 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center font-bold">
+                        <Users className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <h3 className="text-base font-extrabold text-slate-900">HRMS</h3>
+                        <p className="text-xs text-slate-500 font-medium">Manage your people</p>
+                      </div>
+                    </div>
+                    <ul className="space-y-2 pt-3 border-t border-slate-100 text-xs font-semibold text-slate-700">
+                      <li className="flex items-center gap-2 text-teal-700">
+                        <span className="text-teal-500 font-bold">✓</span> Talent Management
+                      </li>
+                      <li className="flex items-center gap-2 text-teal-700">
+                        <span className="text-teal-500 font-bold">✓</span> Payroll & Compliance
+                      </li>
+                      <li className="flex items-center gap-2 text-teal-700">
+                        <span className="text-teal-500 font-bold">✓</span> Workforce Analytics
+                      </li>
+                    </ul>
                   </div>
-                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Processes</span>
-                </div>
-                <p className="text-xs font-semibold text-slate-900 mb-2">Workflows</p>
-                <div className="relative h-14 w-full mb-2 flex items-center justify-center">
-                  <div className="grid grid-cols-3 gap-1.5 w-full h-full p-1.5 opacity-70">
-                    <div className="border border-[#0066FF] rounded-sm h-3.5"></div>
-                    <div className="col-span-2 border border-[#0066FF] rounded-sm h-3.5"></div>
-                    <div className="col-span-2 border border-[#0066FF] rounded-sm h-3.5"></div>
-                    <div className="border border-[#0066FF] rounded-sm h-3.5 flex items-center justify-center">
-                      <svg className="w-2 h-2 text-[#0066FF]" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg>
+
+                  {/* 3D Glowing Podium Base (Teal/Cyan) */}
+                  <div className="relative mt-4 w-44 h-12 flex items-center justify-center">
+                    <div className="absolute inset-0 bg-gradient-to-r from-teal-400 to-cyan-500 rounded-full blur-md opacity-40 animate-pulse"></div>
+                    <div className="w-full h-10 bg-gradient-to-b from-teal-500 to-cyan-700 rounded-full border-2 border-cyan-300/60 shadow-lg flex items-center justify-center">
+                      <div className="w-28 h-6 bg-teal-900/40 rounded-full border border-teal-200/40"></div>
                     </div>
                   </div>
                 </div>
-                <p className="text-base font-bold text-[#0066FF]">128</p>
-                <p className="text-[9px] text-gray-500 font-medium">Automated Workflows</p>
-              </motion.div>
 
-              {/* 4. OUTCOMES CARD (Bottom-Right) */}
-              <motion.div
-                animate={{ y: [0, 8, 0] }}
-                transition={{ repeat: Infinity, duration: 4.2, ease: "easeInOut", delay: 1.5 }}
-                className="absolute bottom-2 right-0 sm:-right-2 lg:-right-6 bg-white/90 backdrop-blur-md p-4 sm:p-5 rounded-2xl shadow-xl border border-white/60 z-30 w-44 sm:w-48 text-center"
-              >
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="bg-blue-100 p-1.5 rounded-lg text-[#0066FF]">
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path><path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path></svg>
+                {/* CENTER PODIUM: CENTRAL PALBON HUB MEDALLION */}
+                <div className="flex flex-col items-center">
+                  <div className="w-64 h-64 sm:w-72 sm:h-72 rounded-full bg-white/95 backdrop-blur-2xl border-4 border-indigo-500/80 shadow-2xl p-6 flex flex-col items-center justify-center relative group transform hover:scale-105 transition-all duration-300">
+                    
+                    {/* Pulsing Outer Aura Ring */}
+                    <div className="absolute -inset-3 rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 opacity-20 blur-xl group-hover:opacity-40 transition-opacity"></div>
+                    
+                    {/* PALBON Logo Icon */}
+                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white font-extrabold text-3xl shadow-lg mb-2">
+                      P
+                    </div>
+
+                    <h3 className="text-xl font-extrabold text-slate-900 tracking-tight">PALBON</h3>
+                    <p className="text-xs font-bold text-indigo-600 uppercase tracking-wider mb-4">Integrated Tech Stack</p>
+
+                    {/* 3 Mini Feature Pills Inside Hub */}
+                    <div className="flex items-center justify-center gap-1.5 text-[9px] font-extrabold text-slate-600 bg-slate-100/90 px-3 py-1.5 rounded-full border border-slate-200/80 shadow-inner">
+                      <span className="text-blue-600">Unified Data</span>
+                      <span>•</span>
+                      <span className="text-indigo-600">Intelligent Insights</span>
+                      <span>•</span>
+                      <span className="text-purple-600">Automation</span>
+                    </div>
                   </div>
-                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Outcomes</span>
+
+                  {/* 3D Glowing Center Podium Platform */}
+                  <div className="relative -mt-6 w-60 h-16 flex items-center justify-center z-0">
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-full blur-lg opacity-50"></div>
+                    <div className="w-full h-12 bg-gradient-to-b from-indigo-800 to-slate-950 rounded-full border-2 border-indigo-400/80 shadow-2xl flex items-center justify-center">
+                      <div className="w-44 h-7 bg-indigo-950/80 rounded-full border border-indigo-300/40"></div>
+                    </div>
+                  </div>
                 </div>
-                <p className="text-xs font-semibold text-slate-900 mb-2">Business Impact</p>
-                <div className="relative w-16 h-16 mx-auto mb-2">
-                  <svg className="w-full h-full" viewBox="0 0 36 36">
-                    <path className="text-gray-100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" strokeWidth="3"></path>
-                    <path className="text-[#0066FF]" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" strokeDasharray="82, 100" strokeLinecap="round" strokeWidth="3"></path>
-                    <text className="text-[8px] font-bold fill-slate-900" textAnchor="middle" x="18" y="20.35">82%</text>
-                  </svg>
+
+                {/* RIGHT PODIUM: ERP */}
+                <div className="flex flex-col items-center">
+                  <div className="w-full max-w-sm bg-white/95 backdrop-blur-xl border border-slate-200/90 rounded-2xl p-5 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 text-left">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center font-bold">
+                        <BarChart2 className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <h3 className="text-base font-extrabold text-slate-900">ERP</h3>
+                        <p className="text-xs text-slate-500 font-medium">Run your business</p>
+                      </div>
+                    </div>
+                    <ul className="space-y-2 pt-3 border-t border-slate-100 text-xs font-semibold text-slate-700">
+                      <li className="flex items-center gap-2 text-purple-700">
+                        <span className="text-purple-500 font-bold">✓</span> Finance & Accounting
+                      </li>
+                      <li className="flex items-center gap-2 text-purple-700">
+                        <span className="text-purple-500 font-bold">✓</span> Procurement
+                      </li>
+                      <li className="flex items-center gap-2 text-purple-700">
+                        <span className="text-purple-500 font-bold">✓</span> Inventory & Operations
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* 3D Glowing Podium Base (Purple/Indigo) */}
+                  <div className="relative mt-4 w-44 h-12 flex items-center justify-center">
+                    <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-full blur-md opacity-40 animate-pulse"></div>
+                    <div className="w-full h-10 bg-gradient-to-b from-purple-600 to-indigo-900 rounded-full border-2 border-purple-300/60 shadow-lg flex items-center justify-center">
+                      <div className="w-28 h-6 bg-purple-950/40 rounded-full border border-purple-200/40"></div>
+                    </div>
+                  </div>
                 </div>
-                <p className="text-[9px] text-gray-500 font-medium text-center">Operational Efficiency</p>
-              </motion.div>
+
+              </div>
+
+              {/* BOTTOM PODIUM: LXP */}
+              <div className="flex flex-col items-center mt-6 z-10 w-full max-w-sm">
+                <div className="w-full bg-white/95 backdrop-blur-xl border border-slate-200/90 rounded-2xl p-5 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 text-left">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold">
+                      <BookOpen className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="text-base font-extrabold text-slate-900">LXP</h3>
+                      <p className="text-xs text-slate-500 font-medium">Grow your people</p>
+                    </div>
+                  </div>
+                  <ul className="space-y-2 pt-3 border-t border-slate-100 text-xs font-semibold text-slate-700">
+                    <li className="flex items-center gap-2 text-blue-700">
+                      <span className="text-blue-500 font-bold">✓</span> Learning & Development
+                    </li>
+                    <li className="flex items-center gap-2 text-blue-700">
+                      <span className="text-blue-500 font-bold">✓</span> Skills & Assessments
+                    </li>
+                    <li className="flex items-center gap-2 text-blue-700">
+                      <span className="text-blue-500 font-bold">✓</span> Performance Growth
+                    </li>
+                  </ul>
+                </div>
+
+                {/* 3D Glowing Podium Base (Sky Blue) */}
+                <div className="relative mt-4 w-44 h-12 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-gradient-to-r from-sky-400 to-blue-600 rounded-full blur-md opacity-40 animate-pulse"></div>
+                  <div className="w-full h-10 bg-gradient-to-b from-sky-500 to-blue-800 rounded-full border-2 border-sky-300/60 shadow-lg flex items-center justify-center">
+                    <div className="w-28 h-6 bg-blue-950/40 rounded-full border border-sky-200/40"></div>
+                  </div>
+                </div>
+              </div>
 
             </div>
 
-          </div>
+            {/* Bottom Executive Persona Bar ("Empowering every leader in your organization") */}
+            <div className="w-full max-w-6xl mx-auto mt-6 p-6 bg-white/90 backdrop-blur-xl border border-slate-200/90 rounded-2xl shadow-xl text-left">
+              <p className="text-center text-xs font-extrabold uppercase tracking-widest text-slate-500 mb-6">
+                Empowering every leader in your organization
+              </p>
 
-        </div>
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                {/* CEO */}
+                <div className="flex flex-col items-start p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 hover:bg-white hover:shadow-md transition-all">
+                  <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold mb-2">
+                    <User className="w-4 h-4" />
+                  </div>
+                  <p className="text-xs font-extrabold text-slate-900">CEO</p>
+                  <p className="text-[11px] text-slate-600 font-medium leading-snug mt-1">Drive strategy with real-time insights</p>
+                </div>
+
+                {/* CFO */}
+                <div className="flex flex-col items-start p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 hover:bg-white hover:shadow-md transition-all">
+                  <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold mb-2">
+                    <User className="w-4 h-4" />
+                  </div>
+                  <p className="text-xs font-extrabold text-slate-900">CFO</p>
+                  <p className="text-[11px] text-slate-600 font-medium leading-snug mt-1">Gain financial clarity and control</p>
+                </div>
+
+                {/* CHRO */}
+                <div className="flex flex-col items-start p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 hover:bg-white hover:shadow-md transition-all">
+                  <div className="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold mb-2">
+                    <User className="w-4 h-4" />
+                  </div>
+                  <p className="text-xs font-extrabold text-slate-900">CHRO</p>
+                  <p className="text-[11px] text-slate-600 font-medium leading-snug mt-1">Build a high-performing workforce</p>
+                </div>
+
+                {/* COO */}
+                <div className="flex flex-col items-start p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 hover:bg-white hover:shadow-md transition-all">
+                  <div className="w-8 h-8 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center font-bold mb-2">
+                    <User className="w-4 h-4" />
+                  </div>
+                  <p className="text-xs font-extrabold text-slate-900">COO</p>
+                  <p className="text-[11px] text-slate-600 font-medium leading-snug mt-1">Streamline operations & efficiency</p>
+                </div>
+
+                {/* CIO */}
+                <div className="flex flex-col items-start p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 hover:bg-white hover:shadow-md transition-all col-span-2 md:col-span-1">
+                  <div className="w-8 h-8 rounded-lg bg-sky-100 text-sky-700 flex items-center justify-center font-bold mb-2">
+                    <User className="w-4 h-4" />
+                  </div>
+                  <p className="text-xs font-extrabold text-slate-900">CIO</p>
+                  <p className="text-[11px] text-slate-600 font-medium leading-snug mt-1">Scale securely with modern technology</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        )}
 
       </section>
 
