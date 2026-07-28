@@ -19,8 +19,8 @@ const getH = () => container.clientHeight || window.innerHeight;
 
 const scene  = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(45, getW() / getH(), 0.1, 1000);
-camera.position.set(0, 10, 16);
-camera.lookAt(0, 0, 0);
+camera.position.set(0, 14, 21.5);
+camera.lookAt(0, 1.4, 0);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setSize(getW(), getH());
@@ -40,10 +40,10 @@ controls.enableDamping   = true;
 controls.dampingFactor   = 0.05;
 controls.maxPolarAngle   = Math.PI / 2.05;
 controls.minDistance     = 6;
-controls.maxDistance     = 25;
+controls.maxDistance     = 30;
 controls.autoRotate      = true;
 controls.autoRotateSpeed = 0.3;
-controls.target.set(0, 0, 0);
+controls.target.set(0, 1.4, 0);
 
 // ─── LIGHTING ──────────────────────────────────────────────────────────────
 scene.add(new THREE.AmbientLight(0xffffff, 2.2));

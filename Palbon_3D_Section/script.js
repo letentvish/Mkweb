@@ -19,8 +19,8 @@ const getH = () => container.clientHeight || window.innerHeight;
 
 const scene  = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(45, getW() / getH(), 0.1, 1000);
-camera.position.set(0, 10, 16);
-camera.lookAt(0, 0, 0);
+camera.position.set(0, 14, 21.5);
+camera.lookAt(0, 1.4, 0);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setSize(getW(), getH());
@@ -31,17 +31,8 @@ renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.0;
 container.appendChild(renderer.domElement);
 
-// ─── LIGHT BLUE-WHITE BACKGROUND GRADIENT ──────────────────────────────────
-const bgCanvas = document.createElement('canvas');
-bgCanvas.width = bgCanvas.height = 512;
-const bgCtx = bgCanvas.getContext('2d');
-const bgGrad = bgCtx.createRadialGradient(256, 256, 40, 256, 256, 380);
-bgGrad.addColorStop(0,   '#f4f8fe');   // crisp soft white center
-bgGrad.addColorStop(0.55,'#dcebf8');   // soft light blue mid
-bgGrad.addColorStop(1,   '#c8dff5');   // sky blue edge
-bgCtx.fillStyle = bgGrad;
-bgCtx.fillRect(0, 0, 512, 512);
-scene.background = new THREE.CanvasTexture(bgCanvas);
+// ─── TRANSPARENT BACKGROUND ──────────────────────────────────
+scene.background = null;
 
 // ─── CONTROLS ──────────────────────────────────────────────────────────────
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -49,10 +40,10 @@ controls.enableDamping   = true;
 controls.dampingFactor   = 0.05;
 controls.maxPolarAngle   = Math.PI / 2.05;
 controls.minDistance     = 6;
-controls.maxDistance     = 25;
+controls.maxDistance     = 30;
 controls.autoRotate      = true;
 controls.autoRotateSpeed = 0.3;
-controls.target.set(0, 0, 0);
+controls.target.set(0, 1.4, 0);
 
 // ─── LIGHTING ──────────────────────────────────────────────────────────────
 scene.add(new THREE.AmbientLight(0xffffff, 2.2));
