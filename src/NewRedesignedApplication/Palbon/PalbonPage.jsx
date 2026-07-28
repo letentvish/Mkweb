@@ -537,14 +537,14 @@ export default function PalbonPage() {
             <div className="flex-1 my-12 pointer-events-none" />
 
             {/* Bottom Executive Persona Bar ("Empowering every leader in your organization") */}
-            <div className="w-full max-w-6xl mx-auto mt-auto p-6 bg-white/90 backdrop-blur-xl border border-slate-200/90 rounded-2xl shadow-xl text-left pointer-events-auto">
-              <p className="text-center text-xs font-extrabold uppercase tracking-widest text-slate-500 mb-6">
+            <div className="w-full max-w-6xl mx-auto mt-auto text-left pointer-events-auto">
+              <p className="text-center text-xs font-extrabold uppercase tracking-widest text-slate-500 mb-5">
                 Empowering every leader in your organization
               </p>
 
               <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                 {/* CEO */}
-                <div className="flex flex-col items-start p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 hover:bg-white hover:shadow-md transition-all">
+                <div className="flex flex-col items-start p-4 rounded-xl bg-white/85 backdrop-blur-md border border-slate-200/80 shadow-md hover:shadow-xl hover:bg-white transition-all">
                   <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold mb-2">
                     <User className="w-4 h-4" />
                   </div>
@@ -553,7 +553,7 @@ export default function PalbonPage() {
                 </div>
 
                 {/* CFO */}
-                <div className="flex flex-col items-start p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 hover:bg-white hover:shadow-md transition-all">
+                <div className="flex flex-col items-start p-4 rounded-xl bg-white/85 backdrop-blur-md border border-slate-200/80 shadow-md hover:shadow-xl hover:bg-white transition-all">
                   <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold mb-2">
                     <User className="w-4 h-4" />
                   </div>
@@ -562,7 +562,7 @@ export default function PalbonPage() {
                 </div>
 
                 {/* CHRO */}
-                <div className="flex flex-col items-start p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 hover:bg-white hover:shadow-md transition-all">
+                <div className="flex flex-col items-start p-4 rounded-xl bg-white/85 backdrop-blur-md border border-slate-200/80 shadow-md hover:shadow-xl hover:bg-white transition-all">
                   <div className="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold mb-2">
                     <User className="w-4 h-4" />
                   </div>
@@ -571,7 +571,7 @@ export default function PalbonPage() {
                 </div>
 
                 {/* COO */}
-                <div className="flex flex-col items-start p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 hover:bg-white hover:shadow-md transition-all">
+                <div className="flex flex-col items-start p-4 rounded-xl bg-white/85 backdrop-blur-md border border-slate-200/80 shadow-md hover:shadow-xl hover:bg-white transition-all">
                   <div className="w-8 h-8 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center font-bold mb-2">
                     <User className="w-4 h-4" />
                   </div>
@@ -580,7 +580,7 @@ export default function PalbonPage() {
                 </div>
 
                 {/* CIO */}
-                <div className="flex flex-col items-start p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 hover:bg-white hover:shadow-md transition-all col-span-2 md:col-span-1">
+                <div className="flex flex-col items-start p-4 rounded-xl bg-white/85 backdrop-blur-md border border-slate-200/80 shadow-md hover:shadow-xl hover:bg-white transition-all col-span-2 md:col-span-1">
                   <div className="w-8 h-8 rounded-lg bg-sky-100 text-sky-700 flex items-center justify-center font-bold mb-2">
                     <User className="w-4 h-4" />
                   </div>
