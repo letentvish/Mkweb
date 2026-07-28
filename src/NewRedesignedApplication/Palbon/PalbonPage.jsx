@@ -283,6 +283,17 @@ export default function PalbonPage() {
           </div>
         </div>
 
+        {/* Full Hero 3D WebGL Background when Hero V2 is active */}
+        {heroVersion === "v2" && (
+          <div className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-auto">
+            <iframe
+              src="/Palbon_3D_Section/index.html"
+              title="PALBON Interactive 3D Architecture Background"
+              className="w-full h-full border-0 bg-transparent"
+            />
+          </div>
+        )}
+
         {/* HERO VERSION 1 */}
         {heroVersion === "v1" && (
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -491,39 +502,36 @@ export default function PalbonPage() {
           </div>
         )}
 
-        {/* HERO VERSION 2 (INTEGRATED ARCHITECTURE DIAGRAM WITH PALBON 3D SECTION & EXECUTIVE PERSONAS) */}
+        {/* HERO VERSION 2 (PALBON 3D BACKGROUND & EXECUTIVE PERSONAS) */}
         {heroVersion === "v2" && (
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center min-h-[720px] lg:min-h-[820px] flex flex-col justify-between pointer-events-none">
             
-            {/* Top Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50 border border-indigo-200/80 text-[#6366f1] text-xs font-bold tracking-widest uppercase mb-4">
-              UNIFIED. INTELLIGENT. IMPACTFUL.
+            {/* Header Content */}
+            <div className="pointer-events-auto pt-2">
+              {/* Top Pill Badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50/90 backdrop-blur-md border border-indigo-200/80 text-[#6366f1] text-xs font-bold tracking-widest uppercase mb-4 shadow-sm">
+                UNIFIED. INTELLIGENT. IMPACTFUL.
+              </div>
+
+              {/* Main Headline */}
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-extrabold text-slate-900 tracking-tight leading-[1.12] max-w-4xl mx-auto">
+                One Integrated Tech Stack <br className="hidden sm:block" />
+                <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                  to Run Your Enterprise
+                </span>
+              </h1>
+
+              {/* Subheading */}
+              <p className="text-slate-700 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto mt-4 font-medium">
+                PALBON unifies HRMS, ERP, and learning in a single intelligent ecosystem so leaders can make smarter decisions, accelerate growth, and stay future-ready.
+              </p>
             </div>
 
-            {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-extrabold text-slate-900 tracking-tight leading-[1.12] max-w-4xl mx-auto">
-              One Integrated Tech Stack <br className="hidden sm:block" />
-              <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                to Run Your Enterprise
-              </span>
-            </h1>
-
-            {/* Subheading */}
-            <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto mt-4">
-              PALBON unifies HRMS, ERP, and learning in a single intelligent ecosystem so leaders can make smarter decisions, accelerate growth, and stay future-ready.
-            </p>
-
-            {/* Palbon_3D_Section Interactive Three.js Element */}
-            <div className="relative w-full max-w-6xl mx-auto mt-8 mb-8 h-[540px] sm:h-[620px] lg:h-[680px] rounded-3xl overflow-hidden shadow-2xl border border-slate-200/90 bg-gradient-to-b from-white/90 via-sky-50/40 to-slate-100/90 flex items-center justify-center">
-              <iframe
-                src="/Palbon_3D_Section/index.html"
-                title="PALBON Interactive 3D Architecture Element"
-                className="w-full h-full border-0 pointer-events-auto rounded-3xl"
-              />
-            </div>
+            {/* Spacer for Middle Interactive 3D Background Canvas */}
+            <div className="flex-1 my-12 pointer-events-none" />
 
             {/* Bottom Executive Persona Bar ("Empowering every leader in your organization") */}
-            <div className="w-full max-w-6xl mx-auto mt-6 p-6 bg-white/90 backdrop-blur-xl border border-slate-200/90 rounded-2xl shadow-xl text-left">
+            <div className="w-full max-w-6xl mx-auto mt-auto p-6 bg-white/90 backdrop-blur-xl border border-slate-200/90 rounded-2xl shadow-xl text-left pointer-events-auto">
               <p className="text-center text-xs font-extrabold uppercase tracking-widest text-slate-500 mb-6">
                 Empowering every leader in your organization
               </p>
