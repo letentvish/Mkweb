@@ -508,9 +508,9 @@ export default function PalbonPage() {
           </div>
         )}
 
-        {/* HERO VERSION 2 (PALBON 3D BACKGROUND & EXECUTIVE PERSONAS) */}
+        {/* HERO VERSION 2 (PALBON 3D BACKGROUND) */}
         {heroVersion === "v2" && (
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center min-h-[720px] lg:min-h-[820px] flex flex-col justify-between pointer-events-none">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center min-h-[660px] lg:min-h-[740px] flex flex-col justify-start pointer-events-none pb-12">
             
             {/* Header Content */}
             <div className="pointer-events-auto pt-2">
@@ -531,63 +531,6 @@ export default function PalbonPage() {
               <p className="text-slate-700 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto mt-4 font-medium">
                 PALBON unifies HRMS, ERP, and learning in a single intelligent ecosystem so leaders can make smarter decisions, accelerate growth, and stay future-ready.
               </p>
-            </div>
-
-            {/* Spacer for Middle Interactive 3D Background Canvas */}
-            <div className="flex-1 my-12 pointer-events-none" />
-
-            {/* Bottom Executive Persona Bar ("Empowering every leader in your organization") */}
-            <div className="w-full max-w-6xl mx-auto mt-auto text-left pointer-events-auto">
-              <p className="text-center text-xs font-extrabold uppercase tracking-widest text-slate-500 mb-5">
-                Empowering every leader in your organization
-              </p>
-
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-                {/* CEO */}
-                <div className="flex flex-col items-start p-4 rounded-xl bg-white/85 backdrop-blur-md border border-slate-200/80 shadow-md hover:shadow-xl hover:bg-white transition-all">
-                  <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold mb-2">
-                    <User className="w-4 h-4" />
-                  </div>
-                  <p className="text-xs font-extrabold text-slate-900">CEO</p>
-                  <p className="text-[11px] text-slate-600 font-medium leading-snug mt-1">Drive strategy with real-time insights</p>
-                </div>
-
-                {/* CFO */}
-                <div className="flex flex-col items-start p-4 rounded-xl bg-white/85 backdrop-blur-md border border-slate-200/80 shadow-md hover:shadow-xl hover:bg-white transition-all">
-                  <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold mb-2">
-                    <User className="w-4 h-4" />
-                  </div>
-                  <p className="text-xs font-extrabold text-slate-900">CFO</p>
-                  <p className="text-[11px] text-slate-600 font-medium leading-snug mt-1">Gain financial clarity and control</p>
-                </div>
-
-                {/* CHRO */}
-                <div className="flex flex-col items-start p-4 rounded-xl bg-white/85 backdrop-blur-md border border-slate-200/80 shadow-md hover:shadow-xl hover:bg-white transition-all">
-                  <div className="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold mb-2">
-                    <User className="w-4 h-4" />
-                  </div>
-                  <p className="text-xs font-extrabold text-slate-900">CHRO</p>
-                  <p className="text-[11px] text-slate-600 font-medium leading-snug mt-1">Build a high-performing workforce</p>
-                </div>
-
-                {/* COO */}
-                <div className="flex flex-col items-start p-4 rounded-xl bg-white/85 backdrop-blur-md border border-slate-200/80 shadow-md hover:shadow-xl hover:bg-white transition-all">
-                  <div className="w-8 h-8 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center font-bold mb-2">
-                    <User className="w-4 h-4" />
-                  </div>
-                  <p className="text-xs font-extrabold text-slate-900">COO</p>
-                  <p className="text-[11px] text-slate-600 font-medium leading-snug mt-1">Streamline operations & efficiency</p>
-                </div>
-
-                {/* CIO */}
-                <div className="flex flex-col items-start p-4 rounded-xl bg-white/85 backdrop-blur-md border border-slate-200/80 shadow-md hover:shadow-xl hover:bg-white transition-all col-span-2 md:col-span-1">
-                  <div className="w-8 h-8 rounded-lg bg-sky-100 text-sky-700 flex items-center justify-center font-bold mb-2">
-                    <User className="w-4 h-4" />
-                  </div>
-                  <p className="text-xs font-extrabold text-slate-900">CIO</p>
-                  <p className="text-[11px] text-slate-600 font-medium leading-snug mt-1">Scale securely with modern technology</p>
-                </div>
-              </div>
             </div>
 
           </div>
