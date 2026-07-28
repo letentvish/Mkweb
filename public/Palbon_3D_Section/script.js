@@ -2,12 +2,12 @@
 const THREE = window.THREE;
 const OrbitControls = THREE.OrbitControls;
 
-// ─── MODULE DATA ────────────────────────────────────────────────────────────
+// ─── MODULE DATA (HIGH-CONTRAST DUAL-TONE 3D ICON & PLATFORM PALETTE) ─────────
 const MODULES = [
   { 
     name: 'HRMS',           
     subtitle: 'Manage People',       
-    color: 0x0ea5e9, hex: '#0ea5e9', icon: 'hrms',       
+    color: 0x0ea5e9, hex: '#0ea5e9', icon: 'hrms', iconColor: 0xf59e0b,      
     pos: [-4.6, 0, -3.4],
     items: [
       { label: 'Talent Management', badge: 'Up to date' },
@@ -18,7 +18,7 @@ const MODULES = [
   { 
     name: 'ERP',            
     subtitle: 'Run Business',        
-    color: 0x7c3aed, hex: '#7c3aed', icon: 'erp',        
+    color: 0x7c3aed, hex: '#7c3aed', icon: 'erp', iconColor: 0x10b981,       
     pos: [ 4.6, 0, -3.4],
     items: [
       { label: 'General Ledger',   badge: 'Up to date' },
@@ -29,7 +29,7 @@ const MODULES = [
   { 
     name: 'Learning (LXP)', 
     subtitle: 'Develop Talent',      
-    color: 0x0891b2, hex: '#0891b2', icon: 'learning',   
+    color: 0x0891b2, hex: '#0891b2', icon: 'learning', iconColor: 0xf97316,  
     pos: [-6.4, 0,  0.2],
     items: [
       { label: 'HR & Skills',      badge: 'Up to date' },
@@ -40,7 +40,7 @@ const MODULES = [
   { 
     name: 'CRM',            
     subtitle: 'Build Relationships', 
-    color: 0x2563eb, hex: '#2563eb', icon: 'crm',        
+    color: 0x2563eb, hex: '#2563eb', icon: 'crm', iconColor: 0xf43f5e,       
     pos: [ 6.4, 0,  0.2],
     items: [
       { label: 'Deal Pipeline',    badge: 'Up to date' },
@@ -51,7 +51,7 @@ const MODULES = [
   { 
     name: 'Analytics & AI', 
     subtitle: 'Drive Insights',      
-    color: 0x0284c7, hex: '#0284c7', icon: 'analytics',  
+    color: 0x0284c7, hex: '#0284c7', icon: 'analytics', iconColor: 0xa855f7, 
     pos: [-4.6, 0,  3.8],
     items: [
       { label: 'Predictive BI',    badge: 'Up to date' },
@@ -62,7 +62,7 @@ const MODULES = [
   { 
     name: 'Operations',     
     subtitle: 'Streamline Work',     
-    color: 0x4f46e5, hex: '#4f46e5', icon: 'operations', 
+    color: 0x4f46e5, hex: '#4f46e5', icon: 'operations', iconColor: 0xeab308, 
     pos: [ 4.6, 0,  3.8],
     items: [
       { label: 'Supply Pipeline',  badge: 'Up to date' },
@@ -466,10 +466,10 @@ function buildSlab(w, d, colorHex = 0x3b82f6, cornerRadius = 0.35) {
   body.receiveShadow = true;
   g.add(body);
 
-  // Top Face Crisp White Highlight
+  // Top Face Crisp Highlight (Soft Cool Slate Tint)
   const top = new THREE.Mesh(
     createRoundedShapeGeometry(w - 0.08, d - 0.08, Math.max(0.05, cornerRadius - 0.04)),
-    new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.1, metalness: 0.1 })
+    new THREE.MeshStandardMaterial({ color: 0xf1f5f9, roughness: 0.15, metalness: 0.20 })
   );
   top.rotation.x = -Math.PI / 2;
   top.position.y = H/2 + 0.015;
@@ -488,17 +488,17 @@ function buildSlab(w, d, colorHex = 0x3b82f6, cornerRadius = 0.35) {
   return g;
 }
 
-// ─── RELATABLE 3D ICONS ─────────────────────────────────────────────────────
+// ─── RELATABLE 3D ICONS (HIGH-CONTRAST DUAL-TONE) ───────────────────────────
 function iMat(c) {
   return new THREE.MeshPhysicalMaterial({
-    color: c, emissive: c, emissiveIntensity: 0.45,
-    metalness: 0.2, roughness: 0.2, clearcoat: 0.85,
+    color: c, emissive: c, emissiveIntensity: 0.65,
+    metalness: 0.40, roughness: 0.15, clearcoat: 1.0, clearcoatRoughness: 0.03,
   });
 }
 function accentMat(c) {
   return new THREE.MeshPhysicalMaterial({
-    color: 0xffffff, emissive: c, emissiveIntensity: 0.7,
-    metalness: 0.4, roughness: 0.1, clearcoat: 1.0,
+    color: 0xffd700, emissive: c, emissiveIntensity: 0.85,
+    metalness: 0.70, roughness: 0.05, clearcoat: 1.0,
   });
 }
 
@@ -681,7 +681,7 @@ function buildNode(mod) {
   );
   dot.position.y=0.07; g.add(dot);
 
-  const icon=buildIcon(mod.icon,mod.color);
+  const icon=buildIcon(mod.icon, mod.iconColor || mod.color);
   icon.name='icon'; icon.position.set(0,0.82,0); g.add(icon);
 
   const lbl=makeLabelSprite(mod, 3.2);
