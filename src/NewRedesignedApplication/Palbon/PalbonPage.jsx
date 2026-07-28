@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { 
   ArrowRight, 
@@ -33,9 +33,17 @@ import NewFooter from "../Components/NewFooter";
 
 export default function PalbonPage() {
   const navigate = useNavigate();
+  const palbon3dIframeRef = useRef(null);
   const [heroVersion, setHeroVersion] = useState("v2"); // "v1" | "v2"
   const [activeModelTab, setActiveModelTab] = useState("workforce");
   const [activeArchTab, setActiveArchTab] = useState("single-record");
+
+  const handleHeroMouseMove = (e) => {
+    if (heroVersion === "v2" && palbon3dIframeRef.current?.contentWindow) {
+      const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+      palbon3dIframeRef.current.contentWindow.postMessage({ mouseX }, '*');
+    }
+  };
 
   const brandLogos = [
     { name: "BYJU'S", font: "font-black tracking-tighter text-slate-800" },
@@ -242,7 +250,7 @@ export default function PalbonPage() {
       
       {/* Global Navigation Bar */}
       <NewNavbar />      {/* SECTION 1: HERO (WITH VERSION TOGGLE) */}
-      <section className="relative pt-24 pb-16 lg:pt-28 lg:pb-24 overflow-hidden border-b border-slate-200/80 bg-gradient-to-b from-[#F8FAFC] via-[#F1F5F9] to-white">
+      <section onMouseMove={handleHeroMouseMove} className="relative pt-24 pb-16 lg:pt-28 lg:pb-24 overflow-hidden border-b border-slate-200/80 bg-gradient-to-b from-[#F8FAFC] via-[#F1F5F9] to-white">
         
         {/* Tech Node Vector Background */}
         <div className="absolute inset-0 pointer-events-none opacity-40">
@@ -284,6 +292,7 @@ export default function PalbonPage() {
         {heroVersion === "v2" && (
           <div className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none pt-32 sm:pt-36 lg:pt-40">
             <iframe
+              ref={palbon3dIframeRef}
               src="/Palbon_3D_Section/index.html"
               title="PALBON Interactive 3D Architecture Background"
               className="w-full h-full border-0 bg-transparent pointer-events-none"

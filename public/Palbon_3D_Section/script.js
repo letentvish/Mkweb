@@ -509,11 +509,31 @@ MODULES.forEach(mod=>{
   scene.add(beam); beams.push(beam);
 });
 
+// ─── MOUSE MOVE CAMERA SHIFT LISTENER ──────────────────────────────────────
+let targetMouseX = 0;
+let currentMouseX = 0;
+
+window.addEventListener('mousemove', (e) => {
+  targetMouseX = (e.clientX / window.innerWidth) * 2 - 1;
+});
+
+window.addEventListener('message', (e) => {
+  if (e.data && typeof e.data.mouseX === 'number') {
+    targetMouseX = e.data.mouseX;
+  }
+});
+
 // ─── ANIMATION LOOP ─────────────────────────────────────────────────────────
 const clock=new THREE.Clock();
 
 function animate(){
   const t=clock.getElapsedTime();
+
+  // Smooth lerp mouse shift
+  currentMouseX += (targetMouseX - currentMouseX) * 0.06;
+  const targetCamX = currentMouseX * 5.5;
+  camera.position.x += (targetCamX - camera.position.x) * 0.05;
+  camera.lookAt(0, 1.4, 0);
 
   const core=hub.getObjectByName('core');
   const pLabel=hub.getObjectByName('pLabel');
