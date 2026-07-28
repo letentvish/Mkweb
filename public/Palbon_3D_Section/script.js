@@ -644,22 +644,25 @@ function buildParticles() {
 }
 
 // ─── BUILD SCENE ────────────────────────────────────────────────────────────
+const worldGroup = new THREE.Group();
+scene.add(worldGroup);
+
 const hub   = buildHub();
 const nodes = [];
 const beams = [];
-scene.add(hub);
-scene.add(buildParticles());
+worldGroup.add(hub);
+worldGroup.add(buildParticles());
 
 const grid = new THREE.GridHelper(38,38,0x93c5fd,0xbfdbfe);
 grid.position.y=-0.6; grid.material.transparent=true; grid.material.opacity=0.18;
-scene.add(grid);
+worldGroup.add(grid);
 
 MODULES.forEach(mod=>{
   const node=buildNode(mod);
   node.position.set(mod.pos[0],mod.pos[1],mod.pos[2]);
-  scene.add(node); nodes.push(node);
+  worldGroup.add(node); nodes.push(node);
   const beam=buildBeam(0,0,mod.pos[0],mod.pos[2],mod.color);
-  scene.add(beam); beams.push(beam);
+  worldGroup.add(beam); beams.push(beam);
 });
 
 // ─── MOUSE MOVE CAMERA SHIFT & RAYCASTER LISTENER ─────────────────────────
@@ -696,11 +699,10 @@ const clock=new THREE.Clock();
 function animate(){
   const t=clock.getElapsedTime();
 
-  // Smooth lerp mouse shift
+  // Smooth lerp mouse shift + continuous 360-degree auto rotation
   currentMouseX += (targetMouseX - currentMouseX) * 0.06;
-  const targetCamX = currentMouseX * 5.5;
-  camera.position.x += (targetCamX - camera.position.x) * 0.05;
-  camera.lookAt(0, 0.4, 0);
+  worldGroup.rotation.y = t * 0.15 + currentMouseX * 0.35;
+  camera.lookAt(0, -0.4, 0);
 
   // ─── RAYCAST HOVER & CARD ZOOM DETECT ──────────────────────────────────────
   raycaster.setFromCamera(mouseVec, camera);
