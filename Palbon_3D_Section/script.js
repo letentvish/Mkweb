@@ -425,18 +425,17 @@ function createRoundedShapeGeometry(w, d, r = 0.35) {
 
 function glassMat(colorHex = 0x3b82f6) {
   return new THREE.MeshPhysicalMaterial({
-    color:              0xffffff,
+    color:              colorHex,
     emissive:           colorHex,
-    emissiveIntensity:  0.15,
-    transmission:       0.92,   // 92% crystal clear glass refraction!
-    opacity:            0.88,
-    transparent:        true,
-    roughness:          0.04,
-    ior:                1.54,   // Glass Refractive Index
-    thickness:          0.55,
+    emissiveIntensity:  0.25,
+    metalness:          0.25,
+    roughness:          0.15,
     clearcoat:          1.0,
-    clearcoatRoughness: 0.03,
-    reflectivity:       0.95,
+    clearcoatRoughness: 0.05,
+    reflectivity:       0.90,
+    transmission:       0.15,   // Solid, highly visible platform body!
+    opacity:            0.96,
+    transparent:        true,
   });
 }
 
@@ -447,7 +446,7 @@ function buildSlab(w, d, colorHex = 0x3b82f6, cornerRadius = 0.35) {
   // Rounded Blue Drop Shadows
   const sh = new THREE.Mesh(
     createRoundedShapeGeometry(w + 0.45, d + 0.45, cornerRadius + 0.1),
-    new THREE.MeshBasicMaterial({ color: 0x3b82f6, transparent: true, opacity: 0.12, depthWrite: false, side: THREE.DoubleSide })
+    new THREE.MeshBasicMaterial({ color: colorHex, transparent: true, opacity: 0.22, depthWrite: false, side: THREE.DoubleSide })
   );
   sh.rotation.x = -Math.PI / 2;
   sh.position.set(0.06, -H/2 - 0.04, 0.06);
@@ -455,22 +454,22 @@ function buildSlab(w, d, colorHex = 0x3b82f6, cornerRadius = 0.35) {
 
   const sh2 = new THREE.Mesh(
     createRoundedShapeGeometry(w + 0.85, d + 0.85, cornerRadius + 0.18),
-    new THREE.MeshBasicMaterial({ color: 0x1d4ed8, transparent: true, opacity: 0.06, depthWrite: false, side: THREE.DoubleSide })
+    new THREE.MeshBasicMaterial({ color: colorHex, transparent: true, opacity: 0.10, depthWrite: false, side: THREE.DoubleSide })
   );
   sh2.rotation.x = -Math.PI / 2;
   sh2.position.set(0.1, -H/2 - 0.08, 0.1);
   g.add(sh2);
 
-  // Main Rounded Glass Body
+  // Main Rounded Solid-Tinted Platform Body
   const body = new THREE.Mesh(createRoundedSlabGeometry(w, H, d, cornerRadius), glassMat(colorHex));
   body.castShadow    = true;
   body.receiveShadow = true;
   g.add(body);
 
-  // Top Face Rounded Highlight
+  // Top Face Crisp White Highlight
   const top = new THREE.Mesh(
     createRoundedShapeGeometry(w - 0.08, d - 0.08, Math.max(0.05, cornerRadius - 0.04)),
-    new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.8, depthWrite: false, side: THREE.DoubleSide })
+    new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.1, metalness: 0.1 })
   );
   top.rotation.x = -Math.PI / 2;
   top.position.y = H/2 + 0.015;
@@ -483,7 +482,7 @@ function buildSlab(w, d, colorHex = 0x3b82f6, cornerRadius = 0.35) {
   const pts3D = pts2D.map(p => new THREE.Vector3(p.x, H/2 + 0.016, -p.y));
   pts3D.push(pts3D[0].clone());
   
-  const rim = new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints(pts3D), new THREE.LineBasicMaterial({ color: 0x93c5fd, transparent: true, opacity: 0.5 }));
+  const rim = new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints(pts3D), new THREE.LineBasicMaterial({ color: colorHex, transparent: true, opacity: 0.85 }));
   g.add(rim);
 
   return g;
@@ -667,8 +666,8 @@ function buildNode(mod) {
   g.userData.isNode = true;
   g.userData.mod = mod;
 
-  const s1=buildSlab(2.4,2.4,0xeef5fc,0.36); s1.position.y=0; g.add(s1);
-  const s2=buildSlab(1.9,1.9,0xf4f8fe,0.28); s2.position.y=0.34; g.add(s2);
+  const s1=buildSlab(2.4,2.4,mod.color,0.36); s1.position.y=0; g.add(s1);
+  const s2=buildSlab(1.9,1.9,mod.color,0.28); s2.position.y=0.34; g.add(s2);
 
   const edge=new THREE.Mesh(
     new THREE.TorusGeometry(1.32,0.013,8,80),
