@@ -92,23 +92,19 @@ function createDefaultTexture(name, hexColor) {
   ctx.shadowBlur    = 32;
   ctx.shadowOffsetX = 0; ctx.shadowOffsetY = 12;
   rr(px, py, pw, ph, rad);
-  ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+  ctx.fillStyle = '#ffffff';
   ctx.fill();
   ctx.restore();
 
-  // 2. TRANSLUCENT FROSTED GLASS BACKGROUND (Real Glassmorphism!)
+  // 2. PURE BRIGHT WHITE GLASS CARD (Zero Gray!)
   rr(px, py, pw, ph, rad);
-  const glassBg = ctx.createLinearGradient(px, py, px + pw, py + ph);
-  glassBg.addColorStop(0,   'rgba(255, 255, 255, 0.70)');
-  glassBg.addColorStop(0.5, 'rgba(255, 255, 255, 0.45)');
-  glassBg.addColorStop(1,   'rgba(240, 246, 255, 0.60)');
-  ctx.fillStyle = glassBg;
+  ctx.fillStyle = '#ffffff';
   ctx.fill();
 
-  // 3. Glossy Specular Glass Reflection Top Highlight
-  rr(px, py, pw, ph * 0.5, rad);
-  const hlGrad = ctx.createLinearGradient(px, py, px, py + ph * 0.5);
-  hlGrad.addColorStop(0, 'rgba(255, 255, 255, 0.85)');
+  // 3. Top Specular Glass Reflection Highlight
+  rr(px, py, pw, ph * 0.45, rad);
+  const hlGrad = ctx.createLinearGradient(px, py, px, py + ph * 0.45);
+  hlGrad.addColorStop(0, 'rgba(255, 255, 255, 1.0)');
   hlGrad.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
   ctx.fillStyle = hlGrad;
   ctx.fill();
@@ -130,7 +126,7 @@ function createDefaultTexture(name, hexColor) {
   // 6. Top Left Module Pill Badge
   const badgeX = px + 44, badgeY = py + 28, badgeW = 240, badgeH = 50;
   rr(badgeX, badgeY, badgeW, badgeH, 25);
-  ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
+  ctx.fillStyle = '#ffffff';
   ctx.fill();
   ctx.strokeStyle = hexColor;
   ctx.lineWidth = 2.5;
@@ -163,6 +159,7 @@ function createDefaultTexture(name, hexColor) {
   const texture = new THREE.CanvasTexture(cv);
   texture.minFilter = THREE.LinearFilter;
   texture.magFilter = THREE.LinearFilter;
+  texture.premultipliedAlpha = false;
   return texture;
 }
 
@@ -191,17 +188,13 @@ function createHoverTexture(name, subtitle, hexColor) {
   ctx.shadowBlur    = 48;
   ctx.shadowOffsetX = 0; ctx.shadowOffsetY = 12;
   rr(px, py, pw, ph, rad);
-  ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+  ctx.fillStyle = '#ffffff';
   ctx.fill();
   ctx.restore();
 
-  // Translucent Frosted Glass Base
+  // Pure White Card Base
   rr(px, py, pw, ph, rad);
-  const glassBg = ctx.createLinearGradient(px, py, px + pw, py + ph);
-  glassBg.addColorStop(0,   'rgba(255, 255, 255, 0.78)');
-  glassBg.addColorStop(0.5, 'rgba(255, 255, 255, 0.55)');
-  glassBg.addColorStop(1,   'rgba(240, 246, 255, 0.68)');
-  ctx.fillStyle = glassBg;
+  ctx.fillStyle = '#ffffff';
   ctx.fill();
 
   // Sci-Fi Outer Glowing Neon Border
@@ -227,7 +220,7 @@ function createHoverTexture(name, subtitle, hexColor) {
   // Sci-Fi Top Status Bar [ SYS_ONLINE // MODULE_NAME ]
   const barX = px + 36, barY = py + 30, barW = pw - 72, barH = 48;
   rr(barX, barY, barW, barH, 14);
-  ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
+  ctx.fillStyle = '#ffffff';
   ctx.fill();
   ctx.strokeStyle = hexColor;
   ctx.lineWidth = 2;
@@ -249,7 +242,7 @@ function createHoverTexture(name, subtitle, hexColor) {
   // Sci-Fi Tech HUD Paragraph Box (Dynamic Hover Telemetry Reveal)
   const boxX = px + 36, boxY = py + 188, boxW = pw - 72, boxH = ph - 210;
   rr(boxX, boxY, boxW, boxH, 20);
-  ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
+  ctx.fillStyle = '#ffffff';
   ctx.fill();
   ctx.strokeStyle = hexColor + '80';
   ctx.lineWidth = 2.5;
@@ -271,6 +264,7 @@ function createHoverTexture(name, subtitle, hexColor) {
   const texture = new THREE.CanvasTexture(cv);
   texture.minFilter = THREE.LinearFilter;
   texture.magFilter = THREE.LinearFilter;
+  texture.premultipliedAlpha = false;
   return texture;
 }
 
@@ -283,6 +277,7 @@ function makeLabelSprite(name, subtitle, hexColor, worldW = 3.2) {
     transparent: true,
     depthTest: false,
     depthWrite: false,
+    toneMapped: false // Prevents ACESFilmic toneMapping from turning card backgrounds gray!
   });
 
   const sprite = new THREE.Sprite(mat);
