@@ -491,7 +491,7 @@ export default function PalbonPage() {
           </div>
         )}
 
-        {/* HERO VERSION 2 (INTEGRATED ARCHITECTURE DIAGRAM & EXECUTIVE PERSONAS) */}
+        {/* HERO VERSION 2 (INTEGRATED ARCHITECTURE DIAGRAM WITH PALBON 3D SECTION & EXECUTIVE PERSONAS) */}
         {heroVersion === "v2" && (
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             
@@ -513,195 +513,13 @@ export default function PalbonPage() {
               PALBON unifies HRMS, ERP, and learning in a single intelligent ecosystem so leaders can make smarter decisions, accelerate growth, and stay future-ready.
             </p>
 
-            {/* Central 3D Ecosystem Diagram (HRMS, ERP, LXP Podiums & PALBON Hub) */}
-            <div className="relative w-full max-w-5xl mx-auto mt-12 mb-12 py-10 px-4 flex flex-col items-center">
-              
-              {/* Outer Floating Feature Nodes (4 Corners) */}
-              {/* Top Left: Unified Data */}
-              <div className="absolute top-2 left-2 sm:left-8 flex items-center gap-3 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-slate-200/80 z-20 hover:scale-105 transition-transform">
-                <div className="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
-                  <Database className="w-5 h-5" />
-                </div>
-                <span className="text-xs font-bold text-slate-800">Unified Data</span>
-              </div>
-
-              {/* Bottom Left: Security & Compliance */}
-              <div className="absolute bottom-12 left-2 sm:left-8 flex items-center gap-3 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-slate-200/80 z-20 hover:scale-105 transition-transform">
-                <div className="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
-                  <ShieldCheck className="w-5 h-5" />
-                </div>
-                <span className="text-xs font-bold text-slate-800">Security & Compliance</span>
-              </div>
-
-              {/* Top Right: AI-Powered Intelligence */}
-              <div className="absolute top-2 right-2 sm:right-8 flex items-center gap-3 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-slate-200/80 z-20 hover:scale-105 transition-transform">
-                <div className="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
-                  <Cpu className="w-5 h-5" />
-                </div>
-                <span className="text-xs font-bold text-slate-800">AI-Powered Intelligence</span>
-              </div>
-
-              {/* Bottom Right: Seamless Integrations */}
-              <div className="absolute bottom-12 right-2 sm:right-8 flex items-center gap-3 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-slate-200/80 z-20 hover:scale-105 transition-transform">
-                <div className="w-9 h-9 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center">
-                  <Share2 className="w-5 h-5" />
-                </div>
-                <span className="text-xs font-bold text-slate-800">Seamless Integrations</span>
-              </div>
-
-              {/* Connecting SVG Paths */}
-              <svg className="absolute inset-0 w-full h-full pointer-events-none z-0 hidden lg:block" viewBox="0 0 1000 500" fill="none">
-                <path d="M 300 210 Q 400 180 500 240" stroke="#06b6d4" strokeWidth="2.5" strokeDasharray="5 5" strokeOpacity="0.8" />
-                <circle cx="300" cy="210" r="4" fill="#06b6d4" />
-                
-                <path d="M 700 210 Q 600 180 500 240" stroke="#6366f1" strokeWidth="2.5" strokeDasharray="5 5" strokeOpacity="0.8" />
-                <circle cx="700" cy="210" r="4" fill="#6366f1" />
-                
-                <path d="M 500 370 L 500 280" stroke="#38bdf8" strokeWidth="2.5" strokeDasharray="5 5" strokeOpacity="0.8" />
-                <circle cx="500" cy="370" r="4" fill="#38bdf8" />
-              </svg>
-
-              {/* 3-Pillar Podiums Layout Grid */}
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-12 items-center w-full relative z-10">
-
-                {/* LEFT PODIUM: HRMS */}
-                <div className="flex flex-col items-center">
-                  <div className="w-full max-w-sm bg-white/95 backdrop-blur-xl border border-slate-200/90 rounded-2xl p-5 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 text-left">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-10 h-10 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center font-bold">
-                        <Users className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <h3 className="text-base font-extrabold text-slate-900">HRMS</h3>
-                        <p className="text-xs text-slate-500 font-medium">Manage your people</p>
-                      </div>
-                    </div>
-                    <ul className="space-y-2 pt-3 border-t border-slate-100 text-xs font-semibold text-slate-700">
-                      <li className="flex items-center gap-2 text-teal-700">
-                        <span className="text-teal-500 font-bold">✓</span> Talent Management
-                      </li>
-                      <li className="flex items-center gap-2 text-teal-700">
-                        <span className="text-teal-500 font-bold">✓</span> Payroll & Compliance
-                      </li>
-                      <li className="flex items-center gap-2 text-teal-700">
-                        <span className="text-teal-500 font-bold">✓</span> Workforce Analytics
-                      </li>
-                    </ul>
-                  </div>
-
-                  {/* 3D Glowing Podium Base (Teal/Cyan) */}
-                  <div className="relative mt-4 w-44 h-12 flex items-center justify-center">
-                    <div className="absolute inset-0 bg-gradient-to-r from-teal-400 to-cyan-500 rounded-full blur-md opacity-40 animate-pulse"></div>
-                    <div className="w-full h-10 bg-gradient-to-b from-teal-500 to-cyan-700 rounded-full border-2 border-cyan-300/60 shadow-lg flex items-center justify-center">
-                      <div className="w-28 h-6 bg-teal-900/40 rounded-full border border-teal-200/40"></div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* CENTER PODIUM: CENTRAL PALBON HUB MEDALLION */}
-                <div className="flex flex-col items-center">
-                  <div className="w-64 h-64 sm:w-72 sm:h-72 rounded-full bg-white/95 backdrop-blur-2xl border-4 border-indigo-500/80 shadow-2xl p-6 flex flex-col items-center justify-center relative group transform hover:scale-105 transition-all duration-300">
-                    
-                    {/* Pulsing Outer Aura Ring */}
-                    <div className="absolute -inset-3 rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 opacity-20 blur-xl group-hover:opacity-40 transition-opacity"></div>
-                    
-                    {/* PALBON Logo Icon */}
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white font-extrabold text-3xl shadow-lg mb-2">
-                      P
-                    </div>
-
-                    <h3 className="text-xl font-extrabold text-slate-900 tracking-tight">PALBON</h3>
-                    <p className="text-xs font-bold text-indigo-600 uppercase tracking-wider mb-4">Integrated Tech Stack</p>
-
-                    {/* 3 Mini Feature Pills Inside Hub */}
-                    <div className="flex items-center justify-center gap-1.5 text-[9px] font-extrabold text-slate-600 bg-slate-100/90 px-3 py-1.5 rounded-full border border-slate-200/80 shadow-inner">
-                      <span className="text-blue-600">Unified Data</span>
-                      <span>•</span>
-                      <span className="text-indigo-600">Intelligent Insights</span>
-                      <span>•</span>
-                      <span className="text-purple-600">Automation</span>
-                    </div>
-                  </div>
-
-                  {/* 3D Glowing Center Podium Platform */}
-                  <div className="relative -mt-6 w-60 h-16 flex items-center justify-center z-0">
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-full blur-lg opacity-50"></div>
-                    <div className="w-full h-12 bg-gradient-to-b from-indigo-800 to-slate-950 rounded-full border-2 border-indigo-400/80 shadow-2xl flex items-center justify-center">
-                      <div className="w-44 h-7 bg-indigo-950/80 rounded-full border border-indigo-300/40"></div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* RIGHT PODIUM: ERP */}
-                <div className="flex flex-col items-center">
-                  <div className="w-full max-w-sm bg-white/95 backdrop-blur-xl border border-slate-200/90 rounded-2xl p-5 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 text-left">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center font-bold">
-                        <BarChart2 className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <h3 className="text-base font-extrabold text-slate-900">ERP</h3>
-                        <p className="text-xs text-slate-500 font-medium">Run your business</p>
-                      </div>
-                    </div>
-                    <ul className="space-y-2 pt-3 border-t border-slate-100 text-xs font-semibold text-slate-700">
-                      <li className="flex items-center gap-2 text-purple-700">
-                        <span className="text-purple-500 font-bold">✓</span> Finance & Accounting
-                      </li>
-                      <li className="flex items-center gap-2 text-purple-700">
-                        <span className="text-purple-500 font-bold">✓</span> Procurement
-                      </li>
-                      <li className="flex items-center gap-2 text-purple-700">
-                        <span className="text-purple-500 font-bold">✓</span> Inventory & Operations
-                      </li>
-                    </ul>
-                  </div>
-
-                  {/* 3D Glowing Podium Base (Purple/Indigo) */}
-                  <div className="relative mt-4 w-44 h-12 flex items-center justify-center">
-                    <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-full blur-md opacity-40 animate-pulse"></div>
-                    <div className="w-full h-10 bg-gradient-to-b from-purple-600 to-indigo-900 rounded-full border-2 border-purple-300/60 shadow-lg flex items-center justify-center">
-                      <div className="w-28 h-6 bg-purple-950/40 rounded-full border border-purple-200/40"></div>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-
-              {/* BOTTOM PODIUM: LXP */}
-              <div className="flex flex-col items-center mt-6 z-10 w-full max-w-sm">
-                <div className="w-full bg-white/95 backdrop-blur-xl border border-slate-200/90 rounded-2xl p-5 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 text-left">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold">
-                      <BookOpen className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h3 className="text-base font-extrabold text-slate-900">LXP</h3>
-                      <p className="text-xs text-slate-500 font-medium">Grow your people</p>
-                    </div>
-                  </div>
-                  <ul className="space-y-2 pt-3 border-t border-slate-100 text-xs font-semibold text-slate-700">
-                    <li className="flex items-center gap-2 text-blue-700">
-                      <span className="text-blue-500 font-bold">✓</span> Learning & Development
-                    </li>
-                    <li className="flex items-center gap-2 text-blue-700">
-                      <span className="text-blue-500 font-bold">✓</span> Skills & Assessments
-                    </li>
-                    <li className="flex items-center gap-2 text-blue-700">
-                      <span className="text-blue-500 font-bold">✓</span> Performance Growth
-                    </li>
-                  </ul>
-                </div>
-
-                {/* 3D Glowing Podium Base (Sky Blue) */}
-                <div className="relative mt-4 w-44 h-12 flex items-center justify-center">
-                  <div className="absolute inset-0 bg-gradient-to-r from-sky-400 to-blue-600 rounded-full blur-md opacity-40 animate-pulse"></div>
-                  <div className="w-full h-10 bg-gradient-to-b from-sky-500 to-blue-800 rounded-full border-2 border-sky-300/60 shadow-lg flex items-center justify-center">
-                    <div className="w-28 h-6 bg-blue-950/40 rounded-full border border-sky-200/40"></div>
-                  </div>
-                </div>
-              </div>
-
+            {/* Palbon_3D_Section Interactive Three.js Element */}
+            <div className="relative w-full max-w-6xl mx-auto mt-8 mb-8 h-[540px] sm:h-[620px] lg:h-[680px] rounded-3xl overflow-hidden shadow-2xl border border-slate-200/90 bg-gradient-to-b from-white/90 via-sky-50/40 to-slate-100/90 flex items-center justify-center">
+              <iframe
+                src="/Palbon_3D_Section/index.html"
+                title="PALBON Interactive 3D Architecture Element"
+                className="w-full h-full border-0 pointer-events-auto rounded-3xl"
+              />
             </div>
 
             {/* Bottom Executive Persona Bar ("Empowering every leader in your organization") */}
