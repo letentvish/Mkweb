@@ -214,8 +214,17 @@ function renderAnimatedCardCanvas(cv, ctx, mod, progress) {
   ctx.fillRect(px, py, 22, ph);
   ctx.restore();
 
-  // 7. Top Left Status Pill Badge
-  const badgeX = px + 44, badgeY = py + 28, badgeW = 280, badgeH = 50;
+  // 7. Top Left Status Pill Badge (Dynamic Auto-Fitting Pill Border!)
+  ctx.font = '800 20px Inter, monospace';
+  const badgeText = progress > 0.4 
+    ? (mod.isHub ? '[ SYS_CORE // PALBON_ECOSYSTEM ]' : `[ SYS_ONLINE // ${name.toUpperCase().replace(/\s+/g, '_')} ]`)
+    : (mod.isHub ? '★ MODULAR MARKETPLACE' : 'ENTERPRISE');
+
+  const textWidth = ctx.measureText(badgeText).width;
+  const badgeX = px + 44, badgeY = py + 28;
+  const badgeW = textWidth + 64;
+  const badgeH = 50;
+
   rr(badgeX, badgeY, badgeW, badgeH, 25);
   ctx.fillStyle = 'rgba(255, 255, 255, 0.45)';
   ctx.fill();
@@ -224,17 +233,14 @@ function renderAnimatedCardCanvas(cv, ctx, mod, progress) {
   ctx.stroke();
 
   ctx.beginPath();
-  ctx.arc(badgeX + 26, badgeY + 25, 7, 0, Math.PI * 2);
+  ctx.arc(badgeX + 24, badgeY + 25, 7, 0, Math.PI * 2);
   ctx.fillStyle = hexColor;
   ctx.fill();
 
   ctx.fillStyle = hexColor;
-  ctx.font = '800 22px Inter, monospace';
+  ctx.font = '800 20px Inter, monospace';
   ctx.textAlign = 'left';
   ctx.textBaseline = 'middle';
-  const badgeText = progress > 0.4 
-    ? (mod.isHub ? '[ SYS_CORE // PALBON_UNIFIED_INTELLIGENCE ]' : `[ SYS_ONLINE // ${name.toUpperCase().replace(/\s+/g, '_')} ]`)
-    : (mod.isHub ? '★ CENTRAL ECOSYSTEM' : 'ENTERPRISE');
   ctx.fillText(badgeText, badgeX + 44, badgeY + 25);
 
   // 8. BOLD TITLE
