@@ -65,8 +65,9 @@ blueAccent.position.set(0, 6, 0);
 scene.add(blueAccent);
 
 // ─── 3D CRISP LABEL SPRITE ──────────────────────────────────────────────────
-function makeLabelSprite(name, subtitle, hexColor, worldW = 3.2) {
-  const CW = 512, CH = 148;
+// ─── 3D CRISP ULTRA-PREMIUM GLASSMORPHISM LABEL SPRITE ─────────────────────
+function makeLabelSprite(name, subtitle, hexColor, worldW = 3.6) {
+  const CW = 1024, CH = 320;
   const cv  = document.createElement('canvas');
   cv.width  = CW; cv.height = CH;
   const ctx = cv.getContext('2d');
@@ -80,65 +81,108 @@ function makeLabelSprite(name, subtitle, hexColor, worldW = 3.2) {
     ctx.quadraticCurveTo(x,y,x+r,y); ctx.closePath();
   };
 
-  // Drop shadow
+  const px = 24, py = 20, pw = CW - 48, ph = CH - 40, rad = 36;
+
+  // 1. Soft Ambient Blur Drop Shadow
   ctx.save();
-  ctx.shadowColor   = 'rgba(30, 80, 160, 0.22)';
-  ctx.shadowBlur    = 16;
-  ctx.shadowOffsetX = 3; ctx.shadowOffsetY = 6;
-  rr(14, 10, CW-28, CH-20, 16);
+  ctx.shadowColor   = 'rgba(15, 23, 42, 0.18)';
+  ctx.shadowBlur    = 32;
+  ctx.shadowOffsetX = 0; ctx.shadowOffsetY = 14;
+  rr(px, py, pw, ph, rad);
   ctx.fillStyle = '#ffffff';
   ctx.fill();
   ctx.restore();
 
-  // White gradient background
-  rr(14, 10, CW-28, CH-20, 16);
-  const bg = ctx.createLinearGradient(14, 10, CW-14, CH-10);
-  bg.addColorStop(0, '#ffffff');
-  bg.addColorStop(1, '#f2f7fc');
-  ctx.fillStyle = bg; ctx.fill();
+  // 2. Ultra-Smooth Frosted White Glass Gradient Background
+  rr(px, py, pw, ph, rad);
+  const bgGrad = ctx.createLinearGradient(px, py, px + pw, py + ph);
+  bgGrad.addColorStop(0,   'rgba(255, 255, 255, 0.98)');
+  bgGrad.addColorStop(0.5, 'rgba(248, 250, 252, 0.96)');
+  bgGrad.addColorStop(1,   'rgba(241, 245, 249, 0.98)');
+  ctx.fillStyle = bgGrad;
+  ctx.fill();
 
-  // Top highlight
-  rr(14, 10, CW-28, 64, 16);
-  const hl = ctx.createLinearGradient(14, 10, 14, 74);
-  hl.addColorStop(0, 'rgba(255,255,255,0.9)');
-  hl.addColorStop(1, 'rgba(255,255,255,0)');
-  ctx.fillStyle = hl; ctx.fill();
+  // 3. Glossy Specular Glass Reflection Top Highlight
+  rr(px, py, pw, ph * 0.45, rad);
+  const hlGrad = ctx.createLinearGradient(px, py, px, py + ph * 0.45);
+  hlGrad.addColorStop(0, 'rgba(255, 255, 255, 0.95)');
+  hlGrad.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
+  ctx.fillStyle = hlGrad;
+  ctx.fill();
 
-  // Border
-  rr(14, 10, CW-28, CH-20, 16);
-  ctx.strokeStyle = hexColor + '35';
-  ctx.lineWidth   = 2; ctx.stroke();
+  // 4. Subtle Border with Accent Color Glow
+  rr(px, py, pw, ph, rad);
+  ctx.strokeStyle = hexColor + '50';
+  ctx.lineWidth   = 3.5;
+  ctx.stroke();
 
-  // Top accent bar
-  rr(14, 10, CW-28, 6, 3);
-  ctx.fillStyle   = hexColor;
-  ctx.globalAlpha = 0.9; ctx.fill();
-  ctx.globalAlpha = 1;
+  // 5. Left Vertical Accent Color Pillar Strip
+  ctx.save();
+  rr(px, py, pw, ph, rad);
+  ctx.clip();
+  const barGrad = ctx.createLinearGradient(px, py, px, py + ph);
+  barGrad.addColorStop(0, hexColor);
+  barGrad.addColorStop(1, hexColor + '99');
+  ctx.fillStyle = barGrad;
+  ctx.fillRect(px, py, 16, ph);
+  ctx.restore();
 
-  // Title — DARK navy crisp text
-  ctx.fillStyle    = '#0f172a';
-  ctx.font         = '800 50px Arial, Inter, sans-serif';
-  ctx.textAlign    = 'center';
-  ctx.textBaseline = 'alphabetic';
-  ctx.fillText(name, CW/2, 74);
+  // 6. Top Left Module Pill Badge
+  const badgeX = px + 40, badgeY = py + 26, badgeW = 230, badgeH = 46;
+  rr(badgeX, badgeY, badgeW, badgeH, 23);
+  ctx.fillStyle = hexColor + '18';
+  ctx.fill();
+  ctx.strokeStyle = hexColor + '45';
+  ctx.lineWidth = 2;
+  ctx.stroke();
 
-  // Divider
-  ctx.beginPath(); ctx.moveTo(70, 88); ctx.lineTo(CW-70, 88);
-  ctx.strokeStyle = 'rgba(15, 23, 42, 0.08)'; ctx.lineWidth = 1; ctx.stroke();
+  // Badge Pulsing Status Dot
+  ctx.beginPath();
+  ctx.arc(badgeX + 24, badgeY + 23, 6, 0, Math.PI * 2);
+  ctx.fillStyle = hexColor;
+  ctx.fill();
 
-  // Subtitle
-  ctx.fillStyle = '#475569';
-  ctx.font      = '600 24px Arial, Inter, sans-serif';
-  ctx.fillText(subtitle, CW/2, 120);
+  // Badge Label
+  ctx.fillStyle = hexColor;
+  ctx.font = '700 20px Inter, system-ui, sans-serif';
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('ENTERPRISE', badgeX + 40, badgeY + 23);
+
+  // 7. Main Title - High-Contrast Deep Navy Bold Typography
+  ctx.fillStyle    = '#0F172A';
+  ctx.font         = '800 58px Inter, system-ui, sans-serif';
+  ctx.textAlign    = 'left';
+  ctx.textBaseline = 'top';
+  ctx.fillText(name, px + 40, py + 86);
+
+  // 8. Sleek Subtle Horizontal Divider
+  ctx.beginPath();
+  ctx.moveTo(px + 40, py + 170);
+  ctx.lineTo(px + pw - 40, py + 170);
+  ctx.strokeStyle = 'rgba(15, 23, 42, 0.08)';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  // 9. Subtitle Description Text
+  ctx.fillStyle    = '#475569';
+  ctx.font         = '600 30px Inter, system-ui, sans-serif';
+  ctx.textAlign    = 'left';
+  ctx.textBaseline = 'top';
+  ctx.fillText(subtitle, px + 40, py + 190);
+
+  const texture = new THREE.CanvasTexture(cv);
+  texture.minFilter = THREE.LinearFilter;
+  texture.magFilter = THREE.LinearFilter;
 
   const mat = new THREE.SpriteMaterial({
-    map: new THREE.CanvasTexture(cv),
+    map: texture,
     transparent: true,
-    depthTest:   false,
-    depthWrite:  false,
+    depthTest: false,
+    depthWrite: false,
   });
   const sprite = new THREE.Sprite(mat);
-  sprite.scale.set(worldW, worldW*(CH/CW), 1);
+  sprite.scale.set(worldW, worldW * (CH / CW), 1);
   sprite.renderOrder = 10;
   return sprite;
 }
