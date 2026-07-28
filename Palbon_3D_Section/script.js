@@ -38,6 +38,7 @@ scene.background = null;
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping   = true;
 controls.dampingFactor   = 0.05;
+controls.enableZoom      = false;
 controls.maxPolarAngle   = Math.PI / 2.05;
 controls.minDistance     = 6;
 controls.maxDistance     = 30;
