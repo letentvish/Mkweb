@@ -25,9 +25,6 @@ import {
   IndianRupee,
   FolderGit2,
   Lock,
-  Cpu,
-  Share2,
-  BookOpen,
   User
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
