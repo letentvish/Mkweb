@@ -24,16 +24,14 @@ import {
   Check,
   IndianRupee,
   FolderGit2,
-  Lock,
-  User,
-  TrendingUp,
-  Layers,
-  Activity,
-  Cpu
+  Lock
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import NewNavbar from "../Components/NewNavbar";
 import NewFooter from "../Components/NewFooter";
+import SuiteConfiguratorModal from "./SuiteConfiguratorModal";
+import AutomationSection from "./AutomationSection";
+import EcosystemCtaSection from "./EcosystemCtaSection";
 
 export default function PalbonPage() {
   const navigate = useNavigate();
@@ -41,6 +39,7 @@ export default function PalbonPage() {
   const [heroVersion, setHeroVersion] = useState("v2"); // "v1" | "v2"
   const [activeModelTab, setActiveModelTab] = useState("workforce");
   const [activeArchTab, setActiveArchTab] = useState("single-record");
+  const [isSuiteModalOpen, setIsSuiteModalOpen] = useState(false);
 
   const handleHeroMouseMove = (e) => {
     if (heroVersion === "v2" && palbon3dIframeRef.current?.contentWindow) {
@@ -124,106 +123,106 @@ export default function PalbonPage() {
   // Intelligence Tab Content Data (Section 4)
   const intelligenceTabData = {
     workforce: {
-      badge: "WORKFORCE INTELLIGENCE",
-      headline: "Organize & optimize your entire enterprise workforce.",
-      description: "PALBON delivers total visibility across headcount, performance, skill gaps, and talent mobility in a single unified view.",
-      topCard1Title: "Talent Telemetry",
-      topCard1Desc: "Track skills, performance, and succession",
-      topCard1Icon: <Users className="w-5 h-5 text-[#6366f1]" />,
-      topCard2Title: "Automated Payroll",
-      topCard2Desc: "Instant zero-lag payroll & compensation",
-      topCard2Icon: <Coins className="w-5 h-5 text-[#6366f1]" />,
-      engineLabel: "Palbon Workforce Engine",
-      engineSubtitle: "Orchestrates. Empowers. Retains.",
-      inputs: [
-        { tag: "HC", label: "Headcount", color: "bg-blue-50 text-blue-600" },
-        { tag: "PF", label: "Performance", color: "bg-emerald-50 text-emerald-600" },
-        { tag: "SK", label: "Skills", color: "bg-purple-50 text-purple-600" },
-        { tag: "ATT", label: "Attendance", color: "bg-amber-50 text-amber-600" },
-        { tag: "CMP", label: "Compensation", color: "bg-slate-100 text-slate-600" }
-      ],
-      outcomes: [
-        { icon: <Zap className="w-3.5 h-3.5 text-[#6366f1] shrink-0" />, label: "Talent Matching" },
-        { icon: <AlertTriangle className="w-3.5 h-3.5 text-rose-500 shrink-0" />, label: "Retention Risk" },
-        { icon: <Settings className="w-3.5 h-3.5 text-sky-500 shrink-0" />, label: "Skill Gap Analysis" },
-        { icon: <BarChart2 className="w-3.5 h-3.5 text-indigo-500 shrink-0" />, label: "Performance Ranks" }
-      ],
-      bottomCardTitle: "People-First Architecture",
-      bottomCardDesc: "Empowering leaders with real-time workforce telemetry.",
-      pillars: [
-        { icon: <Users className="w-5 h-5" />, title: "Talent Matching", desc: "AI-driven internal mobility & staffing." },
-        { icon: <Zap className="w-5 h-5" />, title: "Zero-Lag Payroll", desc: "Automated compensation & tax calculations." },
-        { icon: <BarChart2 className="w-5 h-5" />, title: "Skill Telemetry", desc: "Identify skill gaps and growth paths." },
-        { icon: <Lock className="w-5 h-5" />, title: "Enterprise Control", desc: "Role-based governance & compliance." }
-      ]
+      badge: "AGILITY",
+      headline: "Start where the pain is sharpest, expand without disruption",
+      description: "You do not need a big bang replacement. Activate the features you need today. Add value modules as you evolve. The system grows with your reality, not against it.",
+      image: "/Workforce.jpg",
+      hideOverlays: true,
+      topCard1: {
+        title: "Workforce Insights",
+        percent: 82,
+        label: "Engagement",
+        change: "+12% vs last month"
+      },
+      topCard2: {
+        title: "Cost Efficiency",
+        stat: "32%",
+        label: "Savings",
+        change: "+18% vs last month"
+      },
+      bottomCard1: {
+        title: "Productivity Score",
+        stat: "78/100",
+        change: "+8% vs last month"
+      },
+      bottomCard2: {
+        title: "Team Alignment",
+        avatars: [
+          "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80",
+          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80",
+          "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80",
+          "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80"
+        ],
+        extra: "+12",
+        status: "High Alignment"
+      }
     },
     configuration: {
-      badge: "MODULAR CONFIGURATION",
-      headline: "Your business model. Your operational rules.",
-      description: "No rigid single-purpose vendor boxes. Configure workflows, data schemas, and business logic without custom code.",
-      topCard1Title: "No-Code Rules",
-      topCard1Desc: "Define custom calculations and triggers",
-      topCard1Icon: <Settings className="w-5 h-5 text-[#6366f1]" />,
-      topCard2Title: "Zero-Lock-in",
-      topCard2Desc: "Your schemas remain 100% portable",
-      topCard2Icon: <Boxes className="w-5 h-5 text-[#6366f1]" />,
-      engineLabel: "Palbon Config Engine",
-      engineSubtitle: "Bends. Scales. Adapts.",
-      inputs: [
-        { tag: "SCH", label: "Data Schemas", color: "bg-blue-50 text-blue-600" },
-        { tag: "RUL", label: "Business Rules", color: "bg-emerald-50 text-emerald-600" },
-        { tag: "API", label: "Webhooks", color: "bg-purple-50 text-purple-600" },
-        { tag: "PERM", label: "Permissions", color: "bg-amber-50 text-amber-600" },
-        { tag: "LOG", label: "Event Logs", color: "bg-slate-100 text-slate-600" }
-      ],
-      outcomes: [
-        { icon: <Zap className="w-3.5 h-3.5 text-[#6366f1] shrink-0" />, label: "Dynamic Workflows" },
-        { icon: <AlertTriangle className="w-3.5 h-3.5 text-amber-500 shrink-0" />, label: "Custom Roles" },
-        { icon: <Settings className="w-3.5 h-3.5 text-sky-500 shrink-0" />, label: "Instant API Routes" },
-        { icon: <BarChart2 className="w-3.5 h-3.5 text-indigo-500 shrink-0" />, label: "Event Triggers" }
-      ],
-      bottomCardTitle: "Composable Architecture",
-      bottomCardDesc: "Adapt system logic dynamically as your enterprise scales.",
-      pillars: [
-        { icon: <Puzzle className="w-5 h-5" />, title: "Custom Workflows", desc: "Design multi-step business logic visually." },
-        { icon: <Zap className="w-5 h-5" />, title: "API Orchestration", desc: "Connect third-party enterprise tools instantly." },
-        { icon: <Lock className="w-5 h-5" />, title: "Granular Security", desc: "Attribute-level permission & access control." },
-        { icon: <Clock className="w-5 h-5" />, title: "Infinite Scale", desc: "Engineered for high-volume enterprise throughput." }
-      ]
+      badge: "FLEXIBILITY",
+      headline: "Adaptable workflows built for your custom operation",
+      description: "Configure processes and business rules without complex code rewrites. Maintain complete ownership over system parameters and logic.",
+      image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80",
+      topCard1: {
+        title: "Module Health",
+        percent: 95,
+        label: "Modularity",
+        change: "+24% vs last month"
+      },
+      topCard2: {
+        title: "Config Efficiency",
+        stat: "99.8%",
+        label: "Uptime",
+        change: "+5% vs last month"
+      },
+      bottomCard1: {
+        title: "Rule Execution",
+        stat: "0.2ms",
+        change: "Optimal speed"
+      },
+      bottomCard2: {
+        title: "Module Sync",
+        avatars: [
+          "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&q=80",
+          "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=100&q=80",
+          "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=100&q=80"
+        ],
+        extra: "+8",
+        status: "All Modules Synced"
+      }
     },
     reasoning: {
       badge: "INTELLIGENCE",
-      headline: "Not just data. Reasoning that drives real outcomes.",
-      description: "PALBON doesn't just process data — it reasons over it. It connects the dots across systems, understands the why, and recommends the what's next.",
-      topCard1Title: "Context Aware",
-      topCard1Desc: "Understands roles, policies, and real-time context",
-      topCard1Icon: <Sparkles className="w-5 h-5 text-[#6366f1]" />,
-      topCard2Title: "Pattern Recognition",
-      topCard2Desc: "Detects patterns humans might miss",
-      topCard2Icon: <Puzzle className="w-5 h-5 text-[#6366f1]" />,
-      engineLabel: "Palbon Reasoning Engine",
-      engineSubtitle: "Analyzes. Correlates. Decides.",
-      inputs: [
-        { tag: "HR", label: "HR Data", color: "bg-blue-50 text-blue-600" },
-        { tag: "FI", label: "Finance Data", color: "bg-emerald-50 text-emerald-600" },
-        { tag: "PR", label: "Project Data", color: "bg-purple-50 text-purple-600" },
-        { tag: "LG", label: "System Logs", color: "bg-amber-50 text-amber-600" },
-        { tag: "EF", label: "External Feeds", color: "bg-slate-100 text-slate-600" }
-      ],
-      outcomes: [
-        { icon: <Zap className="w-3.5 h-3.5 text-[#6366f1] shrink-0" />, label: "Smart Recommendations" },
-        { icon: <AlertTriangle className="w-3.5 h-3.5 text-rose-500 shrink-0" />, label: "Risk Alerts" },
-        { icon: <Settings className="w-3.5 h-3.5 text-sky-500 shrink-0" />, label: "Automation Triggers" },
-        { icon: <BarChart2 className="w-3.5 h-3.5 text-indigo-500 shrink-0" />, label: "Actionable Insights" }
-      ],
-      bottomCardTitle: "Explainable & Transparent",
-      bottomCardDesc: "Every decision is traceable, explainable, and built for trust.",
-      pillars: [
-        { icon: <Sparkles className="w-5 h-5" />, title: "Deep Understanding", desc: "Connect data with context and intent." },
-        { icon: <Zap className="w-5 h-5" />, title: "Smarter Decisions", desc: "From insights to actions, faster." },
-        { icon: <Clock className="w-5 h-5" />, title: "Continuous Learning", desc: "Learns from outcomes over time." },
-        { icon: <Lock className="w-5 h-5" />, title: "Built for Trust", desc: "Transparent and enterprise-grade." }
-      ]
+      headline: "Context-aware AI reasoning for complex decision making",
+      description: "Leverage AI models that analyze multi-dimensional enterprise data to deliver actionable recommendations and automated workflows.",
+      image: "/reasoning.webp",
+      hideOverlays: true,
+      topCard1: {
+        title: "AI Precision",
+        percent: 96,
+        label: "Accuracy",
+        change: "+15% vs last month"
+      },
+      topCard2: {
+        title: "Decision Speed",
+        stat: "4.2x",
+        label: "Faster",
+        change: "+35% vs last month"
+      },
+      bottomCard1: {
+        title: "Predictive Score",
+        stat: "94/100",
+        change: "+10% vs last month"
+      },
+      bottomCard2: {
+        title: "Active Predictions",
+        avatars: [
+          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80",
+          "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80",
+          "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80"
+        ],
+        extra: "+15",
+        status: "High Accuracy"
+      }
     }
   };
 
@@ -381,29 +380,29 @@ export default function PalbonPage() {
                 <div className="absolute inset-0 pointer-events-none z-10 hidden sm:block">
                   <svg className="w-full h-full" viewBox="0 0 600 600" fill="none">
                     {/* Hub to PEOPLE (Top-Left) */}
-                    <path d="M 300 310 L 110 80" stroke="#0066FF" strokeWidth="1.5" strokeDasharray="4 4" strokeOpacity="0.6" />
-                    <circle cx="110" cy="80" r="3.5" fill="#0066FF" />
+                    <path d="M 300 300 L 100 80" stroke="#0066FF" strokeWidth="1.5" strokeDasharray="4 4" strokeOpacity="0.6" />
+                    <circle cx="100" cy="80" r="3.5" fill="#0066FF" />
 
                     {/* Hub to DATA (Bottom-Left) */}
-                    <path d="M 300 310 L 110 500" stroke="#0066FF" strokeWidth="1.5" strokeDasharray="4 4" strokeOpacity="0.6" />
-                    <circle cx="110" cy="500" r="3.5" fill="#0066FF" />
+                    <path d="M 300 300 L 100 520" stroke="#0066FF" strokeWidth="1.5" strokeDasharray="4 4" strokeOpacity="0.6" />
+                    <circle cx="100" cy="520" r="3.5" fill="#0066FF" />
 
                     {/* Hub to PROCESSES (Top-Right) */}
-                    <path d="M 300 310 L 490 90" stroke="#0066FF" strokeWidth="1.5" strokeDasharray="4 4" strokeOpacity="0.6" />
-                    <circle cx="490" cy="90" r="3.5" fill="#0066FF" />
+                    <path d="M 300 300 L 500 80" stroke="#0066FF" strokeWidth="1.5" strokeDasharray="4 4" strokeOpacity="0.6" />
+                    <circle cx="500" cy="80" r="3.5" fill="#0066FF" />
 
                     {/* Hub to OUTCOMES (Bottom-Right) */}
-                    <path d="M 300 310 L 490 500" stroke="#0066FF" strokeWidth="1.5" strokeDasharray="4 4" strokeOpacity="0.6" />
-                    <circle cx="490" cy="500" r="3.5" fill="#0066FF" />
+                    <path d="M 300 300 L 500 520" stroke="#0066FF" strokeWidth="1.5" strokeDasharray="4 4" strokeOpacity="0.6" />
+                    <circle cx="500" cy="520" r="3.5" fill="#0066FF" />
                   </svg>
                 </div>
 
-                {/* Central Executive Image */}
+                {/* Central Executive Image with smooth bottom fade */}
                 <div className="relative z-20 w-full max-w-md mx-auto flex justify-center items-end">
                   <img 
                     src="/palbon_hero_executive.png" 
                     alt="PALBON Executive holding digital tablet" 
-                    className="max-h-[520px] lg:max-h-[580px] w-auto object-contain object-bottom drop-shadow-2xl"
+                    className="max-h-[520px] lg:max-h-[580px] w-auto object-contain object-bottom drop-shadow-2xl [mask-image:linear-gradient(to_bottom,black_75%,transparent_98%)]"
                   />
                 </div>
 
@@ -411,7 +410,7 @@ export default function PalbonPage() {
                 <motion.div
                   animate={{ scale: [1, 1.03, 1] }}
                   transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                  className="absolute z-40 top-[52%] left-[50%] -translate-x-1/2 -translate-y-1/2 bg-white/95 backdrop-blur-xl border-2 border-[#0066FF] p-4 rounded-2xl shadow-2xl text-center w-36 h-36 flex flex-col items-center justify-center"
+                  className="absolute z-40 top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 bg-white/95 backdrop-blur-xl border-2 border-[#0066FF] p-4 rounded-2xl shadow-2xl text-center w-36 h-36 flex flex-col items-center justify-center"
                 >
                   <div className="w-11 h-11 bg-[#0066FF] flex items-center justify-center rounded-xl mb-1.5 shadow-md">
                     <span className="text-white font-extrabold text-2xl">P</span>
@@ -424,7 +423,7 @@ export default function PalbonPage() {
                 <motion.div
                   animate={{ y: [0, -8, 0] }}
                   transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut" }}
-                  className="absolute top-0 left-0 sm:-left-2 lg:-left-6 bg-white/90 backdrop-blur-md p-4 sm:p-5 rounded-2xl shadow-xl border border-white/60 z-30 w-48 sm:w-52"
+                  className="absolute top-0 left-0 sm:-left-2 lg:-left-6 bg-white/90 backdrop-blur-md p-4 sm:p-5 rounded-2xl shadow-xl border border-white/60 z-30 w-48 sm:w-52 text-left"
                 >
                   <div className="flex items-center gap-2 mb-2">
                     <div className="bg-blue-100 p-1.5 rounded-lg text-[#0066FF]">
@@ -449,7 +448,7 @@ export default function PalbonPage() {
                 <motion.div
                   animate={{ y: [0, 8, 0] }}
                   transition={{ repeat: Infinity, duration: 5.2, ease: "easeInOut", delay: 0.5 }}
-                  className="absolute bottom-2 left-0 sm:-left-2 lg:-left-6 bg-white/90 backdrop-blur-md p-4 sm:p-5 rounded-2xl shadow-xl border border-white/60 z-30 w-44 sm:w-48"
+                  className="absolute bottom-2 left-0 sm:-left-2 lg:-left-6 bg-white/90 backdrop-blur-md p-4 sm:p-5 rounded-2xl shadow-xl border border-white/60 z-30 w-48 sm:w-52 text-left"
                 >
                   <div className="flex items-center gap-2 mb-2">
                     <div className="bg-blue-100 p-1.5 rounded-lg text-[#0066FF]">
@@ -473,7 +472,7 @@ export default function PalbonPage() {
                 <motion.div
                   animate={{ y: [0, -10, 0] }}
                   transition={{ repeat: Infinity, duration: 4.8, ease: "easeInOut", delay: 1 }}
-                  className="absolute top-2 right-0 sm:-right-2 lg:-right-6 bg-white/90 backdrop-blur-md p-4 sm:p-5 rounded-2xl shadow-xl border border-white/60 z-30 w-44 sm:w-48"
+                  className="absolute top-0 right-0 sm:-right-2 lg:-right-6 bg-white/90 backdrop-blur-md p-4 sm:p-5 rounded-2xl shadow-xl border border-white/60 z-30 w-48 sm:w-52 text-left"
                 >
                   <div className="flex items-center gap-2 mb-2">
                     <div className="bg-blue-100 p-1.5 rounded-lg text-[#0066FF]">
@@ -500,7 +499,7 @@ export default function PalbonPage() {
                 <motion.div
                   animate={{ y: [0, 8, 0] }}
                   transition={{ repeat: Infinity, duration: 4.2, ease: "easeInOut", delay: 1.5 }}
-                  className="absolute bottom-2 right-0 sm:-right-2 lg:-right-6 bg-white/90 backdrop-blur-md p-4 sm:p-5 rounded-2xl shadow-xl border border-white/60 z-30 w-44 sm:w-48 text-center"
+                  className="absolute bottom-2 right-0 sm:-right-2 lg:-right-6 bg-white/90 backdrop-blur-md p-4 sm:p-5 rounded-2xl shadow-xl border border-white/60 z-30 w-48 sm:w-52 text-left"
                 >
                   <div className="flex items-center gap-2 mb-2">
                     <div className="bg-blue-100 p-1.5 rounded-lg text-[#0066FF]">
@@ -871,16 +870,48 @@ export default function PalbonPage() {
 
       </section>
 
-      {/* SECTION 4: INTELLIGENCE ("Not just data. Reasoning that drives real outcomes.") */}
-      <section className="py-24 lg:py-32 bg-[#F8FAFC] text-slate-900 relative border-b border-slate-200" id="solutions-section">
+      {/* SECTION 4: BUILT FOR YOUR MODEL */}
+      <section className="py-20 lg:py-28 bg-[#F8FAFC] text-slate-900 relative border-b border-slate-200" id="solutions-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
+          {/* Top Section Header */}
+          <div className="text-center max-w-3xl mx-auto mb-10 space-y-3">
+            <span className="text-xs font-extrabold text-[#6366f1] tracking-widest uppercase font-poppins block">
+              AI-POWERED
+            </span>
+
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-extrabold text-slate-900 tracking-tight leading-[1.15]">
+              Built for your model
+            </h2>
+
+            <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto pt-1">
+              We do not sell a rigid single-purpose box. We bring a modular system that bends to how you actually operate. You own the configuration, not a vendor's future guesses.
+            </p>
+
+            <div className="flex items-center justify-center gap-4 pt-3">
+              <button
+                onClick={() => setIsSuiteModalOpen(true)}
+                className="px-6 py-2.5 rounded-xl border border-indigo-500 hover:border-indigo-600 text-[#6366f1] hover:bg-indigo-50 font-semibold text-sm transition-all duration-200 shadow-sm cursor-pointer"
+              >
+                Build Your Suite
+              </button>
+
+              <button
+                onClick={() => navigate("/contact")}
+                className="text-[#6366f1] hover:text-indigo-700 font-semibold text-sm inline-flex items-center gap-1.5 transition-colors cursor-pointer"
+              >
+                <span>Talk</span>
+                <ArrowRight className="w-4 h-4 text-[#6366f1]" />
+              </button>
+            </div>
+          </div>
+
           {/* Navigation Filter Tabs */}
-          <div className="flex justify-center mb-12">
+          <div className="flex justify-center mb-10">
             <div className="flex space-x-8 border-b border-slate-200 px-4">
               <button 
                 onClick={() => setActiveModelTab("workforce")}
-                className={`pb-2.5 font-semibold text-sm transition-colors relative ${
+                className={`pb-3 font-semibold text-sm transition-colors relative cursor-pointer ${
                   activeModelTab === "workforce" ? "text-[#6366f1] border-b-2 border-[#6366f1]" : "text-slate-500 hover:text-[#6366f1]"
                 }`}
               >
@@ -888,7 +919,7 @@ export default function PalbonPage() {
               </button>
               <button 
                 onClick={() => setActiveModelTab("configuration")}
-                className={`pb-2.5 font-semibold text-sm transition-colors relative ${
+                className={`pb-3 font-semibold text-sm transition-colors relative cursor-pointer ${
                   activeModelTab === "configuration" ? "text-[#6366f1] border-b-2 border-[#6366f1]" : "text-slate-500 hover:text-[#6366f1]"
                 }`}
               >
@@ -896,7 +927,7 @@ export default function PalbonPage() {
               </button>
               <button 
                 onClick={() => setActiveModelTab("reasoning")}
-                className={`pb-2.5 font-semibold text-sm transition-colors relative ${
+                className={`pb-3 font-semibold text-sm transition-colors relative cursor-pointer ${
                   activeModelTab === "reasoning" ? "text-[#6366f1] border-b-2 border-[#6366f1]" : "text-slate-500 hover:text-[#6366f1]"
                 }`}
               >
@@ -905,146 +936,177 @@ export default function PalbonPage() {
             </div>
           </div>
 
-          {/* Main Feature Container */}
-          <div className="bg-white border border-indigo-100 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-sm overflow-hidden">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          {/* Main Feature Card Container */}
+          <div className="bg-white border border-indigo-200/90 rounded-3xl overflow-hidden shadow-lg shadow-indigo-100/50">
+            <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
               
-              {/* Left Column: Interactive Diagram */}
-              <div className="lg:col-span-6 relative h-[560px] sm:h-[600px] flex items-center justify-center bg-[#F8FAFF] rounded-2xl border border-indigo-50/80 p-4">
-                
-                {/* SVG Connecting Overlay Lines */}
-                <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-30">
-                  <path d="M160 300 Q240 300 300 280" fill="none" stroke="#6366f1" strokeWidth="2" strokeDasharray="4 4" />
-                  <path d="M160 340 Q240 340 300 300" fill="none" stroke="#6366f1" strokeWidth="2" strokeDasharray="4 4" />
-                  <path d="M450 280 Q510 300 590 300" fill="none" stroke="#6366f1" strokeWidth="2" strokeDasharray="4 4" />
-                  <path d="M450 320 Q510 340 590 340" fill="none" stroke="#6366f1" strokeWidth="2" strokeDasharray="4 4" />
-                </svg>
-
-                {/* Top Cards: Dynamic per Tab */}
-                <div className="absolute top-4 left-0 w-full flex justify-between px-4 z-20">
-                  <div className="bg-white p-3.5 sm:p-4 rounded-xl shadow-sm border border-slate-100 w-44 sm:w-48 text-left">
-                    <div className="w-9 h-9 bg-indigo-50 rounded-lg flex items-center justify-center mb-2.5">
-                      {currentIntelligenceTab.topCard1Icon}
-                    </div>
-                    <h4 className="text-xs font-bold text-slate-900 mb-0.5">{currentIntelligenceTab.topCard1Title}</h4>
-                    <p className="text-[10px] text-slate-500 leading-relaxed font-medium">{currentIntelligenceTab.topCard1Desc}</p>
-                  </div>
-
-                  <div className="bg-white p-3.5 sm:p-4 rounded-xl shadow-sm border border-slate-100 w-44 sm:w-48 text-left">
-                    <div className="w-9 h-9 bg-indigo-50 rounded-lg flex items-center justify-center mb-2.5">
-                      {currentIntelligenceTab.topCard2Icon}
-                    </div>
-                    <h4 className="text-xs font-bold text-slate-900 mb-0.5">{currentIntelligenceTab.topCard2Title}</h4>
-                    <p className="text-[10px] text-slate-500 leading-relaxed font-medium">{currentIntelligenceTab.topCard2Desc}</p>
-                  </div>
-                </div>
-
-                {/* Center Engine Core: Dynamic per Tab */}
-                <div className="relative flex flex-col items-center justify-center text-center z-20 my-auto">
-                  <div className="text-[10px] font-extrabold text-[#6366f1] uppercase tracking-widest mb-1">{currentIntelligenceTab.engineLabel}</div>
-                  <div className="text-[10px] text-slate-400 mb-5 italic font-medium">{currentIntelligenceTab.engineSubtitle}</div>
+              {/* Left Column: Interactive Visual */}
+              <div className="lg:col-span-6 relative w-full h-full min-h-[360px] sm:min-h-[460px] lg:min-h-full">
+                <div className="relative w-full h-full min-h-full bg-slate-100">
+                  {/* Base Photo / Graphic */}
+                  <img 
+                    src={currentIntelligenceTab.image} 
+                    alt="Workforce visual" 
+                    className="w-full h-full object-cover object-center block"
+                  />
                   
-                  <div className="relative flex items-center justify-center">
-                    {/* Decorative Glow */}
-                    <div className="absolute inset-0 bg-indigo-400/20 blur-2xl rounded-full scale-150" />
-                    {/* Central Hexagon P Medallion */}
-                    <motion.div 
-                      key={activeModelTab}
-                      initial={{ scale: 0.9, opacity: 0.8 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ duration: 0.3 }}
-                      className="w-28 h-28 sm:w-32 sm:h-32 bg-white rounded-[24px] shadow-2xl flex items-center justify-center border-4 border-indigo-50 relative z-30"
-                    >
-                      <div className="w-16 h-16 rounded-2xl bg-indigo-600 text-white flex items-center justify-center shadow-lg">
-                        <span className="font-poppins font-black text-4xl">P</span>
+                  {!currentIntelligenceTab.hideOverlays && (
+                    <>
+                      {/* Subtle Darkening Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-slate-900/10 pointer-events-none" />
+
+                      {/* SVG Connector Line */}
+                      <svg className="absolute inset-0 w-full h-full pointer-events-none z-20">
+                        <path 
+                          d="M 190 65 Q 260 65 310 65" 
+                          stroke="#6366f1" 
+                          strokeWidth="2" 
+                          strokeDasharray="4 4" 
+                          fill="none" 
+                          className="opacity-70"
+                        />
+                        <circle cx="190" cy="65" r="4" fill="#6366f1" />
+                        <circle cx="310" cy="65" r="4" fill="#6366f1" />
+                      </svg>
+
+                      {/* Overlay 1: Top Left - Workforce Insights */}
+                      <div className="absolute top-4 left-4 z-30 w-44 sm:w-48 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl border border-slate-100/80 shadow-xl transition-all duration-300 hover:scale-105">
+                        <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2">
+                          {currentIntelligenceTab.topCard1.title}
+                        </p>
+                        <div className="flex items-center space-x-3">
+                          <div className="relative w-12 h-12 flex items-center justify-center shrink-0">
+                            <svg className="w-12 h-12 transform -rotate-90">
+                              <circle cx="24" cy="24" r="19" stroke="#e2e8f0" strokeWidth="4.5" fill="transparent" />
+                              <circle 
+                                cx="24" 
+                                cy="24" 
+                                r="19" 
+                                stroke="#6366f1" 
+                                strokeWidth="4.5" 
+                                strokeDasharray="120" 
+                                strokeDashoffset={120 - (120 * currentIntelligenceTab.topCard1.percent) / 100} 
+                                strokeLinecap="round" 
+                                fill="transparent" 
+                              />
+                            </svg>
+                            <span className="absolute text-[11px] font-extrabold text-slate-900">{currentIntelligenceTab.topCard1.percent}%</span>
+                          </div>
+                          <div>
+                            <p className="text-xs font-bold text-slate-800 leading-snug">{currentIntelligenceTab.topCard1.label}</p>
+                            <p className="text-[10px] font-bold text-emerald-600 flex items-center gap-0.5 mt-0.5">
+                              <span className="text-[11px]">↑</span>
+                              <span>{currentIntelligenceTab.topCard1.change}</span>
+                            </p>
+                          </div>
+                        </div>
                       </div>
-                    </motion.div>
-                  </div>
-                </div>
 
-                {/* Left Column: Input Signals (Dynamic per Tab) */}
-                <div className="absolute left-3 top-1/2 -translate-y-1/2 w-36 sm:w-40 bg-white border border-slate-100 rounded-xl shadow-sm p-3 space-y-2 text-left z-20">
-                  <h5 className="text-[10px] font-bold text-slate-700 border-b border-slate-100 pb-1.5 mb-1 uppercase tracking-wider">Input Signals</h5>
-                  {currentIntelligenceTab.inputs.map((inp, idx) => (
-                    <div key={idx} className="flex items-center space-x-2">
-                      <span className={`w-5 h-5 rounded flex items-center justify-center text-[9px] font-bold ${inp.color}`}>{inp.tag}</span>
-                      <span className="text-[10px] text-slate-600 font-medium">{inp.label}</span>
-                    </div>
-                  ))}
-                </div>
+                      {/* Overlay 2: Top Right - Cost Efficiency */}
+                      <div className="absolute top-4 right-4 z-30 w-44 sm:w-48 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl border border-slate-100/80 shadow-xl transition-all duration-300 hover:scale-105">
+                        <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">
+                          {currentIntelligenceTab.topCard2.title}
+                        </p>
+                        <div className="flex items-baseline space-x-1.5">
+                          <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+                            {currentIntelligenceTab.topCard2.stat}
+                          </span>
+                          <span className="text-xs font-semibold text-slate-600">
+                            {currentIntelligenceTab.topCard2.label}
+                          </span>
+                        </div>
+                        <p className="text-[10px] font-bold text-emerald-600 flex items-center gap-0.5 mt-1">
+                          <span className="text-[11px]">↑</span>
+                          <span>{currentIntelligenceTab.topCard2.change}</span>
+                        </p>
+                      </div>
 
-                {/* Right Column: Outcomes (Dynamic per Tab) */}
-                <div className="absolute right-3 top-1/2 -translate-y-1/2 w-40 sm:w-44 bg-white border border-slate-100 rounded-xl shadow-sm p-3 space-y-2 text-left z-20">
-                  <h5 className="text-[10px] font-bold text-slate-700 border-b border-slate-100 pb-1.5 mb-1 uppercase tracking-wider">Outcomes</h5>
-                  {currentIntelligenceTab.outcomes.map((out, idx) => (
-                    <div key={idx} className="flex items-center space-x-2">
-                      {out.icon}
-                      <span className="text-[10px] text-slate-600 font-medium">{out.label}</span>
-                    </div>
-                  ))}
-                </div>
+                      {/* Overlay 3: Bottom Left - Productivity Score */}
+                      <div className="absolute bottom-4 left-4 z-30 w-44 sm:w-48 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl border border-slate-100/80 shadow-xl transition-all duration-300 hover:scale-105">
+                        <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">
+                          {currentIntelligenceTab.bottomCard1.title}
+                        </p>
+                        <span className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
+                          {currentIntelligenceTab.bottomCard1.stat}
+                        </span>
+                        <div className="my-1.5 h-5 w-full">
+                          <svg viewBox="0 0 100 25" className="w-full h-full text-[#6366f1] overflow-visible">
+                            <path 
+                              d="M0 20 L20 18 L40 12 L60 15 L80 6 L100 2" 
+                              stroke="currentColor" 
+                              strokeWidth="2.5" 
+                              fill="none" 
+                              strokeLinecap="round" 
+                              strokeLinejoin="round" 
+                            />
+                          </svg>
+                        </div>
+                        <p className="text-[10px] font-bold text-emerald-600 flex items-center gap-0.5">
+                          <span className="text-[11px]">↑</span>
+                          <span>{currentIntelligenceTab.bottomCard1.change}</span>
+                        </p>
+                      </div>
 
-                {/* Bottom Card: Transparency (Dynamic per Tab) */}
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-72 sm:w-80 bg-white p-3.5 rounded-xl shadow-sm border border-slate-100 flex items-center space-x-3.5 z-20 text-left">
-                  <div className="w-9 h-9 bg-blue-50 rounded-lg shrink-0 flex items-center justify-center">
-                    <ShieldCheck className="w-5 h-5 text-blue-600" />
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-bold text-slate-900 mb-0.5">{currentIntelligenceTab.bottomCardTitle}</h4>
-                    <p className="text-[10px] text-slate-500 leading-relaxed font-medium">{currentIntelligenceTab.bottomCardDesc}</p>
-                  </div>
-                </div>
+                      {/* Overlay 4: Bottom Right - Team Alignment */}
+                      <div className="absolute bottom-4 right-4 z-30 w-44 sm:w-48 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl border border-slate-100/80 shadow-xl transition-all duration-300 hover:scale-105">
+                        <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2">
+                          {currentIntelligenceTab.bottomCard2.title}
+                        </p>
+                        <div className="flex items-center -space-x-2 mb-2.5">
+                          {currentIntelligenceTab.bottomCard2.avatars.map((imgUrl, i) => (
+                            <img 
+                              key={i} 
+                              src={imgUrl} 
+                              alt="User" 
+                              className="w-7 h-7 rounded-full border-2 border-white object-cover" 
+                            />
+                          ))}
+                          <div className="w-7 h-7 rounded-full bg-slate-100 border-2 border-white flex items-center justify-center text-[10px] font-bold text-slate-600">
+                            {currentIntelligenceTab.bottomCard2.extra}
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-600">
+                          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                          <span>{currentIntelligenceTab.bottomCard2.status}</span>
+                        </div>
+                      </div>
+                    </>
+                  )}
 
+                </div>
               </div>
 
-              {/* Right Column: Text Content Side (Dynamic per Tab) */}
-              <div className="lg:col-span-6 flex flex-col space-y-6 text-left">
-                <div className="space-y-3">
-                  <span className="text-xs font-bold text-[#6366f1] tracking-widest uppercase font-poppins">{currentIntelligenceTab.badge}</span>
-                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-slate-900 leading-tight">
-                    {currentIntelligenceTab.headline}
-                  </h2>
-                  <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal">
-                    {currentIntelligenceTab.description}
-                  </p>
-                </div>
+              {/* Right Column: Text Content Side */}
+              <div className="lg:col-span-6 flex flex-col items-start justify-center p-6 sm:p-10 lg:p-12 space-y-6 text-left">
+                <span className="text-xs font-bold text-[#6366f1] tracking-widest uppercase font-poppins">
+                  {currentIntelligenceTab.badge}
+                </span>
 
-                <div className="flex items-center gap-6 pt-2">
-                  <button 
-                    onClick={() => navigate("/contact")}
-                    className="bg-[#6366f1] hover:bg-[#4f46e5] text-white px-7 py-3.5 rounded-xl font-bold text-sm inline-flex items-center gap-2 shadow-lg shadow-indigo-500/25 transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95"
+                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-slate-900 leading-[1.18] tracking-tight">
+                  {currentIntelligenceTab.headline}
+                </h3>
+
+                <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal">
+                  {currentIntelligenceTab.description}
+                </p>
+
+                <div className="flex items-center gap-4 pt-2">
+                  <button
+                    onClick={() => setIsSuiteModalOpen(true)}
+                    className="px-7 py-3 rounded-xl border border-indigo-400 hover:border-indigo-600 text-[#6366f1] hover:bg-indigo-50 font-bold text-sm transition-all duration-200 shadow-sm cursor-pointer flex items-center gap-2"
                   >
-                    <span>See it in action</span>
-                    <ArrowRight className="w-4 h-4" />
+                    <Sparkles className="w-4 h-4 text-[#6366f1]" />
+                    <span>Configure Suite</span>
                   </button>
 
                   <button
                     onClick={() => navigate("/contact")}
-                    className="text-slate-900 hover:text-[#6366f1] font-bold text-sm inline-flex items-center gap-2 transition-colors cursor-pointer"
+                    className="text-[#6366f1] hover:text-indigo-700 font-bold text-sm inline-flex items-center gap-1.5 transition-colors cursor-pointer"
                   >
-                    <span>Talk to us</span>
+                    <span>Talk</span>
                     <ArrowRight className="w-4 h-4 text-[#6366f1]" />
                   </button>
                 </div>
-
-                {/* Divider */}
-                <hr className="border-slate-200/80 my-2" />
-
-                {/* Metrics Grid (Dynamic per Tab) */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-2">
-                  {currentIntelligenceTab.pillars.map((pil, idx) => (
-                    <div key={idx} className="space-y-2">
-                      <div className="text-[#6366f1]">
-                        {pil.icon}
-                      </div>
-                      <div>
-                        <h5 className="text-xs font-bold text-slate-900">{pil.title}</h5>
-                        <p className="text-[10px] text-slate-500 mt-0.5 leading-normal">{pil.desc}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
               </div>
 
             </div>
@@ -1052,6 +1114,9 @@ export default function PalbonPage() {
 
         </div>
       </section>
+
+      {/* SECTION 4.5: AUTOMATION THAT WORKS WHILE YOU LEAD */}
+      <AutomationSection onOpenSuiteModal={() => setIsSuiteModalOpen(true)} />
 
       {/* SECTION 5: ARCHITECTURE ("The logic of one system") */}
       <section className="py-24 lg:py-32 bg-white text-slate-900 relative" id="architecture-section">
@@ -1250,6 +1315,15 @@ export default function PalbonPage() {
 
         </div>
       </section>
+
+      {/* END CTA SECTION: LET'S TALK ABOUT YOUR ECOSYSTEM */}
+      <EcosystemCtaSection onOpenSuiteModal={() => setIsSuiteModalOpen(true)} />
+
+      {/* Suite Configurator Modal */}
+      <SuiteConfiguratorModal 
+        isOpen={isSuiteModalOpen} 
+        onClose={() => setIsSuiteModalOpen(false)} 
+      />
 
       {/* Global Footer */}
       <NewFooter />
