@@ -35,40 +35,46 @@ function drawCardTexture(img, item = {}) {
 
   // 2. Heavy Frosted Dark Blur Overlay Gradient (#01182F palette) for 100% Text Readability
   const gradient = ctx.createLinearGradient(0, 0, 0, 900);
-  gradient.addColorStop(0, 'rgba(1, 24, 47, 0.76)');
+  gradient.addColorStop(0, 'rgba(1, 24, 47, 0.72)');
   gradient.addColorStop(0.35, 'rgba(1, 24, 47, 0.88)');
   gradient.addColorStop(0.8, 'rgba(1, 24, 47, 0.96)');
   gradient.addColorStop(1, 'rgba(1, 24, 47, 0.99)');
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, 700, 900);
 
-  // 3. Card Outer Border Glow
-  ctx.strokeStyle = 'rgba(255, 255, 255, 0.22)';
+  // 3. Card Outer Border Glow (Rounded to match card corner radius!)
+  ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
   ctx.lineWidth = 6;
-  ctx.strokeRect(10, 10, 680, 880);
+  if (ctx.roundRect) {
+    ctx.beginPath();
+    ctx.roundRect(14, 14, 672, 872, 38);
+    ctx.stroke();
+  } else {
+    ctx.strokeRect(14, 14, 672, 872);
+  }
 
   // Safe inner padding (prevents edge truncation)
   const marginX = 55;
 
-  // 4. Icon Box Top-Left
-  ctx.fillStyle = 'rgba(255, 255, 255, 0.16)';
+  // 4. Vibrant High-Contrast Icon Box Top-Left
+  ctx.fillStyle = '#ffffff';
   if (ctx.roundRect) {
     ctx.beginPath();
-    ctx.roundRect(marginX, 55, 84, 84, 20);
+    ctx.roundRect(marginX, 55, 92, 92, 22);
     ctx.fill();
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
-    ctx.lineWidth = 2;
+    ctx.strokeStyle = 'rgba(2, 132, 199, 0.4)';
+    ctx.lineWidth = 3;
     ctx.stroke();
   } else {
-    ctx.fillRect(marginX, 55, 84, 84);
+    ctx.fillRect(marginX, 55, 92, 92);
   }
 
   // Emoji / Vector Icon symbol
   const icon = item.icon || '🚀';
-  ctx.font = '42px "Segoe UI Emoji", "Apple Color Emoji", sans-serif';
+  ctx.font = '50px "Segoe UI Emoji", "Apple Color Emoji", sans-serif';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  ctx.fillText(icon, marginX + 42, 55 + 42);
+  ctx.fillText(icon, marginX + 46, 55 + 46);
 
   // 5. Category Pill Badge Top-Right
   const catLabel = item.catLabel || (item.category === 'hrms' ? 'HRMS Nucleus' : 'ERP Line');
@@ -77,25 +83,25 @@ function drawCardTexture(img, item = {}) {
   ctx.fillStyle = isErp ? '#0284c7' : '#6366f1';
   if (ctx.roundRect) {
     ctx.beginPath();
-    ctx.roundRect(430, 60, 215, 52, 26);
+    ctx.roundRect(415, 58, 230, 56, 28);
     ctx.fill();
   } else {
-    ctx.fillRect(430, 60, 215, 52);
+    ctx.fillRect(415, 58, 230, 56);
   }
 
-  ctx.font = 'bold 20px "Figtree", sans-serif';
+  ctx.font = 'bold 22px "Figtree", sans-serif';
   ctx.fillStyle = '#ffffff';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  ctx.fillText(catLabel.toUpperCase(), 537, 86);
+  ctx.fillText(catLabel.toUpperCase(), 530, 86);
 
   // Reset text shadow for maximum readability
   ctx.shadowColor = 'rgba(0, 0, 0, 0.95)';
-  ctx.shadowBlur = 14;
+  ctx.shadowBlur = 16;
 
-  // 6. Title Heading
+  // 6. Title Heading (Larger & Extra Bold!)
   const title = item.text || item.title || 'PALBON Module';
-  ctx.font = 'bold 46px "Figtree", sans-serif';
+  ctx.font = '900 54px "Figtree", sans-serif';
   ctx.fillStyle = '#ffffff';
   ctx.textAlign = 'left';
   ctx.textBaseline = 'top';
@@ -103,35 +109,35 @@ function drawCardTexture(img, item = {}) {
   // Wrap title if needed
   const titleWords = title.split(' ');
   let titleLine = '';
-  let titleY = 460;
+  let titleY = 440;
   for (let n = 0; n < titleWords.length; n++) {
     const testLine = titleLine + titleWords[n] + ' ';
     const metrics = ctx.measureText(testLine);
     if (metrics.width > 580 && n > 0) {
       ctx.fillText(titleLine, marginX, titleY);
       titleLine = titleWords[n] + ' ';
-      titleY += 56;
+      titleY += 64;
     } else {
       titleLine = testLine;
     }
   }
   ctx.fillText(titleLine, marginX, titleY);
 
-  // 7. Subtext Description
+  // 7. Subtext Description (Larger & Higher Contrast!)
   const desc = item.desc || 'Single record capability module for modern enterprise operations.';
-  ctx.font = '500 26px "Figtree", sans-serif';
-  ctx.fillStyle = '#e2e8f0'; // slate-200
+  ctx.font = '600 30px "Figtree", sans-serif';
+  ctx.fillStyle = '#f8fafc'; // slate-50
   
   const words = desc.split(' ');
   let line = '';
-  let lineY = titleY + 65;
+  let lineY = titleY + 74;
   for (let n = 0; n < words.length; n++) {
     const testLine = line + words[n] + ' ';
     const metrics = ctx.measureText(testLine);
     if (metrics.width > 580 && n > 0) {
       ctx.fillText(line, marginX, lineY);
       line = words[n] + ' ';
-      lineY += 36;
+      lineY += 40;
     } else {
       line = testLine;
     }
@@ -139,10 +145,10 @@ function drawCardTexture(img, item = {}) {
   ctx.fillText(line, marginX, lineY);
 
   // 8. Action Link Tag
-  ctx.font = 'bold 26px "Figtree", sans-serif';
+  ctx.font = 'bold 30px "Figtree", sans-serif';
   ctx.fillStyle = '#38bdf8'; // sky-400
   ctx.textAlign = 'left';
-  ctx.fillText('Explore Module →', marginX, 810);
+  ctx.fillText('Explore Module →', marginX, 805);
 
   // Reset shadow
   ctx.shadowColor = 'transparent';
@@ -222,7 +228,6 @@ class Media {
         }
         
         void main() {
-          // Sampling directly without cropping margins
           vec4 color = texture2D(tMap, vUv);
           
           float d = roundedBoxSDF(vUv - 0.5, vec2(0.5 - uBorderRadius), uBorderRadius);
