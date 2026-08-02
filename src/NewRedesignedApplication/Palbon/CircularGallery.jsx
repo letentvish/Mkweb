@@ -24,163 +24,112 @@ function autoBind(instance) {
   });
 }
 
-const DEFAULT_FONT = 'bold 30px Figtree';
-const DEFAULT_FONT_URL = 'https://fonts.googleapis.com/css2?family=Figtree:wght@400;700&display=swap';
-
-function deriveFontFamilyFromUrl(url) {
-  const fileName = (url.split('/').pop() || 'custom-font').split('?')[0];
-  const base = fileName.replace(/\.(woff2?|ttf|otf|eot)$/i, '');
-  return base.replace(/[^a-zA-Z0-9-_ ]/g, '').trim() || 'CircularGalleryFont';
-}
-
-async function loadFontFromStylesheet(url) {
-  const response = await fetch(url);
-  if (!response.ok) throw new Error(`Failed to fetch font stylesheet (${response.status})`);
-  const cssText = await response.text();
-  const faceBlocks = cssText.match(/@font-face\s*{[^}]*}/g) || [];
-  let family = null;
-  const fontFaces = [];
-  for (const block of faceBlocks) {
-    const familyMatch = block.match(/font-family:\s*['"]?([^;'"]+)['"]?/);
-    const urlMatch = block.match(/url\(\s*['"]?([^'")]+)['"]?\s*\)/);
-    if (!familyMatch || !urlMatch) continue;
-    family = familyMatch[1].trim();
-    const descriptors = {};
-    const weightMatch = block.match(/font-weight:\s*([^;]+);/);
-    const styleMatch = block.match(/font-style:\s*([^;]+);/);
-    const rangeMatch = block.match(/unicode-range:\s*([^;]+);/);
-    if (weightMatch) descriptors.weight = weightMatch[1].trim();
-    if (styleMatch) descriptors.style = styleMatch[1].trim();
-    if (rangeMatch) descriptors.unicodeRange = rangeMatch[1].trim();
-    fontFaces.push(new FontFace(family, `url(${urlMatch[1]})`, descriptors));
-  }
-  if (!family) throw new Error('No @font-face rule found in the stylesheet');
-  await Promise.allSettled(
-    fontFaces.map(async face => {
-      await face.load();
-      document.fonts.add(face);
-    })
-  );
-  return family;
-}
-
-async function loadFontFromFile(url) {
-  const family = deriveFontFamilyFromUrl(url);
-  const fontFace = new FontFace(family, `url(${url})`);
-  await fontFace.load();
-  document.fonts.add(fontFace);
-  return family;
-}
-
-async function loadCustomFont(fontUrl) {
-  const isStylesheet = fontUrl.includes('fonts.googleapis.com') || /\.css(\?.*)?$/i.test(fontUrl);
-  return isStylesheet ? loadFontFromStylesheet(fontUrl) : loadFontFromFile(fontUrl);
-}
-
-async function resolveFont(font, fontUrl) {
-  const effectiveUrl = fontUrl || (font === DEFAULT_FONT ? DEFAULT_FONT_URL : null);
-  if (!effectiveUrl) {
-    if (document.fonts && document.fonts.load) {
-      try {
-        await document.fonts.load(font);
-        await document.fonts.ready;
-      } catch {
-        // Ignore
-      }
-    }
-    return font;
-  }
-  try {
-    const family = await loadCustomFont(effectiveUrl);
-    const sizeMatch = font.match(/^\s*(.*?\d+px)/);
-    const prefix = sizeMatch ? sizeMatch[1].trim() : 'bold 30px';
-    const resolved = `${prefix} "${family}"`;
-    if (document.fonts && document.fonts.load) {
-      try {
-        await document.fonts.load(resolved);
-      } catch {
-        // Ignore
-      }
-    }
-    return resolved;
-  } catch (error) {
-    console.error('CircularGallery: unable to load font from', fontUrl, error);
-    return font;
-  }
-}
-
-function getFontSize(font) {
-  const match = font.match(/(\d+)px/);
-  return match ? parseInt(match[1], 10) : 30;
-}
-
-function createTextTexture(gl, text, font = 'bold 30px monospace', color = 'black') {
+function drawCardTexture(img, item = {}) {
   const canvas = document.createElement('canvas');
-  const context = canvas.getContext('2d');
-  context.font = font;
-  const metrics = context.measureText(text);
-  const textWidth = Math.ceil(metrics.width);
-  const textHeight = Math.ceil(getFontSize(font) * 1.2);
-  canvas.width = textWidth + 20;
-  canvas.height = textHeight + 20;
-  context.font = font;
-  context.fillStyle = color;
-  context.textBaseline = 'middle';
-  context.textAlign = 'center';
-  context.clearRect(0, 0, canvas.width, canvas.height);
-  context.fillText(text, canvas.width / 2, canvas.height / 2);
-  const texture = new Texture(gl, { generateMipmaps: false });
-  texture.image = canvas;
-  return { texture, width: canvas.width, height: canvas.height };
-}
+  canvas.width = 800;
+  canvas.height = 600;
+  const ctx = canvas.getContext('2d');
 
-class Title {
-  constructor({ gl, plane, renderer, text, textColor = '#545050', font = '30px sans-serif' }) {
-    autoBind(this);
-    this.gl = gl;
-    this.plane = plane;
-    this.renderer = renderer;
-    this.text = text;
-    this.textColor = textColor;
-    this.font = font;
-    this.createMesh();
+  // Fill background
+  ctx.fillStyle = '#01182F';
+  ctx.fillRect(0, 0, 800, 600);
+
+  // 1. Draw Image (cover)
+  if (img && img.naturalWidth) {
+    const scale = Math.max(800 / img.naturalWidth, 600 / img.naturalHeight);
+    const x = (800 - img.naturalWidth * scale) / 2;
+    const y = (600 - img.naturalHeight * scale) / 2;
+    ctx.drawImage(img, x, y, img.naturalWidth * scale, img.naturalHeight * scale);
   }
-  createMesh() {
-    const { texture, width, height } = createTextTexture(this.gl, this.text, this.font, this.textColor);
-    const geometry = new Plane(this.gl);
-    const program = new Program(this.gl, {
-      vertex: `
-        attribute vec3 position;
-        attribute vec2 uv;
-        uniform mat4 modelViewMatrix;
-        uniform mat4 projectionMatrix;
-        varying vec2 vUv;
-        void main() {
-          vUv = uv;
-          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-        }
-      `,
-      fragment: `
-        precision highp float;
-        uniform sampler2D tMap;
-        varying vec2 vUv;
-        void main() {
-          vec4 color = texture2D(tMap, vUv);
-          if (color.a < 0.1) discard;
-          gl_FragColor = color;
-        }
-      `,
-      uniforms: { tMap: { value: texture } },
-      transparent: true
-    });
-    this.mesh = new Mesh(this.gl, { geometry, program });
-    const aspect = width / height;
-    const textHeight = this.plane.scale.y * 0.15;
-    const textWidth = textHeight * aspect;
-    this.mesh.scale.set(textWidth, textHeight, 1);
-    this.mesh.position.y = -this.plane.scale.y * 0.5 - textHeight * 0.5 - 0.05;
-    this.mesh.setParent(this.plane);
+
+  // 2. Frosted Dark Blur Overlay Gradient (#01182F palette)
+  const gradient = ctx.createLinearGradient(0, 0, 0, 600);
+  gradient.addColorStop(0, 'rgba(1, 24, 47, 0.72)');
+  gradient.addColorStop(0.4, 'rgba(1, 24, 47, 0.88)');
+  gradient.addColorStop(1, 'rgba(1, 24, 47, 0.96)');
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, 800, 600);
+
+  // 3. Card Outer Border Glow
+  ctx.strokeStyle = 'rgba(255, 255, 255, 0.18)';
+  ctx.lineWidth = 6;
+  ctx.strokeRect(12, 12, 776, 576);
+
+  // 4. Icon Box Top-Left
+  ctx.fillStyle = 'rgba(255, 255, 255, 0.14)';
+  if (ctx.roundRect) {
+    ctx.beginPath();
+    ctx.roundRect(40, 40, 76, 76, 18);
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+  } else {
+    ctx.fillRect(40, 40, 76, 76);
   }
+
+  // Emoji / Vector Icon symbol
+  const icon = item.icon || '🚀';
+  ctx.font = '38px "Segoe UI Emoji", "Apple Color Emoji", sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(icon, 78, 78);
+
+  // 5. Category Pill Badge Top-Right
+  const catLabel = item.catLabel || (item.category === 'hrms' ? 'HRMS Nucleus' : 'ERP Line');
+  const isErp = !catLabel.toLowerCase().includes('hrms');
+  
+  ctx.fillStyle = isErp ? '#0284c7' : '#6366f1';
+  if (ctx.roundRect) {
+    ctx.beginPath();
+    ctx.roundRect(540, 45, 220, 48, 24);
+    ctx.fill();
+  } else {
+    ctx.fillRect(540, 45, 220, 48);
+  }
+
+  ctx.font = 'bold 20px "Figtree", sans-serif';
+  ctx.fillStyle = '#ffffff';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(catLabel.toUpperCase(), 650, 69);
+
+  // 6. Title Heading
+  const title = item.text || item.title || 'PALBON Module';
+  ctx.font = 'bold 44px "Figtree", sans-serif';
+  ctx.fillStyle = '#ffffff';
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'top';
+  ctx.fillText(title, 45, 330);
+
+  // 7. Subtext Description
+  const desc = item.desc || 'Single record capability module for modern enterprise operations.';
+  ctx.font = '500 24px "Figtree", sans-serif';
+  ctx.fillStyle = '#cbd5e1'; // slate-300
+  
+  const words = desc.split(' ');
+  let line = '';
+  let lineY = 400;
+  for (let n = 0; n < words.length; n++) {
+    const testLine = line + words[n] + ' ';
+    const metrics = ctx.measureText(testLine);
+    if (metrics.width > 710 && n > 0) {
+      ctx.fillText(line, 45, lineY);
+      line = words[n] + ' ';
+      lineY += 32;
+    } else {
+      line = testLine;
+    }
+  }
+  ctx.fillText(line, 45, lineY);
+
+  // 8. Action Link Tag
+  ctx.font = 'bold 24px "Figtree", sans-serif';
+  ctx.fillStyle = '#38bdf8'; // sky-400
+  ctx.textAlign = 'left';
+  ctx.fillText('Explore Module →', 45, 520);
+
+  return canvas;
 }
 
 class Media {
@@ -188,6 +137,7 @@ class Media {
     geometry,
     gl,
     image,
+    itemData,
     index,
     length,
     renderer,
@@ -204,6 +154,7 @@ class Media {
     this.geometry = geometry;
     this.gl = gl;
     this.image = image;
+    this.itemData = itemData;
     this.index = index;
     this.length = length;
     this.renderer = renderer;
@@ -217,7 +168,6 @@ class Media {
     this.font = font;
     this.createShader();
     this.createMesh();
-    this.createTitle();
     this.onResize();
   }
   createShader() {
@@ -233,13 +183,11 @@ class Media {
         attribute vec2 uv;
         uniform mat4 modelViewMatrix;
         uniform mat4 projectionMatrix;
-        uniform float uTime;
-        uniform float uSpeed;
         varying vec2 vUv;
         void main() {
           vUv = uv;
           vec3 p = position;
-          p.z = (sin(p.x * 4.0 + uTime) * 1.5 + cos(p.y * 2.0 + uTime) * 1.5) * (0.1 + uSpeed * 0.5);
+          p.z = 0.0; // REMOVED JIGGLING EFFECT COMPLETELY
           gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
         }
       `,
@@ -280,7 +228,7 @@ class Media {
         uPlaneSizes: { value: [0, 0] },
         uImageSizes: { value: [0, 0] },
         uSpeed: { value: 0 },
-        uTime: { value: 100 * Math.random() },
+        uTime: { value: 0 },
         uBorderRadius: { value: this.borderRadius }
       },
       transparent: true
@@ -289,8 +237,9 @@ class Media {
     img.crossOrigin = 'anonymous';
     img.src = this.image;
     img.onload = () => {
-      texture.image = img;
-      this.program.uniforms.uImageSizes.value = [img.naturalWidth, img.naturalHeight];
+      const cardCanvas = drawCardTexture(img, this.itemData || { text: this.text });
+      texture.image = cardCanvas;
+      this.program.uniforms.uImageSizes.value = [cardCanvas.width, cardCanvas.height];
     };
   }
   createMesh() {
@@ -299,16 +248,6 @@ class Media {
       program: this.program
     });
     this.plane.setParent(this.scene);
-  }
-  createTitle() {
-    this.title = new Title({
-      gl: this.gl,
-      plane: this.plane,
-      renderer: this.renderer,
-      text: this.text,
-      textColor: this.textColor,
-      font: this.font
-    });
   }
   update(scroll, direction) {
     this.plane.position.x = this.x - scroll.current - this.extra;
@@ -335,8 +274,6 @@ class Media {
     }
 
     this.speed = scroll.current - scroll.last;
-    this.program.uniforms.uTime.value += 0.04;
-    this.program.uniforms.uSpeed.value = this.speed;
 
     const planeOffset = this.plane.scale.x / 2;
     const viewportOffset = this.viewport.width / 2;
@@ -428,13 +365,7 @@ class App {
       { image: `https://picsum.photos/seed/3/800/600?grayscale`, text: 'Waterfall' },
       { image: `https://picsum.photos/seed/4/800/600?grayscale`, text: 'Strawberries' },
       { image: `https://picsum.photos/seed/5/800/600?grayscale`, text: 'Deep Diving' },
-      { image: `https://picsum.photos/seed/16/800/600?grayscale`, text: 'Train Track' },
-      { image: `https://picsum.photos/seed/17/800/600?grayscale`, text: 'Santorini' },
-      { image: `https://picsum.photos/seed/8/800/600?grayscale`, text: 'Blurry Lights' },
-      { image: `https://picsum.photos/seed/9/800/600?grayscale`, text: 'New York' },
-      { image: `https://picsum.photos/seed/10/800/600?grayscale`, text: 'Good Boy' },
-      { image: `https://picsum.photos/seed/21/800/600?grayscale`, text: 'Coastline' },
-      { image: `https://picsum.photos/seed/12/800/600?grayscale`, text: 'Palm Trees' }
+      { image: `https://picsum.photos/seed/16/800/600?grayscale`, text: 'Train Track' }
     ];
     const galleryItems = items && items.length ? items : defaultItems;
     this.mediasImages = galleryItems.concat(galleryItems);
@@ -443,6 +374,7 @@ class App {
         geometry: this.planeGeometry,
         gl: this.gl,
         image: data.image,
+        itemData: data,
         index,
         length: this.mediasImages.length,
         renderer: this.renderer,
@@ -580,9 +512,9 @@ class App {
 export default function CircularGallery({
   items,
   bend = 3,
-  textColor = '#01182F',
+  textColor = '#ffffff',
   borderRadius = 0.05,
-  font = 'bold 28px Figtree',
+  font = 'bold 30px Figtree',
   fontUrl,
   scrollSpeed = 2,
   scrollEase = 0.05
@@ -590,23 +522,17 @@ export default function CircularGallery({
   const containerRef = useRef(null);
   useEffect(() => {
     if (!containerRef.current) return;
-    let app;
-    let isMounted = true;
-    resolveFont(font, fontUrl).then(resolvedFont => {
-      if (!isMounted || !containerRef.current) return;
-      app = new App(containerRef.current, {
-        items,
-        bend,
-        textColor,
-        borderRadius,
-        font: resolvedFont,
-        scrollSpeed,
-        scrollEase
-      });
+    let app = new App(containerRef.current, {
+      items,
+      bend,
+      textColor,
+      borderRadius,
+      font,
+      scrollSpeed,
+      scrollEase
     });
 
     return () => {
-      isMounted = false;
       if (app) app.destroy();
     };
   }, [items, bend, textColor, borderRadius, font, fontUrl, scrollSpeed, scrollEase]);

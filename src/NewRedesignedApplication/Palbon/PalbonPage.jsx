@@ -35,18 +35,102 @@ import EcosystemCtaSection from "./EcosystemCtaSection";
 import CircularGallery from "./CircularGallery";
 
 const HERO_V3_GALLERY_ITEMS = [
-  { image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80", text: "General Ledger" },
-  { image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80", text: "Accounts Payable" },
-  { image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80", text: "Tax & e-Invoicing" },
-  { image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80", text: "Inventory Engine" },
-  { image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80", text: "Warehouse WMS" },
-  { image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80", text: "CRM & Pipeline" },
-  { image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80", text: "Manufacturing MRP" },
-  { image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80", text: "Core HR & Records" },
-  { image: "https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=800&q=80", text: "Payroll Engine" },
-  { image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80", text: "Recruitment ATS" },
-  { image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80", text: "Time & Attendance" },
-  { image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=80", text: "Workforce BI" }
+  { 
+    id: "gl", 
+    image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80", 
+    text: "General Ledger", 
+    catLabel: "ERP Line", 
+    desc: "Multi-entity accounting & GL book of record",
+    icon: "💰"
+  },
+  { 
+    id: "ap", 
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80", 
+    text: "Accounts Payable", 
+    catLabel: "ERP Line", 
+    desc: "3-way matching, automated invoice approvals",
+    icon: "📄"
+  },
+  { 
+    id: "tax", 
+    image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80", 
+    text: "Tax & e-Invoicing", 
+    catLabel: "ERP Line", 
+    desc: "GST e-way bills & statutory tax compliance",
+    icon: "⚡"
+  },
+  { 
+    id: "inv", 
+    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80", 
+    text: "Inventory Engine", 
+    catLabel: "ERP Line", 
+    desc: "Multi-location stock control & reorder alerts",
+    icon: "📦"
+  },
+  { 
+    id: "wms", 
+    image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80", 
+    text: "Warehouse WMS", 
+    catLabel: "ERP Line", 
+    desc: "Optimised picking, bin tracking & dispatch",
+    icon: "⚙️"
+  },
+  { 
+    id: "crm", 
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80", 
+    text: "CRM & Pipeline", 
+    catLabel: "ERP Line", 
+    desc: "Leads to delivery & sales pipeline management",
+    icon: "📊"
+  },
+  { 
+    id: "mrp", 
+    image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80", 
+    text: "Manufacturing MRP", 
+    catLabel: "ERP Line", 
+    desc: "Bill of materials & production scheduling",
+    icon: "🧩"
+  },
+  { 
+    id: "hr", 
+    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80", 
+    text: "Core HR & Records", 
+    catLabel: "HRMS Nucleus", 
+    desc: "Single source of truth for employee data",
+    icon: "👥"
+  },
+  { 
+    id: "payroll", 
+    image: "https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=800&q=80", 
+    text: "Payroll Engine", 
+    catLabel: "HRMS Nucleus", 
+    desc: "Automated salary & instant payslip generation",
+    icon: "💳"
+  },
+  { 
+    id: "ats", 
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80", 
+    text: "Recruitment ATS", 
+    catLabel: "HRMS Nucleus", 
+    desc: "Applicant tracking & joining workflows",
+    icon: "💼"
+  },
+  { 
+    id: "attendance", 
+    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80", 
+    text: "Time & Attendance", 
+    catLabel: "HRMS Nucleus", 
+    desc: "Biometric integration & mobile attendance",
+    icon: "⏰"
+  },
+  { 
+    id: "bi", 
+    image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=80", 
+    text: "Workforce BI", 
+    catLabel: "HRMS Nucleus", 
+    desc: "Predictive headcount & attrition analytics",
+    icon: "✨"
+  }
 ];
 
 export default function PalbonPage() {
