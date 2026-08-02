@@ -10,21 +10,14 @@ import {
   Sparkles, 
   Zap, 
   FileText,
-  Clock,
-  Puzzle,
-  BarChart2,
-  AlertTriangle,
-  GitFork,
-  ShieldAlert,
-  Coins,
-  ChevronLeft,
-  ChevronRight,
-  ArrowDown,
-  Settings,
-  Check,
-  IndianRupee,
-  FolderGit2,
-  Lock
+  Clock, 
+  ChevronLeft, 
+  ChevronRight, 
+  ArrowDown, 
+  Layers, 
+  GitFork, 
+  Puzzle, 
+  BarChart2
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import NewNavbar from "../Components/NewNavbar";
