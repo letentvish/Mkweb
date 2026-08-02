@@ -460,8 +460,7 @@ export default function PalbonPage() {
 
             {/* 3D WebGL Curved Interactive Circular Gallery - Shifted Upwards */}
             <div className="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen -mt-4 mb-2 overflow-hidden z-20">
-              <div style={{ height: 'min(90vw, 640px)', position: 'relative', width: '100%' }}
-                   className="sm:!h-[560px] md:!h-[600px] lg:!h-[640px]">
+              <div style={{ height: 'min(130vw, 640px)', position: 'relative', width: '100%' }}>
                 <CircularGallery
                   items={HERO_V3_GALLERY_ITEMS}
                   bend={3}

@@ -338,13 +338,16 @@ class Media {
     if (viewport) {
       this.viewport = viewport;
     }
-    // Responsive scale: on narrow screens (mobile/tablet) derive scale from width so cards fill properly
+    // Responsive scale: derive from screen width on mobile/tablet so cards fill the viewport properly
     const isMobile = this.screen.width < 768;
     const isTablet = this.screen.width >= 768 && this.screen.width < 1024;
     if (isMobile) {
-      this.scale = this.screen.width / 700; // one card fills ~screen width
+      // Container height = 130vw matches card 700:900 ratio (130/100 ≈ 9/7)
+      // Scale so card width = screen width → card fills container correctly
+      this.scale = this.screen.width / 700;
     } else if (isTablet) {
-      this.scale = this.screen.width / 1400; // ~2 cards visible on tablet
+      // ~2 cards visible on tablet
+      this.scale = this.screen.width / 1400;
     } else {
       this.scale = this.screen.height / 1500;
     }
@@ -355,7 +358,7 @@ class Media {
     this.plane.scale.y = this.baseScaleY * scaleFactor;
     this.plane.scale.x = this.baseScaleX * scaleFactor;
 
-    this.padding = isMobile ? 0.4 : 2;
+    this.padding = isMobile ? 0.3 : isTablet ? 1.2 : 2;
     this.width = this.baseScaleX + this.padding;
     this.widthTotal = this.width * this.length;
     this.x = this.width * this.index;
