@@ -1119,85 +1119,80 @@ export default function PalbonPage() {
       <AutomationSection onOpenSuiteModal={() => setIsSuiteModalOpen(true)} />
 
       {/* SECTION 5: ARCHITECTURE ("The logic of one system") */}
-      <section className="py-24 lg:py-32 bg-white text-slate-900 relative" id="architecture-section">
+      <section className="py-20 lg:py-28 bg-[#F8FAFC] text-slate-900 border-b border-slate-200/80 relative overflow-hidden" id="architecture-section">
+        
+        {/* Subtle Grid Background */}
+        <div className="absolute inset-0 pointer-events-none opacity-20 z-0">
+          <svg className="w-full h-full" viewBox="0 0 1200 800" fill="none">
+            <pattern id="arch-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+              <circle cx="2" cy="2" r="1.2" fill="#94A3B8" />
+            </pattern>
+            <rect width="100%" height="100%" fill="url(#arch-grid)" />
+          </svg>
+        </div>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           {/* Centered Header */}
-          <div className="text-center max-w-3xl mx-auto mb-12 flex flex-col items-center space-y-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-[#6366f1] text-xs font-bold tracking-wider uppercase font-poppins">
-              <span className="w-2 h-2 rounded-full bg-[#6366f1]" />
-              <span>ARCHITECTURE</span>
+          <div className="text-center max-w-3xl mx-auto mb-10 flex flex-col items-center space-y-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-50 border border-sky-200 text-[#0284c7] text-xs font-bold tracking-wider uppercase font-poppins">
+              <span className="w-2 h-2 rounded-full bg-[#0284c7] animate-pulse" />
+              <span>SYSTEM ARCHITECTURE</span>
             </div>
 
-            <h2 className="text-4xl sm:text-5xl font-poppins font-extrabold text-slate-900 tracking-tight">
+            <h2 className="text-4xl sm:text-5xl font-poppins font-extrabold text-[#01182F] tracking-tight">
               The logic of one system
             </h2>
 
-            <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
+            <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-medium">
               Complexity is the enemy of execution. A unified structure eliminates the translation layer between departments, making the organization faster by design.
             </p>
-
-            <div className="flex items-center gap-4 pt-2">
-              <button
-                onClick={() => navigate("/contact")}
-                className="px-6 py-2.5 rounded-full border border-indigo-300 hover:border-indigo-400 text-[#6366f1] font-semibold text-sm transition-all duration-200 shadow-sm"
-              >
-                Learn More
-              </button>
-              <button
-                onClick={() => navigate("/contact")}
-                className="text-[#6366f1] hover:text-[#4f46e5] font-bold text-sm inline-flex items-center gap-1.5 transition-colors"
-              >
-                <span>Talk to us</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
           </div>
 
           {/* Interactive Filter Tabs */}
           <div className="flex justify-center items-center gap-8 mb-12 border-b border-slate-200 pb-4">
             <button
               onClick={() => setActiveArchTab("single-record")}
-              className={`font-poppins font-bold text-base px-2 py-1 relative transition-colors ${
-                activeArchTab === "single-record" ? "text-[#6366f1]" : "text-slate-500 hover:text-slate-800"
+              className={`font-poppins font-bold text-base px-3 py-1.5 relative transition-colors cursor-pointer ${
+                activeArchTab === "single-record" ? "text-[#0284c7]" : "text-slate-500 hover:text-slate-900"
               }`}
             >
               <span>Single record</span>
               {activeArchTab === "single-record" && (
-                <motion.div layoutId="tab-underline-arch" className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#6366f1]" />
+                <motion.div layoutId="tab-underline-arch" className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#0284c7]" />
               )}
             </button>
 
             <button
               onClick={() => setActiveArchTab("event-driven")}
-              className={`font-poppins font-bold text-base px-2 py-1 relative transition-colors ${
-                activeArchTab === "event-driven" ? "text-[#6366f1]" : "text-slate-500 hover:text-slate-800"
+              className={`font-poppins font-bold text-base px-3 py-1.5 relative transition-colors cursor-pointer ${
+                activeArchTab === "event-driven" ? "text-[#0284c7]" : "text-slate-500 hover:text-slate-900"
               }`}
             >
               <span>Event driven</span>
               {activeArchTab === "event-driven" && (
-                <motion.div layoutId="tab-underline-arch" className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#6366f1]" />
+                <motion.div layoutId="tab-underline-arch" className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#0284c7]" />
               )}
             </button>
 
             <button
               onClick={() => setActiveArchTab("shared-logic")}
-              className={`font-poppins font-bold text-base px-2 py-1 relative transition-colors ${
-                activeArchTab === "shared-logic" ? "text-[#6366f1]" : "text-slate-500 hover:text-slate-800"
+              className={`font-poppins font-bold text-base px-3 py-1.5 relative transition-colors cursor-pointer ${
+                activeArchTab === "shared-logic" ? "text-[#0284c7]" : "text-slate-500 hover:text-slate-900"
               }`}
             >
               <span>Shared logic</span>
               {activeArchTab === "shared-logic" && (
-                <motion.div layoutId="tab-underline-arch" className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#6366f1]" />
+                <motion.div layoutId="tab-underline-arch" className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#0284c7]" />
               )}
             </button>
           </div>
 
-          {/* Dual Column Tab Showcase Card Container */}
-          <div className="bg-white rounded-3xl shadow-xl border border-indigo-100/80 overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-stretch">
+          {/* Unboxed Dual Column Layout (Situated Directly on Screen) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
             
-            {/* Left Column: Image & Connected Telemetry Overlays */}
-            <div className="lg:col-span-6 relative min-h-[440px] lg:min-h-[520px] p-6 flex items-center justify-center bg-slate-50 overflow-hidden">
+            {/* Left Column: Visual Showcase Frame */}
+            <div className="lg:col-span-6 relative min-h-[460px] lg:min-h-[520px] rounded-3xl border border-slate-200/90 bg-white overflow-hidden shadow-lg flex items-center justify-center">
               
               {/* Photo */}
               <div className="absolute inset-0 overflow-hidden">
@@ -1212,8 +1207,8 @@ export default function PalbonPage() {
               {/* Connected Dotted Lines SVG */}
               <div className="absolute inset-0 pointer-events-none z-10">
                 <svg className="w-full h-full" viewBox="0 0 500 450" fill="none">
-                  <path d="M 230 140 L 320 180" stroke="#818cf8" strokeWidth="2" strokeDasharray="4 4" />
-                  <path d="M 320 180 L 230 280" stroke="#818cf8" strokeWidth="2" strokeDasharray="4 4" />
+                  <path d="M 230 140 L 320 180" stroke="#38bdf8" strokeWidth="2" strokeDasharray="4 4" />
+                  <path d="M 320 180 L 230 280" stroke="#38bdf8" strokeWidth="2" strokeDasharray="4 4" />
                 </svg>
               </div>
 
@@ -1230,15 +1225,15 @@ export default function PalbonPage() {
               </div>
 
               {/* Connected Circle Checkmark Medallion */}
-              <div className="absolute top-36 left-48 z-30 w-8 h-8 rounded-full bg-[#6366f1] text-white shadow-lg flex items-center justify-center border-2 border-white">
-                <Check className="w-4 h-4" />
+              <div className="absolute top-36 left-48 z-30 w-8 h-8 rounded-full bg-[#0284c7] text-white shadow-lg flex items-center justify-center border-2 border-white">
+                <Check className="w-4 h-4 stroke-[3]" />
               </div>
 
               {/* Bottom Floating Department Status List Card */}
               <div className="absolute bottom-6 left-6 z-20 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-slate-200/80 w-56 space-y-2.5">
                 <div className="flex items-center justify-between text-xs font-bold text-slate-800">
                   <div className="flex items-center gap-2">
-                    <Users className="w-4 h-4 text-[#6366f1]" />
+                    <Users className="w-4 h-4 text-[#0284c7]" />
                     <span>HR</span>
                   </div>
                   <span className="text-[9px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">● Up to date</span>
@@ -1246,7 +1241,7 @@ export default function PalbonPage() {
 
                 <div className="flex items-center justify-between text-xs font-bold text-slate-800 border-t border-slate-100 pt-2">
                   <div className="flex items-center gap-2">
-                    <IndianRupee className="w-4 h-4 text-[#6366f1]" />
+                    <IndianRupee className="w-4 h-4 text-[#0284c7]" />
                     <span>Payroll</span>
                   </div>
                   <span className="text-[9px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">● Up to date</span>
@@ -1254,7 +1249,7 @@ export default function PalbonPage() {
 
                 <div className="flex items-center justify-between text-xs font-bold text-slate-800 border-t border-slate-100 pt-2">
                   <div className="flex items-center gap-2">
-                    <FolderGit2 className="w-4 h-4 text-[#6366f1]" />
+                    <FolderGit2 className="w-4 h-4 text-[#0284c7]" />
                     <span>Projects</span>
                   </div>
                   <span className="text-[9px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">● Up to date</span>
@@ -1262,7 +1257,7 @@ export default function PalbonPage() {
 
                 <div className="flex items-center justify-between text-xs font-bold text-slate-800 border-t border-slate-100 pt-2">
                   <div className="flex items-center gap-2">
-                    <Lock className="w-4 h-4 text-[#6366f1]" />
+                    <Lock className="w-4 h-4 text-[#0284c7]" />
                     <span>Access</span>
                   </div>
                   <span className="text-[9px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">● Up to date</span>
@@ -1271,41 +1266,41 @@ export default function PalbonPage() {
 
             </div>
 
-            {/* Right Column: Tab Narrative */}
-            <div className="lg:col-span-6 p-8 lg:p-12 flex flex-col justify-center items-start space-y-6">
+            {/* Right Column: Narrative Copy (Situated directly on page) */}
+            <div className="lg:col-span-6 flex flex-col justify-center items-start space-y-6 text-left pl-0 lg:pl-4">
               
-              <p className="text-xs font-extrabold uppercase tracking-widest text-[#6366f1] font-poppins">
-                {currentArchContent.anchor}
-              </p>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-50 border border-sky-200 text-[#0284c7] text-xs font-extrabold tracking-wider uppercase font-poppins">
+                <span>{currentArchContent.anchor}</span>
+              </div>
 
-              <h3 className="text-3xl sm:text-4xl font-poppins font-extrabold text-slate-900 tracking-tight leading-tight">
+              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-[#01182F] tracking-tight leading-[1.15]">
                 {currentArchContent.title.includes("truth") ? (
                   <>
                     One person, one record, <br />
-                    one <span className="text-[#6366f1]">truth</span>
+                    one <span className="bg-gradient-to-r from-[#0284c7] to-[#0369a1] bg-clip-text text-transparent">truth</span>
                   </>
                 ) : (
                   currentArchContent.title
                 )}
               </h3>
 
-              <p className="text-slate-600 text-base leading-relaxed">
+              <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal">
                 {currentArchContent.body}
               </p>
 
-              <div className="flex items-center gap-4 pt-2">
+              <div className="flex items-center gap-4 pt-3">
                 <button
                   onClick={() => navigate("/contact")}
-                  className="px-6 py-2.5 rounded-full border border-indigo-300 hover:border-indigo-400 text-[#6366f1] font-semibold text-sm transition-all duration-200 shadow-sm cursor-pointer"
+                  className="px-6 py-3 rounded-full border-2 border-[#0284c7] text-[#0284c7] hover:bg-[#0284c7] hover:text-white font-bold text-sm transition-all duration-200 shadow-sm cursor-pointer"
                 >
                   Learn More
                 </button>
                 <button
                   onClick={() => navigate("/contact")}
-                  className="text-[#6366f1] hover:text-[#4f46e5] font-bold text-sm inline-flex items-center gap-1.5 transition-colors cursor-pointer"
+                  className="text-[#0284c7] hover:text-[#0369a1] font-extrabold text-sm inline-flex items-center gap-1.5 transition-colors cursor-pointer group"
                 >
                   <span>Talk to us</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
 
