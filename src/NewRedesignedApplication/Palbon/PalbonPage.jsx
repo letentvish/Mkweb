@@ -1345,19 +1345,19 @@ export default function PalbonPage() {
           </div>
 
           {/* Unboxed Dual Column Layout (Situated Directly on Screen) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-stretch">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
             
             {/* Left Column: Visual Showcase Frame (Full Height Image Layout) */}
-            <div className="lg:col-span-6 relative rounded-3xl border border-slate-200/90 bg-white overflow-hidden shadow-lg flex items-center justify-center min-h-[540px] lg:min-h-[620px] h-full">
+            <div className="lg:col-span-7 relative rounded-3xl overflow-hidden flex items-center justify-center min-h-[560px] lg:min-h-[700px] h-full">
               <img 
                 src={currentArchContent.image}
                 alt={currentArchContent.title} 
-                className="w-full h-full object-cover rounded-3xl transition-all duration-700"
+                className="w-full h-full object-contain transition-all duration-700 drop-shadow-xl"
               />
             </div>
 
             {/* Right Column: Narrative Copy (Situated directly on page) */}
-            <div className="lg:col-span-6 flex flex-col justify-center items-start space-y-6 text-left pl-0 lg:pl-4">
+            <div className="lg:col-span-5 flex flex-col justify-center items-start space-y-6 text-left pl-0 lg:pl-4">
               
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-50 border border-sky-200 text-[#0284c7] text-xs font-extrabold tracking-wider uppercase font-poppins">
                 <span>{currentArchContent.anchor}</span>
