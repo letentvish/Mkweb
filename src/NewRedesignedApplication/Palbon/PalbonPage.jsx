@@ -17,7 +17,10 @@ import {
   Layers, 
   GitFork, 
   Puzzle, 
-  BarChart2
+  BarChart2,
+  AlertTriangle,
+  ShieldAlert,
+  Coins
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import NewNavbar from "../Components/NewNavbar";
