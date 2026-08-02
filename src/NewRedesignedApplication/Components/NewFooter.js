@@ -1,30 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import LogoDark from "../../Assets/MultipliersKraftLogoDark.png";
-import LogoLight from "../../Assets/MultipliersKraftLogoLight.png";
 import { useNavigate } from "react-router-dom";
-import { ArrowRight, Mail, MapPin, ShieldCheck, Globe, Sparkles, ExternalLink, CheckCircle2 } from "lucide-react";
+import { Mail, MapPin, Globe } from "lucide-react";
 
 export default function Footer() {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    const savedMode = localStorage.getItem('theme');
-    return savedMode ? savedMode === 'dark' : true; // Default to dark for premium sleek feel
-  });
-
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const observer = new MutationObserver(() => {
-      const theme = document.documentElement.getAttribute('theme');
-      setIsDarkMode(theme === 'dark');
-    });
-
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['theme']
-    });
-
-    return () => observer.disconnect();
-  }, []);
 
   const handleNavigation = (path, section) => {
     if (path) {
@@ -41,48 +21,9 @@ export default function Footer() {
   };
 
   return (
-    <footer className="w-full bg-[#01182F] text-slate-200 border-t border-slate-800/80 relative overflow-hidden font-sans">
+    <footer className="w-full bg-[#01182F] text-slate-200 border-t border-slate-800 font-sans">
       
-      {/* Background Decorative Ambient Glows */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
-
-      {/* Top CTA Banner Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12 relative z-10 border-b border-slate-800/80">
-        <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-[#012243] via-[#02315e] to-[#01182F] border border-sky-500/20 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-8">
-          <div className="max-w-2xl text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-500/10 border border-sky-400/30 text-sky-400 text-xs font-bold uppercase tracking-widest mb-4">
-              <Sparkles className="w-3.5 h-3.5 animate-pulse" />
-              <span>Transform Your Operating System</span>
-            </div>
-            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-snug">
-              Ready to assemble the enterprise platform you actually need?
-            </h3>
-            <p className="text-slate-300 text-sm sm:text-base mt-3 font-medium">
-              Start with the modules that solve today's problems, then scale smoothly on one shared data core.
-            </p>
-          </div>
-
-          <div className="flex flex-col sm:flex-row items-center gap-4 w-full lg:w-auto">
-            <button
-              onClick={() => navigate("/palbon")}
-              className="w-full sm:w-auto bg-[#0284c7] hover:bg-[#0369a1] text-white font-bold px-7 py-3.5 rounded-full inline-flex items-center justify-center gap-2 shadow-lg shadow-sky-500/25 transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95 text-sm whitespace-nowrap"
-            >
-              <span>Explore PALBON Suite</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-
-            <button
-              onClick={() => navigate("/contact")}
-              className="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold px-6 py-3.5 rounded-full inline-flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer text-sm whitespace-nowrap"
-            >
-              <span>Schedule Executive Demo</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Footer Links Grid */}
+      {/* Main Footer Links Grid - Solid Background, No Glow */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
           
@@ -99,12 +40,6 @@ export default function Footer() {
             <p className="text-slate-400 text-sm leading-relaxed max-w-md font-normal">
               MultipliersKraft delivers next-generation modular ERP & HRMS software, corporate consulting, and data intelligence engineered for agile enterprise scale.
             </p>
-
-            {/* Live System Status Pill */}
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-              <span>All Cloud Systems Operational</span>
-            </div>
 
             {/* Global Contact Info */}
             <div className="space-y-2.5 pt-2 text-xs sm:text-sm text-slate-300">
@@ -204,7 +139,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar Section */}
-      <div className="bg-[#000d1a] border-t border-slate-800/80 py-6 relative z-10 text-xs text-slate-400">
+      <div className="bg-[#000a14] border-t border-slate-800 py-6 text-xs text-slate-400">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <span>© {new Date().getFullYear()} MultipliersKraft Inc. All rights reserved.</span>
