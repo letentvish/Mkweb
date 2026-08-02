@@ -32,6 +32,22 @@ import NewFooter from "../Components/NewFooter";
 import SuiteConfiguratorModal from "./SuiteConfiguratorModal";
 import AutomationSection from "./AutomationSection";
 import EcosystemCtaSection from "./EcosystemCtaSection";
+import CircularGallery from "./CircularGallery";
+
+const HERO_V3_GALLERY_ITEMS = [
+  { image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80", text: "General Ledger" },
+  { image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80", text: "Accounts Payable" },
+  { image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80", text: "Tax & e-Invoicing" },
+  { image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80", text: "Inventory Engine" },
+  { image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80", text: "Warehouse WMS" },
+  { image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80", text: "CRM & Pipeline" },
+  { image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80", text: "Manufacturing MRP" },
+  { image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80", text: "Core HR & Records" },
+  { image: "https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=800&q=80", text: "Payroll Engine" },
+  { image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80", text: "Recruitment ATS" },
+  { image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80", text: "Time & Attendance" },
+  { image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=80", text: "Workforce BI" }
+];
 
 const HERO_V3_MODULES = [
   { id: "financial-accounting-gl", title: "General Ledger", category: "erp", catLabel: "ERP", icon: <Coins className="w-6 h-6 text-[#0284c7]" />, desc: "Multi-entity accounting & GL" },
@@ -411,42 +427,18 @@ export default function PalbonPage() {
               ))}
             </div>
 
-            {/* Modular App Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 max-w-7xl mx-auto text-left">
-              {HERO_V3_MODULES
-                .filter(m => heroV3Filter === "all" ? true : m.category === heroV3Filter)
-                .map(mod => (
-                  <div
-                    key={mod.id}
-                    onClick={() => setIsSuiteModalOpen(true)}
-                    className="group p-5 sm:p-6 bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200/90 hover:border-sky-300 shadow-md hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col justify-between hover:-translate-y-1.5"
-                  >
-                    <div>
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-sky-50 to-indigo-50 border border-sky-100 flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform">
-                          {mod.icon}
-                        </div>
-                        <span className={`text-xs font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider ${
-                          mod.category === "erp" ? "bg-sky-50 text-[#0284c7] border border-sky-200" : "bg-indigo-50 text-[#6366f1] border border-indigo-200"
-                        }`}>
-                          {mod.catLabel}
-                        </span>
-                      </div>
-
-                      <h4 className="font-poppins font-extrabold text-base sm:text-lg text-[#01182F] group-hover:text-[#0284c7] transition-colors leading-snug mb-1.5">
-                        {mod.title}
-                      </h4>
-                      <p className="text-xs sm:text-sm text-slate-600 line-clamp-2 leading-relaxed font-medium">
-                        {mod.desc}
-                      </p>
-                    </div>
-
-                    <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs sm:text-sm font-extrabold text-[#0284c7]">
-                      <span>Explore Module</span>
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </div>
-                  </div>
-                ))}
+            {/* 3D WebGL Curved Interactive Circular Gallery */}
+            <div style={{ height: '600px', position: 'relative', width: '100%' }} className="my-2">
+              <CircularGallery
+                items={HERO_V3_GALLERY_ITEMS}
+                bend={3}
+                textColor="#01182F"
+                borderRadius={0.06}
+                scrollEase={0.04}
+                scrollSpeed={2}
+                font="bold 28px Figtree"
+                fontUrl="https://fonts.googleapis.com/css2?family=Figtree:wght@400;700&display=swap"
+              />
             </div>
 
             {/* Bottom Banner */}
