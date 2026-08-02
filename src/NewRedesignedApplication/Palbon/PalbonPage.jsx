@@ -1073,7 +1073,7 @@ export default function PalbonPage() {
           </div>
 
           {/* Navigation Filter Tabs */}
-          <div className="flex justify-center mb-10">
+          <div className="flex justify-center mb-4 sm:mb-6 lg:mb-10">
             <div className="flex space-x-8 border-b border-slate-200 px-4">
               <button 
                 onClick={() => setActiveModelTab("workforce")}
@@ -1102,6 +1102,21 @@ export default function PalbonPage() {
             </div>
           </div>
 
+          {/* Swipe hint dots — mobile only */}
+          <div className="flex lg:hidden justify-center items-center gap-2 mb-3">
+            {modelTabOrder.map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveModelTab(tab)}
+                className={`rounded-full transition-all duration-300 cursor-pointer ${
+                  activeModelTab === tab
+                    ? "w-6 h-2 bg-[#6366f1]"
+                    : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
+                }`}
+              />
+            ))}
+          </div>
+
           {/* Main Feature Card Container — swipeable on mobile */}
           <div
             className="bg-white border border-indigo-200/90 rounded-3xl overflow-hidden shadow-lg shadow-indigo-100/50"
@@ -1111,13 +1126,13 @@ export default function PalbonPage() {
             <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
               
               {/* Left Column: Interactive Visual */}
-              <div className="lg:col-span-6 relative w-full h-full min-h-[360px] sm:min-h-[460px] lg:min-h-full">
+              <div className="lg:col-span-6 relative w-full h-full min-h-[180px] sm:min-h-[280px] lg:min-h-full max-h-[220px] sm:max-h-[340px] lg:max-h-none">
                 <div className="relative w-full h-full min-h-full bg-slate-100">
                   {/* Base Photo / Graphic */}
                   <img 
                     src={currentIntelligenceTab.image} 
                     alt="Workforce visual" 
-                    className="w-full h-full object-cover object-center block"
+                    className="w-full h-full object-cover object-center block min-h-[180px] sm:min-h-[280px] lg:min-h-full"
                   />
                   
                   {!currentIntelligenceTab.hideOverlays && (
@@ -1247,16 +1262,16 @@ export default function PalbonPage() {
               </div>
 
               {/* Right Column: Text Content Side */}
-              <div className="lg:col-span-6 flex flex-col items-start justify-center p-6 sm:p-10 lg:p-12 space-y-6 text-left">
+              <div className="lg:col-span-6 flex flex-col items-start justify-center p-4 sm:p-8 lg:p-12 space-y-3 sm:space-y-5 lg:space-y-6 text-left">
                 <span className="text-xs font-bold text-[#6366f1] tracking-widest uppercase font-poppins">
                   {currentIntelligenceTab.badge}
                 </span>
 
-                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-slate-900 leading-[1.18] tracking-tight">
+                <h3 className="text-xl sm:text-3xl lg:text-5xl font-poppins font-extrabold text-slate-900 leading-[1.18] tracking-tight">
                   {currentIntelligenceTab.headline}
                 </h3>
 
-                <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal">
+                <p className="text-slate-600 text-sm sm:text-base lg:text-lg leading-relaxed font-normal">
                   {currentIntelligenceTab.description}
                 </p>
 
