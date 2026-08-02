@@ -137,7 +137,6 @@ export default function PalbonPage() {
   const navigate = useNavigate();
   const palbon3dIframeRef = useRef(null);
   const [heroVersion, setHeroVersion] = useState("v3"); // "v1" | "v2" | "v3"
-  const [heroV3Filter, setHeroV3Filter] = useState("all");
   const [activeModelTab, setActiveModelTab] = useState("workforce");
   const [activeArchTab, setActiveArchTab] = useState("single-record");
   const [isSuiteModalOpen, setIsSuiteModalOpen] = useState(false);
