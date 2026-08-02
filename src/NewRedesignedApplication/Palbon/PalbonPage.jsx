@@ -483,18 +483,20 @@ export default function PalbonPage() {
               ))}
             </div>
 
-            {/* 3D WebGL Curved Interactive Circular Gallery */}
-            <div style={{ height: '600px', position: 'relative', width: '100%' }} className="my-2">
-              <CircularGallery
-                items={HERO_V3_GALLERY_ITEMS}
-                bend={3}
-                textColor="#01182F"
-                borderRadius={0.06}
-                scrollEase={0.04}
-                scrollSpeed={2}
-                font="bold 28px Figtree"
-                fontUrl="https://fonts.googleapis.com/css2?family=Figtree:wght@400;700&display=swap"
-              />
+            {/* 3D WebGL Curved Interactive Circular Gallery - Full Viewport Width */}
+            <div className="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen my-4 overflow-hidden z-20">
+              <div style={{ height: '660px', position: 'relative', width: '100%' }}>
+                <CircularGallery
+                  items={HERO_V3_GALLERY_ITEMS}
+                  bend={3}
+                  textColor="#01182F"
+                  borderRadius={0.06}
+                  scrollEase={0.04}
+                  scrollSpeed={2}
+                  font="bold 28px Figtree"
+                  fontUrl="https://fonts.googleapis.com/css2?family=Figtree:wght@400;700&display=swap"
+                />
+              </div>
             </div>
 
             {/* Bottom Banner */}
