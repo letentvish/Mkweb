@@ -62,6 +62,17 @@ export default function NewNavbar() {
 
   const techProducts = [
     {
+      id: "palbon",
+      name: "PALBON Suites",
+      tagline: "Combine modules into one modular operating system.",
+      category: "MODULAR SUITE",
+      icon: <Boxes className="w-4 h-4 text-sky-400" />,
+      link: "/palbon",
+      featureTags: ["Unified Data Model", "Zero Tool Friction", "Single Sign-On (SSO)", "Cross-Engine Sync"],
+      statsLabel: "Consolidation",
+      statsValue: "1 Single Stack"
+    },
+    {
       id: "nucleus",
       name: "Nucleus (HRMS)",
       tagline: "Talent lifecycle, payroll & workforce analytics.",
@@ -73,17 +84,6 @@ export default function NewNavbar() {
       statsValue: "100% Automated"
     },
     {
-      id: "erp",
-      name: "ERP Solution",
-      tagline: "Financial automation, procurement & B2B operations.",
-      category: "OPERATIONS",
-      icon: <BarChart3 className="w-4 h-4 text-sky-400" />,
-      link: "/carve",
-      featureTags: ["Financial Workflows", "Procurement Engine", "Inventory Control", "Resource Allocation"],
-      statsLabel: "Efficiency Gain",
-      statsValue: "3.4x Velocity"
-    },
-    {
       id: "magnetics",
       name: "Magnetics (LXP)",
       tagline: "Learning, continuous capability & skill telemetry.",
@@ -93,17 +93,6 @@ export default function NewNavbar() {
       featureTags: ["AI Skill Pathways", "Career Trajectories", "Skill Gap Diagnostics", "L&D Frameworks"],
       statsLabel: "Skill Retention",
       statsValue: "94% Mastery"
-    },
-    {
-      id: "palbon",
-      name: "PALBON Suites",
-      tagline: "Combine modules into one modular operating system.",
-      category: "MODULAR SUITE",
-      icon: <Boxes className="w-4 h-4 text-sky-400" />,
-      link: "/palbon",
-      featureTags: ["Unified Data Model", "Zero Tool Friction", "Single Sign-On (SSO)", "Cross-Engine Sync"],
-      statsLabel: "Consolidation",
-      statsValue: "1 Single Stack"
     },
   ];
 
