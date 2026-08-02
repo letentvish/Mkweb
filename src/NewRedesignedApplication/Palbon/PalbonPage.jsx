@@ -263,7 +263,7 @@ export default function PalbonPage() {
       anchor: "ANCHOR",
       title: "One person, one record, one truth",
       body: "An employee is not a separate entity in HR, payroll, and projects. They are a single record. A change in one place is a change everywhere, instantly.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80"
+      image: "/Single Record.webp"
     },
     "event-driven": {
       anchor: "STREAM",
@@ -1352,78 +1352,12 @@ export default function PalbonPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
             
             {/* Left Column: Visual Showcase Frame */}
-            <div className="lg:col-span-6 relative min-h-[460px] lg:min-h-[520px] rounded-3xl border border-slate-200/90 bg-white overflow-hidden shadow-lg flex items-center justify-center">
-              
-              {/* Photo */}
-              <div className="absolute inset-0 overflow-hidden">
-                <img 
-                  src={currentArchContent.image}
-                  alt={currentArchContent.title} 
-                  className="w-full h-full object-cover transition-all duration-700"
-                />
-                <div className="absolute inset-0 bg-slate-950/15 backdrop-blur-[1px]" />
-              </div>
-
-              {/* Connected Dotted Lines SVG */}
-              <div className="absolute inset-0 pointer-events-none z-10">
-                <svg className="w-full h-full" viewBox="0 0 500 450" fill="none">
-                  <path d="M 230 140 L 320 180" stroke="#38bdf8" strokeWidth="2" strokeDasharray="4 4" />
-                  <path d="M 320 180 L 230 280" stroke="#38bdf8" strokeWidth="2" strokeDasharray="4 4" />
-                </svg>
-              </div>
-
-              {/* Top Floating Profile Glass Card: Rohan Mehta */}
-              <div className="absolute top-6 left-6 z-20 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl shadow-xl border border-slate-200/80 flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full bg-slate-800 overflow-hidden shrink-0 border border-slate-200">
-                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Rohan Mehta" className="w-full h-full object-cover" />
-                </div>
-                <div>
-                  <h4 className="font-poppins font-bold text-xs text-slate-900 leading-none mb-0.5">Rohan Mehta</h4>
-                  <p className="text-[10px] text-slate-500 font-medium">Employee ID: EMP-10234</p>
-                  <span className="inline-block mt-1 bg-emerald-50 text-emerald-600 text-[9px] font-bold px-2 py-0.5 rounded-full border border-emerald-200">Active</span>
-                </div>
-              </div>
-
-              {/* Connected Circle Checkmark Medallion */}
-              <div className="absolute top-36 left-48 z-30 w-8 h-8 rounded-full bg-[#0284c7] text-white shadow-lg flex items-center justify-center border-2 border-white">
-                <Check className="w-4 h-4 stroke-[3]" />
-              </div>
-
-              {/* Bottom Floating Department Status List Card */}
-              <div className="absolute bottom-6 left-6 z-20 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-slate-200/80 w-56 space-y-2.5">
-                <div className="flex items-center justify-between text-xs font-bold text-slate-800">
-                  <div className="flex items-center gap-2">
-                    <Users className="w-4 h-4 text-[#0284c7]" />
-                    <span>HR</span>
-                  </div>
-                  <span className="text-[9px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">● Up to date</span>
-                </div>
-
-                <div className="flex items-center justify-between text-xs font-bold text-slate-800 border-t border-slate-100 pt-2">
-                  <div className="flex items-center gap-2">
-                    <IndianRupee className="w-4 h-4 text-[#0284c7]" />
-                    <span>Payroll</span>
-                  </div>
-                  <span className="text-[9px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">● Up to date</span>
-                </div>
-
-                <div className="flex items-center justify-between text-xs font-bold text-slate-800 border-t border-slate-100 pt-2">
-                  <div className="flex items-center gap-2">
-                    <FolderGit2 className="w-4 h-4 text-[#0284c7]" />
-                    <span>Projects</span>
-                  </div>
-                  <span className="text-[9px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">● Up to date</span>
-                </div>
-
-                <div className="flex items-center justify-between text-xs font-bold text-slate-800 border-t border-slate-100 pt-2">
-                  <div className="flex items-center gap-2">
-                    <Lock className="w-4 h-4 text-[#0284c7]" />
-                    <span>Access</span>
-                  </div>
-                  <span className="text-[9px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">● Up to date</span>
-                </div>
-              </div>
-
+            <div className="lg:col-span-6 relative rounded-3xl border border-slate-200/90 bg-white overflow-hidden shadow-lg flex items-center justify-center p-2 sm:p-4">
+              <img 
+                src={currentArchContent.image}
+                alt={currentArchContent.title} 
+                className="w-full h-auto max-h-[520px] object-contain rounded-2xl transition-all duration-700"
+              />
             </div>
 
             {/* Right Column: Narrative Copy (Situated directly on page) */}
