@@ -49,34 +49,6 @@ const HERO_V3_GALLERY_ITEMS = [
   { image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=80", text: "Workforce BI" }
 ];
 
-const HERO_V3_MODULES = [
-  { id: "financial-accounting-gl", title: "General Ledger", category: "erp", catLabel: "ERP", icon: <Coins className="w-6 h-6 text-[#0284c7]" />, desc: "Multi-entity accounting & GL" },
-  { id: "accounts-payable", title: "Accounts Payable", category: "erp", catLabel: "ERP", icon: <FileText className="w-6 h-6 text-[#0284c7]" />, desc: "Approvals & 3-way matching" },
-  { id: "accounts-receivable", title: "Accounts Receivable", category: "erp", catLabel: "ERP", icon: <IndianRupee className="w-6 h-6 text-[#0284c7]" />, desc: "Automated cash collections" },
-  { id: "tax-gst-einvoicing", title: "Tax & e-Invoicing", category: "erp", catLabel: "ERP", icon: <Zap className="w-6 h-6 text-[#0284c7]" />, desc: "GST & e-way compliance" },
-  { id: "procurement-purchasing", title: "Procurement & PO", category: "erp", catLabel: "ERP", icon: <Boxes className="w-6 h-6 text-[#0284c7]" />, desc: "Requisitions & vendor POs" },
-  { id: "inventory-management", title: "Inventory Engine", category: "erp", catLabel: "ERP", icon: <Database className="w-6 h-6 text-[#0284c7]" />, desc: "Multi-location stock control" },
-  { id: "warehouse-management", title: "Warehouse WMS", category: "erp", catLabel: "ERP", icon: <Settings className="w-6 h-6 text-[#0284c7]" />, desc: "Optimised picking & dispatch" },
-  { id: "crm-pipeline", title: "CRM & Pipeline", category: "erp", catLabel: "ERP", icon: <GitFork className="w-6 h-6 text-[#0284c7]" />, desc: "Leads to delivery pipeline" },
-  { id: "sales-order-management", title: "Sales & Orders", category: "erp", catLabel: "ERP", icon: <BarChart2 className="w-6 h-6 text-[#0284c7]" />, desc: "Live order fulfillment flow" },
-  { id: "manufacturing-production-planning", title: "Manufacturing MRP", category: "erp", catLabel: "ERP", icon: <Puzzle className="w-6 h-6 text-[#0284c7]" />, desc: "Production & material MRP" },
-  { id: "quality-management", title: "Quality Control", category: "erp", catLabel: "ERP", icon: <ShieldCheck className="w-6 h-6 text-[#0284c7]" />, desc: "Inspection & compliance" },
-  { id: "reporting-dashboards-bi", title: "BI & Analytics", category: "erp", catLabel: "ERP", icon: <Sparkles className="w-6 h-6 text-[#0284c7]" />, desc: "Role-based dashboards" },
-  
-  { id: "core-hr-employee-records", title: "Core HR & Records", category: "hrms", catLabel: "HRMS", icon: <Users className="w-6 h-6 text-[#6366f1]" />, desc: "Single source for employee data" },
-  { id: "payroll-management", title: "Payroll Engine", category: "hrms", catLabel: "HRMS", icon: <Coins className="w-6 h-6 text-[#6366f1]" />, desc: "Automated salary & payslips" },
-  { id: "statutory-compliance", title: "Statutory Filing", category: "hrms", catLabel: "HRMS", icon: <Lock className="w-6 h-6 text-[#6366f1]" />, desc: "PF, ESI, TDS & PT compliance" },
-  { id: "recruitment-applicant-tracking", title: "Recruitment ATS", category: "hrms", catLabel: "HRMS", icon: <GitFork className="w-6 h-6 text-[#6366f1]" />, desc: "Hiring funnel & pipelines" },
-  { id: "onboarding-preboarding", title: "Onboarding Flow", category: "hrms", catLabel: "HRMS", icon: <Check className="w-6 h-6 text-[#6366f1]" />, desc: "Digital joining checklists" },
-  { id: "time-attendance", title: "Time & Attendance", category: "hrms", catLabel: "HRMS", icon: <Clock className="w-6 h-6 text-[#6366f1]" />, desc: "Biometric & mobile punches" },
-  { id: "leave-management", title: "Leave Engine", category: "hrms", catLabel: "HRMS", icon: <FolderGit2 className="w-6 h-6 text-[#6366f1]" />, desc: "Self-service leave balances" },
-  { id: "performance-management", title: "Performance OKRs", category: "hrms", catLabel: "HRMS", icon: <BarChart2 className="w-6 h-6 text-[#6366f1]" />, desc: "Goal tracking & reviews" },
-  { id: "learning-development", title: "Learning LXP", category: "hrms", catLabel: "HRMS", icon: <Sparkles className="w-6 h-6 text-[#6366f1]" />, desc: "Upskilling & certifications" },
-  { id: "employee-manager-self-service", title: "Self-Service ESS", category: "hrms", catLabel: "HRMS", icon: <Users className="w-6 h-6 text-[#6366f1]" />, desc: "Employee & manager portal" },
-  { id: "expense-travel-reimbursement", title: "Expense & Travel", category: "hrms", catLabel: "HRMS", icon: <FileText className="w-6 h-6 text-[#6366f1]" />, desc: "Mobile claims & policy checks" },
-  { id: "workforce-analytics-dashboards", title: "Workforce BI", category: "hrms", catLabel: "HRMS", icon: <Zap className="w-6 h-6 text-[#6366f1]" />, desc: "Attrition & headcount insights" },
-];
-
 export default function PalbonPage() {
   const navigate = useNavigate();
   const palbon3dIframeRef = useRef(null);
