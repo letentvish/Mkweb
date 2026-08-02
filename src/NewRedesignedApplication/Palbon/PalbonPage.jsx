@@ -1325,8 +1325,8 @@ export default function PalbonPage() {
         </div>
       </section>
 
-      {/* SECTION 4.5: AUTOMATION THAT WORKS WHILE YOU LEAD */}
-      <AutomationSection onOpenSuiteModal={() => setIsSuiteModalOpen(true)} />
+      {/* SECTION 4.5: AUTOMATION THAT WORKS WHILE YOU LEAD (Unlinked) */}
+      {/* <AutomationSection onOpenSuiteModal={() => setIsSuiteModalOpen(true)} /> */}
 
       {/* SECTION 5: ARCHITECTURE ("The logic of one system") */}
       <section className="py-20 lg:py-28 bg-[#F8FAFC] text-slate-900 border-b border-slate-200/80 relative overflow-hidden" id="architecture-section">
