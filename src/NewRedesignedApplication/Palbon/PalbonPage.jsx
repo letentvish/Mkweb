@@ -34,31 +34,31 @@ import AutomationSection from "./AutomationSection";
 import EcosystemCtaSection from "./EcosystemCtaSection";
 
 const HERO_V3_MODULES = [
-  { id: "financial-accounting-gl", title: "General Ledger", category: "erp", catLabel: "ERP", icon: <Coins className="w-5 h-5 text-[#0284c7]" />, desc: "Multi-entity accounting & GL" },
-  { id: "accounts-payable", title: "Accounts Payable", category: "erp", catLabel: "ERP", icon: <FileText className="w-5 h-5 text-[#0284c7]" />, desc: "Approvals & 3-way matching" },
-  { id: "accounts-receivable", title: "Accounts Receivable", category: "erp", catLabel: "ERP", icon: <IndianRupee className="w-5 h-5 text-[#0284c7]" />, desc: "Automated cash collections" },
-  { id: "tax-gst-einvoicing", title: "Tax & e-Invoicing", category: "erp", catLabel: "ERP", icon: <Zap className="w-5 h-5 text-[#0284c7]" />, desc: "GST & e-way compliance" },
-  { id: "procurement-purchasing", title: "Procurement & PO", category: "erp", catLabel: "ERP", icon: <Boxes className="w-5 h-5 text-[#0284c7]" />, desc: "Requisitions & vendor POs" },
-  { id: "inventory-management", title: "Inventory Engine", category: "erp", catLabel: "ERP", icon: <Database className="w-5 h-5 text-[#0284c7]" />, desc: "Multi-location stock control" },
-  { id: "warehouse-management", title: "Warehouse WMS", category: "erp", catLabel: "ERP", icon: <Settings className="w-5 h-5 text-[#0284c7]" />, desc: "Optimised picking & dispatch" },
-  { id: "crm-pipeline", title: "CRM & Pipeline", category: "erp", catLabel: "ERP", icon: <GitFork className="w-5 h-5 text-[#0284c7]" />, desc: "Leads to delivery pipeline" },
-  { id: "sales-order-management", title: "Sales & Orders", category: "erp", catLabel: "ERP", icon: <BarChart2 className="w-5 h-5 text-[#0284c7]" />, desc: "Live order fulfillment flow" },
-  { id: "manufacturing-production-planning", title: "Manufacturing MRP", category: "erp", catLabel: "ERP", icon: <Puzzle className="w-5 h-5 text-[#0284c7]" />, desc: "Production & material MRP" },
-  { id: "quality-management", title: "Quality Control", category: "erp", catLabel: "ERP", icon: <ShieldCheck className="w-5 h-5 text-[#0284c7]" />, desc: "Inspection & compliance" },
-  { id: "reporting-dashboards-bi", title: "BI & Analytics", category: "erp", catLabel: "ERP", icon: <Sparkles className="w-5 h-5 text-[#0284c7]" />, desc: "Role-based dashboards" },
+  { id: "financial-accounting-gl", title: "General Ledger", category: "erp", catLabel: "ERP", icon: <Coins className="w-6 h-6 text-[#0284c7]" />, desc: "Multi-entity accounting & GL" },
+  { id: "accounts-payable", title: "Accounts Payable", category: "erp", catLabel: "ERP", icon: <FileText className="w-6 h-6 text-[#0284c7]" />, desc: "Approvals & 3-way matching" },
+  { id: "accounts-receivable", title: "Accounts Receivable", category: "erp", catLabel: "ERP", icon: <IndianRupee className="w-6 h-6 text-[#0284c7]" />, desc: "Automated cash collections" },
+  { id: "tax-gst-einvoicing", title: "Tax & e-Invoicing", category: "erp", catLabel: "ERP", icon: <Zap className="w-6 h-6 text-[#0284c7]" />, desc: "GST & e-way compliance" },
+  { id: "procurement-purchasing", title: "Procurement & PO", category: "erp", catLabel: "ERP", icon: <Boxes className="w-6 h-6 text-[#0284c7]" />, desc: "Requisitions & vendor POs" },
+  { id: "inventory-management", title: "Inventory Engine", category: "erp", catLabel: "ERP", icon: <Database className="w-6 h-6 text-[#0284c7]" />, desc: "Multi-location stock control" },
+  { id: "warehouse-management", title: "Warehouse WMS", category: "erp", catLabel: "ERP", icon: <Settings className="w-6 h-6 text-[#0284c7]" />, desc: "Optimised picking & dispatch" },
+  { id: "crm-pipeline", title: "CRM & Pipeline", category: "erp", catLabel: "ERP", icon: <GitFork className="w-6 h-6 text-[#0284c7]" />, desc: "Leads to delivery pipeline" },
+  { id: "sales-order-management", title: "Sales & Orders", category: "erp", catLabel: "ERP", icon: <BarChart2 className="w-6 h-6 text-[#0284c7]" />, desc: "Live order fulfillment flow" },
+  { id: "manufacturing-production-planning", title: "Manufacturing MRP", category: "erp", catLabel: "ERP", icon: <Puzzle className="w-6 h-6 text-[#0284c7]" />, desc: "Production & material MRP" },
+  { id: "quality-management", title: "Quality Control", category: "erp", catLabel: "ERP", icon: <ShieldCheck className="w-6 h-6 text-[#0284c7]" />, desc: "Inspection & compliance" },
+  { id: "reporting-dashboards-bi", title: "BI & Analytics", category: "erp", catLabel: "ERP", icon: <Sparkles className="w-6 h-6 text-[#0284c7]" />, desc: "Role-based dashboards" },
   
-  { id: "core-hr-employee-records", title: "Core HR & Records", category: "hrms", catLabel: "HRMS", icon: <Users className="w-5 h-5 text-[#6366f1]" />, desc: "Single source for employee data" },
-  { id: "payroll-management", title: "Payroll Engine", category: "hrms", catLabel: "HRMS", icon: <Coins className="w-5 h-5 text-[#6366f1]" />, desc: "Automated salary & payslips" },
-  { id: "statutory-compliance", title: "Statutory Filing", category: "hrms", catLabel: "HRMS", icon: <Lock className="w-5 h-5 text-[#6366f1]" />, desc: "PF, ESI, TDS & PT compliance" },
-  { id: "recruitment-applicant-tracking", title: "Recruitment ATS", category: "hrms", catLabel: "HRMS", icon: <GitFork className="w-5 h-5 text-[#6366f1]" />, desc: "Hiring funnel & pipelines" },
-  { id: "onboarding-preboarding", title: "Onboarding Flow", category: "hrms", catLabel: "HRMS", icon: <Check className="w-5 h-5 text-[#6366f1]" />, desc: "Digital joining checklists" },
-  { id: "time-attendance", title: "Time & Attendance", category: "hrms", catLabel: "HRMS", icon: <Clock className="w-5 h-5 text-[#6366f1]" />, desc: "Biometric & mobile punches" },
-  { id: "leave-management", title: "Leave Engine", category: "hrms", catLabel: "HRMS", icon: <FolderGit2 className="w-5 h-5 text-[#6366f1]" />, desc: "Self-service leave balances" },
-  { id: "performance-management", title: "Performance OKRs", category: "hrms", catLabel: "HRMS", icon: <BarChart2 className="w-5 h-5 text-[#6366f1]" />, desc: "Goal tracking & reviews" },
-  { id: "learning-development", title: "Learning LXP", category: "hrms", catLabel: "HRMS", icon: <Sparkles className="w-5 h-5 text-[#6366f1]" />, desc: "Upskilling & certifications" },
-  { id: "employee-manager-self-service", title: "Self-Service ESS", category: "hrms", catLabel: "HRMS", icon: <Users className="w-5 h-5 text-[#6366f1]" />, desc: "Employee & manager portal" },
-  { id: "expense-travel-reimbursement", title: "Expense & Travel", category: "hrms", catLabel: "HRMS", icon: <FileText className="w-5 h-5 text-[#6366f1]" />, desc: "Mobile claims & policy checks" },
-  { id: "workforce-analytics-dashboards", title: "Workforce BI", category: "hrms", catLabel: "HRMS", icon: <Zap className="w-5 h-5 text-[#6366f1]" />, desc: "Attrition & headcount insights" },
+  { id: "core-hr-employee-records", title: "Core HR & Records", category: "hrms", catLabel: "HRMS", icon: <Users className="w-6 h-6 text-[#6366f1]" />, desc: "Single source for employee data" },
+  { id: "payroll-management", title: "Payroll Engine", category: "hrms", catLabel: "HRMS", icon: <Coins className="w-6 h-6 text-[#6366f1]" />, desc: "Automated salary & payslips" },
+  { id: "statutory-compliance", title: "Statutory Filing", category: "hrms", catLabel: "HRMS", icon: <Lock className="w-6 h-6 text-[#6366f1]" />, desc: "PF, ESI, TDS & PT compliance" },
+  { id: "recruitment-applicant-tracking", title: "Recruitment ATS", category: "hrms", catLabel: "HRMS", icon: <GitFork className="w-6 h-6 text-[#6366f1]" />, desc: "Hiring funnel & pipelines" },
+  { id: "onboarding-preboarding", title: "Onboarding Flow", category: "hrms", catLabel: "HRMS", icon: <Check className="w-6 h-6 text-[#6366f1]" />, desc: "Digital joining checklists" },
+  { id: "time-attendance", title: "Time & Attendance", category: "hrms", catLabel: "HRMS", icon: <Clock className="w-6 h-6 text-[#6366f1]" />, desc: "Biometric & mobile punches" },
+  { id: "leave-management", title: "Leave Engine", category: "hrms", catLabel: "HRMS", icon: <FolderGit2 className="w-6 h-6 text-[#6366f1]" />, desc: "Self-service leave balances" },
+  { id: "performance-management", title: "Performance OKRs", category: "hrms", catLabel: "HRMS", icon: <BarChart2 className="w-6 h-6 text-[#6366f1]" />, desc: "Goal tracking & reviews" },
+  { id: "learning-development", title: "Learning LXP", category: "hrms", catLabel: "HRMS", icon: <Sparkles className="w-6 h-6 text-[#6366f1]" />, desc: "Upskilling & certifications" },
+  { id: "employee-manager-self-service", title: "Self-Service ESS", category: "hrms", catLabel: "HRMS", icon: <Users className="w-6 h-6 text-[#6366f1]" />, desc: "Employee & manager portal" },
+  { id: "expense-travel-reimbursement", title: "Expense & Travel", category: "hrms", catLabel: "HRMS", icon: <FileText className="w-6 h-6 text-[#6366f1]" />, desc: "Mobile claims & policy checks" },
+  { id: "workforce-analytics-dashboards", title: "Workforce BI", category: "hrms", catLabel: "HRMS", icon: <Zap className="w-6 h-6 text-[#6366f1]" />, desc: "Attrition & headcount insights" },
 ];
 
 export default function PalbonPage() {
@@ -412,38 +412,38 @@ export default function PalbonPage() {
             </div>
 
             {/* Modular App Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3.5 max-w-6xl mx-auto text-left">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 max-w-7xl mx-auto text-left">
               {HERO_V3_MODULES
                 .filter(m => heroV3Filter === "all" ? true : m.category === heroV3Filter)
                 .map(mod => (
                   <div
                     key={mod.id}
                     onClick={() => setIsSuiteModalOpen(true)}
-                    className="group p-4 bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200/80 hover:border-sky-300 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between hover:-translate-y-1.5"
+                    className="group p-5 sm:p-6 bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200/90 hover:border-sky-300 shadow-md hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col justify-between hover:-translate-y-1.5"
                   >
                     <div>
-                      <div className="flex items-center justify-between mb-3">
-                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-50 to-indigo-50 border border-sky-100 flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform">
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-sky-50 to-indigo-50 border border-sky-100 flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform">
                           {mod.icon}
                         </div>
-                        <span className={`text-[9px] font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider ${
+                        <span className={`text-xs font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider ${
                           mod.category === "erp" ? "bg-sky-50 text-[#0284c7] border border-sky-200" : "bg-indigo-50 text-[#6366f1] border border-indigo-200"
                         }`}>
                           {mod.catLabel}
                         </span>
                       </div>
 
-                      <h4 className="font-poppins font-extrabold text-xs text-[#01182F] group-hover:text-[#0284c7] transition-colors leading-tight mb-1">
+                      <h4 className="font-poppins font-extrabold text-base sm:text-lg text-[#01182F] group-hover:text-[#0284c7] transition-colors leading-snug mb-1.5">
                         {mod.title}
                       </h4>
-                      <p className="text-[10px] text-slate-500 line-clamp-2 leading-relaxed font-normal">
+                      <p className="text-xs sm:text-sm text-slate-600 line-clamp-2 leading-relaxed font-medium">
                         {mod.desc}
                       </p>
                     </div>
 
-                    <div className="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] font-bold text-[#0284c7]">
-                      <span>Explore</span>
-                      <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                    <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs sm:text-sm font-extrabold text-[#0284c7]">
+                      <span>Explore Module</span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
                 ))}
