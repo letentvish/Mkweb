@@ -995,12 +995,13 @@ export default function PalbonPage() {
 
             </div>
 
-            {/* Right Column - Direct on Screen & Expanded Size */}
-            <div className="lg:col-span-7 flex items-center justify-center lg:justify-end relative">
+            {/* Right Column - Full Scale Graphic, No Constraints */}
+            <div className="lg:col-span-7 flex items-center justify-center lg:justify-end relative overflow-visible">
               <img 
                 src="/clarity.png" 
                 alt="PALBON Single Source of Truth Clarity" 
-                className="w-full h-auto max-h-[680px] lg:max-h-[760px] object-contain drop-shadow-2xl"
+                className="w-[130%] lg:w-[150%] h-auto object-contain drop-shadow-2xl"
+                style={{ maxHeight: 'none', transform: 'scale(1.25)', transformOrigin: 'center center' }}
               />
             </div>
 
