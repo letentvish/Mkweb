@@ -162,6 +162,31 @@ export default function PalbonPage() {
     swipeStartXRef.current = null;
   };
 
+  // Swipe navigation for architecture tabs on mobile
+  const archTabOrder = ["single-record", "event-driven", "shared-logic"];
+  const archSwipeStartXRef = useRef(null);
+  const handleArchTabSwipeStart = (e) => {
+    archSwipeStartXRef.current = e.touches ? e.touches[0].clientX : null;
+  };
+  const handleArchTabSwipeEnd = (e) => {
+    if (archSwipeStartXRef.current === null) return;
+    const endX = e.changedTouches ? e.changedTouches[0].clientX : null;
+    if (endX === null) return;
+    const diff = archSwipeStartXRef.current - endX;
+    if (Math.abs(diff) < 50) return; // ignore tiny swipes
+    const currentIdx = archTabOrder.indexOf(activeArchTab);
+    if (diff > 0) {
+      // Swipe left → next tab
+      const next = archTabOrder[(currentIdx + 1) % archTabOrder.length];
+      setActiveArchTab(next);
+    } else {
+      // Swipe right → previous tab
+      const prev = archTabOrder[(currentIdx - 1 + archTabOrder.length) % archTabOrder.length];
+      setActiveArchTab(prev);
+    }
+    archSwipeStartXRef.current = null;
+  };
+
   const handleHeroMouseMove = (e) => {
     if (heroVersion === "v2" && palbon3dIframeRef.current?.contentWindow) {
       const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
@@ -1351,10 +1376,10 @@ export default function PalbonPage() {
           </div>
 
           {/* Interactive Filter Tabs */}
-          <div className="flex justify-center items-center gap-8 mb-12 border-b border-slate-200 pb-4">
+          <div className="flex justify-center items-center gap-6 sm:gap-8 mb-4 sm:mb-8 border-b border-slate-200 pb-3">
             <button
               onClick={() => setActiveArchTab("single-record")}
-              className={`font-poppins font-bold text-base px-3 py-1.5 relative transition-colors cursor-pointer ${
+              className={`font-poppins font-bold text-sm sm:text-base px-2 sm:px-3 py-1.5 relative transition-colors cursor-pointer ${
                 activeArchTab === "single-record" ? "text-[#0284c7]" : "text-slate-500 hover:text-slate-900"
               }`}
             >
@@ -1366,7 +1391,7 @@ export default function PalbonPage() {
 
             <button
               onClick={() => setActiveArchTab("event-driven")}
-              className={`font-poppins font-bold text-base px-3 py-1.5 relative transition-colors cursor-pointer ${
+              className={`font-poppins font-bold text-sm sm:text-base px-2 sm:px-3 py-1.5 relative transition-colors cursor-pointer ${
                 activeArchTab === "event-driven" ? "text-[#0284c7]" : "text-slate-500 hover:text-slate-900"
               }`}
             >
@@ -1378,7 +1403,7 @@ export default function PalbonPage() {
 
             <button
               onClick={() => setActiveArchTab("shared-logic")}
-              className={`font-poppins font-bold text-base px-3 py-1.5 relative transition-colors cursor-pointer ${
+              className={`font-poppins font-bold text-sm sm:text-base px-2 sm:px-3 py-1.5 relative transition-colors cursor-pointer ${
                 activeArchTab === "shared-logic" ? "text-[#0284c7]" : "text-slate-500 hover:text-slate-900"
               }`}
             >
@@ -1389,29 +1414,48 @@ export default function PalbonPage() {
             </button>
           </div>
 
-          {/* Unboxed Dual Column Layout (Situated Directly on Screen) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+          {/* Swipe hint dots — mobile only */}
+          <div className="flex lg:hidden justify-center items-center gap-2 mb-4">
+            {archTabOrder.map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveArchTab(tab)}
+                className={`rounded-full transition-all duration-300 cursor-pointer ${
+                  activeArchTab === tab
+                    ? "w-6 h-2 bg-[#0284c7]"
+                    : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
+                }`}
+              />
+            ))}
+          </div>
+
+          {/* Unboxed Dual Column Layout (Situated Directly on Screen) - Swipeable on Mobile */}
+          <div
+            className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center"
+            onTouchStart={handleArchTabSwipeStart}
+            onTouchEnd={handleArchTabSwipeEnd}
+          >
             
             {/* Left Column: Visual Showcase Frame (Full Height Image Layout) */}
-            <div className="lg:col-span-7 relative rounded-3xl overflow-hidden flex items-center justify-center min-h-[560px] lg:min-h-[700px] h-full">
+            <div className="lg:col-span-7 relative rounded-3xl overflow-hidden flex items-center justify-center min-h-[220px] max-h-[300px] sm:min-h-[400px] sm:max-h-none lg:min-h-[700px] h-full">
               <img 
                 src={currentArchContent.image}
                 alt={currentArchContent.title} 
-                className="w-full h-full object-contain transition-all duration-700 drop-shadow-xl"
+                className="w-full h-full object-contain transition-all duration-700 drop-shadow-xl max-h-[280px] sm:max-h-none"
               />
             </div>
 
             {/* Right Column: Narrative Copy (Situated directly on page) */}
-            <div className="lg:col-span-5 flex flex-col justify-center items-start space-y-6 text-left pl-0 lg:pl-4">
+            <div className="lg:col-span-5 flex flex-col justify-center items-start space-y-3 sm:space-y-6 text-left pl-0 lg:pl-4">
               
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-50 border border-sky-200 text-[#0284c7] text-xs font-extrabold tracking-wider uppercase font-poppins">
                 <span>{currentArchContent.anchor}</span>
               </div>
 
-              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-[#01182F] tracking-tight leading-[1.15]">
+              <h3 className="text-xl sm:text-3xl lg:text-5xl font-poppins font-extrabold text-[#01182F] tracking-tight leading-[1.15]">
                 {currentArchContent.title.includes("truth") ? (
                   <>
-                    One person, one record, <br />
+                    One person, one record, <br className="hidden sm:inline" />
                     one <span className="bg-gradient-to-r from-[#0284c7] to-[#0369a1] bg-clip-text text-transparent">truth</span>
                   </>
                 ) : (
@@ -1419,7 +1463,7 @@ export default function PalbonPage() {
                 )}
               </h3>
 
-              <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal">
+              <p className="text-slate-600 text-sm sm:text-base lg:text-lg leading-relaxed font-normal">
                 {currentArchContent.body}
               </p>
 
