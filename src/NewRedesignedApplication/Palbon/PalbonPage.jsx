@@ -998,58 +998,13 @@ export default function PalbonPage() {
 
             </div>
 
-            {/* Right Diagram Column */}
-            <div className="lg:col-span-6 relative flex items-center justify-center min-h-[500px] lg:min-h-[580px]">
-              <div className="absolute inset-0 pointer-events-none z-10">
-                <svg className="w-full h-full" viewBox="0 0 600 600" fill="none">
-                  <path d="M 180 120 L 300 240" stroke="#818cf8" strokeWidth="2" strokeDasharray="3 3" strokeOpacity="0.8" />
-                  <circle cx="180" cy="120" r="5" fill="#a7f3d0" />
-
-                  <path d="M 480 120 L 300 240" stroke="#818cf8" strokeWidth="2" strokeDasharray="3 3" strokeOpacity="0.8" />
-                  <circle cx="480" cy="120" r="5" fill="#a7f3d0" />
-
-                  <path d="M 160 400 L 300 240" stroke="#818cf8" strokeWidth="2" strokeDasharray="3 3" strokeOpacity="0.8" />
-                  <circle cx="160" cy="400" r="5" fill="#a7f3d0" />
-
-                  <path d="M 490 380 L 300 240" stroke="#818cf8" strokeWidth="2" strokeDasharray="3 3" strokeOpacity="0.8" />
-                  <circle cx="490" cy="380" r="5" fill="#a7f3d0" />
-                </svg>
-              </div>
-
-              <div className="relative z-20 w-full max-w-sm ml-auto mr-4 flex justify-end items-end">
-                <img 
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=700&q=80" 
-                  alt="PALBON Single Source of Truth Executive" 
-                  className="max-h-[460px] w-auto object-cover rounded-3xl shadow-2xl filter brightness-95"
-                />
-              </div>
-
-              <motion.div
-                animate={{ scale: [1, 1.05, 1], rotate: [0, 2, 0, -2, 0] }}
-                transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-                className="absolute z-30 top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-28 h-28 bg-gradient-to-br from-indigo-500 via-purple-600 to-indigo-800 rounded-3xl p-1 shadow-2xl border-2 border-indigo-300/40 flex items-center justify-center shadow-indigo-500/50"
-              >
-                <div className="w-full h-full rounded-2xl bg-indigo-950/60 backdrop-blur-md flex items-center justify-center">
-                  <span className="font-poppins font-black text-5xl text-white drop-shadow-lg">P</span>
-                </div>
-              </motion.div>
-
-              <div className="absolute top-6 left-8 z-30 p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white shadow-xl hover:scale-110 transition-transform">
-                <Users className="w-6 h-6 text-indigo-300" />
-              </div>
-
-              <div className="absolute top-6 right-8 z-30 p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white shadow-xl hover:scale-110 transition-transform">
-                <Database className="w-6 h-6 text-indigo-300" />
-              </div>
-
-              <div className="absolute bottom-16 left-4 z-30 p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white shadow-xl hover:scale-110 transition-transform">
-                <Settings className="w-6 h-6 text-indigo-300" />
-              </div>
-
-              <div className="absolute bottom-20 right-4 z-30 p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white shadow-xl hover:scale-110 transition-transform">
-                <BarChart2 className="w-6 h-6 text-indigo-300" />
-              </div>
-
+            {/* Right Column - Clean Clarity Showcase Graphic */}
+            <div className="lg:col-span-6 flex items-center justify-center relative">
+              <img 
+                src="/clarity.png" 
+                alt="PALBON Single Source of Truth Clarity" 
+                className="w-full h-auto max-h-[580px] object-contain rounded-3xl shadow-2xl border border-indigo-900/40"
+              />
             </div>
 
           </div>
