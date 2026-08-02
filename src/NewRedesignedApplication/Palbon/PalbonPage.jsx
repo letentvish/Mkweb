@@ -1307,6 +1307,22 @@ export default function PalbonPage() {
             <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-medium">
               Complexity is the enemy of execution. A unified structure eliminates the translation layer between departments, making the organization faster by design.
             </p>
+
+            <div className="flex items-center gap-4 pt-2">
+              <button
+                onClick={() => navigate("/contact")}
+                className="px-6 py-2.5 rounded-full border-2 border-[#0284c7] hover:bg-[#0284c7] hover:text-white text-[#0284c7] font-extrabold text-sm transition-all duration-200 shadow-sm cursor-pointer"
+              >
+                Learn More
+              </button>
+              <button
+                onClick={() => navigate("/contact")}
+                className="text-[#0284c7] hover:text-[#0369a1] font-extrabold text-sm inline-flex items-center gap-1.5 transition-colors cursor-pointer group"
+              >
+                <span>Talk to us</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
           </div>
 
           {/* Interactive Filter Tabs */}
@@ -1349,14 +1365,14 @@ export default function PalbonPage() {
           </div>
 
           {/* Unboxed Dual Column Layout (Situated Directly on Screen) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-stretch">
             
-            {/* Left Column: Visual Showcase Frame */}
-            <div className="lg:col-span-6 relative rounded-3xl border border-slate-200/90 bg-white overflow-hidden shadow-lg flex items-center justify-center p-2 sm:p-4">
+            {/* Left Column: Visual Showcase Frame (Full Height Image Layout) */}
+            <div className="lg:col-span-6 relative rounded-3xl border border-slate-200/90 bg-white overflow-hidden shadow-lg flex items-center justify-center min-h-[540px] lg:min-h-[620px] h-full">
               <img 
                 src={currentArchContent.image}
                 alt={currentArchContent.title} 
-                className="w-full h-auto max-h-[520px] object-contain rounded-2xl transition-all duration-700"
+                className="w-full h-full object-cover rounded-3xl transition-all duration-700"
               />
             </div>
 
