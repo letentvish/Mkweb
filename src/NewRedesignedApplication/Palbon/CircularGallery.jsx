@@ -239,9 +239,9 @@ class Media {
           
           // Soft outer drop shadow glow when hovered
           float shadowDist = roundedBoxSDF(vUv - 0.5, vec2(0.48 - uBorderRadius), uBorderRadius * 1.25);
-          float shadowAlpha = (1.0 - smoothstep(-0.06, 0.06, shadowDist)) * 0.5 * uHover;
+          float shadowAlpha = (1.0 - smoothstep(-0.06, 0.06, shadowDist)) * 0.55 * uHover;
           
-          vec3 shadowColor = vec3(0.003, 0.094, 0.184) * 0.3;
+          vec3 shadowColor = vec3(0.003, 0.094, 0.184) * 0.4;
           vec3 finalColor = mix(shadowColor, color.rgb, alpha);
           float finalAlpha = max(alpha, shadowAlpha);
           
@@ -294,21 +294,22 @@ class Media {
       }
     }
 
-    // Check distance to mouse in 3D world space for hover state
-    if (mouseWorld) {
-      const dx = this.plane.position.x - mouseWorld.x;
-      const dy = this.plane.position.y - mouseWorld.y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      this.isHovered = dist < (this.baseScaleX || 3.0) * 0.55;
+    // Accurate hover bounding box detection in 3D world space
+    if (mouseWorld && mouseWorld.x < 9000) {
+      const dx = Math.abs(this.plane.position.x - mouseWorld.x);
+      const dy = Math.abs(this.plane.position.y - mouseWorld.y);
+      const halfW = (this.baseScaleX || 3.5) * 0.5;
+      const halfH = (this.baseScaleY || 4.5) * 0.5;
+      this.isHovered = dx < halfW && dy < halfH;
     } else {
       this.isHovered = false;
     }
 
     // Lerp hover progress smoothly
-    this.hoverProgress = lerp(this.hoverProgress, this.isHovered ? 1.0 : 0.0, 0.1);
+    this.hoverProgress = lerp(this.hoverProgress, this.isHovered ? 1.0 : 0.0, 0.12);
     
-    // Zoom out a little on hover (scale shrunken to 91%)
-    const scaleFactor = 1.0 - this.hoverProgress * 0.09;
+    // Zoom out on hover (scale down to 90% for clear zoom-out response)
+    const scaleFactor = 1.0 - this.hoverProgress * 0.10;
     
     if (this.baseScaleX && this.baseScaleY) {
       this.plane.scale.x = this.baseScaleX * scaleFactor;
@@ -341,7 +342,7 @@ class Media {
     this.baseScaleY = (this.viewport.height * (900 * this.scale)) / this.screen.height;
     this.baseScaleX = (this.viewport.width * (700 * this.scale)) / this.screen.width;
     
-    const scaleFactor = 1.0 - (this.hoverProgress || 0) * 0.09;
+    const scaleFactor = 1.0 - (this.hoverProgress || 0) * 0.10;
     this.plane.scale.y = this.baseScaleY * scaleFactor;
     this.plane.scale.x = this.baseScaleX * scaleFactor;
 
@@ -446,12 +447,12 @@ class App {
       y: (mouseNormalizedY * this.viewport.height) / 2
     };
 
-    // Mouse pointer movement -> scroll cards in OPPOSITE direction
+    // Reversed mouse motion scroll trigger per user request
     if (this.lastMouseX !== null) {
       const dx = e.clientX - this.lastMouseX;
-      // Moving mouse right (dx > 0) -> scroll cards left
-      // Moving mouse left (dx < 0) -> scroll cards right
-      this.scroll.target -= dx * (this.scrollSpeed * 0.035);
+      // Moving mouse right (dx > 0) -> cards scroll right
+      // Moving mouse left (dx < 0) -> cards scroll left
+      this.scroll.target += dx * (this.scrollSpeed * 0.035);
     }
     this.lastMouseX = e.clientX;
   }
