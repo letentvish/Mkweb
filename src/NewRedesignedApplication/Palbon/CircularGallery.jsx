@@ -342,9 +342,8 @@ class Media {
     const isMobile = this.screen.width < 768;
     const isTablet = this.screen.width >= 768 && this.screen.width < 1024;
     if (isMobile) {
-      // Container height = 130vw matches card 700:900 ratio (130/100 ≈ 9/7)
-      // Scale so card width = screen width → card fills container correctly
-      this.scale = this.screen.width / 700;
+      // width/1100 → ~1.5 cards visible on mobile, smaller and better proportioned
+      this.scale = this.screen.width / 1100;
     } else if (isTablet) {
       // ~2 cards visible on tablet
       this.scale = this.screen.width / 1400;
@@ -380,6 +379,7 @@ class App {
   ) {
     document.documentElement.classList.remove('no-js');
     this.container = container;
+    this.originalBend = bend; // store to allow responsive adjustments
     this.scrollSpeed = scrollSpeed;
     this.scroll = { ease: scrollEase, current: 0, target: 0, last: 0 };
     this.mouseWorld = { x: 9999, y: 9999 };
@@ -537,8 +537,13 @@ class App {
     const height = 2 * Math.tan(fov / 2) * this.camera.position.z;
     const width = height * this.camera.aspect;
     this.viewport = { width, height };
+    // Reduce bend on mobile to prevent extreme card tilt angles
+    const mobileBend = this.screen.width < 768 ? 1 : this.originalBend;
     if (this.medias) {
-      this.medias.forEach(media => media.onResize({ screen: this.screen, viewport: this.viewport }));
+      this.medias.forEach(media => {
+        media.bend = mobileBend;
+        media.onResize({ screen: this.screen, viewport: this.viewport });
+      });
     }
   }
   update() {
