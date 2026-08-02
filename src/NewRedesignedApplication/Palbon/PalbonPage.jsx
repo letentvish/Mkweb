@@ -137,6 +137,31 @@ export default function PalbonPage() {
   const [activeArchTab, setActiveArchTab] = useState("single-record");
   const [isSuiteModalOpen, setIsSuiteModalOpen] = useState(false);
 
+  // Swipe navigation for intelligence tabs on mobile
+  const modelTabOrder = ["workforce", "configuration", "reasoning"];
+  const swipeStartXRef = useRef(null);
+  const handleTabSwipeStart = (e) => {
+    swipeStartXRef.current = e.touches ? e.touches[0].clientX : null;
+  };
+  const handleTabSwipeEnd = (e) => {
+    if (swipeStartXRef.current === null) return;
+    const endX = e.changedTouches ? e.changedTouches[0].clientX : null;
+    if (endX === null) return;
+    const diff = swipeStartXRef.current - endX;
+    if (Math.abs(diff) < 50) return; // ignore tiny swipes
+    const currentIdx = modelTabOrder.indexOf(activeModelTab);
+    if (diff > 0) {
+      // Swipe left → next tab
+      const next = modelTabOrder[(currentIdx + 1) % modelTabOrder.length];
+      setActiveModelTab(next);
+    } else {
+      // Swipe right → previous tab
+      const prev = modelTabOrder[(currentIdx - 1 + modelTabOrder.length) % modelTabOrder.length];
+      setActiveModelTab(prev);
+    }
+    swipeStartXRef.current = null;
+  };
+
   const handleHeroMouseMove = (e) => {
     if (heroVersion === "v2" && palbon3dIframeRef.current?.contentWindow) {
       const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
@@ -1077,8 +1102,12 @@ export default function PalbonPage() {
             </div>
           </div>
 
-          {/* Main Feature Card Container */}
-          <div className="bg-white border border-indigo-200/90 rounded-3xl overflow-hidden shadow-lg shadow-indigo-100/50">
+          {/* Main Feature Card Container — swipeable on mobile */}
+          <div
+            className="bg-white border border-indigo-200/90 rounded-3xl overflow-hidden shadow-lg shadow-indigo-100/50"
+            onTouchStart={handleTabSwipeStart}
+            onTouchEnd={handleTabSwipeEnd}
+          >
             <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
               
               {/* Left Column: Interactive Visual */}
