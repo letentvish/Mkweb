@@ -441,7 +441,7 @@ export default function PalbonPage() {
               </p>
 
               {/* CTAs directly underneath H1 & P1 */}
-              <div className="flex flex-wrap items-center justify-center gap-4 mt-8 mb-10">
+              <div className="flex flex-wrap items-center justify-center gap-4 mt-8 mb-2">
                 <button
                   onClick={() => setIsSuiteModalOpen(true)}
                   className="bg-[#0284c7] hover:bg-[#0369a1] text-white font-bold px-8 py-3.5 rounded-full inline-flex items-center gap-2 shadow-lg shadow-sky-500/25 transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95 text-sm"
@@ -462,30 +462,9 @@ export default function PalbonPage() {
               </div>
             </div>
 
-            {/* Hero V3 Filter Category Pills */}
-            <div className="flex justify-center items-center gap-2 overflow-x-auto py-2 mb-8 no-scrollbar max-w-3xl mx-auto">
-              {[
-                { id: "all", label: "All Modules (40)" },
-                { id: "erp", label: "ERP Line (20)" },
-                { id: "hrms", label: "HRMS Nucleus (20)" },
-              ].map(tab => (
-                <button
-                  key={tab.id}
-                  onClick={() => setHeroV3Filter(tab.id)}
-                  className={`px-4 py-2 rounded-full text-xs font-extrabold transition-all duration-200 cursor-pointer whitespace-nowrap ${
-                    heroV3Filter === tab.id
-                      ? "bg-[#01182F] text-white shadow-md"
-                      : "bg-white/80 border border-slate-200/90 text-slate-600 hover:text-slate-900"
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
-
-            {/* 3D WebGL Curved Interactive Circular Gallery - Full Viewport Width */}
-            <div className="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen my-4 overflow-hidden z-20">
-              <div style={{ height: '660px', position: 'relative', width: '100%' }}>
+            {/* 3D WebGL Curved Interactive Circular Gallery - Shifted Upwards */}
+            <div className="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen -mt-4 mb-2 overflow-hidden z-20">
+              <div style={{ height: '640px', position: 'relative', width: '100%' }}>
                 <CircularGallery
                   items={HERO_V3_GALLERY_ITEMS}
                   bend={3}
