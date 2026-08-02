@@ -15,65 +15,60 @@ function lerp(p1, p2, t) {
   return p1 + (p2 - p1) * t;
 }
 
-function autoBind(instance) {
-  const proto = Object.getPrototypeOf(instance);
-  Object.getOwnPropertyNames(proto).forEach(key => {
-    if (key !== 'constructor' && typeof instance[key] === 'function') {
-      instance[key] = instance[key].bind(instance);
-    }
-  });
-}
-
 function drawCardTexture(img, item = {}) {
   const canvas = document.createElement('canvas');
-  canvas.width = 800;
-  canvas.height = 600;
+  canvas.width = 700;
+  canvas.height = 900;
   const ctx = canvas.getContext('2d');
 
-  // Fill background
+  // Fill base background
   ctx.fillStyle = '#01182F';
-  ctx.fillRect(0, 0, 800, 600);
+  ctx.fillRect(0, 0, 700, 900);
 
   // 1. Draw Image (cover)
   if (img && img.naturalWidth) {
-    const scale = Math.max(800 / img.naturalWidth, 600 / img.naturalHeight);
-    const x = (800 - img.naturalWidth * scale) / 2;
-    const y = (600 - img.naturalHeight * scale) / 2;
+    const scale = Math.max(700 / img.naturalWidth, 900 / img.naturalHeight);
+    const x = (700 - img.naturalWidth * scale) / 2;
+    const y = (900 - img.naturalHeight * scale) / 2;
     ctx.drawImage(img, x, y, img.naturalWidth * scale, img.naturalHeight * scale);
   }
 
-  // 2. Frosted Dark Blur Overlay Gradient (#01182F palette)
-  const gradient = ctx.createLinearGradient(0, 0, 0, 600);
-  gradient.addColorStop(0, 'rgba(1, 24, 47, 0.72)');
-  gradient.addColorStop(0.4, 'rgba(1, 24, 47, 0.88)');
-  gradient.addColorStop(1, 'rgba(1, 24, 47, 0.96)');
+  // 2. Heavy Frosted Dark Blur Overlay Gradient (#01182F palette) for 100% Text Readability
+  const gradient = ctx.createLinearGradient(0, 0, 0, 900);
+  gradient.addColorStop(0, 'rgba(1, 24, 47, 0.76)');
+  gradient.addColorStop(0.35, 'rgba(1, 24, 47, 0.88)');
+  gradient.addColorStop(0.8, 'rgba(1, 24, 47, 0.96)');
+  gradient.addColorStop(1, 'rgba(1, 24, 47, 0.99)');
   ctx.fillStyle = gradient;
-  ctx.fillRect(0, 0, 800, 600);
+  ctx.fillRect(0, 0, 700, 900);
 
   // 3. Card Outer Border Glow
-  ctx.strokeStyle = 'rgba(255, 255, 255, 0.18)';
+  ctx.strokeStyle = 'rgba(255, 255, 255, 0.22)';
   ctx.lineWidth = 6;
-  ctx.strokeRect(12, 12, 776, 576);
+  ctx.strokeRect(10, 10, 680, 880);
+
+  // Safe inner padding (prevents edge truncation)
+  const marginX = 55;
 
   // 4. Icon Box Top-Left
-  ctx.fillStyle = 'rgba(255, 255, 255, 0.14)';
+  ctx.fillStyle = 'rgba(255, 255, 255, 0.16)';
   if (ctx.roundRect) {
     ctx.beginPath();
-    ctx.roundRect(40, 40, 76, 76, 18);
+    ctx.roundRect(marginX, 55, 84, 84, 20);
     ctx.fill();
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
     ctx.lineWidth = 2;
     ctx.stroke();
   } else {
-    ctx.fillRect(40, 40, 76, 76);
+    ctx.fillRect(marginX, 55, 84, 84);
   }
 
   // Emoji / Vector Icon symbol
   const icon = item.icon || '🚀';
-  ctx.font = '38px "Segoe UI Emoji", "Apple Color Emoji", sans-serif';
+  ctx.font = '42px "Segoe UI Emoji", "Apple Color Emoji", sans-serif';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  ctx.fillText(icon, 78, 78);
+  ctx.fillText(icon, marginX + 42, 55 + 42);
 
   // 5. Category Pill Badge Top-Right
   const catLabel = item.catLabel || (item.category === 'hrms' ? 'HRMS Nucleus' : 'ERP Line');
@@ -82,52 +77,76 @@ function drawCardTexture(img, item = {}) {
   ctx.fillStyle = isErp ? '#0284c7' : '#6366f1';
   if (ctx.roundRect) {
     ctx.beginPath();
-    ctx.roundRect(540, 45, 220, 48, 24);
+    ctx.roundRect(430, 60, 215, 52, 26);
     ctx.fill();
   } else {
-    ctx.fillRect(540, 45, 220, 48);
+    ctx.fillRect(430, 60, 215, 52);
   }
 
   ctx.font = 'bold 20px "Figtree", sans-serif';
   ctx.fillStyle = '#ffffff';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  ctx.fillText(catLabel.toUpperCase(), 650, 69);
+  ctx.fillText(catLabel.toUpperCase(), 537, 86);
+
+  // Reset text shadow for maximum readability
+  ctx.shadowColor = 'rgba(0, 0, 0, 0.95)';
+  ctx.shadowBlur = 14;
 
   // 6. Title Heading
   const title = item.text || item.title || 'PALBON Module';
-  ctx.font = 'bold 44px "Figtree", sans-serif';
+  ctx.font = 'bold 46px "Figtree", sans-serif';
   ctx.fillStyle = '#ffffff';
   ctx.textAlign = 'left';
   ctx.textBaseline = 'top';
-  ctx.fillText(title, 45, 330);
+  
+  // Wrap title if needed
+  const titleWords = title.split(' ');
+  let titleLine = '';
+  let titleY = 460;
+  for (let n = 0; n < titleWords.length; n++) {
+    const testLine = titleLine + titleWords[n] + ' ';
+    const metrics = ctx.measureText(testLine);
+    if (metrics.width > 580 && n > 0) {
+      ctx.fillText(titleLine, marginX, titleY);
+      titleLine = titleWords[n] + ' ';
+      titleY += 56;
+    } else {
+      titleLine = testLine;
+    }
+  }
+  ctx.fillText(titleLine, marginX, titleY);
 
   // 7. Subtext Description
   const desc = item.desc || 'Single record capability module for modern enterprise operations.';
-  ctx.font = '500 24px "Figtree", sans-serif';
-  ctx.fillStyle = '#cbd5e1'; // slate-300
+  ctx.font = '500 26px "Figtree", sans-serif';
+  ctx.fillStyle = '#e2e8f0'; // slate-200
   
   const words = desc.split(' ');
   let line = '';
-  let lineY = 400;
+  let lineY = titleY + 65;
   for (let n = 0; n < words.length; n++) {
     const testLine = line + words[n] + ' ';
     const metrics = ctx.measureText(testLine);
-    if (metrics.width > 710 && n > 0) {
-      ctx.fillText(line, 45, lineY);
+    if (metrics.width > 580 && n > 0) {
+      ctx.fillText(line, marginX, lineY);
       line = words[n] + ' ';
-      lineY += 32;
+      lineY += 36;
     } else {
       line = testLine;
     }
   }
-  ctx.fillText(line, 45, lineY);
+  ctx.fillText(line, marginX, lineY);
 
   // 8. Action Link Tag
-  ctx.font = 'bold 24px "Figtree", sans-serif';
+  ctx.font = 'bold 26px "Figtree", sans-serif';
   ctx.fillStyle = '#38bdf8'; // sky-400
   ctx.textAlign = 'left';
-  ctx.fillText('Explore Module →', 45, 520);
+  ctx.fillText('Explore Module →', marginX, 810);
+
+  // Reset shadow
+  ctx.shadowColor = 'transparent';
+  ctx.shadowBlur = 0;
 
   return canvas;
 }
@@ -193,8 +212,6 @@ class Media {
       `,
       fragment: `
         precision highp float;
-        uniform vec2 uImageSizes;
-        uniform vec2 uPlaneSizes;
         uniform sampler2D tMap;
         uniform float uBorderRadius;
         varying vec2 vUv;
@@ -205,15 +222,8 @@ class Media {
         }
         
         void main() {
-          vec2 ratio = vec2(
-            min((uPlaneSizes.x / uPlaneSizes.y) / (uImageSizes.x / uImageSizes.y), 1.0),
-            min((uPlaneSizes.y / uPlaneSizes.x) / (uImageSizes.y / uImageSizes.x), 1.0)
-          );
-          vec2 uv = vec2(
-            vUv.x * ratio.x + (1.0 - ratio.x) * 0.5,
-            vUv.y * ratio.y + (1.0 - ratio.y) * 0.5
-          );
-          vec4 color = texture2D(tMap, uv);
+          // Sampling directly without cropping margins
+          vec4 color = texture2D(tMap, vUv);
           
           float d = roundedBoxSDF(vUv - 0.5, vec2(0.5 - uBorderRadius), uBorderRadius);
           
@@ -225,10 +235,6 @@ class Media {
       `,
       uniforms: {
         tMap: { value: texture },
-        uPlaneSizes: { value: [0, 0] },
-        uImageSizes: { value: [0, 0] },
-        uSpeed: { value: 0 },
-        uTime: { value: 0 },
         uBorderRadius: { value: this.borderRadius }
       },
       transparent: true
@@ -239,7 +245,6 @@ class Media {
     img.onload = () => {
       const cardCanvas = drawCardTexture(img, this.itemData || { text: this.text });
       texture.image = cardCanvas;
-      this.program.uniforms.uImageSizes.value = [cardCanvas.width, cardCanvas.height];
     };
   }
   createMesh() {
@@ -273,8 +278,6 @@ class Media {
       }
     }
 
-    this.speed = scroll.current - scroll.last;
-
     const planeOffset = this.plane.scale.x / 2;
     const viewportOffset = this.viewport.width / 2;
     this.isBefore = this.plane.position.x + planeOffset < -viewportOffset;
@@ -292,14 +295,10 @@ class Media {
     if (screen) this.screen = screen;
     if (viewport) {
       this.viewport = viewport;
-      if (this.plane.program.uniforms.uViewportSizes) {
-        this.plane.program.uniforms.uViewportSizes.value = [this.viewport.width, this.viewport.height];
-      }
     }
     this.scale = this.screen.height / 1500;
     this.plane.scale.y = (this.viewport.height * (900 * this.scale)) / this.screen.height;
     this.plane.scale.x = (this.viewport.width * (700 * this.scale)) / this.screen.width;
-    this.plane.program.uniforms.uPlaneSizes.value = [this.plane.scale.x, this.plane.scale.y];
     this.padding = 2;
     this.width = this.plane.scale.x + this.padding;
     this.widthTotal = this.width * this.length;
@@ -362,10 +361,7 @@ class App {
     const defaultItems = [
       { image: `https://picsum.photos/seed/1/800/600?grayscale`, text: 'Bridge' },
       { image: `https://picsum.photos/seed/2/800/600?grayscale`, text: 'Desk Setup' },
-      { image: `https://picsum.photos/seed/3/800/600?grayscale`, text: 'Waterfall' },
-      { image: `https://picsum.photos/seed/4/800/600?grayscale`, text: 'Strawberries' },
-      { image: `https://picsum.photos/seed/5/800/600?grayscale`, text: 'Deep Diving' },
-      { image: `https://picsum.photos/seed/16/800/600?grayscale`, text: 'Train Track' }
+      { image: `https://picsum.photos/seed/3/800/600?grayscale`, text: 'Waterfall' }
     ];
     const galleryItems = items && items.length ? items : defaultItems;
     this.mediasImages = galleryItems.concat(galleryItems);
