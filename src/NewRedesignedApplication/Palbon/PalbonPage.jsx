@@ -33,10 +33,39 @@ import SuiteConfiguratorModal from "./SuiteConfiguratorModal";
 import AutomationSection from "./AutomationSection";
 import EcosystemCtaSection from "./EcosystemCtaSection";
 
+const HERO_V3_MODULES = [
+  { id: "financial-accounting-gl", title: "General Ledger", category: "erp", catLabel: "ERP", icon: <Coins className="w-5 h-5 text-[#0284c7]" />, desc: "Multi-entity accounting & GL" },
+  { id: "accounts-payable", title: "Accounts Payable", category: "erp", catLabel: "ERP", icon: <FileText className="w-5 h-5 text-[#0284c7]" />, desc: "Approvals & 3-way matching" },
+  { id: "accounts-receivable", title: "Accounts Receivable", category: "erp", catLabel: "ERP", icon: <IndianRupee className="w-5 h-5 text-[#0284c7]" />, desc: "Automated cash collections" },
+  { id: "tax-gst-einvoicing", title: "Tax & e-Invoicing", category: "erp", catLabel: "ERP", icon: <Zap className="w-5 h-5 text-[#0284c7]" />, desc: "GST & e-way compliance" },
+  { id: "procurement-purchasing", title: "Procurement & PO", category: "erp", catLabel: "ERP", icon: <Boxes className="w-5 h-5 text-[#0284c7]" />, desc: "Requisitions & vendor POs" },
+  { id: "inventory-management", title: "Inventory Engine", category: "erp", catLabel: "ERP", icon: <Database className="w-5 h-5 text-[#0284c7]" />, desc: "Multi-location stock control" },
+  { id: "warehouse-management", title: "Warehouse WMS", category: "erp", catLabel: "ERP", icon: <Settings className="w-5 h-5 text-[#0284c7]" />, desc: "Optimised picking & dispatch" },
+  { id: "crm-pipeline", title: "CRM & Pipeline", category: "erp", catLabel: "ERP", icon: <GitFork className="w-5 h-5 text-[#0284c7]" />, desc: "Leads to delivery pipeline" },
+  { id: "sales-order-management", title: "Sales & Orders", category: "erp", catLabel: "ERP", icon: <BarChart2 className="w-5 h-5 text-[#0284c7]" />, desc: "Live order fulfillment flow" },
+  { id: "manufacturing-production-planning", title: "Manufacturing MRP", category: "erp", catLabel: "ERP", icon: <Puzzle className="w-5 h-5 text-[#0284c7]" />, desc: "Production & material MRP" },
+  { id: "quality-management", title: "Quality Control", category: "erp", catLabel: "ERP", icon: <ShieldCheck className="w-5 h-5 text-[#0284c7]" />, desc: "Inspection & compliance" },
+  { id: "reporting-dashboards-bi", title: "BI & Analytics", category: "erp", catLabel: "ERP", icon: <Sparkles className="w-5 h-5 text-[#0284c7]" />, desc: "Role-based dashboards" },
+  
+  { id: "core-hr-employee-records", title: "Core HR & Records", category: "hrms", catLabel: "HRMS", icon: <Users className="w-5 h-5 text-[#6366f1]" />, desc: "Single source for employee data" },
+  { id: "payroll-management", title: "Payroll Engine", category: "hrms", catLabel: "HRMS", icon: <Coins className="w-5 h-5 text-[#6366f1]" />, desc: "Automated salary & payslips" },
+  { id: "statutory-compliance", title: "Statutory Filing", category: "hrms", catLabel: "HRMS", icon: <Lock className="w-5 h-5 text-[#6366f1]" />, desc: "PF, ESI, TDS & PT compliance" },
+  { id: "recruitment-applicant-tracking", title: "Recruitment ATS", category: "hrms", catLabel: "HRMS", icon: <GitFork className="w-5 h-5 text-[#6366f1]" />, desc: "Hiring funnel & pipelines" },
+  { id: "onboarding-preboarding", title: "Onboarding Flow", category: "hrms", catLabel: "HRMS", icon: <Check className="w-5 h-5 text-[#6366f1]" />, desc: "Digital joining checklists" },
+  { id: "time-attendance", title: "Time & Attendance", category: "hrms", catLabel: "HRMS", icon: <Clock className="w-5 h-5 text-[#6366f1]" />, desc: "Biometric & mobile punches" },
+  { id: "leave-management", title: "Leave Engine", category: "hrms", catLabel: "HRMS", icon: <FolderGit2 className="w-5 h-5 text-[#6366f1]" />, desc: "Self-service leave balances" },
+  { id: "performance-management", title: "Performance OKRs", category: "hrms", catLabel: "HRMS", icon: <BarChart2 className="w-5 h-5 text-[#6366f1]" />, desc: "Goal tracking & reviews" },
+  { id: "learning-development", title: "Learning LXP", category: "hrms", catLabel: "HRMS", icon: <Sparkles className="w-5 h-5 text-[#6366f1]" />, desc: "Upskilling & certifications" },
+  { id: "employee-manager-self-service", title: "Self-Service ESS", category: "hrms", catLabel: "HRMS", icon: <Users className="w-5 h-5 text-[#6366f1]" />, desc: "Employee & manager portal" },
+  { id: "expense-travel-reimbursement", title: "Expense & Travel", category: "hrms", catLabel: "HRMS", icon: <FileText className="w-5 h-5 text-[#6366f1]" />, desc: "Mobile claims & policy checks" },
+  { id: "workforce-analytics-dashboards", title: "Workforce BI", category: "hrms", catLabel: "HRMS", icon: <Zap className="w-5 h-5 text-[#6366f1]" />, desc: "Attrition & headcount insights" },
+];
+
 export default function PalbonPage() {
   const navigate = useNavigate();
   const palbon3dIframeRef = useRef(null);
-  const [heroVersion, setHeroVersion] = useState("v2"); // "v1" | "v2"
+  const [heroVersion, setHeroVersion] = useState("v3"); // "v1" | "v2" | "v3"
+  const [heroV3Filter, setHeroV3Filter] = useState("all");
   const [activeModelTab, setActiveModelTab] = useState("workforce");
   const [activeArchTab, setActiveArchTab] = useState("single-record");
   const [isSuiteModalOpen, setIsSuiteModalOpen] = useState(false);
@@ -280,12 +309,12 @@ export default function PalbonPage() {
 
         {/* Hero Version Toggle Control */}
         <div className="flex justify-center mb-8 relative z-30">
-          <div className="inline-flex p-1 bg-white/90 backdrop-blur-md border border-slate-300/80 shadow-md rounded-full">
+          <div className="inline-flex p-1 bg-white/90 backdrop-blur-md border border-slate-300/80 shadow-md rounded-full overflow-x-auto max-w-full">
             <button
               onClick={() => setHeroVersion("v1")}
-              className={`px-5 py-2 rounded-full text-xs font-extrabold transition-all duration-200 cursor-pointer ${
+              className={`px-4 py-2 rounded-full text-xs font-extrabold transition-all duration-200 cursor-pointer whitespace-nowrap ${
                 heroVersion === "v1"
-                  ? "bg-[#0284c7] text-white shadow-md"
+                  ? "bg-[#01182F] text-white shadow-md"
                   : "text-slate-600 hover:text-slate-900"
               }`}
             >
@@ -293,16 +322,147 @@ export default function PalbonPage() {
             </button>
             <button
               onClick={() => setHeroVersion("v2")}
-              className={`px-5 py-2 rounded-full text-xs font-extrabold transition-all duration-200 cursor-pointer ${
+              className={`px-4 py-2 rounded-full text-xs font-extrabold transition-all duration-200 cursor-pointer whitespace-nowrap ${
                 heroVersion === "v2"
-                  ? "bg-[#6366f1] text-white shadow-md"
+                  ? "bg-[#01182F] text-white shadow-md"
                   : "text-slate-600 hover:text-slate-900"
               }`}
             >
               Hero V2 (Integrated Stack Architecture)
             </button>
+            <button
+              onClick={() => setHeroVersion("v3")}
+              className={`px-4 py-2 rounded-full text-xs font-extrabold transition-all duration-200 cursor-pointer whitespace-nowrap ${
+                heroVersion === "v3"
+                  ? "bg-[#01182F] text-white shadow-md"
+                  : "text-slate-600 hover:text-slate-900"
+              }`}
+            >
+              Hero V3 (Modular App Grid)
+            </button>
           </div>
         </div>
+
+        {/* HERO VERSION 3 (MODULAR ECOSYSTEM APP GRID) */}
+        {heroVersion === "v3" && (
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center pb-12 pt-2">
+            
+            {/* Header Content */}
+            <div className="max-w-4xl mx-auto">
+              {/* Top Pill Badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-slate-300/80 text-[#01182F] text-xs font-bold tracking-widest uppercase mb-5 shadow-sm">
+                <span className="w-2 h-2 rounded-full bg-[#0284c7] animate-pulse" />
+                <span>UNIFIED. INTELLIGENT. IMPACTFUL.</span>
+              </div>
+
+              {/* Main Headline (H1) */}
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-extrabold text-[#01182F] tracking-tight leading-[1.12] max-w-4xl mx-auto">
+                Build your <br className="hidden sm:block" />
+                <span className="bg-gradient-to-r from-[#01182F] via-[#0284c7] to-[#01182F] bg-clip-text text-transparent">
+                  enterprise operating system
+                </span>
+              </h1>
+
+              {/* Subheading (P1) */}
+              <p className="text-slate-700 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mt-4 font-medium">
+                Unify your people, processes, data, and technology on one intelligent platform. Designed for the way modern enterprises operate.
+              </p>
+
+              {/* CTAs directly underneath H1 & P1 */}
+              <div className="flex flex-wrap items-center justify-center gap-4 mt-8 mb-10">
+                <button
+                  onClick={() => setIsSuiteModalOpen(true)}
+                  className="bg-[#0284c7] hover:bg-[#0369a1] text-white font-bold px-8 py-3.5 rounded-full inline-flex items-center gap-2 shadow-lg shadow-sky-500/25 transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95 text-sm"
+                >
+                  <Boxes className="w-4 h-4" />
+                  <span>Configure PALBON Suite</span>
+                </button>
+
+                <button
+                  onClick={() => navigate("/contact")}
+                  className="bg-white hover:bg-slate-50 text-[#01182F] border border-slate-300 font-bold px-7 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-all duration-200 cursor-pointer shadow-md hover:scale-105 active:scale-95 text-sm"
+                >
+                  <div className="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-[#0284c7]">
+                    <Play className="w-3 h-3 fill-current ml-0.5" />
+                  </div>
+                  <span>Watch Overview</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Hero V3 Filter Category Pills */}
+            <div className="flex justify-center items-center gap-2 overflow-x-auto py-2 mb-8 no-scrollbar max-w-3xl mx-auto">
+              {[
+                { id: "all", label: "All Modules (40)" },
+                { id: "erp", label: "ERP Line (20)" },
+                { id: "hrms", label: "HRMS Nucleus (20)" },
+              ].map(tab => (
+                <button
+                  key={tab.id}
+                  onClick={() => setHeroV3Filter(tab.id)}
+                  className={`px-4 py-2 rounded-full text-xs font-extrabold transition-all duration-200 cursor-pointer whitespace-nowrap ${
+                    heroV3Filter === tab.id
+                      ? "bg-[#01182F] text-white shadow-md"
+                      : "bg-white/80 border border-slate-200/90 text-slate-600 hover:text-slate-900"
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Modular App Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3.5 max-w-6xl mx-auto text-left">
+              {HERO_V3_MODULES
+                .filter(m => heroV3Filter === "all" ? true : m.category === heroV3Filter)
+                .map(mod => (
+                  <div
+                    key={mod.id}
+                    onClick={() => setIsSuiteModalOpen(true)}
+                    className="group p-4 bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200/80 hover:border-sky-300 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between hover:-translate-y-1.5"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-50 to-indigo-50 border border-sky-100 flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform">
+                          {mod.icon}
+                        </div>
+                        <span className={`text-[9px] font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider ${
+                          mod.category === "erp" ? "bg-sky-50 text-[#0284c7] border border-sky-200" : "bg-indigo-50 text-[#6366f1] border border-indigo-200"
+                        }`}>
+                          {mod.catLabel}
+                        </span>
+                      </div>
+
+                      <h4 className="font-poppins font-extrabold text-xs text-[#01182F] group-hover:text-[#0284c7] transition-colors leading-tight mb-1">
+                        {mod.title}
+                      </h4>
+                      <p className="text-[10px] text-slate-500 line-clamp-2 leading-relaxed font-normal">
+                        {mod.desc}
+                      </p>
+                    </div>
+
+                    <div className="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] font-bold text-[#0284c7]">
+                      <span>Explore</span>
+                      <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                ))}
+            </div>
+
+            {/* Bottom Banner */}
+            <div className="mt-10 inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/90 backdrop-blur-md border border-slate-200 shadow-md">
+              <span className="text-xs font-bold text-slate-700">40 Connected Modules • One Shared Data Core</span>
+              <button
+                onClick={() => setIsSuiteModalOpen(true)}
+                className="text-xs font-extrabold text-[#0284c7] hover:underline flex items-center gap-1 cursor-pointer"
+              >
+                <span>Open Suite Configurator</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+
+          </div>
+        )}
 
         {/* Full Hero 3D WebGL Background when Hero V2 is active */}
         {heroVersion === "v2" && (
