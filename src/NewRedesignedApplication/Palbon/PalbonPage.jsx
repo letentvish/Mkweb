@@ -257,7 +257,8 @@ export default function PalbonPage() {
       badge: "FLEXIBILITY",
       headline: "Adaptable workflows built for your custom operation",
       description: "Configure processes and business rules without complex code rewrites. Maintain complete ownership over system parameters and logic.",
-      image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80",
+      image: "/configure.webp",
+      hideOverlays: true,
       topCard1: {
         title: "Module Health",
         percent: 95,
