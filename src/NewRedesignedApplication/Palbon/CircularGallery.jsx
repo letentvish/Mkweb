@@ -191,6 +191,7 @@ class Media {
     this.textColor = textColor;
     this.borderRadius = borderRadius;
     this.font = font;
+    this.hoverProgress = 0;
     this.createShader();
     this.createMesh();
     this.onResize();
@@ -220,6 +221,7 @@ class Media {
         precision highp float;
         uniform sampler2D tMap;
         uniform float uBorderRadius;
+        uniform float uHover;
         varying vec2 vUv;
         
         float roundedBoxSDF(vec2 p, vec2 b, float r) {
@@ -235,12 +237,21 @@ class Media {
           float edgeSmooth = 0.002;
           float alpha = 1.0 - smoothstep(-edgeSmooth, edgeSmooth, d);
           
-          gl_FragColor = vec4(color.rgb, alpha);
+          // Soft outer drop shadow glow when hovered
+          float shadowDist = roundedBoxSDF(vUv - 0.5, vec2(0.48 - uBorderRadius), uBorderRadius * 1.25);
+          float shadowAlpha = (1.0 - smoothstep(-0.06, 0.06, shadowDist)) * 0.5 * uHover;
+          
+          vec3 shadowColor = vec3(0.003, 0.094, 0.184) * 0.3;
+          vec3 finalColor = mix(shadowColor, color.rgb, alpha);
+          float finalAlpha = max(alpha, shadowAlpha);
+          
+          gl_FragColor = vec4(finalColor, finalAlpha);
         }
       `,
       uniforms: {
         tMap: { value: texture },
-        uBorderRadius: { value: this.borderRadius }
+        uBorderRadius: { value: this.borderRadius },
+        uHover: { value: 0 }
       },
       transparent: true
     });
@@ -259,7 +270,7 @@ class Media {
     });
     this.plane.setParent(this.scene);
   }
-  update(scroll, direction) {
+  update(scroll, direction, mouseWorld) {
     this.plane.position.x = this.x - scroll.current - this.extra;
 
     const x = this.plane.position.x;
@@ -283,6 +294,31 @@ class Media {
       }
     }
 
+    // Check distance to mouse in 3D world space for hover state
+    if (mouseWorld) {
+      const dx = this.plane.position.x - mouseWorld.x;
+      const dy = this.plane.position.y - mouseWorld.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      this.isHovered = dist < (this.baseScaleX || 3.0) * 0.55;
+    } else {
+      this.isHovered = false;
+    }
+
+    // Lerp hover progress smoothly
+    this.hoverProgress = lerp(this.hoverProgress, this.isHovered ? 1.0 : 0.0, 0.1);
+    
+    // Zoom out a little on hover (scale shrunken to 91%)
+    const scaleFactor = 1.0 - this.hoverProgress * 0.09;
+    
+    if (this.baseScaleX && this.baseScaleY) {
+      this.plane.scale.x = this.baseScaleX * scaleFactor;
+      this.plane.scale.y = this.baseScaleY * scaleFactor;
+    }
+
+    if (this.plane.program.uniforms.uHover) {
+      this.plane.program.uniforms.uHover.value = this.hoverProgress;
+    }
+
     const planeOffset = this.plane.scale.x / 2;
     const viewportOffset = this.viewport.width / 2;
     this.isBefore = this.plane.position.x + planeOffset < -viewportOffset;
@@ -302,10 +338,15 @@ class Media {
       this.viewport = viewport;
     }
     this.scale = this.screen.height / 1500;
-    this.plane.scale.y = (this.viewport.height * (900 * this.scale)) / this.screen.height;
-    this.plane.scale.x = (this.viewport.width * (700 * this.scale)) / this.screen.width;
+    this.baseScaleY = (this.viewport.height * (900 * this.scale)) / this.screen.height;
+    this.baseScaleX = (this.viewport.width * (700 * this.scale)) / this.screen.width;
+    
+    const scaleFactor = 1.0 - (this.hoverProgress || 0) * 0.09;
+    this.plane.scale.y = this.baseScaleY * scaleFactor;
+    this.plane.scale.x = this.baseScaleX * scaleFactor;
+
     this.padding = 2;
-    this.width = this.plane.scale.x + this.padding;
+    this.width = this.baseScaleX + this.padding;
     this.widthTotal = this.width * this.length;
     this.x = this.width * this.index;
   }
@@ -328,6 +369,8 @@ class App {
     this.container = container;
     this.scrollSpeed = scrollSpeed;
     this.scroll = { ease: scrollEase, current: 0, target: 0, last: 0 };
+    this.mouseWorld = { x: 9999, y: 9999 };
+    this.lastMouseX = null;
     this.onCheckDebounce = debounce(this.onCheck, 200);
     this.createRenderer();
     this.createCamera();
@@ -389,6 +432,32 @@ class App {
         font
       });
     });
+  }
+  onMouseMove(e) {
+    const rect = this.container.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const mouseNormalizedX = (x / rect.width) * 2 - 1;
+    const mouseNormalizedY = -(y / rect.height) * 2 + 1;
+
+    this.mouseWorld = {
+      x: (mouseNormalizedX * this.viewport.width) / 2,
+      y: (mouseNormalizedY * this.viewport.height) / 2
+    };
+
+    // Mouse pointer movement -> scroll cards in OPPOSITE direction
+    if (this.lastMouseX !== null) {
+      const dx = e.clientX - this.lastMouseX;
+      // Moving mouse right (dx > 0) -> scroll cards left
+      // Moving mouse left (dx < 0) -> scroll cards right
+      this.scroll.target -= dx * (this.scrollSpeed * 0.035);
+    }
+    this.lastMouseX = e.clientX;
+  }
+  onMouseLeave() {
+    this.mouseWorld = { x: 9999, y: 9999 };
+    this.lastMouseX = null;
   }
   onTouchDown(e) {
     this.isDown = true;
@@ -463,7 +532,7 @@ class App {
     this.scroll.current = lerp(this.scroll.current, this.scroll.target, this.scroll.ease);
     const direction = this.scroll.current > this.scroll.last ? 'right' : 'left';
     if (this.medias) {
-      this.medias.forEach(media => media.update(this.scroll, direction));
+      this.medias.forEach(media => media.update(this.scroll, direction, this.mouseWorld));
     }
     this.renderer.render({ scene: this.scene, camera: this.camera });
     this.scroll.last = this.scroll.current;
@@ -476,6 +545,8 @@ class App {
     this.boundOnTouchMove = this.onTouchMove.bind(this);
     this.boundOnTouchUp = this.onTouchUp.bind(this);
     this.boundOnKeyDown = this.onKeyDown.bind(this);
+    this.boundOnMouseMove = this.onMouseMove.bind(this);
+    this.boundOnMouseLeave = this.onMouseLeave.bind(this);
 
     window.addEventListener('resize', this.boundOnResize);
     window.addEventListener('mousewheel', this.boundOnWheel);
@@ -487,6 +558,8 @@ class App {
     window.addEventListener('touchmove', this.boundOnTouchMove);
     window.addEventListener('touchend', this.boundOnTouchUp);
 
+    this.container?.addEventListener('mousemove', this.boundOnMouseMove);
+    this.container?.addEventListener('mouseleave', this.boundOnMouseLeave);
     this.container?.addEventListener('keydown', this.boundOnKeyDown);
   }
   destroy() {
@@ -505,6 +578,8 @@ class App {
     }
 
     if (this.container) {
+      this.container.removeEventListener('mousemove', this.boundOnMouseMove);
+      this.container.removeEventListener('mouseleave', this.boundOnMouseLeave);
       this.container.removeEventListener('keydown', this.boundOnKeyDown);
     }
   }
