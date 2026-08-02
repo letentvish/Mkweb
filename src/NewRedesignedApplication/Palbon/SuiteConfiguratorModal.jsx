@@ -6,10 +6,7 @@ import {
   CheckCircle2, 
   ArrowRight, 
   Send,
-  Search,
-  SlidersHorizontal,
-  Layers,
-  Sparkles
+  Search
 } from "lucide-react";
 
 // ============================================================================
