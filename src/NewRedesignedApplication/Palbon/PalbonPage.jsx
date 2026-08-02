@@ -923,10 +923,10 @@ export default function PalbonPage() {
         <div className="absolute bottom-10 right-10 w-80 h-80 bg-purple-600/20 rounded-full blur-[100px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             {/* Left Narrative Column */}
-            <div className="lg:col-span-6 flex flex-col items-start space-y-6">
+            <div className="lg:col-span-5 flex flex-col items-start space-y-6">
               
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-950/80 border border-indigo-800/60 text-indigo-400 text-xs font-bold tracking-wider uppercase font-poppins">
                 <span className="w-2 h-2 rounded-full bg-[#6366f1] animate-pulse" />
@@ -994,12 +994,12 @@ export default function PalbonPage() {
 
             </div>
 
-            {/* Right Column - Clean Clarity Showcase Graphic */}
-            <div className="lg:col-span-6 flex items-center justify-center relative">
+            {/* Right Column - Direct on Screen & Expanded Size */}
+            <div className="lg:col-span-7 flex items-center justify-center lg:justify-end relative">
               <img 
                 src="/clarity.png" 
                 alt="PALBON Single Source of Truth Clarity" 
-                className="w-full h-auto max-h-[580px] object-contain rounded-3xl shadow-2xl border border-indigo-900/40"
+                className="w-full h-auto max-h-[680px] lg:max-h-[760px] object-contain drop-shadow-2xl"
               />
             </div>
 
