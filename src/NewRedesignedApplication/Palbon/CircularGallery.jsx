@@ -459,12 +459,12 @@ class App {
       y: (mouseNormalizedY * this.viewport.height) / 2
     };
 
-    // Reversed mouse motion scroll trigger per user request
+    // Reversed mouse motion scroll trigger per user request (decreased sensitivity by 70%)
     if (this.lastMouseX !== null) {
       const dx = e.clientX - this.lastMouseX;
       // Moving mouse right (dx > 0) -> cards scroll right
       // Moving mouse left (dx < 0) -> cards scroll left
-      this.scroll.target += dx * (this.scrollSpeed * 0.035);
+      this.scroll.target += dx * (this.scrollSpeed * 0.0105);
     }
     this.lastMouseX = e.clientX;
   }
@@ -480,7 +480,7 @@ class App {
   onTouchMove(e) {
     if (!this.isDown) return;
     const x = e.touches ? e.touches[0].clientX : e.clientX;
-    const distance = (this.start - x) * (this.scrollSpeed * 0.025);
+    const distance = (this.start - x) * (this.scrollSpeed * 0.0075);
     this.scroll.target = this.scroll.position + distance;
   }
   onTouchUp() {
