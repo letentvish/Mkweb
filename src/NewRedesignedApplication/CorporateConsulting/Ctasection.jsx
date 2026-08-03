@@ -55,10 +55,10 @@ const CTASection = () => {
           </button>
 
           <button
-            onClick={() => navigate("/solutions")}
+            onClick={() => navigate("/contact")}
             className="bg-white/10 hover:bg-white/15 text-white border border-white/20 font-bold px-8 py-4 rounded-full inline-flex items-center gap-2.5 transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95 text-base backdrop-blur-md"
           >
-            <span>Explore PALBON Platform</span>
+            <span>Explore Transformation Services</span>
             <ArrowRight className="w-4 h-4 text-indigo-300" />
           </button>
         </div>

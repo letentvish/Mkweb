@@ -92,10 +92,10 @@ const CorporateHero = () => {
             </button>
 
             <button
-              onClick={() => navigate("/solutions")}
+              onClick={() => navigate("/contact")}
               className="bg-white hover:bg-slate-50 text-[#01182F] border border-slate-300 font-bold px-7 py-3.5 rounded-full inline-flex items-center gap-2 transition-all duration-200 cursor-pointer shadow-md hover:scale-105 active:scale-95 text-sm"
             >
-              <span>Explore PALBON Solutions</span>
+              <span>Explore Advisory Framework</span>
               <ArrowRight className="w-4 h-4 text-[#0284c7]" />
             </button>
           </div>

@@ -32,7 +32,7 @@ const WhatSetsUsApart = () => {
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-50 border border-sky-200 text-[#0284c7] text-xs font-extrabold tracking-wider uppercase font-poppins">
             <span className="w-2 h-2 rounded-full bg-[#0284c7] animate-pulse" />
-            <span>WHY PALBON CONSULTING</span>
+            <span>OUR CONSULTING ADVANTAGE</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-slate-900 tracking-tight leading-[1.15]">

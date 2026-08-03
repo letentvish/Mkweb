@@ -1,6 +1,4 @@
 import React from "react";
-import NewNavbar from "../Components/NewNavbar";
-import NewFooter from "../Components/NewFooter";
 import CorporateHero from "./Herosection";
 import ServiceCards from "./Servicecards";
 import VideoSection from "./Videosection";
@@ -13,9 +11,6 @@ import CTASection from "./Ctasection";
 const CorporateConsulting = () => {
   return (
     <div className="min-h-screen bg-[#F8FAFC] text-slate-900 font-sans overflow-x-hidden">
-      {/* Global Navigation */}
-      <NewNavbar />
-
       {/* Hero Section */}
       <CorporateHero />
 
@@ -39,9 +34,6 @@ const CorporateConsulting = () => {
 
       {/* Call To Action */}
       <CTASection />
-
-      {/* Global Footer */}
-      <NewFooter />
     </div>
   );
 };
