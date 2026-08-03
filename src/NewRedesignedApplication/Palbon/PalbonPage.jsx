@@ -133,12 +133,12 @@ export default function PalbonPage() {
   const navigate = useNavigate();
   const palbon3dIframeRef = useRef(null);
   const [heroVersion, setHeroVersion] = useState("v3"); // "v1" | "v2" | "v3"
-  const [activeModelTab, setActiveModelTab] = useState("workforce");
+  const [activeModelTab, setActiveModelTab] = useState("configuration");
   const [activeArchTab, setActiveArchTab] = useState("single-record");
   const [isSuiteModalOpen, setIsSuiteModalOpen] = useState(false);
 
   // Swipe navigation for intelligence tabs on mobile
-  const modelTabOrder = ["workforce", "configuration", "reasoning"];
+  const modelTabOrder = ["configuration", "reasoning"];
   const swipeStartXRef = useRef(null);
   const handleTabSwipeStart = (e) => {
     swipeStartXRef.current = e.touches ? e.touches[0].clientX : null;
@@ -1100,14 +1100,14 @@ export default function PalbonPage() {
           {/* Navigation Filter Tabs */}
           <div className="flex justify-center mb-4 sm:mb-6 lg:mb-10">
             <div className="flex space-x-8 border-b border-slate-200 px-4">
-              <button 
+              {/* <button 
                 onClick={() => setActiveModelTab("workforce")}
                 className={`pb-3 font-semibold text-sm transition-colors relative cursor-pointer ${
                   activeModelTab === "workforce" ? "text-[#6366f1] border-b-2 border-[#6366f1]" : "text-slate-500 hover:text-[#6366f1]"
                 }`}
               >
                 Workforce
-              </button>
+              </button> */}
               <button 
                 onClick={() => setActiveModelTab("configuration")}
                 className={`pb-3 font-semibold text-sm transition-colors relative cursor-pointer ${
