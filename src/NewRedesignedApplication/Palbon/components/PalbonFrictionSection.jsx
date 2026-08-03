@@ -113,7 +113,7 @@ export default function PalbonFrictionSection() {
       </div>
 
       {/* Dual Infinite Looping Image Marquee Container */}
-      <div className="relative w-full space-y-6 my-4">
+      <div className="relative w-full space-y-3 sm:space-y-6 my-2 sm:my-4">
         <button className="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-white/90 shadow-xl border border-slate-200 items-center justify-center text-slate-700 hover:scale-110 transition-transform">
           <ChevronLeft className="w-5 h-5" />
         </button>
@@ -126,12 +126,12 @@ export default function PalbonFrictionSection() {
           <motion.div
             animate={{ x: [0, -1800] }}
             transition={{ repeat: Infinity, duration: 32, ease: "linear" }}
-            className="flex gap-6 shrink-0"
+            className="flex gap-3 sm:gap-6 shrink-0"
           >
             {loopRow1.map((card, idx) => (
               <div
                 key={`${card.id}-${idx}`}
-                className="relative w-72 h-56 rounded-2xl overflow-hidden shadow-lg border border-indigo-900/30 group shrink-0"
+                className="relative w-48 h-36 sm:w-72 sm:h-56 rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-indigo-900/30 group shrink-0"
               >
                 <img
                   src={card.image}
@@ -140,11 +140,11 @@ export default function PalbonFrictionSection() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1e1b4b] via-[#2e1065]/70 to-[#3b0764]/40 backdrop-blur-[2px]" />
 
-                <div className="absolute inset-0 p-5 flex flex-col justify-between z-10">
-                  <div className="mx-auto my-auto w-12 h-12 rounded-full bg-white/20 border border-white/40 backdrop-blur-md flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                <div className="absolute inset-0 p-3 sm:p-5 flex flex-col justify-between z-10">
+                  <div className="mx-auto my-auto w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-white/20 border border-white/40 backdrop-blur-md flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                     {card.icon}
                   </div>
-                  <h3 className="font-poppins font-bold text-base text-white text-left tracking-wide">
+                  <h3 className="font-poppins font-bold text-xs sm:text-base text-white text-left tracking-wide leading-tight">
                     {card.title}
                   </h3>
                 </div>
@@ -158,12 +158,12 @@ export default function PalbonFrictionSection() {
           <motion.div
             animate={{ x: [-1800, 0] }}
             transition={{ repeat: Infinity, duration: 34, ease: "linear" }}
-            className="flex gap-6 shrink-0"
+            className="flex gap-3 sm:gap-6 shrink-0"
           >
             {loopRow2.map((card, idx) => (
               <div
                 key={`${card.id}-${idx}`}
-                className="relative w-72 h-56 rounded-2xl overflow-hidden shadow-lg border border-indigo-900/30 group shrink-0"
+                className="relative w-48 h-36 sm:w-72 sm:h-56 rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-indigo-900/30 group shrink-0"
               >
                 <img
                   src={card.image}
@@ -172,11 +172,11 @@ export default function PalbonFrictionSection() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1e1b4b] via-[#2e1065]/70 to-[#3b0764]/40 backdrop-blur-[2px]" />
 
-                <div className="absolute inset-0 p-5 flex flex-col justify-between z-10">
-                  <div className="mx-auto my-auto w-12 h-12 rounded-full bg-white/20 border border-white/40 backdrop-blur-md flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                <div className="absolute inset-0 p-3 sm:p-5 flex flex-col justify-between z-10">
+                  <div className="mx-auto my-auto w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-white/20 border border-white/40 backdrop-blur-md flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                     {card.icon}
                   </div>
-                  <h3 className="font-poppins font-bold text-base text-white text-left tracking-wide">
+                  <h3 className="font-poppins font-bold text-xs sm:text-base text-white text-left tracking-wide leading-tight">
                     {card.title}
                   </h3>
                 </div>
