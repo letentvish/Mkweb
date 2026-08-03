@@ -1072,7 +1072,7 @@ export default function PalbonPage() {
             </span>
 
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-extrabold text-slate-900 tracking-tight leading-[1.15]">
-              Built for your <span className="italic font-serif bg-gradient-to-r from-[#6366f1] to-indigo-600 bg-clip-text text-transparent px-1">framework</span>
+              Built for <span className="italic font-serif bg-gradient-to-r from-[#6366f1] to-indigo-600 bg-clip-text text-transparent px-1">your</span> framework
             </h2>
 
             <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto pt-1">
