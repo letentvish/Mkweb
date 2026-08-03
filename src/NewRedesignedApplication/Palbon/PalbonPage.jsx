@@ -1274,10 +1274,10 @@ export default function PalbonPage() {
 
               <div className="flex items-center gap-4 pt-3">
                 <button
-                  onClick={() => navigate("/contact")}
+                  onClick={() => setIsSuiteModalOpen(true)}
                   className="px-6 py-3 rounded-full border-2 border-[#0284c7] text-[#0284c7] hover:bg-[#0284c7] hover:text-white font-bold text-sm transition-all duration-200 shadow-sm cursor-pointer"
                 >
-                  Learn More
+                  Explore Architecture Blueprint
                 </button>
                 <button
                   onClick={() => navigate("/contact")}
