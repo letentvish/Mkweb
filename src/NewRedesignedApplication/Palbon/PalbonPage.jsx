@@ -1097,207 +1097,84 @@ export default function PalbonPage() {
             </div>
           </div>
 
-          {/* Navigation Filter Tabs */}
-          <div className="flex justify-center mb-4 sm:mb-6 lg:mb-10">
-            <div className="flex space-x-8 border-b border-slate-200 px-4">
-              {/* <button 
-                onClick={() => setActiveModelTab("workforce")}
-                className={`pb-3 font-semibold text-sm transition-colors relative cursor-pointer ${
-                  activeModelTab === "workforce" ? "text-[#6366f1] border-b-2 border-[#6366f1]" : "text-slate-500 hover:text-[#6366f1]"
-                }`}
-              >
-                Workforce
-              </button> */}
-              <button 
-                onClick={() => setActiveModelTab("configuration")}
-                className={`pb-3 font-semibold text-sm transition-colors relative cursor-pointer ${
-                  activeModelTab === "configuration" ? "text-[#6366f1] border-b-2 border-[#6366f1]" : "text-slate-500 hover:text-[#6366f1]"
-                }`}
-              >
-                Configuration
-              </button>
-              <button 
-                onClick={() => setActiveModelTab("reasoning")}
-                className={`pb-3 font-semibold text-sm transition-colors relative cursor-pointer ${
-                  activeModelTab === "reasoning" ? "text-[#6366f1] border-b-2 border-[#6366f1]" : "text-slate-500 hover:text-[#6366f1]"
-                }`}
-              >
-                Reasoning
-              </button>
-            </div>
-          </div>
-
-          {/* Swipe hint dots — mobile only */}
-          <div className="flex lg:hidden justify-center items-center gap-2 mb-3">
-            {modelTabOrder.map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveModelTab(tab)}
-                className={`rounded-full transition-all duration-300 cursor-pointer ${
-                  activeModelTab === tab
-                    ? "w-6 h-2 bg-[#6366f1]"
-                    : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
-                }`}
-              />
-            ))}
-          </div>
-
-          {/* Main Feature Card Container — swipeable on mobile */}
-          <div
-            className="bg-white border border-indigo-200/90 rounded-3xl overflow-hidden shadow-lg shadow-indigo-100/50"
-            onTouchStart={handleTabSwipeStart}
-            onTouchEnd={handleTabSwipeEnd}
-          >
+          {/* Division 1: Configuration Card Block */}
+          <div className="bg-white border border-indigo-200/90 rounded-3xl overflow-hidden shadow-lg shadow-indigo-100/50 mb-12 lg:mb-16">
             <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
               
               {/* Left Column: Interactive Visual */}
-              <div className="lg:col-span-6 relative w-full h-full min-h-[180px] sm:min-h-[280px] lg:min-h-full max-h-[220px] sm:max-h-[340px] lg:max-h-none">
-                <div className="relative w-full h-full min-h-full bg-slate-100">
-                  {/* Base Photo / Graphic */}
+              <div className="lg:col-span-6 relative w-full h-full min-h-[220px] sm:min-h-[300px] lg:min-h-[460px]">
+                <div className="relative w-full h-full min-h-full bg-slate-100 flex items-center justify-center">
                   <img 
-                    src={currentIntelligenceTab.image} 
-                    alt="Workforce visual" 
-                    className="w-full h-full object-cover object-center block min-h-[180px] sm:min-h-[280px] lg:min-h-full"
+                    src={intelligenceTabData.configuration.image} 
+                    alt="Configuration visual" 
+                    className="w-full h-full object-cover object-center block min-h-[220px] sm:min-h-[300px] lg:min-h-[460px]"
                   />
-                  
-                  {!currentIntelligenceTab.hideOverlays && (
-                    <>
-                      {/* Subtle Darkening Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-slate-900/10 pointer-events-none" />
-
-                      {/* SVG Connector Line */}
-                      <svg className="absolute inset-0 w-full h-full pointer-events-none z-20">
-                        <path 
-                          d="M 190 65 Q 260 65 310 65" 
-                          stroke="#6366f1" 
-                          strokeWidth="2" 
-                          strokeDasharray="4 4" 
-                          fill="none" 
-                          className="opacity-70"
-                        />
-                        <circle cx="190" cy="65" r="4" fill="#6366f1" />
-                        <circle cx="310" cy="65" r="4" fill="#6366f1" />
-                      </svg>
-
-                      {/* Overlay 1: Top Left - Workforce Insights */}
-                      <div className="absolute top-4 left-4 z-30 w-44 sm:w-48 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl border border-slate-100/80 shadow-xl transition-all duration-300 hover:scale-105">
-                        <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2">
-                          {currentIntelligenceTab.topCard1.title}
-                        </p>
-                        <div className="flex items-center space-x-3">
-                          <div className="relative w-12 h-12 flex items-center justify-center shrink-0">
-                            <svg className="w-12 h-12 transform -rotate-90">
-                              <circle cx="24" cy="24" r="19" stroke="#e2e8f0" strokeWidth="4.5" fill="transparent" />
-                              <circle 
-                                cx="24" 
-                                cy="24" 
-                                r="19" 
-                                stroke="#6366f1" 
-                                strokeWidth="4.5" 
-                                strokeDasharray="120" 
-                                strokeDashoffset={120 - (120 * currentIntelligenceTab.topCard1.percent) / 100} 
-                                strokeLinecap="round" 
-                                fill="transparent" 
-                              />
-                            </svg>
-                            <span className="absolute text-[11px] font-extrabold text-slate-900">{currentIntelligenceTab.topCard1.percent}%</span>
-                          </div>
-                          <div>
-                            <p className="text-xs font-bold text-slate-800 leading-snug">{currentIntelligenceTab.topCard1.label}</p>
-                            <p className="text-[10px] font-bold text-emerald-600 flex items-center gap-0.5 mt-0.5">
-                              <span className="text-[11px]">↑</span>
-                              <span>{currentIntelligenceTab.topCard1.change}</span>
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Overlay 2: Top Right - Cost Efficiency */}
-                      <div className="absolute top-4 right-4 z-30 w-44 sm:w-48 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl border border-slate-100/80 shadow-xl transition-all duration-300 hover:scale-105">
-                        <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">
-                          {currentIntelligenceTab.topCard2.title}
-                        </p>
-                        <div className="flex items-baseline space-x-1.5">
-                          <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-                            {currentIntelligenceTab.topCard2.stat}
-                          </span>
-                          <span className="text-xs font-semibold text-slate-600">
-                            {currentIntelligenceTab.topCard2.label}
-                          </span>
-                        </div>
-                        <p className="text-[10px] font-bold text-emerald-600 flex items-center gap-0.5 mt-1">
-                          <span className="text-[11px]">↑</span>
-                          <span>{currentIntelligenceTab.topCard2.change}</span>
-                        </p>
-                      </div>
-
-                      {/* Overlay 3: Bottom Left - Productivity Score */}
-                      <div className="absolute bottom-4 left-4 z-30 w-44 sm:w-48 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl border border-slate-100/80 shadow-xl transition-all duration-300 hover:scale-105">
-                        <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">
-                          {currentIntelligenceTab.bottomCard1.title}
-                        </p>
-                        <span className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
-                          {currentIntelligenceTab.bottomCard1.stat}
-                        </span>
-                        <div className="my-1.5 h-5 w-full">
-                          <svg viewBox="0 0 100 25" className="w-full h-full text-[#6366f1] overflow-visible">
-                            <path 
-                              d="M0 20 L20 18 L40 12 L60 15 L80 6 L100 2" 
-                              stroke="currentColor" 
-                              strokeWidth="2.5" 
-                              fill="none" 
-                              strokeLinecap="round" 
-                              strokeLinejoin="round" 
-                            />
-                          </svg>
-                        </div>
-                        <p className="text-[10px] font-bold text-emerald-600 flex items-center gap-0.5">
-                          <span className="text-[11px]">↑</span>
-                          <span>{currentIntelligenceTab.bottomCard1.change}</span>
-                        </p>
-                      </div>
-
-                      {/* Overlay 4: Bottom Right - Team Alignment */}
-                      <div className="absolute bottom-4 right-4 z-30 w-44 sm:w-48 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl border border-slate-100/80 shadow-xl transition-all duration-300 hover:scale-105">
-                        <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2">
-                          {currentIntelligenceTab.bottomCard2.title}
-                        </p>
-                        <div className="flex items-center -space-x-2 mb-2.5">
-                          {currentIntelligenceTab.bottomCard2.avatars.map((imgUrl, i) => (
-                            <img 
-                              key={i} 
-                              src={imgUrl} 
-                              alt="User" 
-                              className="w-7 h-7 rounded-full border-2 border-white object-cover" 
-                            />
-                          ))}
-                          <div className="w-7 h-7 rounded-full bg-slate-100 border-2 border-white flex items-center justify-center text-[10px] font-bold text-slate-600">
-                            {currentIntelligenceTab.bottomCard2.extra}
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-600">
-                          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                          <span>{currentIntelligenceTab.bottomCard2.status}</span>
-                        </div>
-                      </div>
-                    </>
-                  )}
-
                 </div>
               </div>
 
               {/* Right Column: Text Content Side */}
-              <div className="lg:col-span-6 flex flex-col items-start justify-center p-4 sm:p-8 lg:p-12 space-y-3 sm:space-y-5 lg:space-y-6 text-left">
+              <div className="lg:col-span-6 flex flex-col items-start justify-center p-6 sm:p-10 lg:p-12 space-y-4 sm:space-y-6 text-left">
                 <span className="text-xs font-bold text-[#6366f1] tracking-widest uppercase font-poppins">
-                  {currentIntelligenceTab.badge}
+                  {intelligenceTabData.configuration.badge}
                 </span>
 
-                <h3 className="text-xl sm:text-3xl lg:text-5xl font-poppins font-extrabold text-slate-900 leading-[1.18] tracking-tight">
-                  {currentIntelligenceTab.headline}
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-poppins font-extrabold text-slate-900 leading-[1.18] tracking-tight">
+                  {intelligenceTabData.configuration.headline}
                 </h3>
 
-                <p className="text-slate-600 text-sm sm:text-base lg:text-lg leading-relaxed font-normal">
-                  {currentIntelligenceTab.description}
+                <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal">
+                  {intelligenceTabData.configuration.description}
+                </p>
+
+                <div className="flex items-center gap-4 pt-2">
+                  <button
+                    onClick={() => setIsSuiteModalOpen(true)}
+                    className="px-7 py-3 rounded-xl border border-indigo-400 hover:border-indigo-600 text-[#6366f1] hover:bg-indigo-50 font-bold text-sm transition-all duration-200 shadow-sm cursor-pointer flex items-center gap-2"
+                  >
+                    <Sparkles className="w-4 h-4 text-[#6366f1]" />
+                    <span>Configure Suite</span>
+                  </button>
+
+                  <button
+                    onClick={() => navigate("/contact")}
+                    className="text-[#6366f1] hover:text-indigo-700 font-bold text-sm inline-flex items-center gap-1.5 transition-colors cursor-pointer"
+                  >
+                    <span>Talk</span>
+                    <ArrowRight className="w-4 h-4 text-[#6366f1]" />
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          {/* Division 2: Reasoning Card Block */}
+          <div className="bg-white border border-indigo-200/90 rounded-3xl overflow-hidden shadow-lg shadow-indigo-100/50">
+            <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
+              
+              {/* Left Column: Interactive Visual */}
+              <div className="lg:col-span-6 relative w-full h-full min-h-[220px] sm:min-h-[300px] lg:min-h-[460px]">
+                <div className="relative w-full h-full min-h-full bg-slate-100 flex items-center justify-center">
+                  <img 
+                    src={intelligenceTabData.reasoning.image} 
+                    alt="Reasoning visual" 
+                    className="w-full h-full object-cover object-center block min-h-[220px] sm:min-h-[300px] lg:min-h-[460px]"
+                  />
+                </div>
+              </div>
+
+              {/* Right Column: Text Content Side */}
+              <div className="lg:col-span-6 flex flex-col items-start justify-center p-6 sm:p-10 lg:p-12 space-y-4 sm:space-y-6 text-left">
+                <span className="text-xs font-bold text-[#6366f1] tracking-widest uppercase font-poppins">
+                  {intelligenceTabData.reasoning.badge}
+                </span>
+
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-poppins font-extrabold text-slate-900 leading-[1.18] tracking-tight">
+                  {intelligenceTabData.reasoning.headline}
+                </h3>
+
+                <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal">
+                  {intelligenceTabData.reasoning.description}
                 </p>
 
                 <div className="flex items-center gap-4 pt-2">
