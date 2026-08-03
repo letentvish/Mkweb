@@ -525,24 +525,18 @@ export default function PalbonPage() {
             </div>
 
             {/* High Impact Bottom Banner */}
-            <div className="mt-8 sm:mt-10 inline-flex items-center p-[1.5px] rounded-full bg-gradient-to-r from-sky-400 via-indigo-500 to-purple-500 shadow-xl shadow-indigo-500/20 hover:shadow-indigo-500/35 transition-all duration-300 hover:scale-105">
-              <div className="flex flex-wrap items-center gap-3 px-5 py-2.5 rounded-full bg-[#070c1e] text-white backdrop-blur-xl">
-                <div className="flex items-center gap-2">
-                  <span className="relative flex h-2.5 w-2.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-                  </span>
-                  <span className="text-xs sm:text-sm font-bold text-slate-100 tracking-wide">
-                    40 Connected Modules <span className="text-slate-400 mx-1">•</span> One Shared Data Core
-                  </span>
-                </div>
-                <button
-                  onClick={() => setIsSuiteModalOpen(true)}
-                  className="ml-0 sm:ml-1 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#0284c7] to-indigo-600 hover:from-sky-500 hover:to-indigo-500 text-white text-xs font-extrabold tracking-wide flex items-center gap-1.5 shadow-md transition-all cursor-pointer group"
-                >
-                  <span>Open Suite Configurator</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                </button>
+            <div 
+              onClick={() => setIsSuiteModalOpen(true)}
+              className="mt-8 sm:mt-10 inline-flex items-center p-[1.5px] rounded-full bg-gradient-to-r from-sky-400 via-indigo-500 to-purple-500 shadow-xl shadow-indigo-500/20 hover:shadow-indigo-500/35 transition-all duration-300 hover:scale-105 cursor-pointer"
+            >
+              <div className="flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#070c1e] text-white backdrop-blur-xl">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                </span>
+                <span className="text-xs sm:text-sm font-bold text-slate-100 tracking-wide">
+                  40 Connected Modules <span className="text-slate-400 mx-1.5">•</span> One Shared Data Core
+                </span>
               </div>
             </div>
 
