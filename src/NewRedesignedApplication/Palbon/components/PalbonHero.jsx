@@ -4,101 +4,96 @@ import { useNavigate } from "react-router-dom";
 import CircularGallery from "../CircularGallery";
 
 const HERO_V3_GALLERY_ITEMS = [
+  // ERP CATEGORY
   { 
-    id: "gl", 
+    id: "finance-control", 
     image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80", 
-    text: "General Ledger", 
+    text: "Finance & Control", 
     catLabel: "ERP Line", 
-    desc: "Multi-entity accounting & GL book of record",
+    desc: "General ledger, AP/AR, multi-entity financial consolidation",
     icon: "💰"
   },
   { 
-    id: "ap", 
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80", 
-    text: "Accounts Payable", 
-    catLabel: "ERP Line", 
-    desc: "3-way matching, automated invoice approvals",
-    icon: "📄"
-  },
-  { 
-    id: "tax", 
-    image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80", 
-    text: "Tax & e-Invoicing", 
-    catLabel: "ERP Line", 
-    desc: "GST e-way bills & statutory tax compliance",
-    icon: "⚡"
-  },
-  { 
-    id: "inv", 
+    id: "procure-inventory", 
     image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80", 
-    text: "Inventory Engine", 
+    text: "Procure to Pay & Inventory", 
     catLabel: "ERP Line", 
-    desc: "Multi-location stock control & reorder alerts",
+    desc: "3-way invoice matching, stock control & vendor management",
     icon: "📦"
   },
   { 
-    id: "wms", 
-    image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80", 
-    text: "Warehouse WMS", 
+    id: "order-sales", 
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80", 
+    text: "Order to Cash & Sales", 
     catLabel: "ERP Line", 
-    desc: "Optimised picking, bin tracking & dispatch",
-    icon: "⚙️"
-  },
-  { 
-    id: "crm", 
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80", 
-    text: "CRM & Pipeline", 
-    catLabel: "ERP Line", 
-    desc: "Leads to delivery & sales pipeline management",
+    desc: "Revenue recognition, sales pipeline & billing automation",
     icon: "📊"
   },
   { 
-    id: "mrp", 
-    image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80", 
-    text: "Manufacturing MRP", 
+    id: "ops-delivery", 
+    image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80", 
+    text: "Operations & Delivery", 
     catLabel: "ERP Line", 
-    desc: "Bill of materials & production scheduling",
-    icon: "🧩"
+    desc: "WMS warehouse dispatch, MRP & project fulfillment",
+    icon: "⚙️"
   },
+
+  // HRMS CATEGORY
   { 
-    id: "hr", 
+    id: "hr-foundation", 
     image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80", 
-    text: "Core HR & Records", 
+    text: "HR Foundation", 
     catLabel: "HRMS Nucleus", 
-    desc: "Single source of truth for employee data",
+    desc: "Single record data core for org structure & employee records",
     icon: "👥"
   },
   { 
-    id: "payroll", 
-    image: "https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=800&q=80", 
-    text: "Payroll Engine", 
-    catLabel: "HRMS Nucleus", 
-    desc: "Automated salary & instant payslip generation",
-    icon: "💳"
-  },
-  { 
-    id: "ats", 
+    id: "hire-onboard", 
     image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80", 
-    text: "Recruitment ATS", 
+    text: "Hire to Onboard", 
     catLabel: "HRMS Nucleus", 
-    desc: "Applicant tracking & joining workflows",
+    desc: "ATS recruitment tracking & automated joining workflows",
     icon: "💼"
   },
   { 
-    id: "attendance", 
-    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80", 
-    text: "Time & Attendance", 
+    id: "pay-compliance", 
+    image: "https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=800&q=80", 
+    text: "Pay & Compliance", 
     catLabel: "HRMS Nucleus", 
-    desc: "Biometric integration & mobile attendance",
+    desc: "Automated payroll processing, tax filing & statutory compliance",
+    icon: "💳"
+  },
+  { 
+    id: "time-scheduling", 
+    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80", 
+    text: "Time & Scheduling", 
+    catLabel: "HRMS Nucleus", 
+    desc: "Biometric attendance, shift planning & leave tracking",
     icon: "⏰"
   },
   { 
-    id: "bi", 
-    image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=80", 
-    text: "Workforce BI", 
+    id: "perform-grow", 
+    image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80", 
+    text: "Perform & Grow", 
     catLabel: "HRMS Nucleus", 
-    desc: "Predictive headcount & attrition analytics",
+    desc: "OKRs, continuous performance reviews & learning paths",
+    icon: "🎯"
+  },
+  { 
+    id: "exp-service", 
+    image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80", 
+    text: "Experience & Service", 
+    catLabel: "HRMS Nucleus", 
+    desc: "Employee self-service portal, helpdesk & engagement",
     icon: "✨"
+  },
+  { 
+    id: "offboard-analyse", 
+    image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=80", 
+    text: "Offboard & Analyse", 
+    catLabel: "HRMS Nucleus", 
+    desc: "Exit management, attrition analytics & workforce BI",
+    icon: "📈"
   }
 ];
 
