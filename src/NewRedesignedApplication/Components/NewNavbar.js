@@ -145,7 +145,7 @@ export default function NewNavbar() {
                     : "hover:text-white hover:bg-slate-800/60"
                 }`}
               >
-                <span>Technology (SaaS)</span>
+                <span>Technology</span>
                 <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${techDropdownOpen ? "rotate-180 text-sky-400" : "text-slate-400"}`} />
               </button>
 
@@ -478,7 +478,7 @@ export default function NewNavbar() {
                 location.pathname === "/mile" ? "text-white bg-[#15192B] border border-slate-700/80 font-semibold" : ""
               }`}
             >
-              Academics (MILE)
+              Academics
             </Link>
 
             {/* Consulting */}
@@ -561,7 +561,7 @@ export default function NewNavbar() {
                   onClick={() => setMobileTechOpen(!mobileTechOpen)}
                   className="w-full flex items-center justify-between px-4 py-2.5 rounded-lg hover:bg-slate-800/60 hover:text-white"
                 >
-                  <span>Technology (SaaS Suite)</span>
+                  <span>Technology</span>
                   <ChevronDown className={`w-4 h-4 transition-transform ${mobileTechOpen ? "rotate-180 text-sky-400" : ""}`} />
                 </button>
 
@@ -590,7 +590,7 @@ export default function NewNavbar() {
                 className="px-4 py-2.5 rounded-lg hover:bg-slate-800/60 hover:text-white"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Academics (MILE)
+                Academics
               </Link>
 
               <Link 
