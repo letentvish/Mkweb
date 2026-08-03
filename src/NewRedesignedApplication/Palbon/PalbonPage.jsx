@@ -425,41 +425,7 @@ export default function PalbonPage() {
           </svg>
         </div>
 
-        {/* Hero Version Toggle Control */}
-        <div className="flex justify-center mb-8 relative z-30">
-          <div className="inline-flex p-1 bg-white/90 backdrop-blur-md border border-slate-300/80 shadow-md rounded-full overflow-x-auto max-w-full">
-            <button
-              onClick={() => setHeroVersion("v1")}
-              className={`px-4 py-2 rounded-full text-xs font-extrabold transition-all duration-200 cursor-pointer whitespace-nowrap ${
-                heroVersion === "v1"
-                  ? "bg-[#01182F] text-white shadow-md"
-                  : "text-slate-600 hover:text-slate-900"
-              }`}
-            >
-              Hero V1 (Executive Matrix)
-            </button>
-            <button
-              onClick={() => setHeroVersion("v2")}
-              className={`px-4 py-2 rounded-full text-xs font-extrabold transition-all duration-200 cursor-pointer whitespace-nowrap ${
-                heroVersion === "v2"
-                  ? "bg-[#01182F] text-white shadow-md"
-                  : "text-slate-600 hover:text-slate-900"
-              }`}
-            >
-              Hero V2 (Integrated Stack Architecture)
-            </button>
-            <button
-              onClick={() => setHeroVersion("v3")}
-              className={`px-4 py-2 rounded-full text-xs font-extrabold transition-all duration-200 cursor-pointer whitespace-nowrap ${
-                heroVersion === "v3"
-                  ? "bg-[#01182F] text-white shadow-md"
-                  : "text-slate-600 hover:text-slate-900"
-              }`}
-            >
-              Hero V3 (Modular App Grid)
-            </button>
-          </div>
-        </div>
+
 
         {/* HERO VERSION 3 (MODULAR ECOSYSTEM APP GRID) */}
         {heroVersion === "v3" && (
@@ -864,16 +830,10 @@ export default function PalbonPage() {
 
               <div className="flex items-center gap-4">
                 <button
-                  onClick={() => navigate("/about")}
-                  className="px-6 py-2.5 rounded-full border border-slate-300 hover:border-slate-400 text-slate-800 font-semibold text-sm transition-all duration-200 shadow-sm"
-                >
-                  Learn
-                </button>
-                <button
                   onClick={() => navigate("/contact")}
-                  className="text-[#6366f1] hover:text-[#4f46e5] font-bold text-sm inline-flex items-center gap-1.5 transition-colors"
+                  className="text-[#6366f1] hover:text-[#4f46e5] font-bold text-sm inline-flex items-center gap-1.5 transition-colors cursor-pointer"
                 >
-                  <span>Talk</span>
+                  <span>Talk to Sales</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
@@ -999,15 +959,8 @@ export default function PalbonPage() {
 
               <div className="flex items-center gap-4 pt-2">
                 <button
-                  onClick={() => navigate("/solutions")}
-                  className="bg-[#6366f1] hover:bg-[#4f46e5] text-white font-bold px-7 py-3.5 rounded-full inline-flex items-center gap-2 shadow-lg shadow-indigo-500/30 transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95"
-                >
-                  <span>Explore</span>
-                </button>
-
-                <button
                   onClick={() => navigate("/contact")}
-                  className="text-white hover:text-indigo-300 font-bold px-4 py-3.5 inline-flex items-center gap-2 transition-colors cursor-pointer"
+                  className="text-white hover:text-indigo-300 font-bold py-3.5 inline-flex items-center gap-2 transition-colors cursor-pointer"
                 >
                   <span>Talk to us</span>
                   <ArrowRight className="w-4 h-4 text-indigo-400" />
@@ -1083,22 +1036,7 @@ export default function PalbonPage() {
               We do not sell a rigid single-purpose box. We bring a modular system that bends to how you actually operate. You own the configuration, not a vendor's future guesses.
             </p>
 
-            <div className="flex items-center justify-center gap-4 pt-3">
-              <button
-                onClick={() => setIsSuiteModalOpen(true)}
-                className="px-6 py-2.5 rounded-xl border border-indigo-500 hover:border-indigo-600 text-[#6366f1] hover:bg-indigo-50 font-semibold text-sm transition-all duration-200 shadow-sm cursor-pointer"
-              >
-                Build Your Suite
-              </button>
 
-              <button
-                onClick={() => navigate("/contact")}
-                className="text-[#6366f1] hover:text-indigo-700 font-semibold text-sm inline-flex items-center gap-1.5 transition-colors cursor-pointer"
-              >
-                <span>Talk</span>
-                <ArrowRight className="w-4 h-4 text-[#6366f1]" />
-              </button>
-            </div>
           </div>
 
           {/* Division 1: Configuration Card Block */}
@@ -1239,21 +1177,7 @@ export default function PalbonPage() {
               Complexity is the enemy of execution. A unified structure eliminates the translation layer between departments, making the organization faster by design.
             </p>
 
-            <div className="flex items-center gap-4 pt-2">
-              <button
-                onClick={() => navigate("/contact")}
-                className="px-6 py-2.5 rounded-full border-2 border-[#0284c7] hover:bg-[#0284c7] hover:text-white text-[#0284c7] font-extrabold text-sm transition-all duration-200 shadow-sm cursor-pointer"
-              >
-                Learn More
-              </button>
-              <button
-                onClick={() => navigate("/contact")}
-                className="text-[#0284c7] hover:text-[#0369a1] font-extrabold text-sm inline-flex items-center gap-1.5 transition-colors cursor-pointer group"
-              >
-                <span>Talk to us</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </div>
+
           </div>
 
           {/* Interactive Filter Tabs */}
