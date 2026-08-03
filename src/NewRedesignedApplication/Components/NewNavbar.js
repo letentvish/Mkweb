@@ -471,16 +471,6 @@ export default function NewNavbar() {
               </AnimatePresence>
             </div>
 
-            {/* Academics */}
-            <Link 
-              to="/mile" 
-              className={`px-4 py-2 rounded-full transition-colors hover:text-white hover:bg-slate-800/60 ${
-                location.pathname === "/mile" ? "text-white bg-[#15192B] border border-slate-700/80 font-semibold" : ""
-              }`}
-            >
-              Academics
-            </Link>
-
             {/* Consulting */}
             <Link 
               to="/corporate-consulting" 
@@ -489,6 +479,16 @@ export default function NewNavbar() {
               }`}
             >
               Consulting
+            </Link>
+
+            {/* Academics */}
+            <Link 
+              to="/mile" 
+              className={`px-4 py-2 rounded-full transition-colors hover:text-white hover:bg-slate-800/60 ${
+                location.pathname === "/mile" ? "text-white bg-[#15192B] border border-slate-700/80 font-semibold" : ""
+              }`}
+            >
+              Academics
             </Link>
 
             {/* About Company */}
@@ -586,19 +586,19 @@ export default function NewNavbar() {
               </div>
 
               <Link 
-                to="/mile" 
-                className="px-4 py-2.5 rounded-lg hover:bg-slate-800/60 hover:text-white"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Academics
-              </Link>
-
-              <Link 
                 to="/corporate-consulting" 
                 className="px-4 py-2.5 rounded-lg hover:bg-slate-800/60 hover:text-white"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Consulting
+              </Link>
+
+              <Link 
+                to="/mile" 
+                className="px-4 py-2.5 rounded-lg hover:bg-slate-800/60 hover:text-white"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Academics
               </Link>
 
               <Link 
