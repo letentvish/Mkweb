@@ -41,7 +41,7 @@ const CorporateHero = () => {
       {/* Background Image Overlay */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         <img 
-          src="/background.png" 
+          src="/consulting.webp" 
           alt="Hero Background" 
           className="w-full h-full object-cover object-center opacity-95"
         />
