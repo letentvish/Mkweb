@@ -22,12 +22,8 @@ export default function EcosystemCtaSection({ onOpenSuiteModal }) {
           {/* Background Ambient Glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-300/20 rounded-full blur-[100px] pointer-events-none" />
 
-          {/* Dotted Node Connections & Floating Badges */}
+          {/* Floating Badges */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            <svg className="w-full h-full text-indigo-300/40" viewBox="0 0 1000 400" fill="none">
-              <path d="M100 200 Q 250 80, 500 200 T 900 200" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 4" />
-              <path d="M150 320 Q 350 380, 500 200 T 850 100" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 4" />
-            </svg>
 
             {/* Node 1: Users */}
             <div className="p-3 rounded-2xl bg-white/90 border border-purple-100 shadow-md absolute left-8 sm:left-14 top-1/2 -translate-y-1/2 hidden md:flex items-center justify-center text-[#6366f1]">
