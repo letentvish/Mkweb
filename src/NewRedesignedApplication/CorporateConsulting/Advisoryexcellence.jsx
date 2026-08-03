@@ -1,205 +1,100 @@
-import React, { useState, useEffect } from "react";
-import {
-  TrendingUp,
-  RefreshCw,
-  Monitor,
-  Layers,
-  Globe,
-  Shield,
-} from "lucide-react";
+import React from "react";
 import { motion } from 'framer-motion';
+import { ArrowRight, Compass, Cpu, Layers } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
-const AdvisoryServices = () => {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    const savedMode = localStorage.getItem('theme');
-    return savedMode ? savedMode === 'dark' : false;
-  });
+const Advisory = () => {
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const observer = new MutationObserver(() => {
-      const theme = document.documentElement.getAttribute('theme');
-      setIsDarkMode(theme === 'dark');
-    });
-
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['theme']
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.1
-      }
+  const advisoryPillars = [
+    {
+      icon: <Compass className="w-6 h-6 text-[#0284c7]" />,
+      badge: "EXECUTIVE STRATEGY",
+      title: "C-Suite Strategic Advisory",
+      description: "Direct counsel for executive leaders navigating market pivots, digital restructuring, and M&A integration."
+    },
+    {
+      icon: <Cpu className="w-6 h-6 text-[#0284c7]" />,
+      badge: "TECHNOLOGY ARCHITECTURE",
+      title: "Enterprise System Blueprinting",
+      description: "Auditing technical debt and defining unified data core architecture that scales across business divisions."
+    },
+    {
+      icon: <Layers className="w-6 h-6 text-[#0284c7]" />,
+      badge: "ORGANIZATIONAL DESIGN",
+      title: "Workforce & Talent Restructuring",
+      description: "Aligning incentive systems, team structures, and cross-departmental accountability with long-term strategy."
     }
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: [0.25, 0.4, 0.25, 1]
-      }
-    }
-  };
-
-  const advisoryServices = [
-    {
-      icon: TrendingUp,
-      title: "Growth Strategy",
-      description:
-        "Market expansion, M&A strategy, and revenue optimization",
-    },
-    {
-      icon: RefreshCw,
-      title: "Transformation",
-      description:
-        "Operating model redesign and organizational effectiveness",
-    },
-    {
-      icon: Monitor,
-      title: "Digital & Technology",
-      description:
-        "Digital strategy, innovation, and tech-enabled transformation",
-    },
-    {
-      icon: Layers,
-      title: "Operations Excellence",
-      description:
-        "Process optimization, supply chain, and performance improvement",
-    },
-    {
-      icon: Globe,
-      title: "Corporate Strategy",
-      description:
-        "Portfolio strategy, competitive positioning, and value creation",
-    },
-    {
-      icon: Shield,
-      title: "Risk & Resilience",
-      description:
-        "Enterprise risk management and business continuity planning",
-    },
   ];
 
   return (
-    <motion.section
-      className={`py-12 sm:py-16 px-3 sm:px-6 lg:px-12 transition-colors duration-300 ${
-        isDarkMode ? "bg-black" : "bg-white"
-      }`}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-      variants={containerVariants}
-    >
-      <div className="max-w-[1440px] mx-auto">
-        <motion.h2
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-8 sm:mb-10 lg:mb-12"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
-        >
-          <span style={{
-            background: "linear-gradient(90deg, #1447E6 0%, #9C2DA9 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
-          }}>
-            Comprehensive Advisory Services
-          </span>
-        </motion.h2>
+    <section className="py-20 lg:py-28 bg-[#F8FAFC] border-b border-slate-200/80">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-50 border border-sky-200 text-[#0284c7] text-xs font-extrabold tracking-wider uppercase font-poppins">
+            <span className="w-2 h-2 rounded-full bg-[#0284c7] animate-pulse" />
+            <span>ADVISORY EXCELLENCE</span>
+          </div>
 
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6"
-          variants={containerVariants}
-        >
-          {advisoryServices.map((service, index) => {
-            const Icon = service.icon;
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-slate-900 tracking-tight leading-[1.15]">
+            Strategic clarity at every <br className="hidden sm:inline" />
+            <span className="bg-gradient-to-r from-[#01182F] via-[#0284c7] to-[#01182F] bg-clip-text text-transparent">
+              stage of maturity
+            </span>
+          </h2>
 
-            return (
-              <motion.div
-                key={index}
-                className={`p-5 sm:p-6 lg:p-8 rounded-xl sm:rounded-2xl border ${
-                  isDarkMode
-                    ? "bg-[#1a2332] border-white/5"
-                    : "bg-gray-50 border-gray-100"
-                }`}
-                variants={cardVariants}
-                whileHover={{
-                  y: -10,
-                  scale: 1.02,
-                  boxShadow: isDarkMode
-                    ? "0 20px 40px rgba(91, 124, 230, 0.2)"
-                    : "0 20px 40px rgba(91, 124, 230, 0.15)",
-                  borderColor: isDarkMode ? "rgba(255, 255, 255, 0.1)" : "rgba(156, 163, 175, 0.3)",
-                  transition: { duration: 0.3, ease: "easeOut" }
-                }}
-              >
-                {/* Icon */}
-                <motion.div
-                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl flex items-center justify-center mb-4 sm:mb-5 lg:mb-6"
-                  style={{
-                    background: "linear-gradient(90deg, #9C2DA9 0%, #1447E6 100%)"
-                  }}
-                  whileHover={{
-                    scale: 1.1,
-                    rotate: 5,
-                    transition: { duration: 0.3, ease: "easeOut" }
-                  }}
-                >
-                  <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                </motion.div>
+          <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal">
+            Whether preparing for market expansion or streamlining complex operations, our advisory practice brings clarity to high-stakes decisions.
+          </p>
+        </div>
 
-                {/* Title */}
-                <h3
-                  className={`text-lg sm:text-xl font-bold mb-2 sm:mb-3 ${
-                    isDarkMode ? "text-white" : "text-gray-900"
-                  }`}
-                >
-                  {service.title}
+        {/* Advisory Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {advisoryPillars.map((pillar, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.15 }}
+              className="bg-white border border-indigo-200/90 rounded-3xl p-8 shadow-lg shadow-indigo-100/50 hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col justify-between"
+            >
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-sky-50 border border-sky-100 flex items-center justify-center mb-6">
+                  {pillar.icon}
+                </div>
+
+                <span className="text-[11px] font-extrabold text-[#0284c7] tracking-widest uppercase font-poppins block mb-2">
+                  {pillar.badge}
+                </span>
+
+                <h3 className="text-xl sm:text-2xl font-poppins font-extrabold text-slate-900 mb-3 tracking-tight">
+                  {pillar.title}
                 </h3>
 
-                {/* Description */}
-                <p
-                  className={`text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5 lg:mb-6 ${
-                    isDarkMode ? "text-gray-400" : "text-gray-600"
-                  }`}
-                >
-                  {service.description}
+                <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-normal">
+                  {pillar.description}
                 </p>
+              </div>
 
-                {/* Learn More */}
-                <motion.button
-                  type="button"
-                  className="text-sm font-medium inline-flex items-center gap-2 transition-colors"
-                  whileHover={{
-                    x: 5,
-                    transition: { duration: 0.2 }
-                  }}
+              <div className="pt-6 mt-6 border-t border-slate-100">
+                <button
+                  onClick={() => navigate("/contact")}
+                  className="text-[#0284c7] hover:text-[#0369a1] font-bold text-sm inline-flex items-center gap-1.5 transition-colors cursor-pointer"
                 >
-                  <span className={`${isDarkMode ? "text-white" : "text-gray-900"}`}>
-                    Learn More
-                  </span>
-                  <span style={{ color: "#E17100" }}>→</span>
-                </motion.button>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+                  <span>Book Advisory Session</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
       </div>
-    </motion.section>
+    </section>
   );
 };
 
-export default AdvisoryServices;
+export default Advisory;

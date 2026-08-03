@@ -1,251 +1,105 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { motion } from 'framer-motion';
-import VideoWrapper from "../../Assets/VideoWrapper.jpg";
+import { ArrowRight, CheckCircle2, ShieldCheck, Target, TrendingUp } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
-const SolutionsSection = () => {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    const savedMode = localStorage.getItem('theme');
-    return savedMode ? savedMode === 'dark' : false;
-  });
-  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
-
-  useEffect(() => {
-    const observer = new MutationObserver(() => {
-      const theme = document.documentElement.getAttribute('theme');
-      setIsDarkMode(theme === 'dark');
-    });
-
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['theme']
-    });
-
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      observer.disconnect();
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2
-      }
-    }
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: [0.25, 0.4, 0.25, 1]
-      }
-    }
-  };
+const ConsultingExcellence = () => {
+  const navigate = useNavigate();
 
   const solutions = [
     {
-      title: "Deep diagnostics",
-      description:
-        "Rigorous analysis revealing root causes and untapped opportunities",
+      icon: <Target className="w-6 h-6 text-[#0284c7]" />,
+      title: "Deep Diagnostics & Alignment",
+      description: "Rigorous organizational analysis revealing root cause bottlenecks, disconnected data, and untapped strategic opportunities.",
+      points: ["Multi-departmental data audit", "Leadership vision alignment", "Execution capability mapping"]
     },
     {
-      title: "Strategic roadmap",
-      description:
-        "Clear, actionable plans aligned to competitive positioning",
+      icon: <TrendingUp className="w-6 h-6 text-[#0284c7]" />,
+      title: "Agile Operating Models",
+      description: "Designing streamlined, event-driven workflows that eliminate translation layers between executive decision making and field execution.",
+      points: ["Cross-functional workflow design", "KPI & milestone telemetry", "Change management frameworks"]
     },
     {
-      title: "Business case development",
-      description:
-        "Quantified value creation with realistic implementation scenarios",
-    },
-    {
-      title: "Change leadership",
-      description:
-        "Guiding organizations through transformation with minimal disruption",
-    },
-    {
-      title: "Capability building",
-      description:
-        "Embedding new skills and ways of working across the organization",
-    },
-    {
-      title: "Performance tracking",
-      description:
-        "Real-time monitoring ensuring outcomes match strategic intent",
-    },
+      icon: <ShieldCheck className="w-6 h-6 text-[#0284c7]" />,
+      title: "Measurable Enterprise Impact",
+      description: "Delivering sustainable performance breakthroughs backed by robust metrics, clear accountability, and continuous optimization.",
+      points: ["ROI & unit economics tracking", "Process automation handoffs", "Long-term governance structure"]
+    }
   ];
 
   return (
-    <motion.section
-      style={{
-        position: "relative",
-        width: "100%",
-        minHeight: windowWidth < 640 ? "500px" : windowWidth < 1024 ? "600px" : "761px",
-        overflow: "hidden",
-        backgroundImage: VideoWrapper ? `url(${VideoWrapper})` : "none",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundColor: "transparent",
-      }}
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6 }}
-    >
-      {/* Content Wrapper */}
-      <div
-        style={{
-          position: "relative",
-          zIndex: 1,
-          maxWidth: "1200px",
-          margin: "0 auto",
-          padding: windowWidth < 640 ? "60px 12px 80px" : windowWidth < 1024 ? "90px 20px 120px" : "130px 20px 160px",
-        }}
-      >
-        {/* Title Section */}
-        <motion.div
-          style={{ maxWidth: "100%", marginBottom: windowWidth < 640 ? "30px" : windowWidth < 1024 ? "40px" : "50px", textAlign: "center" }}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
-        >
-          <h2
-            style={{
-              fontFamily: "Inter, sans-serif",
-              fontWeight: 600,
-              fontSize: windowWidth < 640 ? "24px" : windowWidth < 768 ? "32px" : windowWidth < 1024 ? "40px" : "50px",
-              lineHeight: "1.2",
-              letterSpacing: "-2.5px",
-              color: "#FFFFFF",
-              marginBottom: windowWidth < 640 ? "16px" : "24px",
-            }}
-          >
-            Integrated Consulting Excellence
+    <section className="py-20 lg:py-28 bg-white border-b border-slate-200/80">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-50 border border-sky-200 text-[#0284c7] text-xs font-extrabold tracking-wider uppercase font-poppins">
+            <span className="w-2 h-2 rounded-full bg-[#0284c7] animate-pulse" />
+            <span>CONSULTING EXCELLENCE</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-slate-900 tracking-tight leading-[1.15]">
+            Structured transformation for <br className="hidden sm:inline" />
+            <span className="bg-gradient-to-r from-[#01182F] via-[#0284c7] to-[#01182F] bg-clip-text text-transparent">
+              high-growth enterprises
+            </span>
           </h2>
 
-          <p
-            style={{
-              fontFamily: "Inter, sans-serif",
-              fontWeight: 400,
-              fontSize: windowWidth < 640 ? "14px" : windowWidth < 1024 ? "16px" : "18px",
-              lineHeight: "1.5",
-              letterSpacing: "-0.8px",
-              color: "#FFFFFF",
-            }}
-          >
-            Strategic insights paired with hands-on execution capability
+          <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal">
+            We don't just deliver advice in deck format. We build operational blueprints that integrate seamlessly into your day-to-day business.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Cards Grid - Single grid for all screen sizes */}
-        <motion.div
-          style={{
-            display: "grid",
-            gridTemplateColumns:
-              windowWidth <= 480
-                ? "1fr"
-                : windowWidth <= 768
-                ? "repeat(2, 1fr)"
-                : "repeat(3, 1fr)",
-            gap: windowWidth < 640 ? "12px" : "20px",
-            maxWidth: "1100px",
-            margin: "0 auto",
-          }}
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          {solutions.map((item, index) => {
-            const cardPadding = windowWidth < 640 ? "16px" : windowWidth < 768 ? "20px" : "30px";
-            const titleSize = windowWidth < 640 ? "18px" : windowWidth < 768 ? "20px" : "24px";
-            const descSize = windowWidth < 640 ? "13px" : windowWidth < 768 ? "14px" : "16px";
+        {/* Solutions Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {solutions.map((item, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.15 }}
+              className="bg-[#F8FAFC] border border-slate-200/90 rounded-3xl p-8 shadow-sm hover:shadow-lg hover:border-indigo-300 transition-all duration-300 flex flex-col justify-between"
+            >
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-white border border-sky-100 flex items-center justify-center mb-6 shadow-sm">
+                  {item.icon}
+                </div>
 
-            return (
-              <motion.div
-                key={index}
-                style={{
-                  minHeight: windowWidth < 640 ? "160px" : windowWidth < 768 ? "180px" : "195px",
-                  padding: cardPadding,
-                  background: "#1D242D",
-                  borderRadius: "6px",
-                  border: "1px solid #2d3748",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                  cursor: "pointer",
-                }}
-                variants={cardVariants}
-                whileHover={{
-                  y: -10,
-                  background: "#252e3d",
-                  boxShadow: "0 20px 40px rgba(0, 0, 0, 0.3)",
-                  borderColor: "#3d4858",
-                  transition: { duration: 0.3, ease: "easeOut" }
-                }}
-              >
-                <motion.h4
-                  style={{
-                    fontFamily: "Inter, sans-serif",
-                    fontWeight: 600,
-                    fontSize: titleSize,
-                    lineHeight: "1.3",
-                    letterSpacing: "-0.4px",
-                    color: "#FFFFFF",
-                  }}
-                  whileHover={{
-                    scale: 1.05,
-                    transition: { duration: 0.2 }
-                  }}
-                >
+                <h3 className="text-xl font-poppins font-extrabold text-slate-900 mb-3 tracking-tight">
                   {item.title}
-                </motion.h4>
+                </h3>
 
-                <p
-                  style={{
-                    fontFamily: "Inter, sans-serif",
-                    fontWeight: 500,
-                    fontSize: descSize,
-                    lineHeight: "1.5",
-                    letterSpacing: "-0.8px",
-                    color: "#94A3B8",
-                  }}
-                >
+                <p className="text-slate-600 text-sm leading-relaxed mb-6 font-normal">
                   {item.description}
                 </p>
-              </motion.div>
-            );
-          })}
-        </motion.div>
-      </div>
 
-      {/* Bottom White Strip */}
-      <div
-        style={{
-          position: "absolute",
-          bottom: 0,
-          left: 0,
-          right: 0,
-          height: windowWidth < 640 ? "80px" : windowWidth < 1024 ? "100px" : "130px",
-          background: isDarkMode ? "#0F172A" : "#FFFFFF",
-          zIndex: 2,
-        }}
-      />
-    </motion.section>
+                <ul className="space-y-2.5 mb-6">
+                  {item.points.map((pt, pIdx) => (
+                    <li key={pIdx} className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 font-medium">
+                      <CheckCircle2 className="w-4 h-4 text-[#0284c7] shrink-0" />
+                      <span>{pt}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="pt-4 border-t border-slate-200/60">
+                <button
+                  onClick={() => navigate("/contact")}
+                  className="text-[#0284c7] hover:text-[#0369a1] font-bold text-sm inline-flex items-center gap-1.5 transition-colors cursor-pointer"
+                >
+                  <span>Explore Approach</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+      </div>
+    </section>
   );
 };
 
-export default SolutionsSection;
+export default ConsultingExcellence;

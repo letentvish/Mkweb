@@ -1,234 +1,92 @@
-import React, { useState, useEffect } from "react";
-import { Target, TrendingUp, Globe } from "lucide-react";
+import React from "react";
 import { motion } from 'framer-motion';
+import { Layers, ShieldCheck, Zap, ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const WhatSetsUsApart = () => {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    const savedMode = localStorage.getItem('theme');
-    return savedMode ? savedMode === 'dark' : false;
-  });
-  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
-
-  useEffect(() => {
-    const observer = new MutationObserver(() => {
-      const theme = document.documentElement.getAttribute('theme');
-      setIsDarkMode(theme === 'dark');
-    });
-
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['theme']
-    });
-
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      observer.disconnect();
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1
-      }
-    }
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: [0.25, 0.4, 0.25, 1]
-      }
-    }
-  };
+  const navigate = useNavigate();
 
   const differentiators = [
     {
-      icon: <Target className="w-6 h-6 text-[#5b7ce6]" />,
-      title: "Senior Team",
-      subtitle: "Engagement",
-      description:
-        "Partnered engagements with seasoned consultants averaging 15+ years experience. No junior team members learning on your investment.",
+      icon: <Layers className="w-6 h-6 text-[#0284c7]" />,
+      title: "Unified Platform & Strategy Integration",
+      description: "Unlike traditional firms that hand off static PDF recommendations, we embed our strategy directly into scalable software architecture."
     },
     {
-      icon: <TrendingUp className="w-6 h-6 text-[#5b7ce6]" />,
-      title: "Outcome",
-      subtitle: "Accountability",
-      description:
-        "Performance-linked fees and commitments tied to measurable business results. We succeed when you succeed.",
+      icon: <Zap className="w-6 h-6 text-[#0284c7]" />,
+      title: "Rapid Execution Timelines",
+      description: "We focus on high-leverage interventions that deliver early operational wins in weeks, not years-long consulting retainers."
     },
     {
-      icon: <Globe className="w-6 h-6 text-[#5b7ce6]" />,
-      title: "Global Reach, Local",
-      subtitle: "Insight",
-      description:
-        "Presence in 25 countries with deep local market knowledge and global best practice perspectives.",
-    },
+      icon: <ShieldCheck className="w-6 h-6 text-[#0284c7]" />,
+      title: "Full Ownership & Zero Lock-in",
+      description: "We configure your custom operating model so your team owns the capability, parameters, and long-term control."
+    }
   ];
 
   return (
-    <motion.section
-      style={{
-        padding: windowWidth < 640 ? "48px 12px" : windowWidth < 1024 ? "64px 24px" : "64px 48px",
-        background: isDarkMode ? "#000000" : "#F9FAFB",
-      }}
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6 }}
-    >
-      <div
-        style={{
-          maxWidth: "1440px",
-          margin: "0 auto",
-          padding: windowWidth < 640 ? "16px" : windowWidth < 1024 ? "24px" : "32px",
-          borderRadius: windowWidth < 640 ? "12px" : "16px",
-          position: "relative",
-          background: isDarkMode ? "#1D242D" : "#E5E7EB",
-          minHeight: windowWidth > 900 ? "350px" : "auto",
-        }}
-      >
-        <motion.h2
-          style={{
-            fontSize: windowWidth < 640 ? "24px" : windowWidth < 768 ? "30px" : windowWidth < 1024 ? "36px" : "48px",
-            fontWeight: "bold",
-            marginBottom: windowWidth < 640 ? "24px" : windowWidth < 1024 ? "32px" : "48px",
-            textAlign: "left",
-          }}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
-        >
-          <span style={{
-            background: "linear-gradient(90deg, #1447E6 0%, #9C2DA9 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
-          }}>What Sets Us Apart</span>
-        </motion.h2>
+    <section className="py-20 lg:py-28 bg-[#F8FAFC] border-b border-slate-200/80">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-50 border border-sky-200 text-[#0284c7] text-xs font-extrabold tracking-wider uppercase font-poppins">
+            <span className="w-2 h-2 rounded-full bg-[#0284c7] animate-pulse" />
+            <span>WHY PALBON CONSULTING</span>
+          </div>
 
-        {/* Cards - Absolute positioned on screens > 900px, centered on smaller screens */}
-        <motion.div
-          style={{
-            display: "grid",
-            gridTemplateColumns: windowWidth < 768 ? "1fr" : "repeat(3, 1fr)",
-            gap: windowWidth < 640 ? "12px" : windowWidth < 1024 ? "16px" : "20px",
-            position: windowWidth > 900 ? "absolute" : "relative",
-            left: windowWidth > 900 ? "24px" : "auto",
-            right: windowWidth > 900 ? "24px" : "auto",
-            bottom: windowWidth > 900 ? "-80px" : "auto",
-          }}
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          {differentiators.map((item, index) => (
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-slate-900 tracking-tight leading-[1.15]">
+            Built for execution, not <br className="hidden sm:inline" />
+            <span className="bg-gradient-to-r from-[#01182F] via-[#0284c7] to-[#01182F] bg-clip-text text-transparent">
+              endless advisory retainers
+            </span>
+          </h2>
+
+          <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal">
+            Our consulting methodology combines deep domain expertise with modular technology blueprints to build self-sustaining enterprise capabilities.
+          </p>
+        </div>
+
+        {/* 3 Grid Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {differentiators.map((diff, idx) => (
             <motion.div
-              key={index}
-              style={{
-                padding: windowWidth < 640 ? "16px" : windowWidth < 1024 ? "20px" : "24px",
-                borderRadius: "8px",
-                background: isDarkMode ? "#1a2332" : "#FFFFFF",
-                border: isDarkMode ? "2px solid #2d3748" : "2px solid #D3DFEF",
-                cursor: "pointer",
-              }}
-              variants={cardVariants}
-              whileHover={{
-                y: -8,
-                boxShadow: "0 25px 50px rgba(91, 124, 230, 0.35)",
-                borderColor: "rgba(91, 124, 230, 0.6)",
-                background: isDarkMode ? "#1e2a3e" : "#FFFFFF",
-                transition: { duration: 0.3, ease: "easeOut" }
-              }}
+              key={idx}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.15 }}
+              className="bg-white border border-indigo-200/90 rounded-3xl p-8 shadow-lg shadow-indigo-100/50 hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col justify-between"
             >
-              {/* Icon */}
-              <motion.div
-                style={{
-                  width: windowWidth < 640 ? "32px" : "40px",
-                  height: windowWidth < 640 ? "32px" : "40px",
-                  borderRadius: windowWidth < 640 ? "8px" : "12px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: windowWidth < 640 ? "12px" : windowWidth < 1024 ? "16px" : "20px",
-                  background: isDarkMode ? "#1D242D" : "#FFFFFF",
-                  border: "2px solid #D3DFEF",
-                  boxShadow: "0px 14px 40px 0px rgba(211, 223, 239, 0.8)",
-                }}
-                whileHover={{
-                  scale: 1.15,
-                  rotate: 5,
-                  transition: { duration: 0.3, ease: "easeOut" }
-                }}
-              >
-                <div style={{ color: "#155DFC", fontSize: windowWidth < 640 ? "16px" : "20px" }}>
-                  {item.icon}
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-sky-50 border border-sky-100 flex items-center justify-center mb-6">
+                  {diff.icon}
                 </div>
-              </motion.div>
 
-              {/* Title */}
-              <motion.h3
-                style={{
-                  fontSize: windowWidth < 640 ? "16px" : "18px",
-                  fontWeight: "bold",
-                  marginBottom: "4px",
-                  color: isDarkMode ? "#FFFFFF" : "#111827",
-                }}
-                whileHover={{
-                  color: "#5b7ce6",
-                  transition: { duration: 0.2 }
-                }}
-              >
-                {item.title}
-              </motion.h3>
+                <h3 className="text-xl font-poppins font-extrabold text-slate-900 mb-3 tracking-tight">
+                  {diff.title}
+                </h3>
 
-              {/* Subtitle */}
-              <motion.p
-                style={{
-                  fontSize: windowWidth < 640 ? "16px" : "18px",
-                  fontWeight: "bold",
-                  marginBottom: windowWidth < 640 ? "8px" : "12px",
-                  color: isDarkMode ? "#FFFFFF" : "#111827",
-                }}
-                whileHover={{
-                  color: "#5b7ce6",
-                  transition: { duration: 0.2 }
-                }}
-              >
-                {item.subtitle}
-              </motion.p>
+                <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-normal">
+                  {diff.description}
+                </p>
+              </div>
 
-              {/* Description */}
-              <p
-                style={{
-                  fontSize: windowWidth < 640 ? "12px" : "14px",
-                  lineHeight: "1.6",
-                  color: isDarkMode ? "#9CA3AF" : "#4B5563",
-                }}
-              >
-                {item.description}
-              </p>
+              <div className="pt-6 mt-6 border-t border-slate-100">
+                <button
+                  onClick={() => navigate("/contact")}
+                  className="text-[#0284c7] hover:text-[#0369a1] font-bold text-sm inline-flex items-center gap-1.5 transition-colors cursor-pointer"
+                >
+                  <span>Talk to an Advisor</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
             </motion.div>
           ))}
-        </motion.div>
-      </div>
+        </div>
 
-      {/* Spacer to account for overflowing cards - only on screens > 900px */}
-      <div style={{ height: windowWidth > 900 ? "100px" : "0px" }}></div>
-    </motion.section>
+      </div>
+    </section>
   );
 };
 
