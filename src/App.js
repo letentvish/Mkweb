@@ -19,6 +19,7 @@ import AIProctor from './NewRedesignedApplication/AIProctor/AIProctor';
 import SaasLanding from './NewRedesignedApplication/SAAS/SaasLanding';
 import AssessmentPage from './NewRedesignedApplication/Assessment/AssessmentPage';
 import PalbonPage from './NewRedesignedApplication/Palbon/PalbonPage';
+import DesignSystemPage from './NewRedesignedApplication/DesignSystem/DesignSystemPage';
 import useNavigationStore from './store/navigationStore';
 
 // Component that decides what to show on home route
@@ -50,6 +51,7 @@ function Layout() {
         <Route path='/assessment' element={<AssessmentPage />} />
         <Route path='/palbon' element={<PalbonPage />} />
         <Route path='/palbon-suites' element={<PalbonPage />} />
+        <Route path='/design-system' element={<DesignSystemPage />} />
         <Route path='/nlp-masterclass-experience' element={<MasterclassLanding />} />
         <Route path='/2-day-nlp-workshop' element={<WorkshopLanding />} />
 
