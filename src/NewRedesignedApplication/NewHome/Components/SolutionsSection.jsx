@@ -4,14 +4,14 @@ import { ArrowRight, Users, Layers, GraduationCap } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export default function SolutionsSection() {
-  const [activeTab, setActiveTab] = useState(1); // 0: Organizational capability, 1: Digital platforms, 2: Academic alignment
+  const [activeTab, setActiveTab] = useState(1);
   const [isPaused, setIsPaused] = useState(false);
   const navigate = useNavigate();
 
   const pillars = [
     {
       id: 0,
-      icon: <Users className="w-5 h-5 md:w-6 md:h-6" />,
+      icon: <Users className="w-5 h-5 md:w-6 md:h-6 text-[#0284c7]" />,
       verticalLabel: "Organizational capability",
       title: "Leadership & OD",
       bullets: [
@@ -24,7 +24,7 @@ export default function SolutionsSection() {
     },
     {
       id: 1,
-      icon: <Layers className="w-5 h-5 md:w-6 md:h-6" />,
+      icon: <Layers className="w-5 h-5 md:w-6 md:h-6 text-[#0284c7]" />,
       verticalLabel: "Digital platforms",
       title: "AI Enterprise Solutions",
       bullets: [
@@ -37,7 +37,7 @@ export default function SolutionsSection() {
     },
     {
       id: 2,
-      icon: <GraduationCap className="w-5 h-5 md:w-6 md:h-6" />,
+      icon: <GraduationCap className="w-5 h-5 md:w-6 md:h-6 text-[#0284c7]" />,
       verticalLabel: "Academic alignment",
       title: "Future-ready learning",
       bullets: [
@@ -50,7 +50,6 @@ export default function SolutionsSection() {
     }
   ];
 
-  // Auto-rotate tabs every 6 seconds unless user interacts
   useEffect(() => {
     if (isPaused) return;
     const interval = setInterval(() => {
@@ -60,26 +59,29 @@ export default function SolutionsSection() {
   }, [isPaused, pillars.length]);
 
   return (
-    <section className="relative w-full py-12 sm:py-16 md:py-20 lg:py-24 bg-surface overflow-hidden">
+    <section className="relative w-full py-16 sm:py-20 lg:py-24 bg-[#F8FAFC] border-b border-slate-200/80">
       <div 
-        className="w-full max-w-6xl xl:max-w-7xl 2xl:max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 flex flex-col items-center"
+        className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
         
-        {/* Section Header */}
-        <div className="w-full mb-6 sm:mb-8 text-left">
-          <p className="label-md mb-1 text-secondary">SOLUTIONS ARCHITECTURE</p>
-          <h2 className="headline-lg text-on-surface text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-poppins font-extrabold">
+        {/* Section Header with PALBON Badge */}
+        <div className="w-full mb-10 text-left">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-50 border border-sky-200 text-[#0284c7] text-xs font-extrabold tracking-wider uppercase font-poppins mb-3">
+            <span className="w-2 h-2 rounded-full bg-[#0284c7] animate-pulse" />
+            <span>SOLUTIONS ARCHITECTURE</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-[#01182F] tracking-tight">
             Core Business Pillars
           </h2>
         </div>
 
         {/* Main Showcase Dark Container */}
-        <div className="w-full h-auto lg:h-[500px] xl:h-[540px] 2xl:h-[580px] bg-[#0b1426] text-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-slate-800/80 relative flex flex-col-reverse lg:flex-row">
+        <div className="w-full h-auto lg:h-[500px] xl:h-[540px] bg-[#01182F] text-white rounded-3xl overflow-hidden shadow-2xl border border-indigo-900/60 relative flex flex-col-reverse lg:flex-row">
           
           {/* Active Card Content Area */}
-          <div className="flex-1 p-5 sm:p-6 md:p-8 lg:p-10 xl:p-12 relative flex flex-col justify-between overflow-hidden min-h-[380px] lg:min-h-[440px]">
+          <div className="flex-1 p-6 sm:p-8 md:p-10 lg:p-12 relative flex flex-col justify-between overflow-hidden min-h-[380px] lg:min-h-[440px]">
             <AnimatePresence mode="popLayout">
               {pillars.map((pillar) =>
                 pillar.id === activeTab ? (
@@ -89,22 +91,22 @@ export default function SolutionsSection() {
                     animate={{ x: "0%", opacity: 1 }}
                     exit={{ x: "-30%", opacity: 0 }}
                     transition={{ duration: 0.5, ease: [0.25, 0.8, 0.25, 1] }}
-                    className="absolute inset-0 p-5 sm:p-6 md:p-8 lg:p-10 xl:p-12 grid grid-cols-1 md:grid-cols-12 items-center gap-6 bg-[#0b1426] z-10 overflow-y-auto lg:overflow-hidden"
+                    className="absolute inset-0 p-6 sm:p-8 md:p-10 lg:p-12 grid grid-cols-1 md:grid-cols-12 items-center gap-6 bg-[#01182F] z-10 overflow-y-auto lg:overflow-hidden"
                   >
                     {/* Left Column: Text & CTA */}
                     <div className="md:col-span-6 flex flex-col justify-center items-start z-10 text-left">
-                      <div className="text-sky-400 mb-2 sm:mb-3 p-2 sm:p-2.5 rounded-xl bg-sky-500/10 inline-block border border-sky-500/20">
+                      <div className="mb-3 p-2.5 rounded-2xl bg-sky-500/10 inline-block border border-sky-500/20">
                         {pillar.icon}
                       </div>
 
-                      <h3 className="text-xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-4xl font-poppins font-bold tracking-tight text-white mb-2 sm:mb-3 leading-tight">
+                      <h3 className="text-2xl sm:text-3xl lg:text-4xl font-poppins font-extrabold tracking-tight text-white mb-3 leading-tight">
                         {pillar.title}
                       </h3>
 
-                      <ul className="space-y-2 mb-4 sm:mb-6">
-                        {pillar.bullets.map((bullet, idx) => (
-                          <li key={idx} className="flex items-center gap-2.5 text-slate-200 text-xs sm:text-xs md:text-sm xl:text-base font-medium">
-                            <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-sky-400 shrink-0" />
+                      <ul className="space-y-2 mb-6 sm:mb-8 text-slate-300 text-sm sm:text-base">
+                        {pillar.bullets.map((bullet, index) => (
+                          <li key={index} className="flex items-center gap-2.5 font-medium">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#0284c7]" />
                             <span>{bullet}</span>
                           </li>
                         ))}
@@ -112,23 +114,20 @@ export default function SolutionsSection() {
 
                       <button
                         onClick={() => navigate(pillar.link)}
-                        className="inline-flex items-center gap-2 bg-[#0369a1] hover:bg-[#0284c7] text-white font-bold px-4 sm:px-5 md:px-6 xl:px-8 py-2 sm:py-2.5 xl:py-3 rounded-xl transition-all duration-200 cursor-pointer shadow-md text-xs sm:text-xs md:text-sm xl:text-base hover:scale-105 active:scale-95"
+                        className="bg-[#0284c7] hover:bg-[#0369a1] text-white font-bold px-7 py-3 rounded-full inline-flex items-center gap-2 shadow-lg shadow-sky-500/25 transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95 text-sm"
                       >
-                        <span>Explore Solution</span>
-                        <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 xl:w-5 xl:h-5" />
+                        <span>Explore Pillar</span>
+                        <ArrowRight className="w-4 h-4" />
                       </button>
                     </div>
 
-                    {/* Right Column: Clean Aligned Mockup Graphic */}
-                    <div className="md:col-span-6 flex items-center justify-center relative w-full z-10">
-                      <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md xl:max-w-lg h-[160px] sm:h-[180px] md:h-[220px] lg:h-[260px] xl:h-[320px] rounded-xl sm:rounded-2xl overflow-hidden border border-slate-700/80 bg-slate-900/90 shadow-2xl flex items-center justify-center group">
-                        <img
-                          src={pillar.mockup}
-                          alt={pillar.title}
-                          className="w-full h-full object-cover object-top rounded-xl sm:rounded-2xl group-hover:scale-105 transition-transform duration-500"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#0b1426]/60 via-transparent to-transparent pointer-events-none" />
-                      </div>
+                    {/* Right Column: Graphic Preview */}
+                    <div className="md:col-span-6 flex items-center justify-center relative h-full min-h-[220px] lg:min-h-[320px]">
+                      <img
+                        src={pillar.mockup}
+                        alt={pillar.title}
+                        className="max-h-[240px] sm:max-h-[300px] lg:max-h-[360px] w-auto object-contain drop-shadow-2xl"
+                      />
                     </div>
                   </motion.div>
                 ) : null
@@ -136,39 +135,31 @@ export default function SolutionsSection() {
             </AnimatePresence>
           </div>
 
-          {/* Navigation Tabs Sidebar: 3 Vertical Strips Stacked Side-by-Side (flex-row) */}
-          <aside className="w-full lg:w-auto border-t lg:border-t-0 lg:border-l border-slate-700/60 flex flex-row bg-[#0b1426] z-20 shrink-0 h-auto lg:h-full">
+          {/* Vertical/Horizontal Tab Controller Strip */}
+          <div className="w-full lg:w-72 bg-[#070c1e] border-b lg:border-b-0 lg:border-l border-indigo-900/60 p-3 sm:p-4 flex flex-row lg:flex-col justify-between gap-2 z-20 shrink-0">
             {pillars.map((pillar) => {
-              const isActive = activeTab === pillar.id;
+              const isActive = pillar.id === activeTab;
               return (
                 <button
                   key={pillar.id}
-                  onClick={() => {
-                    setActiveTab(pillar.id);
-                    setIsPaused(true);
-                  }}
-                  className={`flex-1 lg:w-24 xl:w-28 2xl:w-32 h-20 sm:h-24 lg:h-full flex flex-col items-center justify-between py-3 lg:py-8 px-2 transition-all duration-300 relative border-r border-slate-700/50 last:border-r-0 cursor-pointer ${
+                  onClick={() => setActiveTab(pillar.id)}
+                  className={`flex-1 lg:flex-none p-3 sm:p-4 rounded-2xl transition-all duration-200 flex items-center gap-3 text-left cursor-pointer ${
                     isActive
-                      ? "bg-[#1e2a4a] text-sky-400 font-bold"
-                      : "bg-[#0b1426] hover:bg-slate-800/60 text-slate-300 font-medium"
+                      ? "bg-white/10 border border-sky-400/40 text-white shadow-lg"
+                      : "hover:bg-white/5 text-slate-400 border border-transparent"
                   }`}
                 >
-                  {/* Top Highlight Indicator Bar */}
-                  {isActive && (
-                    <div className="absolute top-0 left-0 w-full h-1.5 bg-[#0369a1]"></div>
-                  )}
-
-                  <div className="p-1.5 sm:p-2 rounded-full bg-slate-800/60 text-white mt-1 shrink-0">
+                  <div className={`p-2 rounded-xl shrink-0 ${isActive ? "bg-[#0284c7] text-white" : "bg-white/5 text-slate-400"}`}>
                     {pillar.icon}
                   </div>
-
-                  <span className="[writing-mode:vertical-rl] rotate-180 text-xs sm:text-sm lg:text-sm xl:text-base font-semibold tracking-wide whitespace-nowrap pb-4 sm:pb-6">
-                    {pillar.verticalLabel}
-                  </span>
+                  <div className="hidden sm:block">
+                    <p className="text-xs font-bold font-poppins text-slate-400 uppercase tracking-wider">{pillar.verticalLabel}</p>
+                    <p className={`text-sm font-extrabold font-poppins ${isActive ? "text-white" : "text-slate-300"}`}>{pillar.title}</p>
+                  </div>
                 </button>
               );
             })}
-          </aside>
+          </div>
 
         </div>
 
