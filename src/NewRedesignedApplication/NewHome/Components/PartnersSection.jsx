@@ -1,5 +1,6 @@
 import React from 'react';
-import Marquee from 'react-fast-marquee';
+import './PartnersSection.css';
+
 
 const PartnersSection = () => {
   const partners = [
@@ -15,22 +16,25 @@ const PartnersSection = () => {
   ];
 
   return (
-    <section className="py-10 bg-white border-b border-slate-200/80">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <p className="text-xs font-bold text-slate-500 tracking-widest uppercase font-poppins mb-6">
-          OUR TRUSTED PARTNERS
-        </p>
-
-        <Marquee gradient={false} speed={50} pauseOnHover={true}>
+    <section className="home-partner-section">
+      <div className="home-partner-title">
+       Our Trusted Partners
+      </div>
+      <div className="home-partner-carousel-wrapper">
+        <div className="home-partner-carousel">
+          {/* First set of logos */}
           {partners.map((partner, index) => (
-            <span 
-              key={index}
-              className="font-poppins font-extrabold text-slate-400 text-lg sm:text-xl tracking-wider mx-8 hover:text-slate-800 transition-colors duration-200 cursor-default"
-            >
-              {partner.name}
-            </span>
+            <div key={`first-${index}`} className="home-partner-logo">
+              <span className="home-partner-name">{partner.name}</span>
+            </div>
           ))}
-        </Marquee>
+          {/* Duplicate set for seamless loop */}
+          {partners.map((partner, index) => (
+            <div key={`second-${index}`} className="home-partner-logo">
+              <span className="home-partner-name">{partner.name}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

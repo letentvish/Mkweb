@@ -1,66 +1,84 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { ArrowRight, Compass } from "lucide-react";
 
 export default function CTASection() {
   const navigate = useNavigate();
 
   return (
-    <section className="relative w-full py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-slate-900 overflow-hidden" id="cta-section">
+    <section className="relative w-full py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden" id="cta-section">
       
-      {/* Background Graphic Pattern */}
-      <div className="absolute inset-0 pointer-events-none opacity-20 z-0">
-        <svg className="w-full h-full" viewBox="0 0 1200 800" fill="none">
-          <pattern id="cta-home-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-            <circle cx="2" cy="2" r="1.5" fill="#94A3B8" opacity="0.4" />
-          </pattern>
-          <rect width="100%" height="100%" fill="url(#cta-home-grid)" />
-        </svg>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      {/* Main CTA Banner Box */}
+      <div className="relative max-w-6xl mx-auto rounded-[2.5rem] bg-gradient-to-r from-[#0a0526] via-[#130a42] to-[#0a0526] p-10 md:p-16 lg:p-20 text-center border border-indigo-500/30 shadow-[0_20px_60px_rgba(19,10,66,0.5)] overflow-hidden">
         
-        {/* Top Glowing Pill Badge */}
-        <div className="inline-flex items-center p-[1.5px] rounded-full bg-gradient-to-r from-sky-400 via-indigo-500 to-purple-500 shadow-xl shadow-indigo-500/20 mb-6">
-          <div className="flex items-center gap-2.5 px-5 py-2 rounded-full bg-[#070c1e] text-white backdrop-blur-xl">
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-            </span>
-            <span className="text-xs font-bold text-slate-100 tracking-wider uppercase font-poppins">
-              READY TO ACCELERATE YOUR GROWTH?
-            </span>
-          </div>
+        {/* Wavy Gradient Vector Background Lines */}
+        <div className="absolute inset-0 pointer-events-none opacity-20 z-0">
+          <svg className="w-full h-full" viewBox="0 0 1200 400" fill="none" preserveAspectRatio="none">
+            <path d="M 0 100 Q 300 200, 600 100 T 1200 100" stroke="#6366f1" strokeWidth="2" />
+            <path d="M 0 200 Q 300 300, 600 200 T 1200 200" stroke="#818cf8" strokeWidth="1.5" />
+            <path d="M 0 300 Q 300 100, 600 300 T 1200 300" stroke="#4f46e5" strokeWidth="2" />
+          </svg>
         </div>
 
-        {/* Headline */}
-        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-extrabold text-white tracking-tight leading-[1.12] max-w-3xl mx-auto mb-6">
-          Capability, <span className="bg-gradient-to-r from-sky-400 via-indigo-300 to-purple-300 bg-clip-text text-transparent">multiplied</span>
-        </h2>
+        {/* Top-Right & Bottom-Right Dot Matrix */}
+        <div className="absolute top-6 right-10 opacity-30 pointer-events-none hidden md:block">
+          <svg width="80" height="60" viewBox="0 0 80 60" fill="#a5b4fc">
+            <circle cx="10" cy="10" r="2" /><circle cx="30" cy="10" r="2" /><circle cx="50" cy="10" r="2" /><circle cx="70" cy="10" r="2" />
+            <circle cx="10" cy="30" r="2" /><circle cx="30" cy="30" r="2" /><circle cx="50" cy="30" r="2" /><circle cx="70" cy="30" r="2" />
+            <circle cx="10" cy="50" r="2" /><circle cx="30" cy="50" r="2" /><circle cx="50" cy="50" r="2" /><circle cx="70" cy="50" r="2" />
+          </svg>
+        </div>
+        <div className="absolute bottom-6 right-20 opacity-30 pointer-events-none hidden md:block">
+          <svg width="80" height="60" viewBox="0 0 80 60" fill="#a5b4fc">
+            <circle cx="10" cy="10" r="2" /><circle cx="30" cy="10" r="2" /><circle cx="50" cy="10" r="2" /><circle cx="70" cy="10" r="2" />
+            <circle cx="10" cy="30" r="2" /><circle cx="30" cy="30" r="2" /><circle cx="50" cy="30" r="2" /><circle cx="70" cy="30" r="2" />
+            <circle cx="10" cy="50" r="2" /><circle cx="30" cy="50" r="2" /><circle cx="50" cy="50" r="2" /><circle cx="70" cy="50" r="2" />
+          </svg>
+        </div>
 
-        <p className="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-10 font-medium">
-          Your strategy can be copied. Your funding can be matched.<br className="hidden sm:inline" />
-          The capability inside your teams cannot.
-        </p>
+        {/* Left 3D Isometric Bar Chart Illustration */}
+        <motion.img
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          src="/cta_3d_barchart.png"
+          alt="Capability Bar Chart"
+          className="absolute bottom-0 left-2 md:left-6 w-36 md:w-56 lg:w-64 object-contain pointer-events-none z-10 hidden sm:block drop-shadow-[0_10px_25px_rgba(79,70,229,0.4)]"
+        />
 
-        {/* Primary CTA Buttons */}
-        <div className="flex flex-wrap items-center justify-center gap-4">
-          <button
+        {/* Right 3D Isometric Stack Platform Illustration */}
+        <motion.img
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          src="/cta_3d_cube_stack.png"
+          alt="Capability Stack Platform"
+          className="absolute bottom-0 right-2 md:right-6 w-36 md:w-56 lg:w-64 object-contain pointer-events-none z-10 hidden sm:block drop-shadow-[0_10px_25px_rgba(79,70,229,0.4)]"
+        />
+
+        {/* Main Content Area */}
+        <div className="relative z-20 max-w-2xl mx-auto flex flex-col items-center">
+          
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black font-poppins text-white tracking-tight mb-4 drop-shadow-md">
+            Capability, multiplied
+          </h2>
+
+          <p className="text-slate-300 text-base md:text-lg font-medium leading-relaxed mb-8 max-w-xl">
+            Your strategy can be copied. Your funding can be matched.<br className="hidden sm:inline" />
+            The capability inside your teams cannot.
+          </p>
+
+          <motion.button
+            whileHover={{ scale: 1.06 }}
+            whileTap={{ scale: 0.96 }}
             onClick={() => navigate('/contact')}
-            className="bg-[#0284c7] hover:bg-[#0369a1] text-white font-bold px-8 py-4 rounded-full inline-flex items-center gap-2.5 shadow-xl shadow-sky-500/25 transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95 text-base"
+            className="bg-gradient-to-r from-[#00b4d8] via-[#3a86ff] to-[#4361ee] text-white px-9 py-4 rounded-xl font-bold font-poppins text-lg shadow-[0_10px_30px_rgba(0,180,216,0.35)] hover:shadow-[0_15px_40px_rgba(0,180,216,0.5)] transition-all duration-300 cursor-pointer"
           >
-            <Compass className="w-5 h-5" />
-            <span>Talk to Sales</span>
-          </button>
+            Talk to Us
+          </motion.button>
 
-          <button
-            onClick={() => navigate('/palbon')}
-            className="bg-white/10 hover:bg-white/15 text-white border border-white/20 font-bold px-8 py-4 rounded-full inline-flex items-center gap-2.5 transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95 text-base backdrop-blur-md"
-          >
-            <span>Explore PALBON Platform</span>
-            <ArrowRight className="w-4 h-4 text-indigo-300" />
-          </button>
         </div>
 
       </div>
@@ -68,3 +86,4 @@ export default function CTASection() {
     </section>
   );
 }
+

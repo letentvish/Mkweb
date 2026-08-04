@@ -20,6 +20,7 @@ function AnimatedCountUp({ value, duration = 2 }) {
       const elapsed = (currentTime - startTime) / 1000;
       const progress = Math.min(elapsed / duration, 1);
 
+      // Easing: easeOutQuart
       const easeOut = 1 - Math.pow(1 - progress, 4);
       const currentVal = Math.floor(rawNum * easeOut);
 
@@ -44,73 +45,101 @@ const metrics = [
   {
     value: "25,000+",
     label: "Professionals Empowered",
-    icon: <Users className="w-6 h-6 text-[#0284c7]" />,
+    icon: <Users className="w-8 h-8 text-[#6366f1]" />,
   },
   {
     value: "200+",
     label: "Expert & Mentor Network",
-    icon: <GraduationCap className="w-6 h-6 text-[#0284c7]" />,
+    icon: <GraduationCap className="w-8 h-8 text-[#6366f1]" />,
   },
   {
     value: "120+",
     label: "Enterprise Engagements",
-    icon: <Building2 className="w-6 h-6 text-[#0284c7]" />,
+    icon: <Building2 className="w-8 h-8 text-[#6366f1]" />,
   },
   {
     value: "12",
     label: "Industries Served",
-    icon: <Globe className="w-6 h-6 text-[#0284c7]" />,
+    icon: <Globe className="w-8 h-8 text-[#6366f1]" />,
   },
 ];
 
 export default function StatsSection() {
   return (
-    <section className="relative py-20 lg:py-28 px-4 bg-[#F8FAFC] overflow-hidden border-b border-slate-200/80">
+    <section className="relative py-20 lg:py-28 px-4 bg-[#f8f9ff] overflow-hidden border-b border-outline-variant/60">
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* Decorative Dot Matrix Patterns */}
+      <div className="absolute top-10 right-10 opacity-20 hidden md:block pointer-events-none">
+        <svg width="100" height="80" viewBox="0 0 100 80" fill="#0b1c30">
+          <circle cx="10" cy="10" r="2.5" /><circle cx="35" cy="10" r="2.5" /><circle cx="60" cy="10" r="2.5" /><circle cx="85" cy="10" r="2.5" />
+          <circle cx="10" cy="35" r="2.5" /><circle cx="35" cy="35" r="2.5" /><circle cx="60" cy="35" r="2.5" /><circle cx="85" cy="35" r="2.5" />
+          <circle cx="10" cy="60" r="2.5" /><circle cx="35" cy="60" r="2.5" /><circle cx="60" cy="60" r="2.5" /><circle cx="85" cy="60" r="2.5" />
+        </svg>
+      </div>
+
+      <div className="absolute bottom-10 left-10 opacity-20 hidden md:block pointer-events-none">
+        <svg width="100" height="80" viewBox="0 0 100 80" fill="#0b1c30">
+          <circle cx="10" cy="10" r="2.5" /><circle cx="35" cy="10" r="2.5" /><circle cx="60" cy="10" r="2.5" /><circle cx="85" cy="10" r="2.5" />
+          <circle cx="10" cy="35" r="2.5" /><circle cx="35" cy="35" r="2.5" /><circle cx="60" cy="35" r="2.5" /><circle cx="85" cy="35" r="2.5" />
+          <circle cx="10" cy="60" r="2.5" /><circle cx="35" cy="60" r="2.5" /><circle cx="60" cy="60" r="2.5" /><circle cx="85" cy="60" r="2.5" />
+        </svg>
+      </div>
+
+      <div className="section-container relative z-10">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-14 text-left space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-50 border border-sky-200 text-[#0284c7] text-xs font-extrabold tracking-wider uppercase font-poppins">
-            <span className="w-2 h-2 rounded-full bg-[#0284c7] animate-pulse" />
-            <span>IMPACT AT SCALE</span>
-          </div>
-
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-[#01182F] tracking-tight">
+        <div className="max-w-3xl mb-16 text-left">
+          <p className="label-md mb-2 text-[#6366f1]">IMPACT AT SCALE</p>
+          <h2 className="headline-lg text-[#0b1c30] mb-3 font-poppins font-bold tracking-tight">
             Enabling Industries At Scale
           </h2>
-
-          <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal">
+          <p className="body-lg text-[#45464d] leading-relaxed">
             Quantifiable performance metrics delivered across global enterprises, academic institutions, and workforce ecosystems.
           </p>
         </div>
 
-        {/* 4 Metric Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {metrics.map((metric, index) => (
-            <motion.div
-              key={index}
+        {/* 4 Metric Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          {metrics.map((metric, idx) => (
+            <motion.article
+              key={idx}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white border border-indigo-200/90 rounded-3xl p-8 shadow-lg shadow-indigo-100/50 hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col justify-between text-left group"
+              transition={{ duration: 0.5, delay: idx * 0.12 }}
+              className="bg-white border border-slate-200/80 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 p-8 md:p-10 flex flex-col items-center text-center group cursor-pointer"
             >
-              <div>
-                <div className="w-12 h-12 rounded-2xl bg-sky-50 border border-sky-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  {metric.icon}
-                </div>
-
-                <p className="font-poppins font-extrabold text-4xl sm:text-5xl text-[#0284c7] tracking-tight mb-2">
-                  <AnimatedCountUp value={metric.value} />
-                </p>
-
-                <h3 className="font-poppins font-bold text-base text-slate-800">
-                  {metric.label}
-                </h3>
+              {/* Icon Container */}
+              <div className="w-16 h-16 rounded-full bg-slate-100/80 flex items-center justify-center mb-6 group-hover:bg-indigo-50 group-hover:scale-110 transition-all duration-300">
+                {metric.icon}
               </div>
-            </motion.div>
+
+              {/* Metric Value */}
+              <h3 className="text-4xl lg:text-5xl font-extrabold font-poppins text-[#6366f1] mb-2 tracking-tight">
+                <AnimatedCountUp value={metric.value} duration={2.2} />
+              </h3>
+
+              {/* Accent Divider */}
+              <div className="w-8 h-1 bg-slate-200 rounded-full mb-6 group-hover:w-12 group-hover:bg-[#6366f1] transition-all duration-300" />
+
+              {/* Metric Label */}
+              <p className="text-slate-700 font-semibold text-base leading-snug">
+                {metric.label}
+              </p>
+            </motion.article>
           ))}
+        </div>
+
+        {/* Bottom Accent Feature Icon */}
+        <div className="flex justify-center mt-14">
+          <div className="w-10 h-10 bg-[#6366f1] rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/20">
+            <div className="grid grid-cols-2 gap-1">
+              <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+              <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+              <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+              <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+            </div>
+          </div>
         </div>
 
       </div>
