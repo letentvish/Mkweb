@@ -112,10 +112,10 @@ export default function SolutionsSection() {
 
                       <button
                         onClick={() => navigate(pillar.link)}
-                        className="inline-flex items-center gap-2 bg-[#0369a1] hover:bg-[#0284c7] text-white font-bold px-4 sm:px-5 md:px-6 xl:px-8 py-2 sm:py-2.5 xl:py-3 rounded-xl transition-all duration-200 cursor-pointer shadow-md text-xs sm:text-xs md:text-sm xl:text-base hover:scale-105 active:scale-95"
+                        className="inline-flex items-center gap-2 bg-[#0284c7] hover:bg-[#0369a1] text-white font-bold px-6 py-3 rounded-full transition-all duration-200 cursor-pointer shadow-lg shadow-sky-500/25 text-xs sm:text-sm hover:scale-105 active:scale-95"
                       >
                         <span>Explore Solution</span>
-                        <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 xl:w-5 xl:h-5" />
+                        <ArrowRight className="w-4 h-4" />
                       </button>
                     </div>
 

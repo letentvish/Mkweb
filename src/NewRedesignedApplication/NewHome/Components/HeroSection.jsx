@@ -65,7 +65,7 @@ export default function HeroSection() {
           <div className="flex flex-wrap items-center gap-4 pt-1">
             <button
               onClick={() => navigate("/about")}
-              className="bg-[#0369a1] hover:bg-[#0284c7] text-white px-8 py-3.5 rounded-lg font-semibold inline-flex items-center gap-2 shadow-lg shadow-sky-700/20 transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95"
+              className="bg-[#0284c7] hover:bg-[#0369a1] text-white px-8 py-3.5 rounded-full font-bold inline-flex items-center gap-2 shadow-lg shadow-sky-500/25 transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95 text-sm"
             >
               <span>Learn more</span>
               <ArrowRight className="w-4 h-4" />
@@ -73,7 +73,7 @@ export default function HeroSection() {
 
             <button
               onClick={() => navigate("/contact")}
-              className="bg-white text-[#0b1c30] border-2 border-[#0b1c30] hover:bg-slate-50 px-8 py-3.5 rounded-lg font-semibold transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95"
+              className="bg-white hover:bg-slate-50 text-[#0b1c30] border border-slate-300 px-7 py-3.5 rounded-full font-bold transition-all duration-200 cursor-pointer shadow-md hover:scale-105 active:scale-95 text-sm"
             >
               Contact us
             </button>

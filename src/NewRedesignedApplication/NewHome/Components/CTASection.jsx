@@ -71,12 +71,12 @@ export default function CTASection() {
           </p>
 
           <motion.button
-            whileHover={{ scale: 1.06 }}
-            whileTap={{ scale: 0.96 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => navigate('/contact')}
-            className="bg-gradient-to-r from-[#00b4d8] via-[#3a86ff] to-[#4361ee] text-white px-9 py-4 rounded-xl font-bold font-poppins text-lg shadow-[0_10px_30px_rgba(0,180,216,0.35)] hover:shadow-[0_15px_40px_rgba(0,180,216,0.5)] transition-all duration-300 cursor-pointer"
+            className="bg-[#0284c7] hover:bg-[#0369a1] text-white px-9 py-3.5 rounded-full font-bold font-poppins text-base shadow-lg shadow-sky-500/25 transition-all duration-200 cursor-pointer inline-flex items-center gap-2"
           >
-            Talk to Us
+            <span>Talk to Us</span>
           </motion.button>
 
         </div>
