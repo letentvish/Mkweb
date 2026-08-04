@@ -25,22 +25,23 @@ export default function PalbonFrameworkSection({ onOpenSuiteModal }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Top Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-10 space-y-3">
-          <span className="text-xs font-extrabold text-[#6366f1] tracking-widest uppercase font-poppins block">
-            AI-POWERED
-          </span>
+        <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-50 border border-sky-200 text-[#0284c7] text-xs font-extrabold tracking-wider uppercase font-poppins">
+            <span className="w-2 h-2 rounded-full bg-[#0284c7] animate-pulse" />
+            <span>AI-POWERED</span>
+          </div>
 
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-extrabold text-slate-900 tracking-tight leading-[1.15]">
-            Built for <span className="italic font-serif bg-gradient-to-r from-[#6366f1] to-indigo-600 bg-clip-text text-transparent px-1">your</span> framework
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-extrabold text-[#01182F] tracking-tight leading-[1.15]">
+            Built for <span className="italic font-serif bg-gradient-to-r from-[#01182F] via-[#0284c7] to-[#01182F] bg-clip-text text-transparent px-1">your</span> framework
           </h2>
 
-          <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto pt-1">
+          <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto pt-1 font-normal">
             We do not sell a rigid single-purpose box. We bring a modular system that bends to how you actually operate. You own the configuration, not a vendor's future guesses.
           </p>
         </div>
 
         {/* Division 1: Configuration Card Block */}
-        <div className="bg-white border border-indigo-200/90 rounded-3xl overflow-hidden shadow-lg shadow-indigo-100/50 mb-12 lg:mb-16">
+        <div className="bg-white border border-sky-200/80 rounded-3xl overflow-hidden shadow-lg shadow-sky-100/50 mb-12 lg:mb-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
             
             {/* Left Column: Visual Showcase */}
@@ -56,11 +57,11 @@ export default function PalbonFrameworkSection({ onOpenSuiteModal }) {
 
             {/* Right Column: Text Content Side */}
             <div className="lg:col-span-6 flex flex-col items-start justify-center p-6 sm:p-10 lg:p-12 space-y-4 sm:space-y-6 text-left">
-              <span className="text-xs font-bold text-[#6366f1] tracking-widest uppercase font-poppins">
+              <span className="text-xs font-bold text-[#0284c7] tracking-widest uppercase font-poppins">
                 {intelligenceTabData.configuration.badge}
               </span>
 
-              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-poppins font-extrabold text-slate-900 leading-[1.18] tracking-tight">
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-poppins font-extrabold text-[#01182F] leading-[1.18] tracking-tight">
                 {intelligenceTabData.configuration.headline}
               </h3>
 
@@ -71,18 +72,18 @@ export default function PalbonFrameworkSection({ onOpenSuiteModal }) {
               <div className="flex items-center gap-4 pt-2">
                 <button
                   onClick={onOpenSuiteModal}
-                  className="px-7 py-3 rounded-xl border border-indigo-400 hover:border-indigo-600 text-[#6366f1] hover:bg-indigo-50 font-bold text-sm transition-all duration-200 shadow-sm cursor-pointer flex items-center gap-2"
+                  className="bg-[#0284c7] hover:bg-[#0369a1] text-white font-bold text-sm px-8 py-3.5 rounded-full shadow-lg shadow-sky-500/25 transition-all duration-200 cursor-pointer inline-flex items-center gap-2 hover:scale-105 active:scale-95"
                 >
-                  <Sparkles className="w-4 h-4 text-[#6366f1]" />
+                  <Sparkles className="w-4 h-4 text-white" />
                   <span>Configure Suite</span>
                 </button>
 
                 <button
                   onClick={() => navigate("/contact")}
-                  className="text-[#6366f1] hover:text-indigo-700 font-bold text-sm inline-flex items-center gap-1.5 transition-colors cursor-pointer"
+                  className="text-[#0284c7] hover:text-[#0369a1] font-bold text-sm inline-flex items-center gap-1.5 transition-colors cursor-pointer"
                 >
-                  <span>Talk</span>
-                  <ArrowRight className="w-4 h-4 text-[#6366f1]" />
+                  <span>Talk to Sales</span>
+                  <ArrowRight className="w-4 h-4 text-[#0284c7]" />
                 </button>
               </div>
             </div>
@@ -91,7 +92,7 @@ export default function PalbonFrameworkSection({ onOpenSuiteModal }) {
         </div>
 
         {/* Division 2: Reasoning Card Block */}
-        <div className="bg-white border border-indigo-200/90 rounded-3xl overflow-hidden shadow-lg shadow-indigo-100/50">
+        <div className="bg-white border border-sky-200/80 rounded-3xl overflow-hidden shadow-lg shadow-sky-100/50">
           <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
             
             {/* Left Column: Visual Showcase */}
@@ -107,11 +108,11 @@ export default function PalbonFrameworkSection({ onOpenSuiteModal }) {
 
             {/* Right Column: Text Content Side */}
             <div className="lg:col-span-6 flex flex-col items-start justify-center p-6 sm:p-10 lg:p-12 space-y-4 sm:space-y-6 text-left">
-              <span className="text-xs font-bold text-[#6366f1] tracking-widest uppercase font-poppins">
+              <span className="text-xs font-bold text-[#0284c7] tracking-widest uppercase font-poppins">
                 {intelligenceTabData.reasoning.badge}
               </span>
 
-              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-poppins font-extrabold text-slate-900 leading-[1.18] tracking-tight">
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-poppins font-extrabold text-[#01182F] leading-[1.18] tracking-tight">
                 {intelligenceTabData.reasoning.headline}
               </h3>
 
@@ -122,18 +123,18 @@ export default function PalbonFrameworkSection({ onOpenSuiteModal }) {
               <div className="flex items-center gap-4 pt-2">
                 <button
                   onClick={onOpenSuiteModal}
-                  className="px-7 py-3 rounded-xl border border-indigo-400 hover:border-indigo-600 text-[#6366f1] hover:bg-indigo-50 font-bold text-sm transition-all duration-200 shadow-sm cursor-pointer flex items-center gap-2"
+                  className="bg-[#0284c7] hover:bg-[#0369a1] text-white font-bold text-sm px-8 py-3.5 rounded-full shadow-lg shadow-sky-500/25 transition-all duration-200 cursor-pointer inline-flex items-center gap-2 hover:scale-105 active:scale-95"
                 >
-                  <Sparkles className="w-4 h-4 text-[#6366f1]" />
+                  <Sparkles className="w-4 h-4 text-white" />
                   <span>Configure Suite</span>
                 </button>
 
                 <button
                   onClick={() => navigate("/contact")}
-                  className="text-[#6366f1] hover:text-indigo-700 font-bold text-sm inline-flex items-center gap-1.5 transition-colors cursor-pointer"
+                  className="text-[#0284c7] hover:text-[#0369a1] font-bold text-sm inline-flex items-center gap-1.5 transition-colors cursor-pointer"
                 >
-                  <span>Talk</span>
-                  <ArrowRight className="w-4 h-4 text-[#6366f1]" />
+                  <span>Talk to Sales</span>
+                  <ArrowRight className="w-4 h-4 text-[#0284c7]" />
                 </button>
               </div>
             </div>
