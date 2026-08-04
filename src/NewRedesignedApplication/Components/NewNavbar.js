@@ -501,6 +501,16 @@ export default function NewNavbar() {
               Company
             </Link>
 
+            {/* Design System */}
+            <Link 
+              to="/design-system" 
+              className={`px-4 py-2 rounded-full transition-colors hover:text-white hover:bg-slate-800/60 ${
+                location.pathname === "/design-system" ? "text-white bg-[#15192B] border border-slate-700/80 font-semibold" : ""
+              }`}
+            >
+              Design System
+            </Link>
+
           </nav>
 
           {/* Right Action CTA Buttons */}
@@ -606,7 +616,15 @@ export default function NewNavbar() {
                 className="px-4 py-2.5 rounded-lg hover:bg-slate-800/60 hover:text-white"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Company
+                About
+              </Link>
+
+              <Link 
+                to="/design-system" 
+                className="px-4 py-2.5 rounded-lg hover:bg-slate-800/60 hover:text-white"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Design System
               </Link>
 
             </div>
