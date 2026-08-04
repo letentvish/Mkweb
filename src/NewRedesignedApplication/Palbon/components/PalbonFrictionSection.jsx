@@ -83,14 +83,14 @@ export default function PalbonFrictionSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mb-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           <div className="lg:col-span-6 flex flex-col items-start space-y-3">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-[#6366f1] text-xs font-bold tracking-wider uppercase font-poppins">
-              <span className="w-2 h-2 rounded-full bg-[#6366f1]" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-50 border border-sky-200 text-[#0284c7] text-xs font-extrabold tracking-wider uppercase font-poppins">
+              <span className="w-2 h-2 rounded-full bg-[#0284c7] animate-pulse" />
               <span>FRICTION</span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-slate-900 tracking-tight leading-[1.15]">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-[#01182F] tracking-tight leading-[1.15]">
               Your systems do not <br />
-              <span className="text-[#6366f1]">speak the same language</span>
+              <span className="bg-gradient-to-r from-[#01182F] via-[#0284c7] to-[#01182F] bg-clip-text text-transparent">speak the same language</span>
             </h2>
           </div>
 
@@ -102,7 +102,7 @@ export default function PalbonFrictionSection() {
             <div className="flex items-center gap-4">
               <button
                 onClick={() => navigate("/contact")}
-                className="text-[#6366f1] hover:text-[#4f46e5] font-bold text-sm inline-flex items-center gap-1.5 transition-colors cursor-pointer"
+                className="text-[#0284c7] hover:text-[#0369a1] font-bold text-sm inline-flex items-center gap-1.5 transition-colors cursor-pointer"
               >
                 <span>Talk to Sales</span>
                 <ArrowRight className="w-4 h-4" />
@@ -194,7 +194,7 @@ export default function PalbonFrictionSection() {
             const el = document.getElementById("clarity-section");
             if (el) el.scrollIntoView({ behavior: "smooth" });
           }}
-          className="bg-[#6366f1] hover:bg-[#4f46e5] text-white font-bold px-8 py-3.5 rounded-full inline-flex items-center gap-2 shadow-xl shadow-indigo-500/30 transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95"
+          className="bg-[#0284c7] hover:bg-[#0369a1] text-white font-bold px-8 py-3.5 rounded-full inline-flex items-center gap-2 shadow-lg shadow-sky-500/25 transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95 text-sm"
         >
           <ArrowDown className="w-4 h-4" />
           <span>See Solutions</span>
