@@ -1,111 +1,124 @@
 import React from "react";
-import { Search, FileCode, Play, UserCheck, TrendingUp, Compass, ArrowRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export default function TransformSection() {
   const navigate = useNavigate();
 
-  const steps = [
+  const rhythmSteps = [
     {
-      step: "01",
-      title: "Discovery & Audit",
-      description: "Deep diagnostic audit of your leadership, culture, operating model, and operational friction.",
-      icon: <Search className="w-5 h-5 text-[#0284c7]" />,
+      id: "01",
+      position: "below",
+      title: "Absolute Clarity",
+      description: 'Discovery and alignment. We see the organisation as it truly is — and agree on what "better" means.'
     },
     {
-      step: "02",
-      title: "Solution Design",
-      description: "Co-creating tailored capability frameworks, operating blueprints, and execution roadmaps.",
-      icon: <FileCode className="w-5 h-5 text-[#0284c7]" />,
+      id: "02",
+      position: "above",
+      title: "Root diagnosis",
+      description: "Deep diagnostics and assessment. We locate the cause, never mistaking it for the symptom."
     },
     {
-      step: "03",
-      title: "Execution",
-      description: "Deploying senior advisory partners and modular frameworks into live enterprise workflows.",
-      icon: <Play className="w-5 h-5 text-[#0284c7]" />,
+      id: "03",
+      position: "below",
+      title: "Design",
+      description: "Bespoke journey architecture. We craft the intervention to fit you exactly — nothing borrowed."
     },
     {
-      step: "04",
-      title: "Embedding",
-      description: "Training internal champions, establishing telemetry, and ensuring internal capability ownership.",
-      icon: <UserCheck className="w-5 h-5 text-[#0284c7]" />,
+      id: "04",
+      position: "above",
+      title: "Action",
+      description: "Delivery and experience. Labs, simulations, and coaching bring the design to life in the work."
     },
     {
-      step: "05",
-      title: "Continuous Growth",
-      description: "Reviewing performance ROI, refining parameters, and sustaining long-term independence.",
-      icon: <TrendingUp className="w-5 h-5 text-[#0284c7]" />,
-    },
+      id: "05",
+      position: "below",
+      title: "Sustained impact",
+      description: "Embedding and measurement. We stay until the change holds and the capability compounds."
+    }
   ];
 
   return (
     <section className="py-20 lg:py-28 bg-white border-b border-slate-200/80 text-slate-900 relative" id="how-mkraft-transforms">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-left">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-50 border border-sky-200 text-[#0284c7] text-xs font-extrabold tracking-wider uppercase font-poppins">
-            <span className="w-2 h-2 rounded-full bg-[#0284c7] animate-pulse" />
-            <span>METHODOLOGY</span>
-          </div>
+        {/* Header Section (Left Aligned) */}
+        <div className="max-w-3xl mb-16 space-y-4">
+          <span className="text-xs font-mono font-extrabold text-[#0284c7] tracking-widest uppercase block font-poppins">
+            Framework
+          </span>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-[#01182F] tracking-tight">
-            How MKraft <span className="bg-gradient-to-r from-[#01182F] via-[#0284c7] to-[#01182F] bg-clip-text text-transparent">Transforms</span>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-extrabold text-[#01182F] tracking-tight leading-tight">
+            How Mkraft Transforms
           </h2>
 
-          <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal max-w-2xl mx-auto">
-            A structured 5-stage transformation methodology engineered for clarity, alignment, and sustainable capability.
+          <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal max-w-2xl pt-1">
+            A clean methodology cuts through confusion. We follow a seven-step rhythm that turns organizational diagnosis into measurable, scaled performance.
           </p>
 
-          {/* Buttons */}
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
+          {/* Action CTAs */}
+          <div className="flex items-center gap-4 sm:gap-6 pt-3">
             <button
-              onClick={() => navigate("/contact")}
-              className="bg-[#0284c7] hover:bg-[#0369a1] text-white font-bold px-8 py-3.5 rounded-full inline-flex items-center gap-2 shadow-lg shadow-sky-500/25 transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95 text-sm"
+              onClick={() => navigate("/assessment")}
+              className="bg-[#0284c7] hover:bg-[#0369a1] text-white font-bold px-8 py-3 rounded-full shadow-lg shadow-sky-500/25 transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95 text-sm"
             >
-              <Compass className="w-4 h-4" />
-              <span>Explore Methodology</span>
+              Diagnose
             </button>
 
             <button
               onClick={() => navigate("/contact")}
-              className="bg-white hover:bg-slate-50 text-[#01182F] border border-slate-300 font-bold px-7 py-3.5 rounded-full inline-flex items-center gap-2 transition-all duration-200 cursor-pointer shadow-md hover:scale-105 active:scale-95 text-sm"
+              className="text-[#0284c7] hover:text-[#0369a1] font-bold text-sm inline-flex items-center gap-1 transition-colors cursor-pointer group"
             >
-              <span>Download Blueprint</span>
-              <ArrowRight className="w-4 h-4 text-[#0284c7]" />
+              <span>Talk to an Expert</span>
+              <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
         </div>
 
-        {/* Horizontal 5-Step Connected Timeline Flow */}
-        <div className="relative mt-16 pt-8">
+        {/* 5-Step Staggered Horizontal Timeline Grid */}
+        <div className="relative mt-20 pt-16 pb-16">
           
-          {/* Connecting Background Horizontal Line */}
-          <div className="hidden lg:block absolute top-[52px] left-[10%] right-[10%] h-[3px] bg-gradient-to-r from-sky-300 via-[#0284c7] to-indigo-400 z-0 rounded-full" />
+          {/* Central Horizontal Timeline Line */}
+          <div className="hidden md:block absolute top-1/2 left-[5%] right-[5%] h-[2.5px] bg-[#01182F] -translate-y-1/2 z-0" />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 relative z-10">
-            {steps.map((item, idx) => (
-              <div key={idx} className="flex flex-col items-center text-center group">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-4 relative z-10 items-center">
+            {rhythmSteps.map((step, idx) => (
+              <div key={idx} className="relative flex flex-col items-start text-left">
                 
-                {/* Node Circle Icon Badge */}
-                <div className="w-14 h-14 rounded-2xl bg-white border-2 border-sky-400 shadow-xl flex items-center justify-center mb-6 text-[#0284c7] group-hover:scale-110 group-hover:bg-sky-50 transition-all duration-300 shrink-0 relative">
-                  {item.icon}
-                  <span className="absolute -top-2 -right-2 bg-[#01182F] text-white text-[10px] font-mono font-bold px-2 py-0.5 rounded-full shadow-sm">
-                    {item.step}
-                  </span>
+                {/* ABOVE Content Block (for Node 2 & Node 4) */}
+                {step.position === "above" && (
+                  <div className="hidden md:block mb-8 pb-4 space-y-1 min-h-[110px]">
+                    <h3 className="font-poppins font-extrabold text-xl sm:text-2xl text-[#01182F] tracking-tight">
+                      {step.title}
+                    </h3>
+                    <p className="text-slate-600 text-xs leading-relaxed font-normal max-w-[220px]">
+                      {step.description}
+                    </p>
+                  </div>
+                )}
+
+                {/* Node Circle Dot (On Line) */}
+                <div className="hidden md:flex items-center justify-center my-3 relative left-2">
+                  <div className="w-4 h-4 rounded-full bg-[#01182F] border-2 border-white shadow-md ring-4 ring-white" />
                 </div>
 
-                {/* Step Content */}
-                <div className="bg-slate-50 border border-slate-200/90 rounded-3xl p-5 w-full text-left shadow-sm group-hover:border-sky-300 group-hover:shadow-md transition-all duration-300">
-                  <span className="text-[10px] font-mono font-extrabold text-[#0284c7] uppercase tracking-widest block mb-1">
-                    STAGE {item.step}
-                  </span>
-                  <h3 className="font-poppins font-bold text-base text-[#01182F] mb-1.5 leading-snug">
-                    {item.title}
-                  </h3>
-                  <p className="text-slate-600 text-xs leading-relaxed font-normal">
-                    {item.description}
-                  </p>
+                {/* BELOW Content Block (for Node 1, Node 3, Node 5) */}
+                {step.position === "below" && (
+                  <div className="hidden md:block mt-8 pt-4 space-y-1 min-h-[110px]">
+                    <h3 className="font-poppins font-extrabold text-xl sm:text-2xl text-[#01182F] tracking-tight">
+                      {step.title}
+                    </h3>
+                    <p className="text-slate-600 text-xs leading-relaxed font-normal max-w-[220px]">
+                      {step.description}
+                    </p>
+                  </div>
+                )}
+
+                {/* Mobile View (Stack Vertical Cards) */}
+                <div className="md:hidden bg-slate-50 border border-slate-200/90 rounded-2xl p-5 w-full space-y-1.5 shadow-sm">
+                  <span className="text-[10px] font-mono font-extrabold text-[#0284c7] uppercase">STEP {step.id}</span>
+                  <h3 className="font-poppins font-bold text-lg text-[#01182F]">{step.title}</h3>
+                  <p className="text-slate-600 text-xs leading-relaxed">{step.description}</p>
                 </div>
 
               </div>
