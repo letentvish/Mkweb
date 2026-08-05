@@ -105,26 +105,6 @@ export default function AssessmentHubSection() {
               Skip the custom builds and integration delays. Access our Assessment suite of validated, plug-and-play tools the moment you sign up. Build for higher engagements
             </p>
 
-            {/* Author Testimonial Pill */}
-            <div className="pt-4 flex items-center gap-3">
-              <div className="w-11 h-11 rounded-full overflow-hidden border-2 border-sky-300 shadow-md shrink-0 bg-slate-200">
-                <img 
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200"
-                  alt="Pallavi Singh"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              <div>
-                <h4 className="font-poppins font-bold text-sm text-[#01182F]">
-                  Pallavi Singh
-                </h4>
-                <div className="inline-flex items-center gap-1.5 text-[11px] text-[#0284c7] font-bold bg-sky-50 px-2 py-0.5 rounded-full border border-sky-200 mt-0.5">
-                  <Play className="w-2.5 h-2.5 fill-[#0284c7]" />
-                  <span>2 min</span>
-                </div>
-              </div>
-            </div>
 
           </div>
 
