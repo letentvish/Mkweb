@@ -40,6 +40,25 @@ export default function TransformSection() {
 
   return (
     <section className="py-20 lg:py-28 bg-white border-b border-slate-200/80 text-slate-900 relative" id="how-mkraft-transforms">
+      
+      {/* Dynamic Keyframes for Timeline Light Pulse Animation */}
+      <style>{`
+        @keyframes lineLightGlow {
+          0% {
+            left: -20%;
+          }
+          50% {
+            left: 50%;
+          }
+          100% {
+            left: 120%;
+          }
+        }
+        .animate-timeline-glow {
+          animation: lineLightGlow 3.2s ease-in-out infinite;
+        }
+      `}</style>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-left">
         
         {/* Header Section (Left Aligned) */}
@@ -78,8 +97,14 @@ export default function TransformSection() {
         {/* 5-Step Staggered Horizontal Timeline Grid */}
         <div className="relative mt-16 pt-8 pb-8">
           
-          {/* Central Horizontal Timeline Line (Sky Blue #0284c7) */}
-          <div className="hidden md:block absolute top-1/2 left-[2%] right-[2%] h-[3px] bg-[#0284c7] -translate-y-1/2 z-0 rounded-full" />
+          {/* Central Horizontal Timeline Line with Animated Light Movement */}
+          <div className="hidden md:block absolute top-1/2 left-[2%] right-[2%] h-[3px] bg-sky-200 -translate-y-1/2 z-0 rounded-full overflow-hidden">
+            {/* Sky Blue Track Fill */}
+            <div className="w-full h-full bg-[#0284c7]/40 relative">
+              {/* Traveling Glowing Light Ray Beam */}
+              <div className="absolute top-0 bottom-0 w-44 bg-gradient-to-r from-transparent via-[#0284c7] to-transparent shadow-[0_0_15px_#0284c7] animate-timeline-glow" />
+            </div>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4 relative z-10 items-center">
             {rhythmSteps.map((step, idx) => (
@@ -99,9 +124,9 @@ export default function TransformSection() {
                   </p>
                 </div>
 
-                {/* DOT DIRECTLY CENTERED ON THE LINE */}
+                {/* DOT DIRECTLY CENTERED ON THE LINE WITH GLOW */}
                 <div className="hidden md:flex items-center justify-start relative z-10 py-2">
-                  <div className="w-5 h-5 rounded-full bg-[#0284c7] border-4 border-white shadow-md ring-2 ring-sky-200 shrink-0" />
+                  <div className="w-5 h-5 rounded-full bg-[#0284c7] border-4 border-white shadow-md ring-2 ring-sky-300 shrink-0 group-hover:scale-125 transition-transform duration-300" />
                 </div>
 
                 {/* BELOW Content Block (for Node 1, Node 3, Node 5) */}
