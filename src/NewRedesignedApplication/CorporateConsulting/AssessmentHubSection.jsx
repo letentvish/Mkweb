@@ -7,53 +7,49 @@ import {
   Target, 
   MessageSquare, 
   ShieldCheck, 
-  ChevronRight, 
   LayoutGrid, 
   BarChart2, 
-  Settings, 
-  UserCheck,
-  Play
+  Settings
 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import LogoDark from "../../Assets/MultipliersKraftLogoDark.png";
 
 export default function AssessmentHubSection() {
-  const navigate = useNavigate();
 
   const laptopModules = [
     {
       title: "360°",
       subtitle: "Comprehensive 360 Degree Feedback",
-      icon: <Compass className="w-5 h-5 text-[#0284c7]" />
+      icon: <Compass className="w-6 h-6 text-[#0284c7]" />
     },
     {
       title: "180°",
       subtitle: "Focused Feedback for Growth",
-      icon: <Users className="w-5 h-5 text-[#0284c7]" />
+      icon: <Users className="w-6 h-6 text-[#0284c7]" />
     },
     {
       title: "270°",
       subtitle: "Extended Feedback Perspective",
-      icon: <PieChart className="w-5 h-5 text-[#0284c7]" />
+      icon: <PieChart className="w-6 h-6 text-[#0284c7]" />
     },
     {
       title: "Psychometrics",
       subtitle: "Validated Psychometric Assessments",
-      icon: <Brain className="w-5 h-5 text-[#0284c7]" />
+      icon: <Brain className="w-6 h-6 text-[#0284c7]" />
     },
     {
       title: "Career Archetype",
       subtitle: "Discover Career Archetypes and Pathways",
-      icon: <Target className="w-5 h-5 text-[#0284c7]" />
+      icon: <Target className="w-6 h-6 text-[#0284c7]" />
     },
     {
       title: "Engagement Surveys",
       subtitle: "Measure Sentiment, Engagement & Culture",
-      icon: <MessageSquare className="w-5 h-5 text-[#0284c7]" />
+      icon: <MessageSquare className="w-6 h-6 text-[#0284c7]" />
     },
     {
       title: "Leadership Competency",
       subtitle: "Assess Leadership Capabilities",
-      icon: <ShieldCheck className="w-5 h-5 text-[#0284c7]" />
+      icon: <ShieldCheck className="w-6 h-6 text-[#0284c7]" />
     }
   ];
 
@@ -74,7 +70,7 @@ export default function AssessmentHubSection() {
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Left Column: Copy, Headline & Testimonial Badge */}
+          {/* Left Column: Copy & Headline */}
           <div className="lg:col-span-5 text-left space-y-6">
             
             {/* Top Accent Bar & Badge */}
@@ -105,27 +101,30 @@ export default function AssessmentHubSection() {
               Skip the custom builds and integration delays. Access our Assessment suite of validated, plug-and-play tools the moment you sign up. Build for higher engagements
             </p>
 
-
           </div>
 
-          {/* Right Column: Realistic 3D Laptop & Smartphone App UI Mockup */}
+          {/* Right Column: High-Impact 3D Laptop App UI Mockup */}
           <div className="lg:col-span-7 relative flex items-center justify-center pt-6 lg:pt-0">
             
-            {/* Laptop Outer Frame */}
-            <div className="w-full max-w-[620px] bg-slate-900 rounded-2xl p-2.5 sm:p-3.5 shadow-2xl border border-slate-800 relative z-10">
+            {/* Laptop Outer Frame (Enlarged) */}
+            <div className="w-full max-w-[760px] lg:max-w-[840px] bg-slate-900 rounded-3xl p-3 sm:p-4 shadow-2xl border-2 border-slate-800 relative z-10">
               
               {/* Laptop Web Screen Inner Window */}
-              <div className="bg-[#F8FAFC] rounded-xl overflow-hidden shadow-inner border border-slate-200 text-left min-h-[380px] sm:min-h-[420px] p-4 sm:p-6 flex flex-col justify-between">
+              <div className="bg-[#F8FAFC] rounded-2xl overflow-hidden shadow-inner border border-slate-200 text-left min-h-[460px] sm:min-h-[520px] lg:min-h-[560px] p-5 sm:p-8 flex flex-col justify-between">
                 
                 {/* Top Nav Header inside App Screen */}
-                <div className="flex items-center justify-between pb-4 border-b border-slate-200/80 mb-4">
+                <div className="flex items-center justify-between pb-5 border-b border-slate-200/80 mb-6">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-[#01182F] text-white flex items-center justify-center font-poppins font-extrabold text-lg shadow-sm">
-                      M
-                    </div>
+                    {/* Real MultipliersKraft Official Logo */}
+                    <img 
+                      src={LogoDark} 
+                      alt="MultipliersKraft Logo" 
+                      className="h-7 sm:h-9 w-auto object-contain" 
+                    />
+                    <div className="h-6 w-px bg-slate-300 mx-1" />
                     <div>
-                      <h3 className="font-poppins font-bold text-lg text-[#01182F] leading-none">
-                        MKraft <span className="text-[#0284c7]">Assess</span>
+                      <h3 className="font-poppins font-extrabold text-lg text-[#01182F] leading-none">
+                        <span className="text-[#0284c7]">Assess</span>
                       </h3>
                       <p className="text-[10px] text-slate-400 font-normal pt-0.5">
                         Assess. Understand. Transform.
@@ -133,29 +132,29 @@ export default function AssessmentHubSection() {
                     </div>
                   </div>
 
-                  <div className="hidden sm:flex items-center gap-2 text-slate-400">
-                    <LayoutGrid className="w-4 h-4 text-[#0284c7]" />
-                    <BarChart2 className="w-4 h-4" />
-                    <Settings className="w-4 h-4" />
+                  <div className="hidden sm:flex items-center gap-3 text-slate-400">
+                    <LayoutGrid className="w-5 h-5 text-[#0284c7]" />
+                    <BarChart2 className="w-5 h-5" />
+                    <Settings className="w-5 h-5" />
                   </div>
                 </div>
 
                 {/* Main App Grid View */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 flex-grow">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 flex-grow">
                   {laptopModules.map((mod, idx) => (
                     <div 
                       key={idx}
-                      className="bg-white border border-slate-200/80 rounded-2xl p-3 sm:p-4 shadow-sm hover:shadow-md hover:border-sky-300 transition-all duration-200 flex flex-col justify-between"
+                      className="bg-white border border-slate-200/80 rounded-2xl p-4 sm:p-5 shadow-sm hover:shadow-md hover:border-sky-300 transition-all duration-200 flex flex-col justify-between"
                     >
-                      <div className="w-9 h-9 rounded-full bg-sky-50 border border-sky-100 flex items-center justify-center mb-2">
+                      <div className="w-11 h-11 rounded-2xl bg-sky-50 border border-sky-100 flex items-center justify-center mb-3">
                         {mod.icon}
                       </div>
 
                       <div>
-                        <h4 className="font-poppins font-bold text-xs text-[#01182F] mb-1">
+                        <h4 className="font-poppins font-bold text-sm sm:text-base text-[#01182F] mb-1 leading-tight">
                           {mod.title}
                         </h4>
-                        <p className="text-[10px] text-slate-500 leading-tight">
+                        <p className="text-xs text-slate-500 leading-normal">
                           {mod.subtitle}
                         </p>
                       </div>
@@ -166,11 +165,10 @@ export default function AssessmentHubSection() {
               </div>
 
               {/* Laptop Bottom Base Hinge */}
-              <div className="w-full h-3 bg-slate-800 rounded-b-xl mt-1 flex items-center justify-center">
-                <div className="w-16 h-1 bg-slate-600 rounded-full" />
+              <div className="w-full h-4 bg-slate-800 rounded-b-2xl mt-1.5 flex items-center justify-center">
+                <div className="w-24 h-1.5 bg-slate-600 rounded-full" />
               </div>
             </div>
-
 
           </div>
 
