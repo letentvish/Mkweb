@@ -1,5 +1,5 @@
 import React from "react";
-import { ChevronRight } from "lucide-react";
+import { Users, RefreshCw, BarChart3, GraduationCap, Compass, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export default function CapabilityPillars() {
@@ -8,38 +8,38 @@ export default function CapabilityPillars() {
   const servicePillars = [
     {
       step: "01",
+      icon: <Users className="w-7 h-7 text-[#0284c7]" />,
       title: "Organisation & Leadership Development",
       subtitle: "Change people choose, not change they survive.",
-      description: "We re-architect how the organisation works, decides, and adapts — and bring people along with it, so adoption isn't an afterthought but the design.",
-      image: "/pillar_consulting.png"
+      description: "We re-architect how the organisation works, decides, and adapts — and bring people along with it, so adoption isn't an afterthought but the design."
     },
     {
       step: "02",
+      icon: <RefreshCw className="w-7 h-7 text-[#0284c7]" />,
       title: "Culture Transformation and Change Management",
       subtitle: "Behavioral acceleration and organizational readiness.",
-      description: "Embedding sustainable behavioral change, operational resilience, and agility through proven change management frameworks.",
-      image: "/pillar_academic.png"
+      description: "Embedding sustainable behavioral change, operational resilience, and agility through proven change management frameworks."
     },
     {
       step: "03",
+      icon: <BarChart3 className="w-7 h-7 text-[#0284c7]" />,
       title: "Talent and Performance Architecture",
       subtitle: "Workforce optimization and KPI alignment.",
-      description: "Redesigning competency frameworks, performance feedback loops, and career pathways to maximize human capital output.",
-      image: "/pillar_technology.png"
+      description: "Redesigning competency frameworks, performance feedback loops, and career pathways to maximize human capital output."
     },
     {
       step: "04",
+      icon: <GraduationCap className="w-7 h-7 text-[#0284c7]" />,
       title: "AI LXP and Learning Services",
       subtitle: "Continuous capability and skill telemetry.",
-      description: "Deploying personalized learning journeys and AI-powered skill telemetry to continuously upgrade workforce competencies.",
-      image: "/hero_woman.png"
+      description: "Deploying personalized learning journeys and AI-powered skill telemetry to continuously upgrade workforce competencies."
     },
     {
       step: "05",
+      icon: <Compass className="w-7 h-7 text-[#0284c7]" />,
       title: "Strategic Advisory and Capability Design",
       subtitle: "Operating model and org architecture.",
-      description: "Structuring enterprise operating models to eliminate organizational friction, enhance data velocity, and scale execution.",
-      image: "/approach_isometric.png"
+      description: "Structuring enterprise operating models to eliminate organizational friction, enhance data velocity, and scale execution."
     }
   ];
 
@@ -86,26 +86,24 @@ export default function CapabilityPillars() {
 
           </div>
 
-          {/* Right Column: Unbordered Wireframe Items (Image Top, Text Bottom) */}
-          <div className="lg:col-span-7 space-y-16 lg:space-y-24">
+          {/* Right Column: Clean Items with Icon Header (No Images) */}
+          <div className="lg:col-span-7 space-y-12 lg:space-y-16">
             {servicePillars.map((item, idx) => (
               <div
                 key={idx}
-                className="text-left group"
+                className="text-left group pb-8 border-b border-slate-200/80 last:border-0"
               >
-                {/* Top Image (No Outer Card Container Box) */}
-                <div className="w-full h-64 sm:h-80 lg:h-96 rounded-3xl bg-slate-200/80 border border-slate-300/60 overflow-hidden mb-6 shadow-lg relative flex items-center justify-center">
-                  <img 
-                    src={item.image} 
-                    alt={item.title} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-95" 
-                  />
-                  <div className="absolute top-4 left-4 bg-[#01182F]/80 backdrop-blur-md text-white text-xs font-mono font-extrabold px-3 py-1 rounded-full border border-white/20">
-                    PILLAR {item.step}
+                {/* Top Icon Circle & Pillar Step Badge Header */}
+                <div className="flex items-center justify-between mb-6">
+                  <div className="w-14 h-14 rounded-2xl bg-sky-50 border border-sky-200 flex items-center justify-center text-[#0284c7] group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                    {item.icon}
                   </div>
+                  <span className="text-xs font-mono font-extrabold text-[#0284c7] bg-sky-50 border border-sky-200 px-3.5 py-1.5 rounded-full uppercase tracking-wider font-poppins">
+                    PILLAR {item.step}
+                  </span>
                 </div>
 
-                {/* Content Underneath Image */}
+                {/* Content Underneath */}
                 <div className="space-y-2">
                   <h3 className="font-poppins font-extrabold text-2xl sm:text-3xl text-[#01182F] tracking-tight leading-snug">
                     {item.title}
