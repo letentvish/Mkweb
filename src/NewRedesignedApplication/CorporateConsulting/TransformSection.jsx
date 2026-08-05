@@ -108,45 +108,45 @@ export default function TransformSection() {
 
           <div className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4 relative z-10 items-center">
             {rhythmSteps.map((step, idx) => (
-              <div key={idx} className="relative flex flex-col justify-center min-h-[260px] text-left px-1">
+              <div key={idx} className="relative flex flex-col justify-center min-h-[260px] text-left px-1 group cursor-pointer">
                 
                 {/* ABOVE Content Block (for Node 2 & Node 4) */}
                 <div 
-                  className={`hidden md:block absolute bottom-1/2 pb-8 left-0 right-3 space-y-1.5 transition-all duration-300 ${
+                  className={`hidden md:block absolute bottom-1/2 pb-8 left-0 right-3 space-y-1.5 transition-all duration-300 group-hover:-translate-y-2 ${
                     step.position === 'above' ? 'opacity-100' : 'opacity-0 pointer-events-none'
                   }`}
                 >
-                  <h3 className="font-poppins font-extrabold text-xl text-[#01182F] tracking-tight">
+                  <h3 className="font-poppins font-extrabold text-xl text-[#01182F] group-hover:text-[#0284c7] transition-colors duration-300 tracking-tight">
                     {step.title}
                   </h3>
-                  <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-normal">
+                  <p className="text-slate-600 group-hover:text-slate-900 transition-colors duration-300 text-xs sm:text-sm leading-relaxed font-normal">
                     {step.description}
                   </p>
                 </div>
 
-                {/* DOT DIRECTLY CENTERED ON THE LINE WITH GLOW */}
+                {/* DOT DIRECTLY CENTERED ON THE LINE WITH HOVER POP-OUT */}
                 <div className="hidden md:flex items-center justify-start relative z-10 py-2">
-                  <div className="w-5 h-5 rounded-full bg-[#0284c7] border-4 border-white shadow-md ring-2 ring-sky-300 shrink-0 group-hover:scale-125 transition-transform duration-300" />
+                  <div className="w-5 h-5 rounded-full bg-[#0284c7] border-4 border-white shadow-md ring-2 ring-sky-300 shrink-0 group-hover:scale-150 group-hover:ring-4 group-hover:ring-sky-400 group-hover:shadow-[0_0_20px_#0284c7] transition-all duration-300" />
                 </div>
 
                 {/* BELOW Content Block (for Node 1, Node 3, Node 5) */}
                 <div 
-                  className={`hidden md:block absolute top-1/2 pt-8 left-0 right-3 space-y-1.5 transition-all duration-300 ${
+                  className={`hidden md:block absolute top-1/2 pt-8 left-0 right-3 space-y-1.5 transition-all duration-300 group-hover:translate-y-2 ${
                     step.position === 'below' ? 'opacity-100' : 'opacity-0 pointer-events-none'
                   }`}
                 >
-                  <h3 className="font-poppins font-extrabold text-xl text-[#01182F] tracking-tight">
+                  <h3 className="font-poppins font-extrabold text-xl text-[#01182F] group-hover:text-[#0284c7] transition-colors duration-300 tracking-tight">
                     {step.title}
                   </h3>
-                  <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-normal">
+                  <p className="text-slate-600 group-hover:text-slate-900 transition-colors duration-300 text-xs sm:text-sm leading-relaxed font-normal">
                     {step.description}
                   </p>
                 </div>
 
                 {/* Mobile View (Stacked Cards) */}
-                <div className="md:hidden bg-slate-50 border border-slate-200/90 rounded-2xl p-5 w-full space-y-1.5 shadow-sm">
+                <div className="md:hidden bg-slate-50 border border-slate-200/90 rounded-2xl p-5 w-full space-y-1.5 shadow-sm group-hover:border-sky-300 group-hover:shadow-md transition-all duration-300">
                   <span className="text-[10px] font-mono font-extrabold text-[#0284c7] uppercase">STEP {step.id}</span>
-                  <h3 className="font-poppins font-bold text-lg text-[#01182F]">{step.title}</h3>
+                  <h3 className="font-poppins font-bold text-lg text-[#01182F] group-hover:text-[#0284c7] transition-colors">{step.title}</h3>
                   <p className="text-slate-600 text-xs leading-relaxed">{step.description}</p>
                 </div>
 
