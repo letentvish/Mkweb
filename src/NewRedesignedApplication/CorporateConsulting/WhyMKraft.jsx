@@ -97,15 +97,6 @@ export default function WhyMKraft() {
                 </p>
               </div>
 
-              {/* Bottom Flush Image Container (Without Margins) */}
-              <div className="-mx-6 -mb-6 sm:-mx-8 sm:-mb-8 w-[calc(100%+3rem)] sm:w-[calc(100%+4rem)] h-44 sm:h-48 overflow-hidden bg-sky-50/50 border-t border-sky-100/60 mt-auto">
-                <img 
-                  alt={card.title} 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500 opacity-90 group-hover:opacity-100" 
-                  src={card.image}
-                  onError={(e) => { e.target.src = card.fallbackImage; }}
-                />
-              </div>
             </article>
           ))}
         </div>
