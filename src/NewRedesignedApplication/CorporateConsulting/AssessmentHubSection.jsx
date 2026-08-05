@@ -97,8 +97,8 @@ export default function AssessmentHubSection() {
             <div className="w-12 h-0.5 bg-slate-300 my-4" />
 
             {/* Paragraph 2 */}
-            <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-normal">
-              Skip the custom builds and integration delays. Access our Assessment suite of validated, plug-and-play tools the moment you sign up. Build for higher engagements
+            <p className="text-slate-700 text-base sm:text-lg lg:text-xl leading-relaxed font-normal">
+              Skip the custom builds and integration delays. Access our Assessment suite of validated, plug-and-play instruments the moment you sign up.
             </p>
 
           </div>
