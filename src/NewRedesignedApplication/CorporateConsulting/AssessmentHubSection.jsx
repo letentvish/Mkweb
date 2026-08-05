@@ -171,41 +171,6 @@ export default function AssessmentHubSection() {
               </div>
             </div>
 
-            {/* Mobile Phone Mockup Overlay (Floating Bottom-Right) */}
-            <div className="hidden sm:block absolute -bottom-6 -right-2 sm:right-4 w-[180px] sm:w-[210px] bg-slate-900 rounded-[28px] p-2 shadow-2xl border-2 border-slate-800 z-20">
-              {/* Phone Inner Screen */}
-              <div className="bg-white rounded-[22px] overflow-hidden text-left p-3 border border-slate-200 space-y-2">
-                
-                {/* Phone Header */}
-                <div className="flex items-center justify-between pb-2 border-b border-slate-100">
-                  <span className="font-poppins font-bold text-[10px] text-[#01182F]">
-                    MKraft <span className="text-[#0284c7]">Assess</span>
-                  </span>
-                  <div className="w-3 h-3 rounded-full bg-sky-50 flex items-center justify-center text-[#0284c7]">
-                    <UserCheck className="w-2 h-2" />
-                  </div>
-                </div>
-
-                {/* Mobile Module List */}
-                <div className="space-y-1.5 pt-1">
-                  {laptopModules.slice(0, 5).map((m, i) => (
-                    <div key={i} className="flex items-center justify-between p-1.5 rounded-lg bg-slate-50 border border-slate-100">
-                      <div className="flex items-center gap-1.5">
-                        <div className="w-5 h-5 rounded-full bg-sky-50 flex items-center justify-center shrink-0">
-                          {m.icon}
-                        </div>
-                        <div>
-                          <div className="font-bold text-[9px] text-[#01182F] leading-tight">{m.title}</div>
-                          <div className="text-[7px] text-slate-400 truncate max-w-[90px]">{m.subtitle}</div>
-                        </div>
-                      </div>
-                      <ChevronRight className="w-2.5 h-2.5 text-slate-300" />
-                    </div>
-                  ))}
-                </div>
-
-              </div>
-            </div>
 
           </div>
 
