@@ -43,7 +43,7 @@ export default function TransformSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-left">
         
         {/* Header Section (Left Aligned) */}
-        <div className="max-w-3xl mb-16 space-y-4">
+        <div className="max-w-3xl mb-12 space-y-4">
           <span className="text-xs font-mono font-extrabold text-[#0284c7] tracking-widest uppercase block font-poppins">
             Framework
           </span>
@@ -76,45 +76,49 @@ export default function TransformSection() {
         </div>
 
         {/* 5-Step Staggered Horizontal Timeline Grid */}
-        <div className="relative mt-20 pt-16 pb-16">
+        <div className="relative mt-16 pt-8 pb-8">
           
-          {/* Central Horizontal Timeline Line */}
-          <div className="hidden md:block absolute top-1/2 left-[5%] right-[5%] h-[2.5px] bg-[#01182F] -translate-y-1/2 z-0" />
+          {/* Central Horizontal Timeline Line (Sky Blue #0284c7) */}
+          <div className="hidden md:block absolute top-1/2 left-[2%] right-[2%] h-[3px] bg-[#0284c7] -translate-y-1/2 z-0 rounded-full" />
 
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-4 relative z-10 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4 relative z-10 items-center">
             {rhythmSteps.map((step, idx) => (
-              <div key={idx} className="relative flex flex-col items-start text-left">
+              <div key={idx} className="relative flex flex-col justify-center min-h-[260px] text-left px-1">
                 
                 {/* ABOVE Content Block (for Node 2 & Node 4) */}
-                {step.position === "above" && (
-                  <div className="hidden md:block mb-8 pb-4 space-y-1 min-h-[110px]">
-                    <h3 className="font-poppins font-extrabold text-xl sm:text-2xl text-[#01182F] tracking-tight">
-                      {step.title}
-                    </h3>
-                    <p className="text-slate-600 text-xs leading-relaxed font-normal max-w-[220px]">
-                      {step.description}
-                    </p>
-                  </div>
-                )}
+                <div 
+                  className={`hidden md:block absolute bottom-1/2 pb-8 left-0 right-3 space-y-1.5 transition-all duration-300 ${
+                    step.position === 'above' ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                  }`}
+                >
+                  <h3 className="font-poppins font-extrabold text-xl text-[#01182F] tracking-tight">
+                    {step.title}
+                  </h3>
+                  <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-normal">
+                    {step.description}
+                  </p>
+                </div>
 
-                {/* Node Circle Dot (On Line) */}
-                <div className="hidden md:flex items-center justify-center my-3 relative left-2">
-                  <div className="w-4 h-4 rounded-full bg-[#01182F] border-2 border-white shadow-md ring-4 ring-white" />
+                {/* DOT DIRECTLY CENTERED ON THE LINE */}
+                <div className="hidden md:flex items-center justify-start relative z-10 py-2">
+                  <div className="w-5 h-5 rounded-full bg-[#0284c7] border-4 border-white shadow-md ring-2 ring-sky-200 shrink-0" />
                 </div>
 
                 {/* BELOW Content Block (for Node 1, Node 3, Node 5) */}
-                {step.position === "below" && (
-                  <div className="hidden md:block mt-8 pt-4 space-y-1 min-h-[110px]">
-                    <h3 className="font-poppins font-extrabold text-xl sm:text-2xl text-[#01182F] tracking-tight">
-                      {step.title}
-                    </h3>
-                    <p className="text-slate-600 text-xs leading-relaxed font-normal max-w-[220px]">
-                      {step.description}
-                    </p>
-                  </div>
-                )}
+                <div 
+                  className={`hidden md:block absolute top-1/2 pt-8 left-0 right-3 space-y-1.5 transition-all duration-300 ${
+                    step.position === 'below' ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                  }`}
+                >
+                  <h3 className="font-poppins font-extrabold text-xl text-[#01182F] tracking-tight">
+                    {step.title}
+                  </h3>
+                  <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-normal">
+                    {step.description}
+                  </p>
+                </div>
 
-                {/* Mobile View (Stack Vertical Cards) */}
+                {/* Mobile View (Stacked Cards) */}
                 <div className="md:hidden bg-slate-50 border border-slate-200/90 rounded-2xl p-5 w-full space-y-1.5 shadow-sm">
                   <span className="text-[10px] font-mono font-extrabold text-[#0284c7] uppercase">STEP {step.id}</span>
                   <h3 className="font-poppins font-bold text-lg text-[#01182F]">{step.title}</h3>
