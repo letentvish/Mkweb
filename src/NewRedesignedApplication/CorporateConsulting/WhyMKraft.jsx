@@ -1,9 +1,7 @@
 import React from "react";
-import { Users, Search, Cpu, Target, ArrowRight } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Users, Search, Cpu, Target } from "lucide-react";
 
 export default function WhyMKraft() {
-  const navigate = useNavigate();
 
   const differentiators = [
     {
@@ -77,40 +75,33 @@ export default function WhyMKraft() {
           {differentiators.map((card, idx) => (
             <article 
               key={idx}
-              className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 flex flex-col h-full hover:shadow-md transition-shadow duration-300 group"
+              className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 flex flex-col justify-between h-full hover:shadow-md transition-shadow duration-300 group overflow-hidden"
             >
-              {/* Top Icon Circle */}
-              <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mb-8 text-[#0284c7] group-hover:scale-110 transition-transform duration-300">
-                {card.icon}
+              <div>
+                {/* Top Icon Circle */}
+                <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mb-6 text-[#0284c7] group-hover:scale-110 transition-transform duration-300">
+                  {card.icon}
+                </div>
+
+                {/* Sub-tag Badge */}
+                <div className="text-sm font-semibold text-[#0284c7] uppercase tracking-wider mb-3 font-poppins">
+                  {card.badge}
+                </div>
+
+                <h3 className="text-2xl font-poppins font-bold text-[#01182f] mb-4 leading-tight">
+                  {card.title}
+                </h3>
+
+                <p className="text-slate-600 text-base leading-relaxed font-normal mb-6">
+                  {card.description}
+                </p>
               </div>
 
-              {/* Sub-tag Badge */}
-              <div className="text-sm font-semibold text-[#0284c7] uppercase tracking-wider mb-3 font-poppins">
-                {card.badge}
-              </div>
-
-              <h3 className="text-2xl font-poppins font-bold text-[#01182f] mb-4 leading-tight">
-                {card.title}
-              </h3>
-
-              <p className="text-slate-600 mb-8 flex-grow text-base leading-relaxed font-normal">
-                {card.description}
-              </p>
-
-              {/* Action Link */}
-              <button
-                onClick={() => navigate("/assessment")}
-                className="inline-flex items-center text-[#0284c7] font-semibold hover:text-blue-800 transition-colors group mt-auto cursor-pointer text-base"
-              >
-                <span>Diagnose</span>
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </button>
-
-              {/* Bottom Graphic Container */}
-              <div className="mt-8 bg-blue-50/50 rounded-2xl h-40 w-full overflow-hidden flex items-center justify-center relative border border-blue-100/60">
+              {/* Bottom Flush Image Container (Without Margins) */}
+              <div className="-mx-6 -mb-6 sm:-mx-8 sm:-mb-8 w-[calc(100%+3rem)] sm:w-[calc(100%+4rem)] h-44 sm:h-48 overflow-hidden bg-sky-50/50 border-t border-sky-100/60 mt-auto">
                 <img 
                   alt={card.title} 
-                  className="object-cover w-full h-full opacity-70 group-hover:opacity-90 group-hover:scale-105 transition-all duration-500" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500 opacity-90 group-hover:opacity-100" 
                   src={card.image}
                   onError={(e) => { e.target.src = card.fallbackImage; }}
                 />
