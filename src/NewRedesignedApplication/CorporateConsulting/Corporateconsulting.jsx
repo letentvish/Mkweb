@@ -1,38 +1,30 @@
 import React from "react";
 import CorporateHero from "./Herosection";
-import ServiceCards from "./Servicecards";
-import VideoSection from "./Videosection";
-import ConsultingExcellence from "./Consultingexcellence";
-import Advisory from "./Advisoryexcellence";
-import SuccessStories from "./Sucessstories";
-import WhatSetsUsApart from "./Whatsetsusapart";
+import WhyMKraft from "./WhyMKraft";
+import TransformSection from "./TransformSection";
+import CapabilityPillars from "./CapabilityPillars";
+import DiagnosticsSection from "./DiagnosticsSection";
 import CTASection from "./Ctasection";
 
 const CorporateConsulting = () => {
   return (
-    <div className="min-h-screen bg-[#F8FAFC] text-slate-900 font-sans overflow-x-hidden">
-      {/* Hero Section */}
+    <div className="min-h-screen bg-[#F8FAFC] text-slate-900 font-sans overflow-x-hidden pt-16">
+      {/* 1. Hero Section & 3 Sub-Cards */}
       <CorporateHero />
 
-      {/* Video Section */}
-      <VideoSection />
+      {/* 2. Why MKraft (4 Feature Cards Grid) */}
+      <WhyMKraft />
 
-      {/* How We Can Help */}
-      <ServiceCards />
+      {/* 3. How MKraft Transforms (5-Step Methodology Flow) */}
+      <TransformSection />
 
-      {/* Consulting Excellence */}
-      <ConsultingExcellence />
+      {/* 4. Five ways we build lasting capability (5 Service Pillars) */}
+      <CapabilityPillars />
 
-      {/* Advisory Excellence */}
-      <Advisory />
+      {/* 5. Organizational Diagnostics & Telemetry Dashboard */}
+      <DiagnosticsSection />
 
-      {/* Impact & Success Stories */}
-      <SuccessStories />
-
-      {/* What Sets Us Apart */}
-      <WhatSetsUsApart />
-
-      {/* Call To Action */}
+      {/* 6. Bottom Call To Action */}
       <CTASection />
     </div>
   );
