@@ -8,7 +8,7 @@ import CTASection from "./Ctasection";
 
 const CorporateConsulting = () => {
   return (
-    <div className="min-h-screen bg-[#F8FAFC] text-slate-900 font-sans overflow-x-hidden pt-16">
+    <div className="min-h-screen bg-[#F8FAFC] text-slate-900 font-sans pt-16">
       {/* 1. Hero Section & 3 Sub-Cards */}
       <CorporateHero />
 

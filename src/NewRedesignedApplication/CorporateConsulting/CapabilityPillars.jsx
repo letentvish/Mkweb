@@ -50,12 +50,12 @@ export default function CapabilityPillars() {
 
   return (
     <section className="py-20 lg:py-28 bg-[#F8FAFC] border-b border-slate-200/80 text-slate-900 relative" id="capability-pillars">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
           {/* Left Column: Fixed Sticky Section Info Header */}
-          <div className="lg:col-span-5 lg:sticky lg:top-32 self-start space-y-6 text-left py-4">
+          <div className="lg:col-span-5 lg:sticky lg:top-28 self-start space-y-6 text-left py-4 z-10">
             
             {/* Status Pill Badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-50 border border-sky-200 text-[#0284c7] text-xs font-extrabold tracking-wider uppercase font-poppins">
@@ -94,17 +94,21 @@ export default function CapabilityPillars() {
 
           </div>
 
-          {/* Right Column: Sticky Stacking Full-Height Cards */}
-          <div className="lg:col-span-7 space-y-[20vh] pb-[10vh]">
+          {/* Right Column: Sticky Stacking Cards */}
+          <div className="lg:col-span-7 space-y-12 lg:space-y-16 pb-16">
             {servicePillars.map((item, idx) => (
               <div
                 key={idx}
-                className="sticky top-28 lg:top-32 bg-white border border-sky-200/80 rounded-3xl p-6 sm:p-10 shadow-2xl shadow-sky-900/10 min-h-[60vh] lg:min-h-[68vh] flex flex-col justify-center text-left group transition-all duration-500 overflow-hidden"
+                style={{
+                  top: `${100 + idx * 24}px`,
+                  zIndex: idx + 10,
+                }}
+                className="sticky bg-white border border-sky-200/90 rounded-3xl p-6 sm:p-10 shadow-2xl shadow-slate-900/10 min-h-[440px] sm:min-h-[480px] lg:min-h-[500px] flex flex-col justify-center text-left group transition-all duration-300 overflow-hidden"
               >
                 <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-6 md:gap-8 h-full">
                   
                   {/* Left Graphic Preview Box */}
-                  <div className="md:col-span-5 w-full h-52 sm:h-64 lg:h-72 rounded-2xl bg-sky-50/70 border border-sky-100/90 overflow-hidden relative flex items-center justify-center p-4 shrink-0">
+                  <div className="md:col-span-5 w-full h-48 sm:h-56 lg:h-64 rounded-2xl bg-sky-50/70 border border-sky-100/90 overflow-hidden relative flex items-center justify-center p-4 shrink-0">
                     <img 
                       src={item.image} 
                       alt={item.title} 
