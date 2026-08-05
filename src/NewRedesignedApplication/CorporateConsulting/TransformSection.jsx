@@ -53,7 +53,7 @@ export default function TransformSection() {
           </h2>
 
           <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal max-w-2xl pt-1">
-            A clean methodology cuts through confusion. We follow a seven-step rhythm that turns organizational diagnosis into measurable, scaled performance.
+            A clean methodology cuts through confusion. We follow a five-stage rhythm that turns organizational diagnosis into measurable, scaled performance.
           </p>
 
           {/* Action CTAs */}
