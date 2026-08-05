@@ -34,7 +34,7 @@ const CorporateHero = () => {
           {/* Right Column: Paragraph Intro & CTAs */}
           <div className="max-w-lg lg:ml-auto text-left">
             <p className="text-lg md:text-xl text-slate-700 mb-10 leading-relaxed font-normal">
-              We help enterprises build leaders, redesign organizations, drive transformation, and develop capabilities that create measurable business outcomes.
+              Bespoke leadership, culture, and change consulting — diagnosed at the root, measured at every step, and coached until it holds. This is capability that stays long after we leave the room.
             </p>
 
             <div className="flex flex-wrap gap-4">
