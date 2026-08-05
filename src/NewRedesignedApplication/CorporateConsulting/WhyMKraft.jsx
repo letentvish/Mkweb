@@ -67,7 +67,8 @@ export default function WhyMKraft() {
           </h2>
 
           <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto font-normal leading-relaxed">
-            We are not a catalogue of courses. We are an enterprise capability partner.
+            Most consulting hands you a deck. <br className="hidden sm:inline" />
+            We hand you difference that outlives the engagement.
           </p>
         </header>
 
