@@ -3,6 +3,7 @@ import CorporateHero from "./Herosection";
 import WhyMKraft from "./WhyMKraft";
 import TransformSection from "./TransformSection";
 import CapabilityPillars from "./CapabilityPillars";
+import AssessmentHubSection from "./AssessmentHubSection";
 import DiagnosticsSection from "./DiagnosticsSection";
 import CTASection from "./Ctasection";
 
@@ -21,10 +22,13 @@ const CorporateConsulting = () => {
       {/* 4. Five ways we build lasting capability (5 Service Pillars) */}
       <CapabilityPillars />
 
-      {/* 5. Organizational Diagnostics & Telemetry Dashboard */}
+      {/* 5. Assessment Hub & Next-Gen Diagnostic Ecosystem */}
+      <AssessmentHubSection />
+
+      {/* 6. Organizational Diagnostics & Telemetry Dashboard */}
       <DiagnosticsSection />
 
-      {/* 6. Bottom Call To Action */}
+      {/* 7. Bottom Call To Action */}
       <CTASection />
     </div>
   );
