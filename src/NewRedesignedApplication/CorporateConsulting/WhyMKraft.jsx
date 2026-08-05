@@ -1,102 +1,114 @@
 import React from "react";
-import { Target, Search, UserCheck, TrendingUp, ArrowRight } from "lucide-react";
+import { User, Search, Cpu, Target, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export default function WhyMKraft() {
   const navigate = useNavigate();
 
-  const advantages = [
+  const differentiators = [
     {
-      id: "01",
-      icon: <Target className="w-6 h-6 text-[#0284c7]" />,
-      title: "Tailored to your real context",
-      description: "No templated playbooks. Every advisory engagement is custom designed around your organization's unique operating reality.",
+      badge: "BESPOKE",
+      title: "Designed around your business",
+      description: "Every engagement begins with understanding your organization, not adapting you to a predefined program.",
+      icon: <User className="w-5 h-5 text-[#0284c7]" />,
       image: "/media__1785045152450.png"
     },
     {
-      id: "02",
-      icon: <Search className="w-6 h-6 text-[#0284c7]" />,
-      title: "Evidence before prescription",
-      description: "We conduct deep diagnostic audits before recommending solutions, ensuring complete root-cause alignment and accuracy.",
+      badge: "RESEARCH-BACKED",
+      title: "Evidence before intervention",
+      description: "We diagnose before we design, using proven assessments and data to build targeted capability solutions.",
+      icon: <Search className="w-5 h-5 text-[#0284c7]" />,
       image: "/media__1785045321185.png"
     },
     {
-      id: "03",
-      icon: <UserCheck className="w-6 h-6 text-[#0284c7]" />,
-      title: "Capability embedded, dependency eliminated",
-      description: "We build muscle inside your organization so your internal leadership teams own execution long after we conclude.",
+      badge: "TECHNOLOGY-ENABLED",
+      title: "Capability reinforced by technology",
+      description: "Our consulting is strengthened by digital platforms that sustain learning and track progress long after implementation.",
+      icon: <Cpu className="w-5 h-5 text-[#0284c7]" />,
       image: "/cta_3d_cube_stack_1785046334407.png"
     },
     {
-      id: "04",
-      icon: <TrendingUp className="w-6 h-6 text-[#0284c7]" />,
-      title: "Measured performance & business outcomes",
-      description: "Every milestone is linked directly to quantifiable business metrics, workforce productivity, and ROI tracking.",
+      badge: "OUTCOME-FOCUSED",
+      title: "Measured by business performance",
+      description: "Success is not measured by attendance. It is measured by improved leadership, stronger teams, and better organizational outcomes.",
+      icon: <Target className="w-5 h-5 text-[#0284c7]" />,
       image: "/cta_3d_barchart_1785046320601.png"
     }
   ];
 
   return (
     <section className="py-20 lg:py-28 bg-[#F8FAFC] border-b border-slate-200/80 text-slate-900 relative" id="why-mkraft">
+      
+      {/* Background Graphic Grid */}
+      <div className="absolute inset-0 pointer-events-none opacity-20 z-0">
+        <svg className="w-full h-full" viewBox="0 0 1200 800" fill="none">
+          <pattern id="differentiators-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="1.5" fill="#94A3B8" opacity="0.4" />
+          </pattern>
+          <rect width="100%" height="100%" fill="url(#differentiators-grid)" />
+        </svg>
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-50 border border-sky-200 text-[#0284c7] text-xs font-extrabold tracking-wider uppercase font-poppins">
-            <span className="w-2 h-2 rounded-full bg-[#0284c7] animate-pulse" />
-            <span>WHY MKRAFT</span>
-          </div>
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <p className="text-xs font-poppins font-extrabold text-[#0284c7] tracking-widest uppercase mb-1">
+            DIFFERENTIATORS
+          </p>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-[#01182F] tracking-tight">
-            Why <span className="bg-gradient-to-r from-[#01182F] via-[#0284c7] to-[#01182F] bg-clip-text text-transparent">MKraft</span>
+          <div className="w-10 h-1 bg-[#0284c7] rounded-full mx-auto my-3" />
+
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-extrabold text-[#01182F] tracking-tight mb-4">
+            Why <span className="text-[#0284c7]">MKraft</span>
           </h2>
 
-          <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal max-w-2xl mx-auto">
-            Diagnosing reality, embedding capability, and driving measurable business outcomes across global enterprise teams.
+          <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal max-w-xl mx-auto">
+            We are not a catalogue of courses. We are an enterprise capability partner.
           </p>
         </div>
 
-        {/* 4 Feature Cards Grid */}
+        {/* 4 Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {advantages.map((item, idx) => (
+          {differentiators.map((card, idx) => (
             <div
               key={idx}
-              className="bg-white border border-sky-200/80 rounded-3xl p-6 sm:p-7 shadow-lg shadow-sky-100/50 hover:shadow-xl hover:border-sky-300 transition-all duration-300 flex flex-col justify-between text-left group"
+              className="bg-white border border-sky-200/80 rounded-3xl p-6 sm:p-7 shadow-lg shadow-sky-100/50 hover:shadow-xl hover:border-sky-300 transition-all duration-300 flex flex-col justify-between text-left group overflow-hidden"
             >
               <div>
-                {/* Top Badge ID & Icon Header */}
-                <div className="flex items-center justify-between mb-5">
-                  <div className="w-12 h-12 rounded-2xl bg-sky-50 border border-sky-100 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    {item.icon}
-                  </div>
-                  <span className="text-xs font-mono font-extrabold text-slate-400 bg-slate-100 px-2.5 py-1 rounded-full">
-                    {item.id}
-                  </span>
+                {/* Circular Icon Badge */}
+                <div className="w-12 h-12 rounded-full bg-sky-50 border border-sky-100 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                  {card.icon}
                 </div>
 
-                <h3 className="font-poppins font-bold text-lg text-[#01182F] mb-2 leading-snug">
-                  {item.title}
+                {/* Sub-tag Badge */}
+                <span className="text-[10px] font-mono font-extrabold text-[#0284c7] tracking-widest uppercase block mb-2 font-poppins">
+                  {card.badge}
+                </span>
+
+                <h3 className="font-poppins font-extrabold text-xl text-[#01182F] mb-3 leading-snug tracking-tight">
+                  {card.title}
                 </h3>
 
                 <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6 font-normal">
-                  {item.description}
+                  {card.description}
                 </p>
 
                 <button
-                  onClick={() => navigate("/contact")}
-                  className="text-[#0284c7] hover:text-[#0369a1] font-bold text-xs inline-flex items-center gap-1.5 transition-colors cursor-pointer group mb-6"
+                  onClick={() => navigate("/assessment")}
+                  className="text-[#0284c7] hover:text-[#0369a1] font-bold text-sm inline-flex items-center gap-1.5 transition-colors cursor-pointer group mb-6"
                 >
-                  <span>Explore Advantage</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  <span>Diagnose</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
 
-              {/* Bottom Card Vector Graphic Illustration */}
-              <div className="w-full h-28 rounded-2xl bg-sky-50/50 border border-sky-100/80 overflow-hidden relative flex items-center justify-center p-2">
+              {/* Bottom Card Image Container */}
+              <div className="w-full h-32 rounded-2xl bg-gradient-to-b from-sky-50/60 to-sky-100/40 border border-sky-100 overflow-hidden relative flex items-center justify-center p-2 mt-2">
                 <img
-                  src={item.image}
-                  alt={item.title}
-                  className="max-h-full w-auto object-contain opacity-90 group-hover:scale-105 transition-transform duration-500"
+                  src={card.image}
+                  alt={card.title}
+                  className="max-h-full w-auto object-contain group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
 
