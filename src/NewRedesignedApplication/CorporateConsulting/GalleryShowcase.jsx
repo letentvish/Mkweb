@@ -1,21 +1,5 @@
-import React, { useRef } from "react";
-import { 
-  Unplug, 
-  BarChart2, 
-  FileText, 
-  Clock, 
-  AlertTriangle, 
-  Compass, 
-  AlertOctagon, 
-  GitMerge, 
-  ShieldAlert, 
-  Coins, 
-  Users, 
-  TrendingDown, 
-  ArrowRight,
-  ChevronLeft,
-  ChevronRight
-} from "lucide-react";
+import React from "react";
+import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 import ImageLeft from "../../Assets/CorporateConsulting/ImageLeft.jpg";
@@ -29,92 +13,65 @@ import Frame54 from "../../Assets/Frame54.jpg";
 
 export default function GalleryShowcase() {
   const navigate = useNavigate();
-  const topRowRef = useRef(null);
-  const bottomRowRef = useRef(null);
-
-  const scrollLeft = () => {
-    if (topRowRef.current && bottomRowRef.current) {
-      topRowRef.current.scrollBy({ left: -350, behavior: "smooth" });
-      bottomRowRef.current.scrollBy({ left: 350, behavior: "smooth" });
-    }
-  };
-
-  const scrollRight = () => {
-    if (topRowRef.current && bottomRowRef.current) {
-      topRowRef.current.scrollBy({ left: 350, behavior: "smooth" });
-      bottomRowRef.current.scrollBy({ left: -350, behavior: "smooth" });
-    }
-  };
 
   const topRowCards = [
-    {
-      title: "Disconnected Tools",
-      icon: <Unplug className="w-5 h-5 text-white" />,
-      image: ImageLeft
-    },
-    {
-      title: "Manual Handoffs",
-      icon: <BarChart2 className="w-5 h-5 text-white" />,
-      image: Frame53
-    },
-    {
-      title: "Siloed Data",
-      icon: <FileText className="w-5 h-5 text-white" />,
-      image: Frame54
-    },
-    {
-      title: "Delayed Decisions",
-      icon: <Clock className="w-5 h-5 text-white" />,
-      image: ImageRight
-    },
-    {
-      title: "Executive Friction",
-      icon: <AlertTriangle className="w-5 h-5 text-white" />,
-      image: MainImage
-    },
-    {
-      title: "Unaligned Strategy",
-      icon: <Compass className="w-5 h-5 text-white" />,
-      image: Frame247
-    }
+    { title: "Disconnected Tools", image: ImageLeft },
+    { title: "Manual Handoffs", image: Frame53 },
+    { title: "Siloed Data", image: Frame54 },
+    { title: "Delayed Decisions", image: ImageRight },
+    { title: "Executive Friction", image: MainImage },
+    { title: "Unaligned Strategy", image: Frame247 }
   ];
 
   const bottomRowCards = [
-    {
-      title: "Inconsistent Information",
-      icon: <AlertOctagon className="w-5 h-5 text-white" />,
-      image: ImageLeft1
-    },
-    {
-      title: "Complex Processes",
-      icon: <GitMerge className="w-5 h-5 text-white" />,
-      image: Frame54
-    },
-    {
-      title: "Compliance Risks",
-      icon: <ShieldAlert className="w-5 h-5 text-white" />,
-      image: ImageRight1
-    },
-    {
-      title: "Hidden Costs",
-      icon: <Coins className="w-5 h-5 text-white" />,
-      image: Frame53
-    },
-    {
-      title: "Leadership Silos",
-      icon: <Users className="w-5 h-5 text-white" />,
-      image: MainImage
-    },
-    {
-      title: "Capability Erosion",
-      icon: <TrendingDown className="w-5 h-5 text-white" />,
-      image: ImageRight
-    }
+    { title: "Inconsistent Information", image: ImageLeft1 },
+    { title: "Complex Processes", image: Frame54 },
+    { title: "Compliance Risks", image: ImageRight1 },
+    { title: "Hidden Costs", image: Frame53 },
+    { title: "Leadership Silos", image: MainImage },
+    { title: "Capability Erosion", image: ImageRight }
   ];
+
+  // Repeat items for seamless infinite marquee loop
+  const topLoop = [...topRowCards, ...topRowCards, ...topRowCards];
+  const bottomLoop = [...bottomRowCards, ...bottomRowCards, ...bottomRowCards];
 
   return (
     <section className="py-20 lg:py-28 bg-[#F8FAFC] text-slate-900 relative overflow-hidden border-b border-slate-200/80" id="mkraft-gallery">
       
+      {/* Keyframe Marquee Loop Animations */}
+      <style>{`
+        @keyframes marqueeGliderLeft {
+          0% { transform: translateX(0%); }
+          100% { transform: translateX(-33.333%); }
+        }
+
+        @keyframes marqueeGliderRight {
+          0% { transform: translateX(-33.333%); }
+          100% { transform: translateX(0%); }
+        }
+
+        .animate-glider-left {
+          display: flex;
+          width: max-content;
+          animation: marqueeGliderLeft 35s linear infinite;
+        }
+
+        .animate-glider-left:hover {
+          animation-play-state: paused;
+        }
+
+        .animate-glider-right {
+          display: flex;
+          width: max-content;
+          animation: marqueeGliderRight 35s linear infinite;
+        }
+
+        .animate-glider-right:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
+
       {/* Background Graphic Grid */}
       <div className="absolute inset-0 pointer-events-none opacity-20 z-0">
         <svg className="w-full h-full" viewBox="0 0 1200 800" fill="none">
@@ -163,100 +120,61 @@ export default function GalleryShowcase() {
 
         </div>
 
-        {/* Double-Row Interactive Slider Showcase Container */}
-        <div className="relative">
-          
-          {/* Navigation Controls: Circular Left/Right Arrow Buttons */}
-          <button
-            onClick={scrollLeft}
-            className="absolute -left-4 sm:-left-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white border border-slate-200 text-slate-800 shadow-xl flex items-center justify-center hover:bg-sky-50 hover:text-[#0284c7] transition-all cursor-pointer hover:scale-110 active:scale-95"
-            aria-label="Previous Cards"
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
+      </div>
 
-          <button
-            onClick={scrollRight}
-            className="absolute -right-4 sm:-right-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white border border-slate-200 text-slate-800 shadow-xl flex items-center justify-center hover:bg-sky-50 hover:text-[#0284c7] transition-all cursor-pointer hover:scale-110 active:scale-95"
-            aria-label="Next Cards"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
-
-          {/* Sliders Container */}
-          <div className="space-y-6 overflow-hidden">
-            
-            {/* Top Row Cards */}
+      {/* Full Width Automatic Infinite Loop Marquee Container */}
+      <div className="w-full relative overflow-hidden space-y-6 pt-2">
+        
+        {/* Top Row: Automatically Glides Left */}
+        <div className="animate-glider-left flex items-center gap-6">
+          {topLoop.map((card, idx) => (
             <div 
-              ref={topRowRef}
-              className="flex items-center gap-6 overflow-x-auto scrollbar-none scroll-smooth py-2 px-1"
+              key={idx}
+              className="w-72 sm:w-80 h-48 sm:h-52 shrink-0 rounded-3xl overflow-hidden relative shadow-md hover:shadow-xl border border-slate-200/80 group cursor-pointer"
             >
-              {[...topRowCards, ...topRowCards].map((card, idx) => (
-                <div 
-                  key={idx}
-                  className="w-72 sm:w-80 h-48 sm:h-52 shrink-0 rounded-3xl overflow-hidden relative shadow-lg group border border-indigo-900/30 cursor-pointer"
-                >
-                  {/* Background Photo with Dark Purple Overlay */}
-                  <img 
-                    src={card.image} 
-                    alt={card.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 filter brightness-75 group-hover:brightness-90"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-tr from-[#1a0b36]/90 via-[#27104b]/75 to-sky-950/60 group-hover:opacity-90 transition-opacity" />
+              {/* Clean Crisp Photo (No Blur) */}
+              <img 
+                src={card.image} 
+                alt={card.title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
 
-                  {/* Center Icon Circle */}
-                  <div className="w-11 h-11 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white flex items-center justify-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 group-hover:scale-115 group-hover:bg-[#0284c7] transition-all duration-300 shadow-lg">
-                    {card.icon}
-                  </div>
-
-                  {/* Bottom Title */}
-                  <div className="absolute bottom-4 left-5 right-5 text-left">
-                    <h3 className="font-poppins font-extrabold text-base sm:text-lg text-white tracking-tight leading-tight">
-                      {card.title}
-                    </h3>
-                  </div>
-                </div>
-              ))}
+              {/* Crisp Gradient Bottom Title Bar */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#01182F]/90 via-[#01182F]/20 to-transparent flex items-end p-5 text-left">
+                <h3 className="font-poppins font-extrabold text-base sm:text-lg text-white tracking-tight leading-tight group-hover:text-sky-300 transition-colors">
+                  {card.title}
+                </h3>
+              </div>
             </div>
+          ))}
+        </div>
 
-            {/* Bottom Row Cards (Staggered Offset) */}
+        {/* Bottom Row: Automatically Glides Right */}
+        <div className="animate-glider-right flex items-center gap-6">
+          {bottomLoop.map((card, idx) => (
             <div 
-              ref={bottomRowRef}
-              className="flex items-center gap-6 overflow-x-auto scrollbar-none scroll-smooth py-2 px-1 pl-12"
+              key={idx}
+              className="w-72 sm:w-80 h-48 sm:h-52 shrink-0 rounded-3xl overflow-hidden relative shadow-md hover:shadow-xl border border-slate-200/80 group cursor-pointer"
             >
-              {[...bottomRowCards, ...bottomRowCards].map((card, idx) => (
-                <div 
-                  key={idx}
-                  className="w-72 sm:w-80 h-48 sm:h-52 shrink-0 rounded-3xl overflow-hidden relative shadow-lg group border border-indigo-900/30 cursor-pointer"
-                >
-                  {/* Background Photo with Dark Purple Overlay */}
-                  <img 
-                    src={card.image} 
-                    alt={card.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 filter brightness-75 group-hover:brightness-90"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-tr from-[#1a0b36]/90 via-[#27104b]/75 to-sky-950/60 group-hover:opacity-90 transition-opacity" />
+              {/* Clean Crisp Photo (No Blur) */}
+              <img 
+                src={card.image} 
+                alt={card.title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
 
-                  {/* Center Icon Circle */}
-                  <div className="w-11 h-11 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white flex items-center justify-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 group-hover:scale-115 group-hover:bg-[#0284c7] transition-all duration-300 shadow-lg">
-                    {card.icon}
-                  </div>
-
-                  {/* Bottom Title */}
-                  <div className="absolute bottom-4 left-5 right-5 text-left">
-                    <h3 className="font-poppins font-extrabold text-base sm:text-lg text-white tracking-tight leading-tight">
-                      {card.title}
-                    </h3>
-                  </div>
-                </div>
-              ))}
+              {/* Crisp Gradient Bottom Title Bar */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#01182F]/90 via-[#01182F]/20 to-transparent flex items-end p-5 text-left">
+                <h3 className="font-poppins font-extrabold text-base sm:text-lg text-white tracking-tight leading-tight group-hover:text-sky-300 transition-colors">
+                  {card.title}
+                </h3>
+              </div>
             </div>
-
-          </div>
-
+          ))}
         </div>
 
       </div>
+
     </section>
   );
 }
