@@ -64,7 +64,7 @@ export default function CapabilityPillars() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Left Column: Fixed Sticky Section Info Header */}
           <div className="lg:col-span-5 lg:sticky lg:top-32 self-start space-y-6 text-left py-4 z-20">
@@ -106,16 +106,28 @@ export default function CapabilityPillars() {
 
           </div>
 
-          {/* Right Column: Sticky Stacking Cards with Cards Design */}
-          <div className="lg:col-span-7 space-y-12 lg:space-y-16 pb-16">
+          {/* Middle Column: Vertical Scroll Line & 5 Node Indicator Dots */}
+          <div className="hidden lg:flex lg:col-span-1 flex-col items-center justify-between relative py-6 self-stretch">
+            {/* Continuous Vertical Blue Indicator Line */}
+            <div className="w-[2px] bg-sky-200/90 absolute top-8 bottom-8 left-1/2 -translate-x-1/2 z-0" />
+
+            {/* 5 Node Dots */}
+            {servicePillars.map((_, idx) => (
+              <div 
+                key={idx}
+                className="w-5 h-5 rounded-full bg-white border-2 border-[#0284c7] flex items-center justify-center shadow-md relative z-10 my-16 group hover:scale-125 transition-all duration-300 cursor-pointer"
+              >
+                <div className="w-2 h-2 rounded-full bg-[#0284c7] group-hover:scale-125 transition-transform" />
+              </div>
+            ))}
+          </div>
+
+          {/* Right Column: Cards Scrolling Smoothly Above Each Other (No Stacking Overlap) */}
+          <div className="lg:col-span-6 space-y-6 sm:space-y-8 pb-12">
             {servicePillars.map((item, idx) => (
               <div
                 key={idx}
-                style={{
-                  top: `${100 + idx * 24}px`,
-                  zIndex: idx + 10,
-                }}
-                className="sticky bg-white border border-sky-200/80 rounded-3xl p-6 sm:p-8 shadow-xl shadow-sky-100/40 hover:shadow-2xl hover:border-sky-300 transition-all duration-300 text-left group overflow-hidden"
+                className="bg-white border border-sky-200/80 rounded-3xl p-6 sm:p-8 shadow-xl shadow-sky-100/40 hover:shadow-2xl hover:border-sky-300 transition-all duration-300 text-left group overflow-hidden"
               >
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
                   
