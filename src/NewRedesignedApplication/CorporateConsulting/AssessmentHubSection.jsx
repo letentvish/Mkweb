@@ -7,9 +7,8 @@ export default function AssessmentHubSection() {
       className="py-20 lg:py-28 text-slate-900 relative overflow-hidden border-b border-slate-200/80 bg-[#F8FAFC]" 
       id="assessment-hub"
     >
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center min-h-[520px] lg:min-h-[600px]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* LEFT COLUMN: Text & Info Column */}
           <div className="lg:col-span-5 text-left space-y-6">
@@ -34,7 +33,7 @@ export default function AssessmentHubSection() {
             </p>
 
             {/* Rocket Callout Card Container */}
-            <div className="bg-sky-50/70 border border-sky-200/80 rounded-2xl p-5 sm:p-6 shadow-sm flex items-start gap-4 text-left backdrop-blur-sm">
+            <div className="bg-sky-50/70 border border-sky-200/80 rounded-2xl p-5 sm:p-6 shadow-sm flex items-start gap-4 text-left">
               <div className="w-11 h-11 rounded-xl bg-sky-100 border border-sky-200 text-[#0284c7] flex items-center justify-center shrink-0">
                 <Rocket className="w-5 h-5" />
               </div>
@@ -45,8 +44,14 @@ export default function AssessmentHubSection() {
 
           </div>
 
-          {/* RIGHT COLUMN: Empty space allowing bgasses.webp graphic to display clearly */}
-          <div className="hidden lg:block lg:col-span-7" />
+          {/* RIGHT COLUMN: Asgra.png Assessment Suite Graphic */}
+          <div className="lg:col-span-7 flex items-center justify-center pt-6 lg:pt-0">
+            <img 
+              src="/Asgra.png" 
+              alt="Assessment Suite Ecosystem Graphic" 
+              className="w-full h-auto max-w-[680px] lg:max-w-[780px] object-contain drop-shadow-xl hover:scale-105 transition-transform duration-500"
+            />
+          </div>
 
         </div>
       </div>
