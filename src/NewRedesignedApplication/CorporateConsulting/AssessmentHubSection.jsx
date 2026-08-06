@@ -4,17 +4,9 @@ import { Rocket } from "lucide-react";
 export default function AssessmentHubSection() {
   return (
     <section 
-      className="py-20 lg:py-28 text-slate-900 relative overflow-hidden border-b border-slate-200/80 bg-white" 
+      className="py-20 lg:py-28 text-slate-900 relative overflow-hidden border-b border-slate-200/80 bg-[#F8FAFC]" 
       id="assessment-hub"
     >
-      {/* Fixed Dimension Graphic Background (bgasses.webp) - Anchored Right */}
-      <div className="absolute inset-0 pointer-events-none z-0 flex justify-end overflow-hidden">
-        <img 
-          src="/bgasses.webp" 
-          alt="Assessment Hub Suite Graphic" 
-          className="h-[105%] w-auto max-w-none object-contain object-right"
-        />
-      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center min-h-[520px] lg:min-h-[600px]">
