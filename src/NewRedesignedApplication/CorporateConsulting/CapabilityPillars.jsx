@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Users, RefreshCw, BarChart3, GraduationCap, Compass, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export default function CapabilityPillars() {
   const navigate = useNavigate();
   const [version, setVersion] = useState("v2"); // "v1" or "v2"
+  const [activePillarIndex, setActivePillarIndex] = useState(0);
+  const pillarRefs = useRef([]);
 
   const servicePillars = [
     {
       step: "01",
       pillarTag: "PILLAR 01",
-      icon: <Users className="w-7 h-7 text-[#0284c7]" />,
+      icon: <Users className="w-7 h-7" />,
       title: "Organisation & Leadership Development",
       subtitle: "Change people choose, not change they survive.",
       description: "We re-architect how the organisation works, decides, and adapts — and bring people along with it, so adoption isn't an afterthought but the design.",
@@ -20,7 +22,7 @@ export default function CapabilityPillars() {
     {
       step: "02",
       pillarTag: "PILLAR 02",
-      icon: <RefreshCw className="w-7 h-7 text-[#0284c7]" />,
+      icon: <RefreshCw className="w-7 h-7" />,
       title: "Culture Transformation and Change Management",
       subtitle: "Behavioral acceleration and organizational readiness.",
       description: "Embedding sustainable behavioral change, operational resilience, and agility through proven change management frameworks.",
@@ -30,7 +32,7 @@ export default function CapabilityPillars() {
     {
       step: "03",
       pillarTag: "PILLAR 03",
-      icon: <BarChart3 className="w-7 h-7 text-[#0284c7]" />,
+      icon: <BarChart3 className="w-7 h-7" />,
       title: "Talent and Performance Architecture",
       subtitle: "Workforce optimization and KPI alignment.",
       description: "Redesigning competency frameworks, performance feedback loops, and career pathways to maximize human capital output.",
@@ -40,7 +42,7 @@ export default function CapabilityPillars() {
     {
       step: "04",
       pillarTag: "PILLAR 04",
-      icon: <GraduationCap className="w-7 h-7 text-[#0284c7]" />,
+      icon: <GraduationCap className="w-7 h-7" />,
       title: "AI LXP and Learning Services",
       subtitle: "Continuous capability and skill telemetry.",
       description: "Deploying personalized learning journeys and AI-powered skill telemetry to continuously upgrade workforce competencies.",
@@ -50,7 +52,7 @@ export default function CapabilityPillars() {
     {
       step: "05",
       pillarTag: "PILLAR 05",
-      icon: <Compass className="w-7 h-7 text-[#0284c7]" />,
+      icon: <Compass className="w-7 h-7" />,
       title: "Strategic Advisory and Capability Design",
       subtitle: "Operating model and architecture.",
       description: "Structuring enterprise operating models to eliminate organizational friction, enhance data velocity, and scale execution.",
@@ -58,6 +60,34 @@ export default function CapabilityPillars() {
       image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=80"
     }
   ];
+
+  // Scroll observer to trigger node zoom & light drop activation in Version 2
+  useEffect(() => {
+    if (version !== "v2") return;
+
+    const observerOptions = {
+      root: null,
+      rootMargin: "-35% 0px -35% 0px",
+      threshold: 0.25
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const index = Number(entry.target.getAttribute("data-index"));
+          if (!isNaN(index)) {
+            setActivePillarIndex(index);
+          }
+        }
+      });
+    }, observerOptions);
+
+    pillarRefs.current.forEach((el) => {
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, [version]);
 
   return (
     <section className="py-20 lg:py-28 bg-[#F8FAFC] border-b border-slate-200/80 text-slate-900 relative" id="capability-pillars">
@@ -146,22 +176,38 @@ export default function CapabilityPillars() {
 
           </div>
 
-          {/* Middle Column: Vertical Scroll Line & 5 Node Indicator Dots */}
+          {/* Middle Column: Vertical Scroll Line & Animated Constant Light Drop */}
           <div className={`hidden lg:flex lg:col-span-1 flex-col items-center justify-between relative py-6 self-stretch ${
             version === "v2" ? "min-h-screen py-12 justify-around" : ""
           }`}>
             {/* Continuous Vertical Blue Indicator Line */}
             <div className="w-[2px] bg-sky-200/90 absolute top-8 bottom-8 left-1/2 -translate-x-1/2 z-0" />
 
-            {/* 5 Node Dots */}
-            {servicePillars.map((_, idx) => (
-              <div 
-                key={idx}
-                className="w-5 h-5 rounded-full bg-white border-2 border-[#0284c7] flex items-center justify-center shadow-md relative z-10 my-auto group hover:scale-125 transition-all duration-300 cursor-pointer"
-              >
-                <div className="w-2 h-2 rounded-full bg-[#0284c7] group-hover:scale-125 transition-transform" />
+            {/* Fixed Animated Light Drop Beam (Positioned Constant at Viewport Center in Version 2) */}
+            {version === "v2" && (
+              <div className="lg:sticky lg:top-1/2 lg:-translate-y-1/2 z-30 pointer-events-none my-auto">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-r from-sky-400 to-[#0284c7] shadow-[0_0_25px_#0284c7] ring-4 ring-sky-300/80 animate-pulse border-2 border-white flex items-center justify-center">
+                  <div className="w-3 h-3 rounded-full bg-white animate-ping" />
+                </div>
               </div>
-            ))}
+            )}
+
+            {/* 5 Node Dots */}
+            {servicePillars.map((_, idx) => {
+              const isActive = activePillarIndex === idx && version === "v2";
+              return (
+                <div 
+                  key={idx}
+                  className={`w-5 h-5 rounded-full flex items-center justify-center shadow-md relative z-10 my-auto transition-all duration-500 cursor-pointer ${
+                    isActive
+                      ? "bg-[#0284c7] border-2 border-white scale-150 ring-4 ring-sky-400 shadow-[0_0_25px_#0284c7]"
+                      : "bg-white border-2 border-[#0284c7]"
+                  }`}
+                >
+                  <div className={`w-2 h-2 rounded-full transition-transform ${isActive ? "bg-white scale-125" : "bg-[#0284c7]"}`} />
+                </div>
+              );
+            })}
           </div>
 
           {/* Right Column: Version 1 vs Version 2 Content */}
@@ -209,49 +255,77 @@ export default function CapabilityPillars() {
               </div>
             )}
 
-            {/* VERSION 2: Full-Height Frameless Items with Real Subject Photography */}
+            {/* VERSION 2: Full-Height Frameless Items with Scroll Light Trigger & Content Zoom */}
             {version === "v2" && (
               <div className="space-y-12">
-                {servicePillars.map((item, idx) => (
-                  <div
-                    key={idx}
-                    className="min-h-screen flex flex-col justify-center py-12 lg:py-16 text-left group border-0 bg-transparent shadow-none"
-                  >
-                    
-                    {/* Real High-Resolution Subject Photography (No AI) */}
-                    <div className="w-full h-64 sm:h-80 lg:h-96 rounded-3xl overflow-hidden shadow-lg border border-slate-200/80 mb-6 group-hover:shadow-2xl transition-all duration-500">
-                      <img 
-                        src={item.image} 
-                        alt={item.title} 
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-95 group-hover:brightness-100"
-                      />
-                    </div>
+                {servicePillars.map((item, idx) => {
+                  const isActive = activePillarIndex === idx;
 
-                    {/* Top Badge & Pillar Number */}
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="text-xs font-mono font-extrabold text-[#0284c7] uppercase tracking-wider bg-sky-50 border border-sky-200 px-3 py-1 rounded-full">
-                        {item.pillarTag}
-                      </span>
-                      <div className="w-10 h-10 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center text-[#0284c7]">
-                        {item.icon}
+                  return (
+                    <div
+                      key={idx}
+                      ref={(el) => (pillarRefs.current[idx] = el)}
+                      data-index={idx}
+                      className={`min-h-screen flex flex-col justify-center py-12 lg:py-16 text-left group border-0 bg-transparent shadow-none transition-all duration-500 ${
+                        isActive ? "scale-[1.03] opacity-100" : "scale-100 opacity-75"
+                      }`}
+                    >
+                      
+                      {/* Real High-Resolution Subject Photography (No AI) */}
+                      <div className={`w-full h-64 sm:h-80 lg:h-96 rounded-3xl overflow-hidden shadow-lg border transition-all duration-700 mb-6 ${
+                        isActive
+                          ? "shadow-2xl border-sky-400 ring-4 ring-sky-200/60 scale-[1.01]"
+                          : "border-slate-200/80"
+                      }`}>
+                        <img 
+                          src={item.image} 
+                          alt={item.title} 
+                          className={`w-full h-full object-cover transition-transform duration-700 ${
+                            isActive ? "scale-105 brightness-100" : "filter brightness-90"
+                          }`}
+                        />
                       </div>
+
+                      {/* Top Badge & Pillar Number */}
+                      <div className="flex items-center justify-between mb-3">
+                        <span className={`text-xs font-mono font-extrabold uppercase tracking-wider px-3 py-1 rounded-full transition-colors duration-300 ${
+                          isActive
+                            ? "bg-[#0284c7] text-white shadow-md"
+                            : "bg-sky-50 text-[#0284c7] border border-sky-200"
+                        }`}>
+                          {item.pillarTag}
+                        </span>
+                        <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 ${
+                          isActive
+                            ? "bg-[#0284c7] text-white shadow-lg scale-110"
+                            : "bg-sky-50 border border-sky-100 text-[#0284c7]"
+                        }`}>
+                          {item.icon}
+                        </div>
+                      </div>
+
+                      {/* Title & Copy with Zoom & Highlight */}
+                      <h3 className={`font-poppins font-extrabold text-2xl sm:text-3xl tracking-tight leading-snug mb-2 transition-all duration-300 ${
+                        isActive ? "text-[#0284c7] scale-[1.02] origin-left" : "text-[#01182F]"
+                      }`}>
+                        {item.title}
+                      </h3>
+
+                      <p className={`font-bold text-sm sm:text-base mb-3 transition-colors duration-300 ${
+                        isActive ? "text-[#0369a1]" : "text-[#0284c7]"
+                      }`}>
+                        {item.subtitle}
+                      </p>
+
+                      <p className={`text-sm sm:text-base leading-relaxed font-normal transition-colors duration-300 ${
+                        isActive ? "text-slate-900 font-medium" : "text-slate-600"
+                      }`}>
+                        {item.description}
+                      </p>
+
                     </div>
-
-                    {/* Title & Copy */}
-                    <h3 className="font-poppins font-extrabold text-2xl sm:text-3xl text-[#01182F] tracking-tight leading-snug mb-2 group-hover:text-[#0284c7] transition-colors">
-                      {item.title}
-                    </h3>
-
-                    <p className="text-[#0284c7] font-bold text-sm sm:text-base mb-3">
-                      {item.subtitle}
-                    </p>
-
-                    <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-normal">
-                      {item.description}
-                    </p>
-
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             )}
 
