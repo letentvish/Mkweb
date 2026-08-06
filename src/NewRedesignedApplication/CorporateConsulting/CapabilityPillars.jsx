@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Users, RefreshCw, BarChart3, GraduationCap, Compass, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export default function CapabilityPillars() {
   const navigate = useNavigate();
+  const [version, setVersion] = useState("v2"); // "v1" or "v2"
 
   const servicePillars = [
     {
@@ -79,9 +80,11 @@ export default function CapabilityPillars() {
           {/* Left Column: Fixed Sticky Section Info Header */}
           <div className="lg:col-span-5 lg:sticky lg:top-32 self-start space-y-6 text-left py-4 z-20">
             
-            <p className="text-xs font-poppins font-extrabold text-[#0284c7] tracking-widest uppercase mb-1">
-              JOURNEYS
-            </p>
+            <div className="flex items-center gap-3">
+              <p className="text-xs font-poppins font-extrabold text-[#0284c7] tracking-widest uppercase">
+                JOURNEYS
+              </p>
+            </div>
 
             {/* Main Title */}
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-extrabold text-[#01182F] tracking-tight leading-[1.08]">
@@ -94,6 +97,33 @@ export default function CapabilityPillars() {
             <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal max-w-md">
               Bespoke solutions, engineered end to end. Choose one, or weave several into a single journey — every pillar runs on the same diagnostic engine.
             </p>
+
+            {/* Interactive Version Toggle Switch Button Container */}
+            <div className="pt-1">
+              <div className="inline-flex p-1 rounded-full bg-slate-200/80 border border-slate-300/70 shadow-inner text-xs font-mono">
+                <button
+                  onClick={() => setVersion("v1")}
+                  className={`px-4 py-2 rounded-full transition-all duration-300 cursor-pointer ${
+                    version === "v1"
+                      ? "bg-[#0284c7] text-white shadow-md font-bold"
+                      : "text-slate-600 hover:text-slate-900 font-semibold"
+                  }`}
+                >
+                  Version 1 (Cards)
+                </button>
+
+                <button
+                  onClick={() => setVersion("v2")}
+                  className={`px-4 py-2 rounded-full transition-all duration-300 cursor-pointer ${
+                    version === "v2"
+                      ? "bg-[#0284c7] text-white shadow-md font-bold"
+                      : "text-slate-600 hover:text-slate-900 font-semibold"
+                  }`}
+                >
+                  Version 2 (Full-Height & Media)
+                </button>
+              </div>
+            </div>
 
             {/* Action CTAs */}
             <div className="flex items-center gap-4 sm:gap-6 pt-2">
@@ -117,9 +147,11 @@ export default function CapabilityPillars() {
           </div>
 
           {/* Middle Column: Vertical Scroll Line & 5 Node Indicator Dots */}
-          <div className="hidden lg:flex lg:col-span-1 flex-col items-center justify-around relative py-12 self-stretch min-h-screen">
+          <div className={`hidden lg:flex lg:col-span-1 flex-col items-center justify-between relative py-6 self-stretch ${
+            version === "v2" ? "min-h-screen py-12 justify-around" : ""
+          }`}>
             {/* Continuous Vertical Blue Indicator Line */}
-            <div className="w-[2px] bg-sky-200/90 absolute top-12 bottom-12 left-1/2 -translate-x-1/2 z-0" />
+            <div className="w-[2px] bg-sky-200/90 absolute top-8 bottom-8 left-1/2 -translate-x-1/2 z-0" />
 
             {/* 5 Node Dots */}
             {servicePillars.map((_, idx) => (
@@ -132,48 +164,97 @@ export default function CapabilityPillars() {
             ))}
           </div>
 
-          {/* Right Column: Full-Height Frameless Items (No Stroke, No Fill) */}
-          <div className="lg:col-span-6 space-y-12">
-            {servicePillars.map((item, idx) => (
-              <div
-                key={idx}
-                className="min-h-screen flex flex-col justify-center py-12 lg:py-16 text-left group border-0 bg-transparent shadow-none"
-              >
-                
-                {/* Real High-Resolution Subject Photography (No AI) */}
-                <div className="w-full h-64 sm:h-80 lg:h-96 rounded-3xl overflow-hidden shadow-lg border border-slate-200/80 mb-6 group-hover:shadow-2xl transition-all duration-500">
-                  <img 
-                    src={item.image} 
-                    alt={item.title} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-95 group-hover:brightness-100"
-                  />
-                </div>
+          {/* Right Column: Version 1 vs Version 2 Content */}
+          <div className="lg:col-span-6">
+            
+            {/* VERSION 1: Compact Enterprise White Cards */}
+            {version === "v1" && (
+              <div className="space-y-6 sm:space-y-8 pb-12">
+                {servicePillars.map((item, idx) => (
+                  <div
+                    key={idx}
+                    className="bg-white border border-sky-200/80 rounded-3xl p-6 sm:p-8 shadow-xl shadow-sky-100/40 hover:shadow-2xl hover:border-sky-300 transition-all duration-300 text-left group overflow-hidden"
+                  >
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+                      
+                      {/* Left Square Icon Box */}
+                      <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-sky-50/80 border border-sky-100 flex items-center justify-center text-[#0284c7] shrink-0 group-hover:scale-105 transition-transform duration-300 shadow-sm">
+                        {item.icon}
+                      </div>
 
-                {/* Top Badge & Pillar Number */}
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-mono font-extrabold text-[#0284c7] uppercase tracking-wider bg-sky-50 border border-sky-200 px-3 py-1 rounded-full">
-                    {item.pillarTag}
-                  </span>
-                  <div className="w-10 h-10 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center text-[#0284c7]">
-                    {item.icon}
+                      {/* Right Content */}
+                      <div className="flex-grow space-y-2 w-full">
+                        <div className="flex items-center justify-between">
+                          <span className="text-[11px] font-mono font-extrabold text-[#0284c7] tracking-wider uppercase bg-sky-50 border border-sky-200/80 px-3 py-1 rounded-full">
+                            {item.pillarTag}
+                          </span>
+                        </div>
+
+                        <h3 className="font-poppins font-extrabold text-xl sm:text-2xl text-[#01182F] tracking-tight leading-snug group-hover:text-[#0284c7] transition-colors">
+                          {item.title}
+                        </h3>
+
+                        <p className="text-[#0284c7] font-bold text-xs sm:text-sm">
+                          {item.subtitle}
+                        </p>
+
+                        <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-normal">
+                          {item.description}
+                        </p>
+                      </div>
+
+                    </div>
                   </div>
-                </div>
-
-                {/* Title & Copy */}
-                <h3 className="font-poppins font-extrabold text-2xl sm:text-3xl text-[#01182F] tracking-tight leading-snug mb-2 group-hover:text-[#0284c7] transition-colors">
-                  {item.title}
-                </h3>
-
-                <p className="text-[#0284c7] font-bold text-sm sm:text-base mb-3">
-                  {item.subtitle}
-                </p>
-
-                <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-normal">
-                  {item.description}
-                </p>
-
+                ))}
               </div>
-            ))}
+            )}
+
+            {/* VERSION 2: Full-Height Frameless Items with Real Subject Photography */}
+            {version === "v2" && (
+              <div className="space-y-12">
+                {servicePillars.map((item, idx) => (
+                  <div
+                    key={idx}
+                    className="min-h-screen flex flex-col justify-center py-12 lg:py-16 text-left group border-0 bg-transparent shadow-none"
+                  >
+                    
+                    {/* Real High-Resolution Subject Photography (No AI) */}
+                    <div className="w-full h-64 sm:h-80 lg:h-96 rounded-3xl overflow-hidden shadow-lg border border-slate-200/80 mb-6 group-hover:shadow-2xl transition-all duration-500">
+                      <img 
+                        src={item.image} 
+                        alt={item.title} 
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-95 group-hover:brightness-100"
+                      />
+                    </div>
+
+                    {/* Top Badge & Pillar Number */}
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-xs font-mono font-extrabold text-[#0284c7] uppercase tracking-wider bg-sky-50 border border-sky-200 px-3 py-1 rounded-full">
+                        {item.pillarTag}
+                      </span>
+                      <div className="w-10 h-10 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center text-[#0284c7]">
+                        {item.icon}
+                      </div>
+                    </div>
+
+                    {/* Title & Copy */}
+                    <h3 className="font-poppins font-extrabold text-2xl sm:text-3xl text-[#01182F] tracking-tight leading-snug mb-2 group-hover:text-[#0284c7] transition-colors">
+                      {item.title}
+                    </h3>
+
+                    <p className="text-[#0284c7] font-bold text-sm sm:text-base mb-3">
+                      {item.subtitle}
+                    </p>
+
+                    <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-normal">
+                      {item.description}
+                    </p>
+
+                  </div>
+                ))}
+              </div>
+            )}
+
           </div>
 
         </div>
