@@ -61,7 +61,7 @@ export default function CapabilityPillars() {
     }
   ];
 
-  // Scroll observer to trigger node zoom & light drop activation in Version 2
+  // Scroll observer to trigger content zoom in Version 2
   useEffect(() => {
     if (version !== "v2") return;
 
@@ -176,38 +176,31 @@ export default function CapabilityPillars() {
 
           </div>
 
-          {/* Middle Column: Vertical Scroll Line & Animated Constant Light Drop */}
+          {/* Middle Column: Vertical Scroll Line & Constant Glowing Light Drop (No Dots, No Pulse) */}
           <div className={`hidden lg:flex lg:col-span-1 flex-col items-center justify-between relative py-6 self-stretch ${
             version === "v2" ? "min-h-screen py-12 justify-around" : ""
           }`}>
             {/* Continuous Vertical Blue Indicator Line */}
             <div className="w-[2px] bg-sky-200/90 absolute top-8 bottom-8 left-1/2 -translate-x-1/2 z-0" />
 
-            {/* Fixed Animated Light Drop Beam (Positioned Constant at Viewport Center in Version 2) */}
+            {/* Steady Glowing Light Drop Indicator (Constant Position, No Pulsing) */}
             {version === "v2" && (
               <div className="lg:sticky lg:top-1/2 lg:-translate-y-1/2 z-30 pointer-events-none my-auto">
-                <div className="w-8 h-8 rounded-full bg-gradient-to-r from-sky-400 to-[#0284c7] shadow-[0_0_25px_#0284c7] ring-4 ring-sky-300/80 animate-pulse border-2 border-white flex items-center justify-center">
-                  <div className="w-3 h-3 rounded-full bg-white animate-ping" />
+                <div className="w-7 h-7 rounded-full bg-gradient-to-r from-sky-400 to-[#0284c7] shadow-[0_0_20px_#0284c7] ring-4 ring-sky-300/80 border-2 border-white flex items-center justify-center">
+                  <div className="w-2.5 h-2.5 rounded-full bg-white" />
                 </div>
               </div>
             )}
 
-            {/* 5 Node Dots */}
-            {servicePillars.map((_, idx) => {
-              const isActive = activePillarIndex === idx && version === "v2";
-              return (
-                <div 
-                  key={idx}
-                  className={`w-5 h-5 rounded-full flex items-center justify-center shadow-md relative z-10 my-auto transition-all duration-500 cursor-pointer ${
-                    isActive
-                      ? "bg-[#0284c7] border-2 border-white scale-150 ring-4 ring-sky-400 shadow-[0_0_25px_#0284c7]"
-                      : "bg-white border-2 border-[#0284c7]"
-                  }`}
-                >
-                  <div className={`w-2 h-2 rounded-full transition-transform ${isActive ? "bg-white scale-125" : "bg-[#0284c7]"}`} />
-                </div>
-              );
-            })}
+            {/* Version 1 Dots Only */}
+            {version === "v1" && servicePillars.map((_, idx) => (
+              <div 
+                key={idx}
+                className="w-5 h-5 rounded-full bg-white border-2 border-[#0284c7] flex items-center justify-center shadow-md relative z-10 my-auto group hover:scale-125 transition-all duration-300 cursor-pointer"
+              >
+                <div className="w-2 h-2 rounded-full bg-[#0284c7] group-hover:scale-125 transition-transform" />
+              </div>
+            ))}
           </div>
 
           {/* Right Column: Version 1 vs Version 2 Content */}
@@ -255,7 +248,7 @@ export default function CapabilityPillars() {
               </div>
             )}
 
-            {/* VERSION 2: Full-Height Frameless Items with Scroll Light Trigger & Content Zoom */}
+            {/* VERSION 2: Full-Height Frameless Items with Scroll Content Zoom */}
             {version === "v2" && (
               <div className="space-y-12">
                 {servicePillars.map((item, idx) => {
