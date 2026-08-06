@@ -5,6 +5,7 @@ import TransformSection from "./TransformSection";
 import CapabilityPillars from "./CapabilityPillars";
 import AssessmentHubSection from "./AssessmentHubSection";
 import DiagnosticsSection from "./DiagnosticsSection";
+import GalleryShowcase from "./GalleryShowcase";
 import CTASection from "./Ctasection";
 
 const CorporateConsulting = () => {
@@ -28,7 +29,10 @@ const CorporateConsulting = () => {
       {/* 6. Organizational Diagnostics & Telemetry Dashboard */}
       <DiagnosticsSection />
 
-      {/* 7. Bottom Call To Action */}
+      {/* 7. Gallery Showcase - The MultipliersKraft Experience */}
+      <GalleryShowcase />
+
+      {/* 8. Bottom Call To Action */}
       <CTASection />
     </div>
   );
