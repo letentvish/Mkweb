@@ -177,8 +177,7 @@ export default function AssessmentHubSection() {
             {/* Main Headline */}
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-extrabold text-[#01182F] tracking-tight leading-[1.08]">
               Next-Gen <br />
-              Assessment Suite <br />
-              <span className="text-[#0284c7]">The Diagnostic Ecosystem</span>
+              <span className="text-[#0284c7]">Assessment Suite</span>
             </h2>
 
             {/* Paragraph 1 */}
