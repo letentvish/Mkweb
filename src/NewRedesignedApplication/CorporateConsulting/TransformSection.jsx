@@ -120,27 +120,27 @@ export default function TransformSection() {
                   className="relative flex flex-col justify-center min-h-[260px] text-left px-1 group cursor-pointer"
                 >
                   
-                  {/* ABOVE Content Block (for Node 2 & Node 4) */}
-                  <div 
-                    className={`hidden md:block absolute bottom-1/2 pb-8 left-0 right-3 space-y-1.5 transition-all duration-500 ${
-                      isSelected ? '-translate-y-2 opacity-100' : 'opacity-80'
-                    } ${
-                      step.position === 'above' ? 'block' : 'opacity-0 pointer-events-none'
-                    }`}
-                  >
-                    <h3 
-                      className={`font-poppins font-extrabold text-xl tracking-tight transition-colors duration-300 ${
-                        isSelected ? 'text-[#0284c7] scale-105 origin-left' : 'text-[#01182F]'
+                  {/* ABOVE Content Block (ONLY for position === 'above') */}
+                  {step.position === 'above' && (
+                    <div 
+                      className={`hidden md:block absolute bottom-1/2 pb-8 left-0 right-3 space-y-1.5 transition-all duration-500 ${
+                        isSelected ? '-translate-y-2 opacity-100' : 'opacity-80'
                       }`}
                     >
-                      {step.title}
-                    </h3>
-                    <p className={`text-xs sm:text-sm leading-relaxed font-normal transition-colors duration-300 ${
-                      isSelected ? 'text-slate-900 font-medium' : 'text-slate-600'
-                    }`}>
-                      {step.description}
-                    </p>
-                  </div>
+                      <h3 
+                        className={`font-poppins font-extrabold text-xl tracking-tight transition-colors duration-300 ${
+                          isSelected ? 'text-[#0284c7] scale-105 origin-left' : 'text-[#01182F]'
+                        }`}
+                      >
+                        {step.title}
+                      </h3>
+                      <p className={`text-xs sm:text-sm leading-relaxed font-normal transition-colors duration-300 ${
+                        isSelected ? 'text-slate-900 font-medium' : 'text-slate-600'
+                      }`}>
+                        {step.description}
+                      </p>
+                    </div>
+                  )}
 
                   {/* DOT DIRECTLY CENTERED ON THE LINE WITH DYNAMIC LIGHT TRIGGER */}
                   <div className="hidden md:flex items-center justify-start relative z-10 py-2">
@@ -153,27 +153,27 @@ export default function TransformSection() {
                     />
                   </div>
 
-                  {/* BELOW Content Block (for Node 1, Node 3, Node 5) */}
-                  <div 
-                    className={`hidden md:block absolute top-1/2 pt-8 left-0 right-3 space-y-1.5 transition-all duration-500 ${
-                      isSelected ? 'translate-y-2 opacity-100' : 'opacity-80'
-                    } ${
-                      step.position === 'below' ? 'block' : 'opacity-0 pointer-events-none'
-                    }`}
-                  >
-                    <h3 
-                      className={`font-poppins font-extrabold text-xl tracking-tight transition-colors duration-300 ${
-                        isSelected ? 'text-[#0284c7] scale-105 origin-left' : 'text-[#01182F]'
+                  {/* BELOW Content Block (ONLY for position === 'below') */}
+                  {step.position === 'below' && (
+                    <div 
+                      className={`hidden md:block absolute top-1/2 pt-8 left-0 right-3 space-y-1.5 transition-all duration-500 ${
+                        isSelected ? 'translate-y-2 opacity-100' : 'opacity-80'
                       }`}
                     >
-                      {step.title}
-                    </h3>
-                    <p className={`text-xs sm:text-sm leading-relaxed font-normal transition-colors duration-300 ${
-                      isSelected ? 'text-slate-900 font-medium' : 'text-slate-600'
-                    }`}>
-                      {step.description}
-                    </p>
-                  </div>
+                      <h3 
+                        className={`font-poppins font-extrabold text-xl tracking-tight transition-colors duration-300 ${
+                          isSelected ? 'text-[#0284c7] scale-105 origin-left' : 'text-[#01182F]'
+                        }`}
+                      >
+                        {step.title}
+                      </h3>
+                      <p className={`text-xs sm:text-sm leading-relaxed font-normal transition-colors duration-300 ${
+                        isSelected ? 'text-slate-900 font-medium' : 'text-slate-600'
+                      }`}>
+                        {step.description}
+                      </p>
+                    </div>
+                  )}
 
                   {/* Mobile View (Stacked Cards) */}
                   <div 
