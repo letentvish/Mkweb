@@ -49,7 +49,7 @@ export default function AssessmentHubSection() {
             <img 
               src="/Asgra.png" 
               alt="Assessment Suite Ecosystem Graphic" 
-              className="w-full h-auto max-w-[680px] lg:max-w-[780px] object-contain drop-shadow-xl hover:scale-105 transition-transform duration-500"
+              className="w-full h-auto max-w-[680px] lg:max-w-[780px] object-contain mix-blend-multiply hover:scale-105 transition-transform duration-500"
             />
           </div>
 
