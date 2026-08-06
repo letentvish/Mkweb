@@ -15,21 +15,21 @@ export default function GalleryShowcase() {
   const navigate = useNavigate();
 
   const topRowCards = [
-    { title: "Disconnected Tools", image: ImageLeft },
-    { title: "Manual Handoffs", image: Frame53 },
-    { title: "Siloed Data", image: Frame54 },
-    { title: "Delayed Decisions", image: ImageRight },
-    { title: "Executive Friction", image: MainImage },
-    { title: "Unaligned Strategy", image: Frame247 }
+    { image: ImageLeft },
+    { image: Frame53 },
+    { image: Frame54 },
+    { image: ImageRight },
+    { image: MainImage },
+    { image: Frame247 }
   ];
 
   const bottomRowCards = [
-    { title: "Inconsistent Information", image: ImageLeft1 },
-    { title: "Complex Processes", image: Frame54 },
-    { title: "Compliance Risks", image: ImageRight1 },
-    { title: "Hidden Costs", image: Frame53 },
-    { title: "Leadership Silos", image: MainImage },
-    { title: "Capability Erosion", image: ImageRight }
+    { image: ImageLeft1 },
+    { image: Frame54 },
+    { image: ImageRight1 },
+    { image: Frame53 },
+    { image: MainImage },
+    { image: ImageRight }
   ];
 
   // Repeat items for seamless infinite marquee loop
@@ -37,7 +37,7 @@ export default function GalleryShowcase() {
   const bottomLoop = [...bottomRowCards, ...bottomRowCards, ...bottomRowCards];
 
   return (
-    <section className="py-20 lg:py-28 bg-[#F8FAFC] text-slate-900 relative overflow-hidden border-b border-slate-200/80" id="mkraft-gallery">
+    <section className="py-20 lg:py-28 bg-[#01182F] text-white relative overflow-hidden border-b border-indigo-950/80" id="mkraft-gallery">
       
       {/* Keyframe Marquee Loop Animations */}
       <style>{`
@@ -73,12 +73,12 @@ export default function GalleryShowcase() {
       `}</style>
 
       {/* Background Graphic Grid */}
-      <div className="absolute inset-0 pointer-events-none opacity-20 z-0">
+      <div className="absolute inset-0 pointer-events-none opacity-15 z-0">
         <svg className="w-full h-full" viewBox="0 0 1200 800" fill="none">
-          <pattern id="friction-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-            <circle cx="2" cy="2" r="1.5" fill="#94A3B8" opacity="0.4" />
+          <pattern id="gallery-dark-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="1.5" fill="#38BDF8" opacity="0.4" />
           </pattern>
-          <rect width="100%" height="100%" fill="url(#friction-grid)" />
+          <rect width="100%" height="100%" fill="url(#gallery-dark-grid)" />
         </svg>
       </div>
 
@@ -89,30 +89,30 @@ export default function GalleryShowcase() {
           
           {/* Left Column: Title & Badge */}
           <div className="lg:col-span-7 space-y-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-sky-50 border border-sky-200 text-[#0284c7] text-xs font-mono font-extrabold tracking-wider uppercase font-poppins">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/30 text-xs font-mono font-extrabold tracking-wider uppercase font-poppins">
               <span className="w-2 h-2 rounded-full bg-[#0284c7] animate-pulse" />
-              <span>FRICTION</span>
+              <span>CAPABILITY SHOWCASE</span>
             </div>
 
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-extrabold text-[#01182F] tracking-tight leading-[1.08]">
-              Your systems do not <br />
-              speak <span className="text-[#0284c7]">the same</span> <br />
-              <span className="text-[#0284c7]">language</span>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-extrabold text-white tracking-tight leading-[1.08]">
+              Transforming leadership, <br />
+              culture & <span className="text-[#0284c7]">capability</span> <br />
+              <span className="text-[#0284c7]">that outlives</span> the engagement
             </h2>
           </div>
 
           {/* Right Column: Subtitle Copy & CTA Link */}
           <div className="lg:col-span-5 space-y-4">
-            <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-normal">
-              Finance closes the books on data HR sent last week. Sales promises what operations cannot see. Every handoff is a small betrayal of the truth. The cost is not just time, it is the slow erosion of good decisions.
+            <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-normal">
+              Bespoke corporate consulting engineered for sustainable impact. We diagnose organizational root causes, align leadership vision, and embed continuous capability across your enterprise.
             </p>
 
             <div>
               <button 
                 onClick={() => navigate("/contact")}
-                className="text-[#0284c7] hover:text-[#0369a1] font-extrabold text-sm inline-flex items-center gap-1.5 hover:gap-2.5 transition-all cursor-pointer group font-poppins"
+                className="text-[#0284c7] hover:text-sky-300 font-extrabold text-sm inline-flex items-center gap-1.5 hover:gap-2.5 transition-all cursor-pointer group font-poppins"
               >
-                <span>Talk to Sales</span>
+                <span>Explore Corporate Engagements</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -130,21 +130,14 @@ export default function GalleryShowcase() {
           {topLoop.map((card, idx) => (
             <div 
               key={idx}
-              className="w-72 sm:w-80 h-48 sm:h-52 shrink-0 rounded-3xl overflow-hidden relative shadow-md hover:shadow-xl border border-slate-200/80 group cursor-pointer"
+              className="w-72 sm:w-80 h-48 sm:h-52 shrink-0 rounded-3xl overflow-hidden relative shadow-xl hover:shadow-2xl border border-sky-400/20 group cursor-pointer"
             >
-              {/* Clean Crisp Photo (No Blur) */}
+              {/* Pure Crisp Photo (No Overlay Text) */}
               <img 
                 src={card.image} 
-                alt={card.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                alt="MultipliersKraft Corporate Experience"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 filter brightness-95 group-hover:brightness-100"
               />
-
-              {/* Crisp Gradient Bottom Title Bar */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#01182F]/90 via-[#01182F]/20 to-transparent flex items-end p-5 text-left">
-                <h3 className="font-poppins font-extrabold text-base sm:text-lg text-white tracking-tight leading-tight group-hover:text-sky-300 transition-colors">
-                  {card.title}
-                </h3>
-              </div>
             </div>
           ))}
         </div>
@@ -154,21 +147,14 @@ export default function GalleryShowcase() {
           {bottomLoop.map((card, idx) => (
             <div 
               key={idx}
-              className="w-72 sm:w-80 h-48 sm:h-52 shrink-0 rounded-3xl overflow-hidden relative shadow-md hover:shadow-xl border border-slate-200/80 group cursor-pointer"
+              className="w-72 sm:w-80 h-48 sm:h-52 shrink-0 rounded-3xl overflow-hidden relative shadow-xl hover:shadow-2xl border border-sky-400/20 group cursor-pointer"
             >
-              {/* Clean Crisp Photo (No Blur) */}
+              {/* Pure Crisp Photo (No Overlay Text) */}
               <img 
                 src={card.image} 
-                alt={card.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                alt="MultipliersKraft Corporate Experience"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 filter brightness-95 group-hover:brightness-100"
               />
-
-              {/* Crisp Gradient Bottom Title Bar */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#01182F]/90 via-[#01182F]/20 to-transparent flex items-end p-5 text-left">
-                <h3 className="font-poppins font-extrabold text-base sm:text-lg text-white tracking-tight leading-tight group-hover:text-sky-300 transition-colors">
-                  {card.title}
-                </h3>
-              </div>
             </div>
           ))}
         </div>
