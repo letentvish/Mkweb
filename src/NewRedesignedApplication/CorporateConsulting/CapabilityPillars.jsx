@@ -9,42 +9,52 @@ export default function CapabilityPillars() {
     {
       step: "01",
       pillarTag: "PILLAR 01",
-      icon: <Users className="w-8 h-8 text-[#0284c7]" />,
+      icon: <Users className="w-7 h-7 text-[#0284c7]" />,
       title: "Organisation & Leadership Development",
       subtitle: "Change people choose, not change they survive.",
-      description: "We re-architect how the organisation works, decides, and adapts — and bring people along with it, so adoption isn't an afterthought but the design."
+      description: "We re-architect how the organisation works, decides, and adapts — and bring people along with it, so adoption isn't an afterthought but the design.",
+      // Real corporate boardroom & executive leadership meeting image
+      image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80"
     },
     {
       step: "02",
       pillarTag: "PILLAR 02",
-      icon: <RefreshCw className="w-8 h-8 text-[#0284c7]" />,
+      icon: <RefreshCw className="w-7 h-7 text-[#0284c7]" />,
       title: "Culture Transformation and Change Management",
       subtitle: "Behavioral acceleration and organizational readiness.",
-      description: "Embedding sustainable behavioral change, operational resilience, and agility through proven change management frameworks."
+      description: "Embedding sustainable behavioral change, operational resilience, and agility through proven change management frameworks.",
+      // Real team workshop & culture collaboration image
+      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80"
     },
     {
       step: "03",
       pillarTag: "PILLAR 03",
-      icon: <BarChart3 className="w-8 h-8 text-[#0284c7]" />,
+      icon: <BarChart3 className="w-7 h-7 text-[#0284c7]" />,
       title: "Talent and Performance Architecture",
       subtitle: "Workforce optimization and KPI alignment.",
-      description: "Redesigning competency frameworks, performance feedback loops, and career pathways to maximize human capital output."
+      description: "Redesigning competency frameworks, performance feedback loops, and career pathways to maximize human capital output.",
+      // Real talent performance architecture & analytics discussion image
+      image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80"
     },
     {
       step: "04",
       pillarTag: "PILLAR 04",
-      icon: <GraduationCap className="w-8 h-8 text-[#0284c7]" />,
+      icon: <GraduationCap className="w-7 h-7 text-[#0284c7]" />,
       title: "AI LXP and Learning Services",
       subtitle: "Continuous capability and skill telemetry.",
-      description: "Deploying personalized learning journeys and AI-powered skill telemetry to continuously upgrade workforce competencies."
+      description: "Deploying personalized learning journeys and AI-powered skill telemetry to continuously upgrade workforce competencies.",
+      // Real tech workspace & digital workforce learning image
+      image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80"
     },
     {
       step: "05",
       pillarTag: "PILLAR 05",
-      icon: <Compass className="w-8 h-8 text-[#0284c7]" />,
+      icon: <Compass className="w-7 h-7 text-[#0284c7]" />,
       title: "Strategic Advisory and Capability Design",
       subtitle: "Operating model and architecture.",
-      description: "Structuring enterprise operating models to eliminate organizational friction, enhance data velocity, and scale execution."
+      description: "Structuring enterprise operating models to eliminate organizational friction, enhance data velocity, and scale execution.",
+      // Real strategic enterprise advisory & executive consulting image
+      image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=80"
     }
   ];
 
@@ -107,64 +117,61 @@ export default function CapabilityPillars() {
           </div>
 
           {/* Middle Column: Vertical Scroll Line & 5 Node Indicator Dots */}
-          <div className="hidden lg:flex lg:col-span-1 flex-col items-center justify-between relative py-6 self-stretch">
+          <div className="hidden lg:flex lg:col-span-1 flex-col items-center justify-around relative py-12 self-stretch min-h-screen">
             {/* Continuous Vertical Blue Indicator Line */}
-            <div className="w-[2px] bg-sky-200/90 absolute top-8 bottom-8 left-1/2 -translate-x-1/2 z-0" />
+            <div className="w-[2px] bg-sky-200/90 absolute top-12 bottom-12 left-1/2 -translate-x-1/2 z-0" />
 
             {/* 5 Node Dots */}
             {servicePillars.map((_, idx) => (
               <div 
                 key={idx}
-                className="w-5 h-5 rounded-full bg-white border-2 border-[#0284c7] flex items-center justify-center shadow-md relative z-10 my-16 group hover:scale-125 transition-all duration-300 cursor-pointer"
+                className="w-5 h-5 rounded-full bg-white border-2 border-[#0284c7] flex items-center justify-center shadow-md relative z-10 my-auto group hover:scale-125 transition-all duration-300 cursor-pointer"
               >
                 <div className="w-2 h-2 rounded-full bg-[#0284c7] group-hover:scale-125 transition-transform" />
               </div>
             ))}
           </div>
 
-          {/* Right Column: Cards Scrolling Smoothly Above Each Other (No Stacking Overlap) */}
-          <div className="lg:col-span-6 space-y-6 sm:space-y-8 pb-12">
+          {/* Right Column: Full-Height Frameless Items (No Stroke, No Fill) */}
+          <div className="lg:col-span-6 space-y-12">
             {servicePillars.map((item, idx) => (
               <div
                 key={idx}
-                className="bg-white border border-sky-200/80 rounded-3xl p-6 sm:p-8 shadow-xl shadow-sky-100/40 hover:shadow-2xl hover:border-sky-300 transition-all duration-300 text-left group overflow-hidden"
+                className="min-h-screen flex flex-col justify-center py-12 lg:py-16 text-left group border-0 bg-transparent shadow-none"
               >
-                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
-                  
-                  {/* Left Square Icon Box */}
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-sky-50/80 border border-sky-100 flex items-center justify-center text-[#0284c7] shrink-0 group-hover:scale-105 transition-transform duration-300 shadow-sm">
+                
+                {/* Real High-Resolution Subject Photography (No AI) */}
+                <div className="w-full h-64 sm:h-80 lg:h-96 rounded-3xl overflow-hidden shadow-lg border border-slate-200/80 mb-6 group-hover:shadow-2xl transition-all duration-500">
+                  <img 
+                    src={item.image} 
+                    alt={item.title} 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-95 group-hover:brightness-100"
+                  />
+                </div>
+
+                {/* Top Badge & Pillar Number */}
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-xs font-mono font-extrabold text-[#0284c7] uppercase tracking-wider bg-sky-50 border border-sky-200 px-3 py-1 rounded-full">
+                    {item.pillarTag}
+                  </span>
+                  <div className="w-10 h-10 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center text-[#0284c7]">
                     {item.icon}
                   </div>
-
-                  {/* Right Content */}
-                  <div className="flex-grow space-y-2 w-full">
-                    
-                    {/* Header Row: Sub-tag & Top Right Pill Badge */}
-                    <div className="flex items-center justify-between">
-                      <span className="text-[11px] font-mono font-extrabold text-[#0284c7] uppercase tracking-wider block font-poppins">
-                        {item.pillarTag}
-                      </span>
-
-                      <span className="px-3 py-1 rounded-full bg-sky-50 border border-sky-200 text-[#0284c7] text-[10px] font-mono font-extrabold tracking-wider uppercase">
-                        {item.pillarTag}
-                      </span>
-                    </div>
-
-                    <h3 className="font-poppins font-extrabold text-xl sm:text-2xl text-[#01182F] tracking-tight leading-snug">
-                      {item.title}
-                    </h3>
-
-                    <p className="text-xs sm:text-sm font-bold text-[#0284c7] font-poppins">
-                      {item.subtitle}
-                    </p>
-
-                    <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-normal pt-0.5">
-                      {item.description}
-                    </p>
-
-                  </div>
-
                 </div>
+
+                {/* Title & Copy */}
+                <h3 className="font-poppins font-extrabold text-2xl sm:text-3xl text-[#01182F] tracking-tight leading-snug mb-2 group-hover:text-[#0284c7] transition-colors">
+                  {item.title}
+                </h3>
+
+                <p className="text-[#0284c7] font-bold text-sm sm:text-base mb-3">
+                  {item.subtitle}
+                </p>
+
+                <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-normal">
+                  {item.description}
+                </p>
+
               </div>
             ))}
           </div>
