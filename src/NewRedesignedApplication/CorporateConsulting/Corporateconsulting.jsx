@@ -4,7 +4,6 @@ import WhyMKraft from "./WhyMKraft";
 import TransformSection from "./TransformSection";
 import CapabilityPillars from "./CapabilityPillars";
 import AssessmentHubSection from "./AssessmentHubSection";
-import DiagnosticsSection from "./DiagnosticsSection";
 import GalleryShowcase from "./GalleryShowcase";
 import CTASection from "./Ctasection";
 
@@ -26,13 +25,10 @@ const CorporateConsulting = () => {
       {/* 5. Assessment Hub & Next-Gen Diagnostic Ecosystem */}
       <AssessmentHubSection />
 
-      {/* 6. Organizational Diagnostics & Telemetry Dashboard */}
-      <DiagnosticsSection />
-
-      {/* 7. Gallery Showcase - The MultipliersKraft Experience */}
+      {/* 6. Gallery Showcase - Capability Showcase */}
       <GalleryShowcase />
 
-      {/* 8. Bottom Call To Action */}
+      {/* 7. Bottom Call To Action */}
       <CTASection />
     </div>
   );
