@@ -194,14 +194,15 @@ const styles = `
     box-shadow: 0 4px 24px rgba(0,0,0,0.4);
   }
 
-  .lt-[#0284c7] {
+  .lt-img-wrap {
     position: relative;
     width: 100%;
-    height: 250px;
+    height: 280px;
     overflow: hidden;
     background: #F1F5F9;
+    flex-shrink: 0;
   }
-  [theme='dark'] .lt-[#0284c7] { background: #0f172a; }
+  [theme='dark'] .lt-img-wrap { background: #0f172a; }
 
   .lt-img {
     width: 100%;
@@ -215,7 +216,7 @@ const styles = `
   .lt-front-grad {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent 50%, rgba(1, 24, 47, 0.4) 100%);
+    background: linear-gradient(180deg, transparent 60%, rgba(1, 24, 47, 0.3) 100%);
     pointer-events: none;
   }
 
@@ -224,22 +225,23 @@ const styles = `
     position: absolute;
     top: 12px;
     right: 12px;
-    background: rgba(255,255,255,0.85);
+    background: rgba(255,255,255,0.9);
     backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,255,255,0.6);
+    border: 1px solid rgba(255,255,255,0.7);
     border-radius: 20px;
     padding: 4px 10px;
     display: flex;
     align-items: center;
     gap: 5px;
     font-size: 10px;
-    font-weight: 600;
+    font-weight: 700;
     color: #01182F;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     transition: all 0.3s;
+    z-index: 5;
   }
   [theme='dark'] .lt-flip-badge {
-    background: rgba(1, 24, 47, 0.8);
+    background: rgba(1, 24, 47, 0.85);
     border-color: rgba(2, 132, 199, 0.4);
     color: #38bdf8;
   }
@@ -250,16 +252,24 @@ const styles = `
   .lt-card-outer:hover .lt-flip-badge svg { transform: rotate(180deg); }
 
   .lt-front-info {
-    padding: 16px 18px;
+    padding: 14px 16px;
+    background: #FFFFFF;
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: left;
+    border-top: 1px solid rgba(226, 232, 240, 0.6);
+    z-index: 10;
+  }
+  [theme='dark'] .lt-front-info {
+    background: #01182F;
+    border-top-color: rgba(2, 132, 199, 0.2);
   }
 
   .lt-name {
     font-family: 'Poppins', sans-serif;
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 700;
     color: #01182F;
     line-height: 1.25;
@@ -271,7 +281,7 @@ const styles = `
     font-size: 12px;
     font-weight: 600;
     color: #0284c7;
-    margin-top: 4px;
+    margin-top: 3px;
   }
 
   /* ── BACK ── */
@@ -306,7 +316,7 @@ const styles = `
     letter-spacing: 0.05em;
   }
 
-  .lt-[#0284c7]-divider {
+  .lt-divider {
     width: 24px;
     height: 2px;
     background: #0284c7;
@@ -426,7 +436,7 @@ export default function LeadershipTeam() {
                     
                     {/* FRONT */}
                     <div className="lt-face lt-front">
-                      <div className="lt-[#0284c7]">
+                      <div className="lt-img-wrap">
                         <img
                           src={member.image}
                           alt={member.name}
@@ -452,7 +462,7 @@ export default function LeadershipTeam() {
                       <div className="lt-back-top">
                         <h3 className="lt-back-name">{member.name}</h3>
                         <p className="lt-back-role">{member.role}</p>
-                        <div className="lt-[#0284c7]-divider" />
+                        <div className="lt-divider" />
                         <div className="lt-desc-scroll">
                           <p className="lt-desc">{member.description}</p>
                         </div>
