@@ -5,7 +5,6 @@ import TransformSection from "./TransformSection";
 import CapabilityPillars from "./CapabilityPillars";
 import AssessmentHubSection from "./AssessmentHubSection";
 import GalleryShowcase from "./GalleryShowcase";
-import CTASection from "./Ctasection";
 
 const CorporateConsulting = () => {
   return (
@@ -25,11 +24,8 @@ const CorporateConsulting = () => {
       {/* 5. Assessment Hub & Next-Gen Diagnostic Ecosystem */}
       <AssessmentHubSection />
 
-      {/* 6. Gallery Showcase - Capability Showcase */}
+      {/* 6. Gallery Showcase - Capability Showcase with Integrated CTA */}
       <GalleryShowcase />
-
-      {/* 7. Bottom Call To Action */}
-      <CTASection />
     </div>
   );
 };

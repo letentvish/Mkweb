@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Compass, Users } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 import ImageLeft from "../../Assets/CorporateConsulting/ImageLeft.jpg";
@@ -84,36 +84,43 @@ export default function GalleryShowcase() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-left">
         
-        {/* 2-Column Header Section */}
+        {/* 2-Column Header Section incorporating CTA Text & Heading */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-14">
           
-          {/* Left Column: Title & Badge */}
+          {/* Left Column: CTA Heading & Status Pill Badge */}
           <div className="lg:col-span-7 space-y-4">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/30 text-xs font-mono font-extrabold tracking-wider uppercase font-poppins">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-500/15 text-sky-400 border border-sky-500/30 text-xs font-mono font-extrabold tracking-wider uppercase font-poppins">
               <span className="w-2 h-2 rounded-full bg-[#0284c7] animate-pulse" />
-              <span>CAPABILITY SHOWCASE</span>
+              <span>READY TO TRANSFORM YOUR ENTERPRISE?</span>
             </div>
 
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-extrabold text-white tracking-tight leading-[1.08]">
-              Transforming leadership, <br />
-              culture & <span className="text-[#0284c7]">capability</span> <br />
-              <span className="text-[#0284c7]">that outlives</span> the engagement
+              Build capability that <br />
+              <span className="text-[#0284c7]">outlives</span> the engagement.
             </h2>
           </div>
 
-          {/* Right Column: Subtitle Copy & CTA Link */}
-          <div className="lg:col-span-5 space-y-4">
+          {/* Right Column: CTA Paragraph & Action Buttons */}
+          <div className="lg:col-span-5 space-y-6">
             <p className="text-slate-300 text-base sm:text-lg leading-relaxed font-normal">
-              Bespoke corporate consulting engineered for sustainable impact. We diagnose organizational root causes, align leadership vision, and embed continuous capability across your enterprise.
+              Talk to our senior advisory partners and map out a customized corporate consulting engagement tailored for your organizational strategy.
             </p>
 
-            <div>
-              <button 
+            <div className="flex flex-wrap items-center gap-4">
+              <button
                 onClick={() => navigate("/contact")}
-                className="text-[#0284c7] hover:text-sky-300 font-extrabold text-sm inline-flex items-center gap-1.5 hover:gap-2.5 transition-all cursor-pointer group font-poppins"
+                className="bg-[#0284c7] hover:bg-sky-600 text-white font-bold px-7 py-3.5 rounded-full inline-flex items-center gap-2 shadow-lg shadow-sky-500/25 transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95 text-sm"
               >
-                <span>Explore Corporate Engagements</span>
-                <ArrowRight className="w-4 h-4" />
+                <Compass className="w-4 h-4" />
+                <span>Book Strategy Session</span>
+              </button>
+
+              <button
+                onClick={() => navigate("/contact")}
+                className="bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold px-6 py-3.5 rounded-full inline-flex items-center gap-2 transition-all duration-200 cursor-pointer shadow-md hover:scale-105 active:scale-95 text-sm"
+              >
+                <Users className="w-4 h-4 text-sky-400" />
+                <span>Talk to an Expert</span>
               </button>
             </div>
           </div>
@@ -132,7 +139,7 @@ export default function GalleryShowcase() {
               key={idx}
               className="w-72 sm:w-80 h-48 sm:h-52 shrink-0 rounded-3xl overflow-hidden relative shadow-xl hover:shadow-2xl border border-sky-400/20 group cursor-pointer"
             >
-              {/* Pure Crisp Photo (No Overlay Text) */}
+              {/* Pure Crisp Photo */}
               <img 
                 src={card.image} 
                 alt="MultipliersKraft Corporate Experience"
@@ -149,7 +156,7 @@ export default function GalleryShowcase() {
               key={idx}
               className="w-72 sm:w-80 h-48 sm:h-52 shrink-0 rounded-3xl overflow-hidden relative shadow-xl hover:shadow-2xl border border-sky-400/20 group cursor-pointer"
             >
-              {/* Pure Crisp Photo (No Overlay Text) */}
+              {/* Pure Crisp Photo */}
               <img 
                 src={card.image} 
                 alt="MultipliersKraft Corporate Experience"
@@ -159,6 +166,28 @@ export default function GalleryShowcase() {
           ))}
         </div>
 
+      </div>
+
+      {/* Bottom CTA Banner Box inside Gallery Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 relative z-10 text-left">
+        <div className="bg-sky-950/40 border border-sky-500/20 rounded-3xl p-8 sm:p-10 flex flex-col sm:flex-row items-center justify-between gap-6 backdrop-blur-md">
+          <div>
+            <h3 className="text-2xl sm:text-3xl font-poppins font-extrabold text-white">
+              Engineered for Sustainable Impact
+            </h3>
+            <p className="text-slate-300 text-sm sm:text-base mt-1">
+              Diagnosing root causes, aligning leadership vision, and embedding continuous capability across your enterprise.
+            </p>
+          </div>
+
+          <button 
+            onClick={() => navigate("/contact")}
+            className="text-[#0284c7] hover:text-sky-300 font-extrabold text-sm inline-flex items-center gap-2 hover:gap-3 transition-all cursor-pointer group font-poppins shrink-0 bg-white/10 px-6 py-3 rounded-full border border-sky-400/30"
+          >
+            <span>Explore Corporate Engagements</span>
+            <ArrowRight className="w-4 h-4" />
+          </button>
+        </div>
       </div>
 
     </section>
