@@ -1,16 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import image1 from "../../Assets/FacuilityImages/PallaviSingh.png";
 import image2 from "../../Assets/FacuilityImages/BonoshreeMukherjee.png";
-import image4 from "../../Assets/FacuilityImages/JagannathaRao.png";
 import image5 from "../../Assets/FacuilityImages/AnjuChawla.png";
 import image6 from "../../Assets/FacuilityImages/MarkWallace.png";
 import image7 from "../../Assets/FacuilityImages/DhanrajDadhich.png";
 import image8 from "../../Assets/FacuilityImages/JCShukla.png";
-import image9 from "../../Assets/FacuilityImages/BalaKairalisadanam.png";
 import image10 from "../../Assets/FacuilityImages/SandeepBhattacharya.png";
 import image11 from "../../Assets/FacuilityImages/Sreekumar.png";
 import image12 from "../../Assets/FacuilityImages/DebashishMishra.png";
-import vaishnavRamesh from "../../Assets/FacuilityImages/Vaishnav_Ramesh.png";
 import divyanshDixit from "../../Assets/FacuilityImages/DivyanshDixit.png";
 
 const teamMembers = [
@@ -32,35 +29,21 @@ const teamMembers = [
     name: "Debashish Mishra",
     role: "Founder & Managing Director",
     image: image12,
-    description: "Debashish has 20+ years of HR expertise across IT, Engineering, Product, Financial Services, SaaS, FinTech, and ITES. He has led functions like OD, Talent, Performance, L&D, and HR, with a passion for People & Technology. A Gallup Strengths Coach and Master Trainer, he has trained 65K+ professionals on high-impact organizational and behavioral topics. His transformational initiatives have driven radical change for individuals, teams, and organizations. He mentors startup founders, boards, and CXOs and enjoys exploring Technology, Human Psychology, and Leadership. As an advisor, he collaborates with HR leaders, coaches, and facilitators to maximize impact. A lifelong learner, he is deeply committed to serving his purpose.",
+    description: "Debashish has 20+ years of HR expertise across IT, Engineering, Product, Financial Services, SaaS, FinTech, and ITES. He has led functions like OD, Talent, Performance, L&D, and HR, with a passion for People & Technology. A Gallup Strengths Coach and Master Trainer, he has trained 65K+ professionals on high-impact organizational and behavioral topics. His transformational initiatives have driven radical change for individuals, teams, and organizations.",
     linkedin: "https://www.linkedin.com/in/debashishmishramkraft"
-  },
-  {
-    name: "Palukuri Jagannatha Rao",
-    role: "Co-Founder & Chief of Facilitation",
-    image: image4,
-    description: "Jagan has conducted leadership and management programs across industries, benefiting 25,000+ professionals in India and abroad. With expertise in Decision-making, Emotional Intelligence, Team Building, and Change Management, Jagan has trained over 1,000 managers and worked with organizations like Wipro, NTT Data, and Freshworks. A certified trainer in multiple global methodologies, he is also the author of Hop, Skip, and Jump to Leadership.",
-    linkedin: "https://www.linkedin.com/in/jagannatharao"
-  },
-  {
-    name: "Vaishnav Ramesh",
-    role: "Director – Engagement and Growth",
-    image: vaishnavRamesh,
-    description: "Vaishnav is a seasoned GTM specialist and behavioral coaching expert with 15+ years of global experience driving high-performance teams and business growth. A Computer Science Engineering graduate, he excelled with tech giants like Freshworks and Zoho, serving clients worldwide. Recognized as Best People Manager org-wide and Best in Department, his passion for effective leadership led to deep expertise in psychology, NLP, and behavioral sciences. Certified as NLP Trainer and Master Coach, Positive Psychology practitioner, Workplace Happiness Consultant, and trained in Non-Violent Communication, Transactional Analysis, and more. He designs workshops, facilitates sales enablement frameworks, and coaches teams for resilience and peak performance, bridging tech strategy with human-centered growth.",
-    linkedin: "https://www.linkedin.com/in/vaishnavramesh/"
   },
   {
     name: "Divyansh Dixit",
     role: "VP Information Technology",
     image: divyanshDixit,
-    description: "Divyansh Dixit is a multi-company technology founder with 6+ years of experience building advanced digital products and innovation-driven systems at the intersection of engineering, AI, and business strategy. He has designed and led mission-critical platforms, AI-powered engines, enterprise applications, and automation frameworks that drive operational efficiency, intelligence, and measurable business impact. Known for translating complex requirements into clean, scalable, end-to-end solutions, he combines strategic vision with deep technical execution. He has collaborated closely with leadership teams across industries, helping transform ambitious ideas into production-ready products. His entrepreneurial journey reflects a strong ability to identify real problems, architect future-ready systems, and deliver robust, intelligent technology solutions that elevate entire ecosystems and are built to scale and last.",
+    description: "Divyansh Dixit is a multi-company technology founder with 6+ years of experience building advanced digital products and innovation-driven systems at the intersection of engineering, AI, and business strategy. He has designed and led mission-critical platforms, AI-powered engines, enterprise applications, and automation frameworks that drive operational efficiency, intelligence, and measurable business impact.",
     linkedin: "https://www.linkedin.com/in/divyansh-dixit-9b7a83312/"
   },
   {
     name: "Dr. Anju Chawla",
     role: "Advisor & Consultant",
     image: image5,
-    description: "Anju Chawla, Founder of EQ Advantage, is a leading expert in Emotional Intelligence (EI), leadership development, and coaching. With 8,000+ coaching hours, she empowers individuals through objective insights, tailored strategies, and holistic emotional well-being solutions. Skilled in NLP and Transactional Analysis, she designs impactful EI workshops, leadership training, and professional etiquette programs. Her integrity, clarity, and dedication drive lasting transformation for professionals and organizations alike.",
+    description: "Anju Chawla, Founder of EQ Advantage, is a leading expert in Emotional Intelligence (EI), leadership development, and coaching. With 8,000+ coaching hours, she empowers individuals through objective insights, tailored strategies, and holistic emotional well-being solutions. Skilled in NLP and Transactional Analysis, she designs impactful EI workshops, leadership training, and professional etiquette programs.",
     linkedin: "https://www.linkedin.com/in/dr-anju-chawla-eqadvantage/"
   },
   {
@@ -74,67 +57,61 @@ const teamMembers = [
     name: "Dhanraj Dadhich",
     role: "CTO & Chief Research Officer",
     image: image7,
-    description: "Dhanraj is a pioneering tech visionary with 24+ years of expertise in Blockchain, AI, Quantum Computing, and IoT. As a Forbes Business Council member, he has shaped global tech advancements, including creating the world's fastest blockchain and a $1.5B unicorn in just 8 months. His innovations span Layer1 Blockchains, Quantum Teleportation, and DNA Data Storage. He developed the Sustainable Consensus for 5ireChain which achieved a significant valuation of $30 million and co-founded Rarible. Honored with global awards, he is renowned as #TheAlgoMan and The Future Architect.",
+    description: "Dhanraj is a pioneering tech visionary with 24+ years of expertise in Blockchain, AI, Quantum Computing, and IoT. As a Forbes Business Council member, he has shaped global tech advancements, including creating the world's fastest blockchain and a $1.5B unicorn in just 8 months. His innovations span Layer1 Blockchains, Quantum Teleportation, and DNA Data Storage.",
     linkedin: "https://www.linkedin.com/in/dhanrajdadhich/"
   },
   {
     name: "J.C. Shukla",
     role: "Advisor & Consultant",
     image: image8,
-    description: "Mr. Shukla, Managing Director of Nahak Overseas Limited, is a seasoned Strategic Consultant to CEOs and boards across sectors. With over four decades of experience, he holds a Mechanical Engineering degree and an MBA from IIM Ahmedabad (1971). He serves on the board of the US-based Hawthorne World and advises the governments of Germany, Kenya, and others. In 2003, he was appointed as a UNO observer at WSIS Geneva and led an ITC/WTO/UNCTAD seminar on ICT for global marketing, attended by representatives from 50 countries.",
+    description: "Mr. Shukla, Managing Director of Nahak Overseas Limited, is a seasoned Strategic Consultant to CEOs and boards across sectors. With over four decades of experience, he holds a Mechanical Engineering degree and an MBA from IIM Ahmedabad (1971). He serves on the board of the US-based Hawthorne World and advises global governments.",
     linkedin: "https://www.linkedin.com/in/jc-shukla-13a1974/"
-  },
-  {
-    name: "Bala Kairalisadanam",
-    role: "Advisor & Partner Consultant",
-    image: image9,
-    description: "Bala, a Ph.D. in Marketing Science from LaSalle University (2000) and an alumnus of IIM Ahmedabad, IRMA Anand, and IIT Kharagpur, has nearly three decades of data-driven marketing expertise. He specializes in AI, data science, and analytics adoption, shaping enterprise strategies and scalable AI/ML solutions. Formerly Head of Global AI-Data Science Strategy at Nihilent Technologies, he has held leadership roles at Mu Sigma, Aramark, IRI, and Gallup. Key achievements include scaling analytics automation, securing major business deals, and enhancing predictive accuracy, saving $50M in warranty reserves. Recognized with Microsoft's 2019 Golden Partner Award.",
-    linkedin: "https://www.linkedin.com/in/bala-kairalisadanam/"
   },
   {
     name: "Prof. Sandeep Bhattacharya",
     role: "Advisor & Consultant",
     image: image10,
-    description: "Prof. Sandeep brings nearly 40 years of experience, with 30 years in industry leadership across Singapore, the Middle East, and India, and a decade in academia. He has taught at top institutions like the American University Dubai, SP Jain Singapore & Dubai, and IIT Madras, covering subjects like Leadership, Strategic Management, Sales, HR Analytics, and more. A consultant, coach, and author, he has worked globally, mentored student councils, and led corporate education initiatives. His expertise bridges industry, academia, and students to enhance employability.",
+    description: "Prof. Sandeep brings nearly 40 years of experience, with 30 years in industry leadership across Singapore, the Middle East, and India, and a decade in academia. He has taught at top institutions like the American University Dubai, SP Jain Singapore & Dubai, and IIT Madras, covering subjects like Leadership, Strategic Management, Sales, HR Analytics, and more.",
     linkedin: "https://www.linkedin.com/in/sandeepbhattacharya/"
   },
   {
     name: "Rajagopalan S Sreekumar",
     role: "Learning Advisor & Consultant",
     image: image11,
-    description: "Sreekumar, a Gallup Certified Strengths Coach and NLP & Enneagram Master Coach, has 25 years of experience in facilitation and leadership development. Passionate about enabling professionals, he has guided thousands across organizations through experiential workshops. His expertise in aligning organizational culture with strategic solutions drives growth, inspires teams, and fosters positive community impact.",
+    description: "Sreekumar, a Gallup Certified Strengths Coach and NLP & Enneagram Master Coach, has 25 years of experience in facilitation and leadership development. Passionate about enabling professionals, he has guided thousands across organizations through experiential workshops.",
     linkedin: "https://www.linkedin.com/in/rajagopalan-s-sreekumar-4a5a4810/"
-  },
+  }
 ];
 
 const styles = `
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
 
   .lt-root {
-    font-family: 'DM Sans', sans-serif;
-    background: #FFFFFF;
+    font-family: 'Inter', sans-serif;
+    background: #F8FAFC;
     padding: 80px 24px 100px;
   }
-  [theme='dark'] .lt-root { background: #0A0E27; }
+  [theme='dark'] .lt-root { background: #01182F; }
 
   .lt-inner { max-width: 1280px; margin: 0 auto; }
 
   .lt-header { margin-bottom: 64px; text-align: center; }
 
   .lt-eyebrow {
-    font-size: 11px;
-    font-weight: 600;
+    font-size: 12px;
+    font-weight: 700;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: #3B82F6;
+    color: #0284c7;
     margin-bottom: 12px;
+    font-family: 'Poppins', sans-serif;
   }
 
   .lt-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(32px, 5vw, 56px);
-    font-weight: 700;
-    color: #111827;
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 800;
+    color: #01182F;
     line-height: 1.1;
     letter-spacing: -0.02em;
     opacity: 0;
@@ -147,8 +124,8 @@ const styles = `
   .lt-subtitle {
     margin-top: 16px;
     font-size: 16px;
-    color: #6B7280;
-    max-width: 500px;
+    color: #475569;
+    max-width: 540px;
     margin-left: auto;
     margin-right: auto;
     line-height: 1.6;
@@ -167,7 +144,7 @@ const styles = `
   }
   @media (max-width: 1100px) { .lt-grid { grid-template-columns: repeat(3, 1fr); } }
   @media (max-width: 760px)  { .lt-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; } .lt-root { padding: 48px 16px 72px; } .lt-header { margin-bottom: 40px; } }
-  @media (max-width: 400px)  { .lt-grid { grid-template-columns: 1fr 1fr; gap: 12px; } }
+  @media (max-width: 400px)  { .lt-grid { grid-template-columns: 1fr; gap: 16px; } }
 
   /* ── Card wrapper — perspective lives here ── */
   .lt-card-outer {
@@ -186,7 +163,7 @@ const styles = `
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.72s cubic-bezier(0.4, 0, 0.2, 1);
-    border-radius: 20px;
+    border-radius: 24px;
   }
   .lt-card-outer:hover .lt-flipper,
   .lt-card-outer.lt-tapped .lt-flipper {
@@ -197,270 +174,316 @@ const styles = `
   .lt-face {
     position: absolute;
     inset: 0;
-    border-radius: 20px;
+    border-radius: 24px;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     overflow: hidden;
   }
 
-  /* ══ FRONT ══ */
+  /* ── FRONT ── */
   .lt-front {
-    background: #ffffff;
-    box-shadow: 0 4px 24px rgba(59,130,246,0.10), 0 1px 6px rgba(0,0,0,0.06);
+    background: #FFFFFF;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 28px 20px 22px;
-    gap: 12px;
   }
-  [theme='dark'] .lt-front { background: #1a1f3a; }
+  [theme='dark'] .lt-front {
+    background: #01182F;
+    border: 1px solid rgba(2, 132, 199, 0.2);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+  }
 
-  /* Circular photo */
-  .lt-circle-wrap {
-    width: 175px;
-    height: 175px;
-    border-radius: 50%;
+  .lt-[#0284c7] {
+    position: relative;
+    width: 100%;
+    height: 250px;
     overflow: hidden;
-    border: 3px solid #3B82F6;
-    box-shadow: 0 0 0 5px rgba(59,130,246,0.13), 0 4px 16px rgba(59,130,246,0.18);
-    flex-shrink: 0;
+    background: #F1F5F9;
   }
+  [theme='dark'] .lt-[#0284c7] { background: #0f172a; }
+
   .lt-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center top;
-    display: block;
+    object-position: top center;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .lt-card-outer:hover .lt-img { transform: scale(1.04); }
+
+  .lt-front-grad {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(1, 24, 47, 0.4) 100%);
+    pointer-events: none;
   }
 
-  .lt-front-info { text-align: center; }
-
-  .lt-name {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: #2563EB;
-    margin: 0 0 5px;
-    line-height: 1.25;
-  }
-  [theme='dark'] .lt-name { color: #60a5fa; }
-
-  .lt-role {
-    font-size: 13.5px;
-    font-weight: 400;
-    color: #6B7280;
-    line-height: 1.4;
-  }
-  [theme='dark'] .lt-role { color: #9ca3af; }
-
-  .lt-front-li {
-    width: 30px;
-    height: 30px;
-    border-radius: 8px;
-    background: #0077B5;
+  /* Flip indicator icon pill */
+  .lt-flip-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 20px;
+    padding: 4px 10px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.2s;
-    position: relative;
-    z-index: 5;
+    gap: 5px;
+    font-size: 10px;
+    font-weight: 600;
+    color: #01182F;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: all 0.3s;
   }
-  .lt-front-li:hover { background: #005582; transform: scale(1.1); }
+  [theme='dark'] .lt-flip-badge {
+    background: rgba(1, 24, 47, 0.8);
+    border-color: rgba(2, 132, 199, 0.4);
+    color: #38bdf8;
+  }
+  .lt-flip-badge svg {
+    width: 11px; height: 11px;
+    transition: transform 0.4s;
+  }
+  .lt-card-outer:hover .lt-flip-badge svg { transform: rotate(180deg); }
 
-  /* ══ BACK ══ */
-  .lt-back {
-    transform: rotateY(180deg);
-    background: linear-gradient(150deg, #1e3a8a 0%, #1d4ed8 100%);
-    box-shadow: 0 8px 32px rgba(29,78,216,0.35);
+  .lt-front-info {
+    padding: 16px 18px;
+    flex: 1;
     display: flex;
     flex-direction: column;
-    padding: 22px 20px 20px;
-    gap: 10px;
-  }
-
-  .lt-back-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 8px;
-    flex-shrink: 0;
-  }
-
-  .lt-back-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: #fff;
-    margin: 0 0 3px;
-    line-height: 1.25;
-  }
-  .lt-back-role {
-    font-size: 13px;
-    font-weight: 500;
-    color: #93c5fd;
-    line-height: 1.4;
-  }
-
-  .lt-back-li {
-    flex-shrink: 0;
-    width: 30px;
-    height: 30px;
-    border-radius: 8px;
-    background: rgba(255,255,255,0.15);
-    display: flex;
-    align-items: center;
     justify-content: center;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    transition: background 0.2s;
-    position: relative;
-    z-index: 5;
   }
-  .lt-back-li:hover { background: rgba(255,255,255,0.3); }
 
-  .lt-divider {
-    height: 1px;
-    background: rgba(255,255,255,0.15);
-    flex-shrink: 0;
+  .lt-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #01182F;
+    line-height: 1.25;
     margin: 0;
   }
+  [theme='dark'] .lt-name { color: #F8FAFC; }
 
-  .lt-back-desc {
+  .lt-role {
     font-size: 12px;
-    color: rgba(255,255,255,0.88);
-    line-height: 1.72;
-    overflow-y: auto;
-    flex: 1;
-    min-height: 0;
-    padding-right: 4px;
+    font-weight: 600;
+    color: #0284c7;
+    margin-top: 4px;
   }
-  .lt-back-desc::-webkit-scrollbar { width: 3px; }
-  .lt-back-desc::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 2px; }
-  .lt-back-desc::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.25); border-radius: 2px; }
-  .lt-back-desc::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.45); }
 
-  /* ── Reduced motion ── */
-  @media (prefers-reduced-motion: reduce) {
-    .lt-flipper, .lt-title, .lt-subtitle, .lt-card-outer {
-      transition: none !important; transform: none !important; opacity: 1 !important;
-    }
-    .lt-card-outer:hover .lt-flipper,
-    .lt-card-outer.lt-tapped .lt-flipper { transform: none !important; }
+  /* ── BACK ── */
+  .lt-back {
+    background: #01182F;
+    color: #fff;
+    transform: rotateY(180deg);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(2, 132, 199, 0.4);
+  }
+
+  .lt-back-top { flex: 1; overflow: hidden; display: flex; flex-direction: column; }
+
+  .lt-back-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+    line-height: 1.2;
+  }
+  .lt-back-role {
+    font-size: 11px;
+    font-weight: 600;
+    color: #38bdf8;
+    margin-top: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .lt-[#0284c7]-divider {
+    width: 24px;
+    height: 2px;
+    background: #0284c7;
+    border-radius: 2px;
+    margin: 12px 0;
+    flex-shrink: 0;
+  }
+
+  .lt-desc-scroll {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 4px;
+    margin-right: -4px;
+  }
+  .lt-desc-scroll::-webkit-scrollbar { width: 3px; }
+  .lt-desc-scroll::-webkit-scrollbar-thumb { background: rgba(2, 132, 199, 0.4); border-radius: 3px; }
+
+  .lt-desc {
+    font-size: 12px;
+    line-height: 1.6;
+    color: #94a3b8;
+    margin: 0;
+    font-weight: 400;
+  }
+
+  .lt-back-bottom {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+
+  .lt-linkedin-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #38bdf8;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .lt-linkedin-link:hover { opacity: 0.8; text-decoration: underline; }
+
+  .lt-unflip-hint {
+    font-size: 10px;
+    color: #64748b;
   }
 `;
 
-function LinkedInIcon({ size = 14 }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-    </svg>
-  );
-}
+export default function LeadershipTeam() {
+  const [visibleIndices, setVisibleIndices] = useState([]);
+  const [headerVisible, setHeaderVisible] = useState(false);
+  const [tappedCard, setTappedCard] = useState(null);
+  const sectionRef = useRef(null);
 
-function MemberCard({ member, index, isVisible }) {
-  const delay = `${0.05 + index * 0.05}s`;
-  const [tapped, setTapped] = useState(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setHeaderVisible(true);
+      },
+      { threshold: 0.05 }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
 
-  const handleLinkedInClick = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (member.linkedin) {
-      window.open(member.linkedin, '_blank', 'noopener,noreferrer');
+  useEffect(() => {
+    teamMembers.forEach((_, index) => {
+      const timer = setTimeout(() => {
+        setVisibleIndices((prev) => [...new Set([...prev, index])]);
+      }, 100 * index + 200);
+      return () => clearTimeout(timer);
+    });
+  }, []);
+
+  const handleCardClick = (index) => {
+    if ('ontouchstart' in window) {
+      setTappedCard(tappedCard === index ? null : index);
     }
   };
 
   return (
-    <div
-      className={`lt-card-outer${isVisible ? ' lt-visible' : ''}${tapped ? ' lt-tapped' : ''}`}
-      style={{ transitionDelay: isVisible ? delay : '0s' }}
-      onTouchEnd={(e) => { e.preventDefault(); setTapped(p => !p); }}
-    >
-      <div className="lt-flipper">
-
-        {/* ── FRONT ── */}
-        <div className="lt-face lt-front">
-          <div className="lt-circle-wrap">
-            <img src={member.image} alt={member.name} className="lt-img" loading="lazy" />
-          </div>
-          <div className="lt-front-info">
-            <h3 className="lt-name">{member.name}</h3>
-            <p className="lt-role">{member.role}</p>
-          </div>
-          {member.linkedin && (
-            <button
-              type="button"
-              className="lt-front-li"
-              onClick={handleLinkedInClick}
-              aria-label={`${member.name} on LinkedIn`}
-            >
-              <LinkedInIcon size={14} />
-            </button>
-          )}
-        </div>
-
-        {/* ── BACK ── */}
-        <div className="lt-face lt-back">
-          <div className="lt-back-header">
-            <div>
-              <h3 className="lt-back-name">{member.name}</h3>
-              <p className="lt-back-role">{member.role}</p>
-            </div>
-            {member.linkedin && (
-              <button
-                type="button"
-                className="lt-back-li"
-                onClick={handleLinkedInClick}
-                aria-label={`${member.name} on LinkedIn`}
-              >
-                <LinkedInIcon size={14} />
-              </button>
-            )}
-          </div>
-          <div className="lt-divider" />
-          <p className="lt-back-desc">{member.description}</p>
-        </div>
-
-      </div>
-    </div>
-  );
-}
-
-export default function LeadershipTeam() {
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setIsVisible(true); },
-      { threshold: 0.05 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
     <>
       <style>{styles}</style>
-      <section ref={ref} className="lt-root">
+      <section className="lt-root" ref={sectionRef} id="leadership-team">
         <div className="lt-inner">
-          <header className="lt-header">
-       
-            <h2 className={`lt-title${isVisible ? ' lt-visible' : ''}`}>Leadership Team</h2>
-           
-          </header>
-
-          <div className="lt-grid">
-            {teamMembers.map((member, i) => (
-              <MemberCard key={i} member={member} index={i} isVisible={isVisible} />
-            ))}
+          
+          {/* Header */}
+          <div className="lt-header">
+            <p className="lt-eyebrow">THE MINDS BEHIND MULTIPLIERSKRAFT</p>
+            <h2 className={`lt-title ${headerVisible ? 'lt-visible' : ''}`}>
+              Leadership & Advisors
+            </h2>
+            <p className={`lt-subtitle ${headerVisible ? 'lt-visible' : ''}`}>
+              A collective of industry pioneers, Gallup coaches, tech founders, and academic experts dedicated to enterprise transformation.
+            </p>
           </div>
+
+          {/* Grid */}
+          <div className="lt-grid">
+            {teamMembers.map((member, index) => {
+              const isVisible = visibleIndices.includes(index);
+              const isTapped = tappedCard === index;
+
+              return (
+                <div
+                  key={index}
+                  className={`lt-card-outer ${isVisible ? 'lt-visible' : ''} ${isTapped ? 'lt-tapped' : ''}`}
+                  onClick={() => handleCardClick(index)}
+                  style={{ transitionDelay: `${(index % 4) * 0.08}s` }}
+                >
+                  <div className="lt-flipper">
+                    
+                    {/* FRONT */}
+                    <div className="lt-face lt-front">
+                      <div className="lt-[#0284c7]">
+                        <img
+                          src={member.image}
+                          alt={member.name}
+                          className="lt-img"
+                          loading="lazy"
+                        />
+                        <div className="lt-front-grad" />
+                        <div className="lt-flip-badge">
+                          <span>BIO</span>
+                          <svg viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M6 3l5 5-5 5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </div>
+                      </div>
+                      <div className="lt-front-info">
+                        <h3 className="lt-name">{member.name}</h3>
+                        <p className="lt-role">{member.role}</p>
+                      </div>
+                    </div>
+
+                    {/* BACK */}
+                    <div className="lt-face lt-back">
+                      <div className="lt-back-top">
+                        <h3 className="lt-back-name">{member.name}</h3>
+                        <p className="lt-back-role">{member.role}</p>
+                        <div className="lt-[#0284c7]-divider" />
+                        <div className="lt-desc-scroll">
+                          <p className="lt-desc">{member.description}</p>
+                        </div>
+                      </div>
+                      <div className="lt-back-bottom">
+                        {member.linkedin ? (
+                          <a
+                            href={member.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="lt-linkedin-link"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                              <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                            </svg>
+                            <span>LinkedIn Profile</span>
+                          </a>
+                        ) : (
+                          <span className="text-[10px] text-slate-400 font-mono">MultipliersKraft</span>
+                        )}
+                        <span className="lt-unflip-hint">Hover / Flip</span>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
         </div>
       </section>
     </>

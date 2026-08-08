@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import mainImage from '../../Assets/NewAbout/mainImage.webp';
 
 export default function LeadershipHero() {
@@ -15,66 +15,71 @@ export default function LeadershipHero() {
   }, []);
 
   return (
-    <div ref={ref} className="hero-section">
-      <div className="max-w-6xl mx-auto">
-        {/* Headline */}
-        <h1
-          className="hero-title"
-          style={{
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-            transition: 'all 0.8s cubic-bezier(0.22, 1, 0.36, 1)'
-          }}
-        >
-          Empowering Futures with
-          <br />
-          Cutting-Edge Skills for
-          <br />
-          Tomorrow's Leaders
-        </h1>
+    <section ref={ref} className="py-12 sm:py-16 lg:py-20 bg-[#F8FAFC] text-slate-900 relative overflow-hidden" id="about-hero">
+      
+      {/* Background Subtle Radial Pattern */}
+      <div 
+        className="absolute inset-0 pointer-events-none opacity-20 z-0"
+        style={{
+          backgroundImage: `
+            radial-gradient(circle at 0% 0%, rgba(2, 132, 199, 0.08) 0%, transparent 50%),
+            radial-gradient(circle at 100% 100%, rgba(2, 132, 199, 0.08) 0%, transparent 50%)
+          `
+        }}
+      />
 
-        {/* Hero Image */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Main Hero Card Container with Hero Image & Text Overlay */}
         <div
-          className="relative rounded-3xl overflow-hidden shadow-2xl hero-image-container"
+          className="relative rounded-3xl overflow-hidden shadow-2xl min-h-[500px] sm:min-h-[580px] lg:min-h-[640px] flex items-end p-6 sm:p-10 lg:p-14 text-left border border-slate-200/80 group"
           style={{
             opacity: isVisible ? 1 : 0,
-            transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(40px) scale(0.98)',
-            transition: 'all 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.2s'
+            transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(30px) scale(0.98)',
+            transition: 'all 0.9s cubic-bezier(0.22, 1, 0.36, 1)'
           }}
         >
+          {/* Background High-Impact Executive Photo */}
           <img
             src={mainImage}
-            alt="Business professionals meeting in modern office with city skyline view"
-            className="w-full h-auto object-cover"
+            alt="MultipliersKraft About Us Leadership"
+            className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-90"
           />
-          {/* Optional overlay for better text contrast if needed */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+
+          {/* Dark Executive Overlay for Maximum Contrast & Readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#01182F] via-[#01182F]/75 to-transparent pointer-events-none" />
+
+          {/* Content Overlay Box */}
+          <div className="relative z-10 max-w-4xl space-y-4">
+            
+            {/* About Us Pill Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-500/20 backdrop-blur-md border border-sky-400/30 text-sky-300 text-xs font-mono font-extrabold tracking-widest uppercase font-poppins">
+              <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse" />
+              <span>ABOUT MULTIPLIERSKRAFT</span>
+            </div>
+
+            {/* Headline */}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-extrabold text-white tracking-tight leading-[1.08]">
+              Architecting Human Potential & <br />
+              <span className="text-[#0284c7]">Enterprise Capability</span>
+            </h1>
+
+            {/* Subheading / Subtext requested by User */}
+            <p className="text-slate-200 text-lg sm:text-xl lg:text-2xl font-medium max-w-3xl leading-relaxed pt-1">
+              Empowering Future with Cutting-Edge Skill for Tomorrow Leaders
+            </p>
+
+            {/* Supporting Accent Tagline */}
+            <p className="text-slate-400 text-sm sm:text-base font-normal max-w-2xl pt-1">
+              We bridge academic rigor, organizational strategy, and AI telemetry to build sustainable capabilities that outlive the engagement.
+            </p>
+
+          </div>
+
         </div>
+
       </div>
 
-      <style>{`
-        .hero-image-container {
-          transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .hero-image-container:hover {
-          transform: translateY(-4px) scale(1.01) !important;
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .hero-title,
-          .hero-image-container {
-            transition: none !important;
-            opacity: 1 !important;
-            transform: none !important;
-          }
-
-          .hero-image-container:hover {
-            transform: none !important;
-          }
-        }
-      `}</style>
-    </div>
+    </section>
   );
 }
