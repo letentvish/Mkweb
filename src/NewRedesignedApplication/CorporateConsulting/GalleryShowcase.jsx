@@ -143,7 +143,7 @@ export default function GalleryShowcase() {
               <img 
                 src={card.image} 
                 alt="MultipliersKraft Corporate Experience"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 filter brightness-95 group-hover:brightness-100"
+                className="w-full h-full object-cover filter grayscale contrast-125 brightness-90 group-hover:grayscale-0 group-hover:scale-110 group-hover:brightness-100 group-hover:contrast-100 transition-all duration-700"
               />
             </div>
           ))}
@@ -160,7 +160,7 @@ export default function GalleryShowcase() {
               <img 
                 src={card.image} 
                 alt="MultipliersKraft Corporate Experience"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 filter brightness-95 group-hover:brightness-100"
+                className="w-full h-full object-cover filter grayscale contrast-125 brightness-90 group-hover:grayscale-0 group-hover:scale-110 group-hover:brightness-100 group-hover:contrast-100 transition-all duration-700"
               />
             </div>
           ))}
