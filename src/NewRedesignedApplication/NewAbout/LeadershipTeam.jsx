@@ -10,6 +10,10 @@ import image11 from "../../Assets/FacuilityImages/Sreekumar.png";
 import image12 from "../../Assets/FacuilityImages/DebashishMishra.png";
 import divyanshDixit from "../../Assets/FacuilityImages/DivyanshDixit.png";
 
+const avatarPlaceholder1 = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80";
+const avatarPlaceholder2 = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80";
+const avatarPlaceholder3 = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80";
+
 const teamMembers = [
   {
     name: "Pallavi Singh",
@@ -51,7 +55,7 @@ const teamMembers = [
     role: "Director of Growth & International Strategy",
     image: image6,
     description: "Mark joined us as the Director - Growth and International Strategy to establish and expand our presence in Europe, driving strategic growth, partnerships, and innovation in the Education and EdTech space. With over two decades of experience in Student Recruitment, Transnational Education, and Digital Learning, he has held senior leadership positions at FutureLearn, HyperionDev, and Higher Ed Partners in the UK.",
-    linkedin: null
+    linkedin: "https://www.linkedin.com"
   },
   {
     name: "Dhanraj Dadhich",
@@ -80,6 +84,28 @@ const teamMembers = [
     image: image11,
     description: "Sreekumar, a Gallup Certified Strengths Coach and NLP & Enneagram Master Coach, has 25 years of experience in facilitation and leadership development. Passionate about enabling professionals, he has guided thousands across organizations through experiential workshops.",
     linkedin: "https://www.linkedin.com/in/rajagopalan-s-sreekumar-4a5a4810/"
+  },
+  // Additional 3 profiles with avatar and placeholder bio text
+  {
+    name: "Leadership Advisor",
+    role: "Executive Advisory Partner",
+    image: avatarPlaceholder1,
+    description: "Placeholder profile bio text for Executive Advisory Partner. Specializing in high-impact executive coaching, corporate alignment, and transformational leadership strategy across global enterprises.",
+    linkedin: "https://www.linkedin.com"
+  },
+  {
+    name: "Strategic Consultant",
+    role: "Senior Enterprise Consultant",
+    image: avatarPlaceholder2,
+    description: "Placeholder profile bio text for Senior Enterprise Consultant. Focused on organizational capability architecture, competency assessment frameworks, and workforce optimization.",
+    linkedin: "https://www.linkedin.com"
+  },
+  {
+    name: "Capability Specialist",
+    role: "Principal Practice Lead",
+    image: avatarPlaceholder3,
+    description: "Placeholder profile bio text for Principal Practice Lead. Driving behavioral transformation, skill telemetry modeling, and bespoke corporate learning journeys.",
+    linkedin: "https://www.linkedin.com"
   }
 ];
 
@@ -350,6 +376,8 @@ const styles = `
     align-items: center;
     justify-content: space-between;
     flex-shrink: 0;
+    position: relative;
+    z-index: 50;
   }
 
   .lt-linkedin-link {
@@ -360,9 +388,13 @@ const styles = `
     font-weight: 600;
     color: #38bdf8;
     text-decoration: none;
-    transition: opacity 0.2s;
+    transition: opacity 0.2s, color 0.2s;
+    position: relative;
+    z-index: 50;
+    cursor: pointer;
+    pointer-events: auto;
   }
-  .lt-linkedin-link:hover { opacity: 0.8; text-decoration: underline; }
+  .lt-linkedin-link:hover { opacity: 1; color: #7dd3fc; text-decoration: underline; }
 
   .lt-unflip-hint {
     font-size: 10px;
@@ -399,6 +431,13 @@ export default function LeadershipTeam() {
   const handleCardClick = (index) => {
     if ('ontouchstart' in window) {
       setTappedCard(tappedCard === index ? null : index);
+    }
+  };
+
+  const handleLinkedInClick = (e, url) => {
+    e.stopPropagation();
+    if (url) {
+      window.open(url, '_blank', 'noopener,noreferrer');
     }
   };
 
@@ -474,7 +513,7 @@ export default function LeadershipTeam() {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="lt-linkedin-link"
-                            onClick={(e) => e.stopPropagation()}
+                            onClick={(e) => handleLinkedInClick(e, member.linkedin)}
                           >
                             <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
                               <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>

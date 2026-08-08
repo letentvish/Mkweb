@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import mainImage from '../../Assets/NewAbout/mainImage.webp';
 
 export default function LeadershipHero() {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
+
+  const genericHeroImage = "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80";
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -30,7 +31,7 @@ export default function LeadershipHero() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Main Hero Card Container with Hero Image & Text Overlay */}
+        {/* Main Hero Card Container with Generic Corporate Image & Text Overlay */}
         <div
           className="relative rounded-3xl overflow-hidden shadow-2xl min-h-[500px] sm:min-h-[580px] lg:min-h-[640px] flex items-end p-6 sm:p-10 lg:p-14 text-left border border-slate-200/80 group"
           style={{
@@ -39,10 +40,10 @@ export default function LeadershipHero() {
             transition: 'all 0.9s cubic-bezier(0.22, 1, 0.36, 1)'
           }}
         >
-          {/* Background High-Impact Executive Photo */}
+          {/* Background High-Impact Generic Corporate Executive Office Photo */}
           <img
-            src={mainImage}
-            alt="MultipliersKraft About Us Leadership"
+            src={genericHeroImage}
+            alt="MultipliersKraft Corporate Architecture"
             className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-90"
           />
 
