@@ -233,11 +233,11 @@ export default function CapabilityPillars() {
                           {item.title}
                         </h3>
 
-                        <p className="text-[#0284c7] font-bold text-xs sm:text-sm">
+                        <p className="text-[#0284c7] font-bold text-sm sm:text-base">
                           {item.subtitle}
                         </p>
 
-                        <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-normal">
+                        <p className="text-slate-600 text-base leading-relaxed font-normal">
                           {item.description}
                         </p>
                       </div>
@@ -310,7 +310,7 @@ export default function CapabilityPillars() {
                         {item.subtitle}
                       </p>
 
-                      <p className={`text-sm sm:text-base leading-relaxed font-normal transition-colors duration-300 ${
+                      <p className={`text-base sm:text-lg leading-relaxed font-normal transition-colors duration-300 ${
                         isActive ? "text-slate-900 font-medium" : "text-slate-600"
                       }`}>
                         {item.description}

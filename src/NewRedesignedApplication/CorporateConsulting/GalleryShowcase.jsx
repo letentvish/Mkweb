@@ -103,7 +103,7 @@ export default function GalleryShowcase() {
 
           {/* Right Column: Subtitle Copy & CTA Link */}
           <div className="lg:col-span-5 space-y-4">
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-normal">
+            <p className="text-slate-300 text-base sm:text-lg leading-relaxed font-normal">
               Bespoke corporate consulting engineered for sustainable impact. We diagnose organizational root causes, align leadership vision, and embed continuous capability across your enterprise.
             </p>
 

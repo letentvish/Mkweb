@@ -144,8 +144,8 @@ export default function TransformSection() {
                       >
                         {step.title}
                       </h3>
-                      <p className={`text-xs sm:text-sm leading-relaxed font-normal transition-colors duration-300 ${
-                        isSelected ? 'text-slate-200 font-medium' : 'text-slate-400'
+                      <p className={`text-sm sm:text-base leading-relaxed font-normal transition-colors duration-300 ${
+                        isSelected ? 'text-slate-100 font-medium' : 'text-slate-300'
                       }`}>
                         {step.description}
                       </p>
@@ -177,8 +177,8 @@ export default function TransformSection() {
                       >
                         {step.title}
                       </h3>
-                      <p className={`text-xs sm:text-sm leading-relaxed font-normal transition-colors duration-300 ${
-                        isSelected ? 'text-slate-200 font-medium' : 'text-slate-400'
+                      <p className={`text-sm sm:text-base leading-relaxed font-normal transition-colors duration-300 ${
+                        isSelected ? 'text-slate-100 font-medium' : 'text-slate-300'
                       }`}>
                         {step.description}
                       </p>

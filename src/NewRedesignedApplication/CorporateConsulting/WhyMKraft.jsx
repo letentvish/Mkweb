@@ -101,7 +101,7 @@ export default function WhyMKraft() {
                     {card.title}
                   </h3>
 
-                  <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-normal">
+                  <p className="text-slate-600 text-base leading-relaxed font-normal">
                     {card.description}
                   </p>
                 </div>

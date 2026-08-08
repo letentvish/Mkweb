@@ -75,7 +75,7 @@ const CorporateHero = () => {
                 <Users className="w-6 h-6 text-white" />
               </div>
               <h3 className="font-poppins font-bold text-2xl mb-3 text-white">Leadership that multiplies</h3>
-              <p className="text-slate-200 text-sm leading-relaxed font-normal">Build leaders who create leaders and strengthen every layer.</p>
+              <p className="text-slate-200 text-base leading-relaxed font-normal">Build leaders who create leaders and strengthen every layer.</p>
             </div>
           </div>
 
@@ -95,7 +95,7 @@ const CorporateHero = () => {
                 <Zap className="w-6 h-6 text-white" />
               </div>
               <h3 className="font-poppins font-bold text-2xl mb-3 text-white">Transformation that lasts</h3>
-              <p className="text-slate-200 text-sm leading-relaxed font-normal">Redesign organizations and drive change that delivers sustainable impact.</p>
+              <p className="text-slate-200 text-base leading-relaxed font-normal">Redesign organizations and drive change that delivers sustainable impact.</p>
             </div>
           </div>
 
@@ -115,7 +115,7 @@ const CorporateHero = () => {
                 <BarChart3 className="w-6 h-6 text-white" />
               </div>
               <h3 className="font-poppins font-bold text-2xl mb-3 text-white">Outcomes you can measure</h3>
-              <p className="text-slate-200 text-sm leading-relaxed font-normal">Develop capabilities that move the needle on what matters most.</p>
+              <p className="text-slate-200 text-base leading-relaxed font-normal">Develop capabilities that move the needle on what matters most.</p>
             </div>
           </div>
 
