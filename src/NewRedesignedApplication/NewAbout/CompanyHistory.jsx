@@ -83,12 +83,12 @@ export default function CompanyHistory() {
           {/* Subtle Top Inner Line */}
           <div className="w-full h-1 bg-gradient-to-r from-transparent via-[#0284c7] to-transparent absolute top-0 left-0" />
 
-          <p className="text-slate-700 text-lg sm:text-xl lg:text-2xl leading-relaxed font-normal text-center max-w-3xl mx-auto">
-            <span className="font-poppins font-extrabold text-[#01182F]">Purpose, Passion, and Perform</span> — that's how we define our identity.
+          <p className="text-slate-700 text-lg sm:text-xl lg:text-2xl leading-relaxed font-medium text-center max-w-3xl mx-auto">
+            This is how we define our identity — serving as a trusted partner in organizational and individual growth.
           </p>
 
           <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal text-center max-w-3xl mx-auto mt-6 pt-6 border-t border-slate-100">
-            Our commitment is to remain the most trusted partner in the journey of organization and individual growth by delivering unique, diverse expertise in driving success today and preparing you for tomorrow.
+            Our commitment is to deliver unique, diverse expertise that drives immediate success today while building sustainable capabilities for tomorrow.
           </p>
 
           {/* Core Expertise Tags */}
