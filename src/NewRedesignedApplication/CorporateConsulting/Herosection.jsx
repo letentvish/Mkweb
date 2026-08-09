@@ -59,13 +59,12 @@ const CorporateHero = () => {
         {/* Features Grid: 3 Staggered Aspect Ratio Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
           
-          {/* Feature Card 1 */}
+          {/* Feature Card 1 - Component 3 */}
           <div className="group relative rounded-3xl overflow-hidden aspect-[3/4] flex flex-col justify-end shadow-xl border border-slate-200/60 transition-all duration-500">
             <img 
-              alt="Leadership team meeting" 
+              alt="Organizational Alignment" 
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
-              src="https://lh3.googleusercontent.com/aida/AP1WRLvmEgpdlUJJVs7nEQGhdVX7Ha_UPMhD2Mp5_B9AkshwDXzeZ6SZNm4DMV9oPvAZaQ5EQgFM75NZjJFqJPWqeOtVZVpYcQ6FVBERfxd7uHfZEhDvjCeTUvIFnD7G0oxh2dLYv4MoPp-l5u1oKq4royqecCbI4mYCdWXdkzFpYcQODhjbqMk5eZFJyMci-o6IHmn1bfPzyFCG_8ByXgYLK6UD3zzIF0fmGkppZ0fWreZgyOkZSAtURW0gxnk"
-              onError={(e) => { e.target.src = "/pillar_consulting.png"; }}
+              src="/Component 3 (2).png"
             />
             {/* Card Overlay Gradient */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#01182F] via-[#01182F]/60 to-transparent" />
@@ -79,13 +78,12 @@ const CorporateHero = () => {
             </div>
           </div>
 
-          {/* Feature Card 2 (Staggered Downward with md:translate-y-8) */}
+          {/* Feature Card 2 - Component 4 (Staggered Downward with md:translate-y-8) */}
           <div className="group relative rounded-3xl overflow-hidden aspect-[3/4] flex flex-col justify-end shadow-xl border border-slate-200/60 transition-all duration-500 md:translate-y-8">
             <img 
-              alt="Modern skyscraper" 
+              alt="Cloud Tech Engine" 
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
-              src="https://lh3.googleusercontent.com/aida/AP1WRLtdu6iZBFWrMrIvQbGDrJsn-LpYL7aBAthhiQsFOXYhltnuWQaEty64Je1HnWzjcy5Oun5XSTgbmUBx3r05MwnpwcWyrwANSyte73wnTAniJWt7qbQZnqPvlRIhadrQfLhZq7BgFMU_E8yTtcW-Kje8-g-tiNGGQZqnl2G9-77D_G5W8ihNw5037hg7yUKcXfAAjxeCMp7N-UuGQF-Zb2GpnzO_XecMGh7muYaSoQrOXvYZPZcW1DvdRGI"
-              onError={(e) => { e.target.src = "/pillar_academic.png"; }}
+              src="/Component 4 (2).png"
             />
             {/* Card Overlay Gradient */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#01182F] via-[#01182F]/60 to-transparent" />
@@ -99,13 +97,12 @@ const CorporateHero = () => {
             </div>
           </div>
 
-          {/* Feature Card 3 */}
+          {/* Feature Card 3 - Component 5 */}
           <div className="group relative rounded-3xl overflow-hidden aspect-[3/4] flex flex-col justify-end shadow-xl border border-slate-200/60 transition-all duration-500">
             <img 
-              alt="Data analytics dashboard" 
+              alt="Enterprise Data Core Engine" 
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
-              src="https://lh3.googleusercontent.com/aida/AP1WRLsV3WGXuOVlH6lYuDkAVorIiv9sTjh0TLNJ7nANVdgMH4t6d4FvVUiQl-nhYptsASFvFyVK2QgeUviO2cFcM-LpumiS0gMRPO84XeD_xIf2TkFq3muLH6BksX6M2q9_a3Cncai8wwtw7u1ja_lti2rkBLfKo_zkKLjM_o7VLQJ1I4APik2yY_U9wUT83oP-Y95RTWjv02xxmeyJ-G52RzrbfEwup7-fCeOWmSMonqNBoDVReB_UulwspS8"
-              onError={(e) => { e.target.src = "/pillar_technology.png"; }}
+              src="/Component 5 (1).png"
             />
             {/* Card Overlay Gradient */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#01182F] via-[#01182F]/60 to-transparent" />
