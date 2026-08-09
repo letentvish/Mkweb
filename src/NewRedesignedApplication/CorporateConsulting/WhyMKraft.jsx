@@ -7,15 +7,15 @@ export default function WhyMKraft() {
     {
       step: "01",
       badge: "BESPOKE",
-      title: "Designed around your business",
-      description: "Every engagement begins with understanding your organization, not adapting you to a predefined program.",
+      title: "Built around your business, not our binder.",
+      description: "No predefined program. No borrowed playbook. Every engagement starts with your organisation as it actually is — and is designed for nothing else.",
       icon: <Users className="w-6 h-6 text-[#0284c7]" />
     },
     {
       step: "03",
-      badge: "TECHNOLOGY-ENABLED",
-      title: "Capability reinforced by technology",
-      description: "Our consulting is strengthened by digital platforms that sustain learning and track progress long after implementation.",
+      badge: "TECHNOLOGY ENABLED",
+      title: "Capability that doesn't fade when the workshop ends.",
+      description: "Our digital platforms keep the learning alive, track progress in real time, and hold the change in place long after the last session.",
       icon: <Cpu className="w-6 h-6 text-[#0284c7]" />
     }
   ];
@@ -23,16 +23,16 @@ export default function WhyMKraft() {
   const cardsRight = [
     {
       step: "02",
-      badge: "RESEARCH-BACKED",
-      title: "Evidence before intervention",
-      description: "We diagnose before we design, using proven assessments and data to build targeted capability solutions.",
+      badge: "RESEARCH BACKED",
+      title: "Diagnosis before design. Always.",
+      description: "Prescription without diagnosis is malpractice — in medicine and in consulting. We use validated assessments and hard data to find the cause before we touch the cure.",
       icon: <Search className="w-6 h-6 text-[#0284c7]" />
     },
     {
       step: "04",
-      badge: "OUTCOME-FOCUSED",
-      title: "Measured by business performance",
-      description: "Success is not measured by attendance. It is measured by improved leadership, stronger teams, and better organizational outcomes.",
+      badge: "OUTCOME FOCUSED",
+      title: "We are measured by your performance, not our presence.",
+      description: "Success isn't a feedback form. It's stronger leaders, tighter teams, and business outcomes you can point to a year later.",
       icon: <Target className="w-6 h-6 text-[#0284c7]" />
     }
   ];
@@ -67,7 +67,7 @@ export default function WhyMKraft() {
 
           <p className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto font-normal leading-relaxed pt-1">
             Most consulting hands you a deck. <br className="hidden sm:inline" />
-            We hand you difference that outlives the engagement.
+            We hand you a difference that outlives the engagement.
           </p>
         </header>
 
@@ -138,10 +138,11 @@ export default function WhyMKraft() {
             {/* Central White Card Hub */}
             <div className="w-64 h-64 sm:w-72 sm:h-72 rounded-full bg-white shadow-2xl border-4 border-sky-100 flex flex-col items-center justify-center text-center p-6 relative z-20 hover:scale-105 transition-transform duration-300">
               <h3 className="font-poppins font-extrabold text-3xl text-[#01182F] tracking-tight">
-                MKraft <span className="text-[#0284c7]"></span>
+                Why <span className="text-[#0284c7]">MKraft</span>
               </h3>
-              <p className="text-slate-500 text-xs sm:text-sm font-medium pt-2 max-w-[170px] leading-relaxed">
-                Difference that outlives the engagement.
+              <div className="w-8 h-1 bg-[#0284c7] rounded-full my-2.5" />
+              <p className="text-xs text-slate-500 max-w-[180px] leading-normal font-medium">
+                Four core principles driving capability that outlives the engagement.
               </p>
             </div>
 
@@ -154,12 +155,12 @@ export default function WhyMKraft() {
                 key={idx}
                 className="bg-white rounded-3xl p-6 sm:p-8 shadow-lg shadow-sky-100/50 border border-sky-100/80 relative hover:shadow-xl hover:border-sky-300 transition-all duration-300 group"
               >
-                {/* Step Ribbon Badge (Right Side) */}
-                <div className="absolute -right-3 top-6 bg-[#0284c7] text-white font-mono font-extrabold text-sm px-3.5 py-1 rounded-l-xl shadow-md flex items-center justify-center">
+                {/* Step Ribbon Badge (Left Side) */}
+                <div className="absolute -left-3 top-6 bg-[#0284c7] text-white font-mono font-extrabold text-sm px-3.5 py-1 rounded-r-xl shadow-md flex items-center justify-center">
                   {card.step}
                 </div>
 
-                <div className="pr-4">
+                <div className="pl-4">
                   {/* Top Icon Circle */}
                   <div className="w-12 h-12 bg-sky-50 border border-sky-100 rounded-full flex items-center justify-center mb-5 text-[#0284c7] group-hover:scale-110 transition-transform duration-300">
                     {card.icon}
@@ -174,7 +175,7 @@ export default function WhyMKraft() {
                     {card.title}
                   </h3>
 
-                  <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-normal">
+                  <p className="text-slate-600 text-base leading-relaxed font-normal">
                     {card.description}
                   </p>
                 </div>
@@ -185,6 +186,7 @@ export default function WhyMKraft() {
         </div>
 
       </div>
+
     </section>
   );
 }
