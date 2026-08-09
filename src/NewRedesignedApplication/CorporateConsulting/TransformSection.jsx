@@ -105,7 +105,7 @@ export default function TransformSection() {
         </div>
 
         {/* 5-Step Staggered Horizontal Timeline Grid */}
-        <div className="relative mt-16 pt-8 pb-8">
+        <div className="relative mt-6 md:mt-16 pt-2 md:pt-8 pb-4 md:pb-8">
           
           {/* Central Horizontal Timeline Line with Dynamic Traveling Light Movement */}
           <div className="hidden md:block absolute top-1/2 left-[2%] right-[2%] h-[3px] bg-slate-800 -translate-y-1/2 z-0 rounded-full">
@@ -127,7 +127,8 @@ export default function TransformSection() {
                   key={idx} 
                   onMouseEnter={() => setHoveredStep(idx)}
                   onMouseLeave={() => setHoveredStep(null)}
-                  className="relative flex flex-col justify-center min-h-[260px] text-left px-1 group cursor-pointer"
+                  onClick={() => setCurrentActive(idx)}
+                  className="relative flex flex-col justify-center md:min-h-[260px] text-left px-1 group cursor-pointer"
                 >
                   
                   {/* ABOVE Content Block (ONLY for position === 'above') */}
