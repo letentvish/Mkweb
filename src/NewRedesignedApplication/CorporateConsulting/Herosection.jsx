@@ -8,7 +8,7 @@ const CorporateHero = () => {
   const heroBgImage = "https://lh3.googleusercontent.com/aida/AP1WRLuM_VjiKISRwK7zGvTPtJcgrtR4TRez_HCXDdZxXAbOQyvFp6PTMvdzdQlXz4jVj7LY2hVPV_AxEtlUSFgUIDS1db1NIPuD3eVyTIc4m1J89mgAIq7Q5OvkHunlSBOTjtCeqCm0a1zX67C0R0Ttvr7A0ijqmPvh7PJiQZo4de6bJk_ISJvWi38gP0OS25uQTxVM4ZL4Z9CjgYMlCFxHC9x_dl1ga5CRXcLrX51OTV3kzv3IpguB5Ebtmdw";
 
   return (
-    <section className="relative min-h-screen pt-24 pb-32 bg-[#f7f9fb] overflow-hidden">
+    <section className="relative pt-20 pb-16 lg:pt-24 lg:pb-20 bg-[#f7f9fb] overflow-hidden border-b border-slate-200/80">
       
       {/* Background Image with Linear Gradient Overlay */}
       <div 
@@ -21,7 +21,7 @@ const CorporateHero = () => {
       <div className="relative z-10 container mx-auto px-6 max-w-7xl pt-4">
         
         {/* Top Content Area: 2-Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 mb-24 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 mb-12 lg:mb-16 items-center">
           
           {/* Left Column: Line Accent & Headline */}
           <div className="max-w-xl text-left">

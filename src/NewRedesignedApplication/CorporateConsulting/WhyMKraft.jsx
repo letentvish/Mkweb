@@ -38,7 +38,7 @@ export default function WhyMKraft() {
   ];
 
   return (
-    <section className="bg-[#f7f9fb] py-24 px-4 sm:px-6 lg:px-8 font-sans antialiased text-slate-700 relative overflow-hidden border-b border-slate-200" id="why-mkraft">
+    <section className="bg-[#f7f9fb] py-16 lg:py-20 px-4 sm:px-6 lg:px-8 font-sans antialiased text-slate-700 relative overflow-hidden border-b border-slate-200" id="why-mkraft">
       
       {/* Background Radial Pattern */}
       <div 
