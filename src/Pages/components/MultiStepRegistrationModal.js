@@ -10,17 +10,8 @@ import useEventRegistrationStore from "../../store/eventRegistrationStore";
  */
 export default function MultiStepRegistrationModal({ onClose, eventType }) {
   const {
-    emailVerification,
-    registrationForm,
-    registration,
     payment,
-    sendVerificationCode,
-    verifyEmailCode,
     updateRegistrationForm,
-    submitRegistration,
-    createPaymentOrder,
-    handlePaymentSuccess,
-    handlePaymentFailure,
     closeModal: resetAndClose,
   } = useEventRegistrationStore();
 

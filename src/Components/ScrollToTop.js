@@ -8,10 +8,11 @@ function ScrollToTop() {
 
   useEffect(() => {
     const currentPath = location.pathname;
+    const positions = scrollPositions.current;
 
     // Save current scroll position before navigation
     return () => {
-      scrollPositions.current[currentPath] = window.scrollY;
+      positions[currentPath] = window.scrollY;
     };
   }, [location.pathname]);
 

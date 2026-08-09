@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { FaShieldAlt, FaExclamationTriangle, FaGem, FaEdit, FaChartBar, FaSearchPlus, FaTrophy } from "react-icons/fa";
+import { FaGem, FaTrophy } from "react-icons/fa";
 import tabRightImage from "../../Assets/AiProctor/Background.webp";
 import createIcon from "../../Assets/AiProctor/What/create.svg";
 import monitorIcon from "../../Assets/AiProctor/What/Frame (4).svg";
