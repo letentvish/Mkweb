@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { FaShieldAlt, FaLock, FaBolt, FaSyncAlt, FaBrain, FaDesktop, FaClipboardList, FaClock, FaSearch, FaUser, FaEye, FaBox, FaVolumeUp } from "react-icons/fa";
-import { MdCellTower } from "react-icons/md";
+import { FaShieldAlt, FaLock, FaBolt, FaSyncAlt, FaBrain } from "react-icons/fa";
 import heroSectionImage from "../../Assets/AiProctor/HeroSection.webp";
 
 // ─── Animation Hook ───

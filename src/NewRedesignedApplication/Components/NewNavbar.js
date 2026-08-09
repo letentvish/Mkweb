@@ -7,14 +7,10 @@ import {
   Menu, 
   X,
   Users,
-  BarChart3,
   BookOpen,
   Boxes,
   Zap,
-  CheckCircle2,
-  Cpu,
-  Layers,
-  Sparkles
+  Cpu
 } from "lucide-react";
 import LogoDark from "../../Assets/MultipliersKraftLogoDark.png";
 

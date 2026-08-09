@@ -8,7 +8,6 @@ import FeaturesSection from './MileComponents/FeaturesSection';
 import BenefitsSection from './MileComponents/BenefitsSection';
 import JourneySection from './MileComponents/JourneySection';
 import KeyDifferentiators from './MileComponents/KeyDifferentiators';
-import MilesFooter from './MileComponents/MilesFooter';
 import { useTheme } from './useTheme';
 
 function MilePage() {

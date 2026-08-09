@@ -1,7 +1,6 @@
 import HeroSection from './HeroSection'
 import React from 'react'
 import './About.css'
-import StatsSection from './Stats'
 import CompanyHistory from './CompanyHistory'
 import Leadership from './LeadershipTeam'
 

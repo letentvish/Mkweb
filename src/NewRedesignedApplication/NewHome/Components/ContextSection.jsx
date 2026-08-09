@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { User, BarChart3, PieChart, Maximize2, Search, Puzzle, Target, TrendingUp } from "lucide-react";
+import { User, BarChart3, PieChart, Maximize2, Search, Puzzle, TrendingUp } from "lucide-react";
 
 export default function ContextSection() {
   const leftCards = [

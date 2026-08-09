@@ -4,7 +4,6 @@ import { FiCompass } from "react-icons/fi";
 import { BiBriefcaseAlt } from "react-icons/bi";
 import { FaChevronRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import highlightImg from "../../../Assets/Highlightimg.png";
 import highlightMain from "../../../Assets/HighlightMain.png";
 import cxoImage from "../../../Assets/NewMile/cxo.png";
 
@@ -236,7 +235,6 @@ const HighlightsSection = () => {
                   height: windowWidth < 640 ? "40px" : "48px",
                   borderRadius: "12px",
                   background: "#252B45",
-                  marginBottom: windowWidth < 640 ? "12px" : "16px",
                   margin: "0 auto",
                   marginBottom: windowWidth < 640 ? "12px" : "16px",
                 }}
