@@ -60,9 +60,9 @@ export default function LeadershipHero() {
             </div>
 
             {/* Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-extrabold text-white tracking-tight leading-[1.08]">
-              Architecting Human Potential & <br />
-              <span className="text-[#0284c7]">Enterprise Capability</span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-extrabold text-white tracking-tight leading-[1.15]">
+              Architecting Human Potential <br />
+              & Enterprise Capability
             </h1>
 
           </div>
