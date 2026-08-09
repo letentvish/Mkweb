@@ -65,16 +65,6 @@ export default function LeadershipHero() {
               <span className="text-[#0284c7]">Enterprise Capability</span>
             </h1>
 
-            {/* Subheading / Subtext requested by User */}
-            <p className="text-slate-200 text-lg sm:text-xl lg:text-2xl font-medium max-w-3xl leading-relaxed pt-1">
-              Empowering Future with Cutting-Edge Skill for Tomorrow Leaders
-            </p>
-
-            {/* Supporting Accent Tagline */}
-            <p className="text-slate-400 text-sm sm:text-base font-normal max-w-2xl pt-1">
-              We bridge academic rigor, organizational strategy, and AI telemetry to build sustainable capabilities that outlive the engagement.
-            </p>
-
           </div>
 
         </div>
