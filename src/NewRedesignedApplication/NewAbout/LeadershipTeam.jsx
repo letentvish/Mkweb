@@ -44,6 +44,13 @@ const teamMembers = [
     linkedin: "https://www.linkedin.com/in/divyansh-dixit-9b7a83312/"
   },
   {
+    name: "Dhanraj Dadhich",
+    role: "CTO & Chief Research Officer",
+    image: image7,
+    description: "Dhanraj is a pioneering tech visionary with 24+ years of expertise in Blockchain, AI, Quantum Computing, and IoT. As a Forbes Business Council member, he has shaped global tech advancements, including creating the world's fastest blockchain and a $1.5B unicorn in just 8 months. His innovations span Layer1 Blockchains, Quantum Teleportation, and DNA Data Storage.",
+    linkedin: "https://www.linkedin.com/in/dhanrajdadhich/"
+  },
+  {
     name: "Dr. Anju Chawla",
     role: "Advisor & Consultant",
     image: image5,
@@ -56,13 +63,6 @@ const teamMembers = [
     image: image6,
     description: "Mark joined us as the Director - Growth and International Strategy to establish and expand our presence in Europe, driving strategic growth, partnerships, and innovation in the Education and EdTech space. With over two decades of experience in Student Recruitment, Transnational Education, and Digital Learning, he has held senior leadership positions at FutureLearn, HyperionDev, and Higher Ed Partners in the UK.",
     linkedin: "https://www.linkedin.com"
-  },
-  {
-    name: "Dhanraj Dadhich",
-    role: "CTO & Chief Research Officer",
-    image: image7,
-    description: "Dhanraj is a pioneering tech visionary with 24+ years of expertise in Blockchain, AI, Quantum Computing, and IoT. As a Forbes Business Council member, he has shaped global tech advancements, including creating the world's fastest blockchain and a $1.5B unicorn in just 8 months. His innovations span Layer1 Blockchains, Quantum Teleportation, and DNA Data Storage.",
-    linkedin: "https://www.linkedin.com/in/dhanrajdadhich/"
   },
   {
     name: "J.C. Shukla",
