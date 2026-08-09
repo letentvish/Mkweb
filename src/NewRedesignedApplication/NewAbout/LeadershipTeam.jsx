@@ -85,7 +85,6 @@ const teamMembers = [
     description: "Sreekumar, a Gallup Certified Strengths Coach and NLP & Enneagram Master Coach, has 25 years of experience in facilitation and leadership development. Passionate about enabling professionals, he has guided thousands across organizations through experiential workshops.",
     linkedin: "https://www.linkedin.com/in/rajagopalan-s-sreekumar-4a5a4810/"
   },
-  // Additional 3 profiles with avatar and placeholder bio text
   {
     name: "Leadership Advisor",
     role: "Executive Advisory Partner",
@@ -165,12 +164,12 @@ const styles = `
   .lt-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-    align-items: start;
+    gap: 28px;
+    align-items: stretch;
   }
   @media (max-width: 1100px) { .lt-grid { grid-template-columns: repeat(3, 1fr); } }
-  @media (max-width: 760px)  { .lt-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; } .lt-root { padding: 48px 16px 72px; } .lt-header { margin-bottom: 40px; } }
-  @media (max-width: 400px)  { .lt-grid { grid-template-columns: 1fr; gap: 16px; } }
+  @media (max-width: 760px)  { .lt-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; } .lt-root { padding: 48px 16px 72px; } .lt-header { margin-bottom: 40px; } }
+  @media (max-width: 480px)  { .lt-grid { grid-template-columns: 1fr; gap: 20px; } }
 
   /* ── Card wrapper — perspective lives here ── */
   .lt-card-outer {
@@ -178,7 +177,7 @@ const styles = `
     transform: translateY(32px);
     transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1);
     perspective: 1100px;
-    height: 380px;
+    height: 420px;
   }
   .lt-card-outer.lt-visible { opacity: 1; transform: translateY(0); }
 
@@ -189,7 +188,7 @@ const styles = `
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.72s cubic-bezier(0.4, 0, 0.2, 1);
-    border-radius: 24px;
+    border-radius: 32px;
   }
   .lt-card-outer:hover .lt-flipper,
   .lt-card-outer.lt-tapped .lt-flipper {
@@ -200,114 +199,33 @@ const styles = `
   .lt-face {
     position: absolute;
     inset: 0;
-    border-radius: 24px;
+    border-radius: 32px;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     overflow: hidden;
   }
 
-  /* ── FRONT ── */
+  /* ── FRONT (Circular Avatar Card Design matching Screenshot) ── */
   .lt-front {
     background: #FFFFFF;
     border: 1px solid rgba(226, 232, 240, 0.9);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 28px 20px;
+    transition: box-shadow 0.3s;
   }
+  .lt-card-outer:hover .lt-front {
+    box-shadow: 0 20px 40px rgba(2, 132, 199, 0.12);
+  }
+
   [theme='dark'] .lt-front {
     background: #01182F;
-    border: 1px solid rgba(2, 132, 199, 0.2);
-    box-shadow: 0 4px 24px rgba(0,0,0,0.4);
-  }
-
-  .lt-img-wrap {
-    position: relative;
-    width: 100%;
-    height: 280px;
-    overflow: hidden;
-    background: #F1F5F9;
-    flex-shrink: 0;
-  }
-  [theme='dark'] .lt-img-wrap { background: #0f172a; }
-
-  .lt-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top center;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .lt-card-outer:hover .lt-img { transform: scale(1.04); }
-
-  .lt-front-grad {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, transparent 60%, rgba(1, 24, 47, 0.3) 100%);
-    pointer-events: none;
-  }
-
-  /* Flip indicator icon pill */
-  .lt-flip-badge {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    background: rgba(255,255,255,0.9);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,255,255,0.7);
-    border-radius: 20px;
-    padding: 4px 10px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 10px;
-    font-weight: 700;
-    color: #01182F;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    transition: all 0.3s;
-    z-index: 5;
-  }
-  [theme='dark'] .lt-flip-badge {
-    background: rgba(1, 24, 47, 0.85);
-    border-color: rgba(2, 132, 199, 0.4);
-    color: #38bdf8;
-  }
-  .lt-flip-badge svg {
-    width: 11px; height: 11px;
-    transition: transform 0.4s;
-  }
-  .lt-card-outer:hover .lt-flip-badge svg { transform: rotate(180deg); }
-
-  .lt-front-info {
-    padding: 14px 16px;
-    background: #FFFFFF;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: left;
-    border-top: 1px solid rgba(226, 232, 240, 0.6);
-    z-index: 10;
-  }
-  [theme='dark'] .lt-front-info {
-    background: #01182F;
-    border-top-color: rgba(2, 132, 199, 0.2);
-  }
-
-  .lt-name {
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    color: #01182F;
-    line-height: 1.25;
-    margin: 0;
-  }
-  [theme='dark'] .lt-name { color: #F8FAFC; }
-
-  .lt-role {
-    font-size: 12px;
-    font-weight: 600;
-    color: #0284c7;
-    margin-top: 3px;
+    border: 1px solid rgba(2, 132, 199, 0.25);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
   }
 
   /* ── BACK ── */
@@ -315,7 +233,7 @@ const styles = `
     background: #01182F;
     color: #fff;
     transform: rotateY(180deg);
-    padding: 24px;
+    padding: 28px 24px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -323,28 +241,28 @@ const styles = `
     border: 1px solid rgba(2, 132, 199, 0.4);
   }
 
-  .lt-back-top { flex: 1; overflow: hidden; display: flex; flex-direction: column; }
+  .lt-back-top { flex: 1; overflow: hidden; display: flex; flex-direction: column; text-align: left; }
 
   .lt-back-name {
     font-family: 'Poppins', sans-serif;
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 700;
     color: #fff;
     margin: 0;
     line-height: 1.2;
   }
   .lt-back-role {
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 600;
     color: #38bdf8;
-    margin-top: 3px;
+    margin-top: 4px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
 
   .lt-divider {
-    width: 24px;
-    height: 2px;
+    width: 28px;
+    height: 2.5px;
     background: #0284c7;
     border-radius: 2px;
     margin: 12px 0;
@@ -361,8 +279,8 @@ const styles = `
   .lt-desc-scroll::-webkit-scrollbar-thumb { background: rgba(2, 132, 199, 0.4); border-radius: 3px; }
 
   .lt-desc {
-    font-size: 12px;
-    line-height: 1.6;
+    font-size: 13px;
+    line-height: 1.65;
     color: #94a3b8;
     margin: 0;
     font-weight: 400;
@@ -473,30 +391,68 @@ export default function LeadershipTeam() {
                 >
                   <div className="lt-flipper">
                     
-                    {/* FRONT */}
+                    {/* FRONT: Circular Avatar Profile Design matching Screenshot */}
                     <div className="lt-face lt-front">
-                      <div className="lt-img-wrap">
-                        <img
-                          src={member.image}
-                          alt={member.name}
-                          className="lt-img"
-                          loading="lazy"
-                        />
-                        <div className="lt-front-grad" />
-                        <div className="lt-flip-badge">
+                      
+                      {/* Circular Avatar Image with Blue Border Ring & Glow */}
+                      <div className="relative mt-2 mb-4">
+                        <div className="w-36 h-36 sm:w-40 sm:h-40 rounded-full p-1 bg-gradient-to-b from-sky-200 via-sky-100 to-sky-50 shadow-[0_0_24px_rgba(2,132,199,0.2)] flex items-center justify-center">
+                          <div className="w-full h-full rounded-full border-[3.5px] border-[#0284c7] overflow-hidden bg-slate-100 shadow-inner">
+                            <img
+                              src={member.image}
+                              alt={member.name}
+                              className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105"
+                              loading="lazy"
+                            />
+                          </div>
+                        </div>
+
+                        {/* Bio Flip Badge Pill */}
+                        <div className="absolute -top-1 -right-1 bg-white/90 backdrop-blur-sm border border-sky-200 text-[#0284c7] font-mono font-extrabold text-[10px] px-2.5 py-0.5 rounded-full shadow-sm flex items-center gap-1 z-10">
                           <span>BIO</span>
-                          <svg viewBox="0 0 16 16" fill="currentColor">
+                          <svg className="w-2.5 h-2.5" viewBox="0 0 16 16" fill="currentColor">
                             <path d="M6 3l5 5-5 5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
                           </svg>
                         </div>
                       </div>
-                      <div className="lt-front-info">
-                        <h3 className="lt-name">{member.name}</h3>
-                        <p className="lt-role">{member.role}</p>
+
+                      {/* Name in Bold Blue (#0284c7) */}
+                      <h3 className="font-poppins font-bold text-xl sm:text-2xl text-[#0284c7] tracking-tight leading-tight px-2">
+                        {member.name}
+                      </h3>
+
+                      {/* Role in Medium Slate Grey */}
+                      <p className="text-slate-500 font-sans text-sm sm:text-base font-normal mt-1.5 px-2">
+                        {member.role}
+                      </p>
+
+                      {/* LinkedIn Rounded Square Button */}
+                      <div className="mt-4 mb-2">
+                        {member.linkedin ? (
+                          <a
+                            href={member.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-10 h-10 rounded-xl bg-[#0077b5] text-white flex items-center justify-center shadow-md hover:shadow-lg hover:scale-110 transition-all duration-200 inline-flex cursor-pointer"
+                            onClick={(e) => handleLinkedInClick(e, member.linkedin)}
+                            title={`${member.name} LinkedIn Profile`}
+                          >
+                            <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                              <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                            </svg>
+                          </a>
+                        ) : (
+                          <div className="w-10 h-10 rounded-xl bg-slate-100 text-slate-400 flex items-center justify-center border border-slate-200">
+                            <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                              <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                            </svg>
+                          </div>
+                        )}
                       </div>
+
                     </div>
 
-                    {/* BACK */}
+                    {/* BACK: Detailed Bio Face */}
                     <div className="lt-face lt-back">
                       <div className="lt-back-top">
                         <h3 className="lt-back-name">{member.name}</h3>
