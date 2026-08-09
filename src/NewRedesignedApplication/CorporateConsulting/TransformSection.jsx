@@ -127,7 +127,7 @@ export default function TransformSection() {
                   key={idx} 
                   onMouseEnter={() => setHoveredStep(idx)}
                   onMouseLeave={() => setHoveredStep(null)}
-                  onClick={() => setCurrentActive(idx)}
+                  onClick={() => setActiveStep(idx)}
                   className="relative flex flex-col justify-center md:min-h-[260px] text-left px-1 group cursor-pointer"
                 >
                   
