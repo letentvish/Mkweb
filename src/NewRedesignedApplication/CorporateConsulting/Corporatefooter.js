@@ -69,16 +69,21 @@ const CorporateFooter = () => {
             <div className="flex gap-3">
               <button 
                 onClick={scrollToTop}
+                title="Scroll to Top"
                 className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition border border-white/20"
               >
                 <FaArrowUp className="text-base" />
               </button>
               
-              <a href="#" className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition border border-white/20">
+              <a href="https://www.linkedin.com/company/multiplierskraft" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition border border-white/20">
+                <FaLinkedinIn className="text-base" />
+              </a>
+
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition border border-white/20">
                 <FaFacebookF className="text-base" />
               </a>
 
-              <a href="#" className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition border border-white/20">
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition border border-white/20">
                 <FaYoutube className="text-base" />
               </a>
             </div>
