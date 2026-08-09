@@ -451,10 +451,10 @@ export default function LeadershipTeam() {
           <div className="lt-header">
             <p className="lt-eyebrow">THE MINDS BEHIND MULTIPLIERSKRAFT</p>
             <h2 className={`lt-title ${headerVisible ? 'lt-visible' : ''}`}>
-              Leadership & Advisors
+              Our Leadership
             </h2>
             <p className={`lt-subtitle ${headerVisible ? 'lt-visible' : ''}`}>
-              A collective of industry pioneers, Gallup coaches, tech founders, and academic experts dedicated to enterprise transformation.
+              A collective of global industry leaders dedicated to enterprise transformation.
             </p>
           </div>
 
