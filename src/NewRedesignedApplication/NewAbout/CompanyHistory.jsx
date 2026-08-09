@@ -84,7 +84,7 @@ export default function CompanyHistory() {
           <div className="w-full h-1 bg-gradient-to-r from-transparent via-[#0284c7] to-transparent absolute top-0 left-0" />
 
           <p className="text-slate-700 text-lg sm:text-xl lg:text-2xl leading-relaxed font-normal text-center max-w-3xl mx-auto">
-            <span className="font-poppins font-extrabold text-[#01182F]">Purpose, Passion, and Perform</span> — that's how we define our identity. We are a group of professionals with core expertise in <span className="text-[#0284c7] font-semibold">Academia, HR, Talent & Learning, Coaching, and Technology</span>.
+            <span className="font-poppins font-extrabold text-[#01182F]">Purpose, Passion, and Perform</span> — that's how we define our identity.
           </p>
 
           <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal text-center max-w-3xl mx-auto mt-6 pt-6 border-t border-slate-100">
