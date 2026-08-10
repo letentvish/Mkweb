@@ -58,7 +58,7 @@ const CorporateHero = () => {
         </div>
 
         {/* Features Grid: 3 Staggered Aspect Ratio Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
           
           {/* Feature Card 1 - Component 3 */}
           <div className="group relative rounded-3xl overflow-hidden aspect-[3/4] flex flex-col justify-end shadow-xl border border-slate-200/60 transition-all duration-500">
@@ -68,52 +68,52 @@ const CorporateHero = () => {
               src="/Component 3 (2).png"
             />
             {/* Card Overlay Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#01182F] via-[#01182F]/60 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#01182F] via-[#01182F]/70 to-transparent" />
             
-            <div className="relative p-8 z-10 text-white">
-              <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center mb-6 shadow-md border border-white/20">
+            <div className="relative p-6 sm:p-8 z-10 text-white">
+              <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center mb-5 shadow-md border border-white/20">
                 <Users className="w-6 h-6 text-white" />
               </div>
-              <h3 className="font-poppins font-bold text-2xl mb-3 text-white">Leadership that multiplies</h3>
-              <p className="text-slate-200 text-base leading-relaxed font-normal">We don't build a leader. We build leaders who build leaders — so strength compounds at every layer.</p>
+              <h3 className="font-poppins font-bold text-xl sm:text-2xl mb-2.5 text-white leading-tight">Leadership that multiplies</h3>
+              <p className="text-slate-200 text-sm sm:text-base leading-relaxed font-normal">We don't build a leader. We build leaders who build leaders — so strength compounds at every layer.</p>
             </div>
           </div>
 
-          {/* Feature Card 2 - Component 4 (Staggered Downward with md:translate-y-8) */}
-          <div className="group relative rounded-3xl overflow-hidden aspect-[3/4] flex flex-col justify-end shadow-xl border border-slate-200/60 transition-all duration-500 md:translate-y-8">
+          {/* Feature Card 2 - Component 4 (Staggered Downward on lg screens) */}
+          <div className="group relative rounded-3xl overflow-hidden aspect-[3/4] flex flex-col justify-end shadow-xl border border-slate-200/60 transition-all duration-500 lg:translate-y-8">
             <img 
               alt="Transformation that lasts" 
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
               src="/Component 4 (2).png"
             />
             {/* Card Overlay Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#01182F] via-[#01182F]/60 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#01182F] via-[#01182F]/70 to-transparent" />
             
-            <div className="relative p-8 z-10 text-white">
-              <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center mb-6 shadow-md border border-white/20">
+            <div className="relative p-6 sm:p-8 z-10 text-white">
+              <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center mb-5 shadow-md border border-white/20">
                 <Zap className="w-6 h-6 text-white" />
               </div>
-              <h3 className="font-poppins font-bold text-2xl mb-3 text-white">Transformation that lasts</h3>
-              <p className="text-slate-200 text-base leading-relaxed font-normal">Change that people choose survives. Change that people survive doesn't. We design the first kind.</p>
+              <h3 className="font-poppins font-bold text-xl sm:text-2xl mb-2.5 text-white leading-tight">Transformation that lasts</h3>
+              <p className="text-slate-200 text-sm sm:text-base leading-relaxed font-normal">Change that people choose survives. Change that people survive doesn't. We design the first kind.</p>
             </div>
           </div>
 
           {/* Feature Card 3 - Component 5 */}
-          <div className="group relative rounded-3xl overflow-hidden aspect-[3/4] flex flex-col justify-end shadow-xl border border-slate-200/60 transition-all duration-500">
+          <div className="group relative rounded-3xl overflow-hidden aspect-[3/4] flex flex-col justify-end shadow-xl border border-slate-200/60 transition-all duration-500 md:col-span-2 lg:col-span-1">
             <img 
               alt="Outcomes you can measure" 
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
               src="/Component 5 (1).png"
             />
             {/* Card Overlay Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#01182F] via-[#01182F]/60 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#01182F] via-[#01182F]/70 to-transparent" />
             
-            <div className="relative p-8 z-10 text-white">
-              <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center mb-6 shadow-md border border-white/20">
+            <div className="relative p-6 sm:p-8 z-10 text-white">
+              <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center mb-5 shadow-md border border-white/20">
                 <BarChart3 className="w-6 h-6 text-white" />
               </div>
-              <h3 className="font-poppins font-bold text-2xl mb-3 text-white">Outcomes you can measure</h3>
-              <p className="text-slate-200 text-base leading-relaxed font-normal">Attendance is not a result. We're measured by what moves: leadership, teams, and the numbers your board reads.</p>
+              <h3 className="font-poppins font-bold text-xl sm:text-2xl mb-2.5 text-white leading-tight">Outcomes you can measure</h3>
+              <p className="text-slate-200 text-sm sm:text-base leading-relaxed font-normal">Attendance is not a result. We're measured by what moves: leadership, teams, and the numbers your board reads.</p>
             </div>
           </div>
 
