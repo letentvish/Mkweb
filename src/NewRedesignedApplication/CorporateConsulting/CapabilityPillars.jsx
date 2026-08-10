@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Users, RefreshCw, BarChart3, GraduationCap, Compass, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import "./CorporateConsulting.css";
+import "./CapabilityPillars.css";
 
 export default function CapabilityPillars() {
   const navigate = useNavigate();

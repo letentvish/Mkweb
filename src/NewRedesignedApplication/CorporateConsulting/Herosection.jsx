@@ -1,7 +1,7 @@
 import React from "react";
 import { Users, Zap, BarChart3 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import "./CorporateConsulting.css";
+import "./Herosection.css";
 
 const CorporateHero = () => {
   const navigate = useNavigate();

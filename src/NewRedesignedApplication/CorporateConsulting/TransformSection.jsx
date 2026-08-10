@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import "./CorporateConsulting.css";
+import "./TransformSection.css";
 
 export default function TransformSection() {
   const navigate = useNavigate();

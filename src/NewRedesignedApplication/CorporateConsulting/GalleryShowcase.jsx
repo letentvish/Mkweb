@@ -2,7 +2,7 @@ import React from "react";
 import Marquee from "react-fast-marquee";
 import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import "./CorporateConsulting.css";
+import "./GalleryShowcase.css";
 
 export default function GalleryShowcase() {
   const navigate = useNavigate();

@@ -1,6 +1,6 @@
 import React from "react";
 import { Users, Search, Cpu, Target } from "lucide-react";
-import "./CorporateConsulting.css";
+import "./WhyMKraft.css";
 
 export default function WhyMKraft() {
 
