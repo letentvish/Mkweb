@@ -28,7 +28,7 @@ const CorporateHero = () => {
             <div className="w-16 h-0.5 bg-[#0284c7] mb-8" />
             <h1 className="font-poppins font-extrabold text-5xl sm:text-6xl md:text-7xl leading-tight tracking-tight text-[#01182F]">
               Most consulting visits. <br />
-              <span className="text-[#0284c7]">Ours moves in.</span>
+              <span className="text-[#0284c7]">We <i className="italic font-serif">Integrate.</i></span>
             </h1>
           </div>
 
