@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import './HeroSection.css';
 
 export default function LeadershipHero() {
   const [isVisible, setIsVisible] = useState(false);
@@ -16,24 +17,16 @@ export default function LeadershipHero() {
   }, []);
 
   return (
-    <section ref={ref} className="py-12 sm:py-16 lg:py-20 bg-[#F8FAFC] text-slate-900 relative overflow-hidden" id="about-hero">
+    <section ref={ref} className="about-hero-section" id="about-hero">
       
       {/* Background Subtle Radial Pattern */}
-      <div 
-        className="absolute inset-0 pointer-events-none opacity-20 z-0"
-        style={{
-          backgroundImage: `
-            radial-gradient(circle at 0% 0%, rgba(2, 132, 199, 0.08) 0%, transparent 50%),
-            radial-gradient(circle at 100% 100%, rgba(2, 132, 199, 0.08) 0%, transparent 50%)
-          `
-        }}
-      />
+      <div className="about-hero-pattern" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="about-hero-container">
         
         {/* Main Hero Card Container with Generic Corporate Image & Text Overlay */}
         <div
-          className="relative rounded-3xl overflow-hidden shadow-2xl min-h-[500px] sm:min-h-[580px] lg:min-h-[640px] flex items-end p-6 sm:p-10 lg:p-14 text-left border border-slate-200/80 group"
+          className="about-hero-card"
           style={{
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(30px) scale(0.98)',
@@ -44,23 +37,23 @@ export default function LeadershipHero() {
           <img
             src={genericHeroImage}
             alt="MultipliersKraft Corporate Architecture"
-            className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-90"
+            className="about-hero-img"
           />
 
           {/* Dark Executive Overlay for Maximum Contrast & Readability */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#01182F] via-[#01182F]/75 to-transparent pointer-events-none" />
+          <div className="about-hero-overlay" />
 
           {/* Content Overlay Box */}
-          <div className="relative z-10 max-w-4xl space-y-4">
+          <div className="about-hero-content">
             
             {/* About Us Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-500/20 backdrop-blur-md border border-sky-400/30 text-sky-300 text-xs font-mono font-extrabold tracking-widest uppercase font-poppins">
-              <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse" />
+            <div className="about-hero-pill">
+              <span className="about-hero-pill-dot" />
               <span>ABOUT MULTIPLIERSKRAFT</span>
             </div>
 
             {/* Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-extrabold text-white tracking-tight leading-[1.15]">
+            <h1 className="about-hero-title">
               Architecting Human Potential <br />
               & Enterprise Capability
             </h1>

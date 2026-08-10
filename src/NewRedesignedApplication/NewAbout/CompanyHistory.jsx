@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import './CompanyHistory.css';
 
 export default function CompanyHistory() {
   const [isVisible, setIsVisible] = useState(false);
@@ -22,48 +23,42 @@ export default function CompanyHistory() {
   ];
 
   return (
-    <div ref={ref} className="w-full py-20 lg:py-28 px-4 sm:px-8 bg-[#F8FAFC] relative overflow-hidden" id="company-identity">
+    <div ref={ref} className="history-section" id="company-identity">
       
       {/* Background Radial Glow */}
-      <div 
-        className="absolute inset-0 pointer-events-none opacity-30 z-0"
-        style={{
-          backgroundImage: `
-            radial-gradient(circle at 50% 50%, rgba(2, 132, 199, 0.08) 0%, transparent 60%)
-          `
-        }}
-      />
+      <div className="history-pattern" />
 
-      <div className="max-w-5xl mx-auto text-center relative z-10 space-y-8">
+      <div className="history-container">
         
         {/* Top Eyebrow Badge */}
         <div
+          className="history-badge-wrap"
           style={{
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
             transition: 'all 0.6s cubic-bezier(0.22, 1, 0.36, 1)'
           }}
         >
-          <span className="text-xs font-mono font-extrabold text-[#0284c7] tracking-widest uppercase inline-block px-4 py-1.5 rounded-full bg-sky-50 border border-sky-200/80 font-poppins">
+          <span className="history-badge">
             OUR PURPOSE & IDENTITY
           </span>
         </div>
 
         {/* Main Section Headline */}
         <h2
-          className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-extrabold text-[#01182F] tracking-tight leading-tight"
+          className="history-title"
           style={{
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? 'translateY(0)' : 'translateY(25px)',
             transition: 'all 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s'
           }}
         >
-          Purpose, Passion & <span className="text-[#0284c7]">Performance</span>
+          Purpose, Passion & <span className="history-title-accent">Performance</span>
         </h2>
 
         {/* Accent Divider */}
         <div 
-          className="w-16 h-1 bg-[#0284c7] rounded-full mx-auto"
+          className="history-divider"
           style={{
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? 'scaleX(1)' : 'scaleX(0)',
@@ -71,9 +66,9 @@ export default function CompanyHistory() {
           }}
         />
 
-        {/* Main Center-Aligned Paragraph Content Requested by User */}
+        {/* Main Center-Aligned Paragraph Content */}
         <div
-          className="bg-white border border-slate-200/90 rounded-3xl p-8 sm:p-12 shadow-xl shadow-sky-100/50 relative overflow-hidden"
+          className="history-card"
           style={{
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
@@ -81,30 +76,32 @@ export default function CompanyHistory() {
           }}
         >
           {/* Subtle Top Inner Line */}
-          <div className="w-full h-1 bg-gradient-to-r from-transparent via-[#0284c7] to-transparent absolute top-0 left-0" />
+          <div className="history-card-top-line" />
 
-          <p className="text-slate-700 text-lg sm:text-xl lg:text-2xl leading-relaxed font-medium text-center max-w-3xl mx-auto">
+          <p className="history-text-primary">
             This is how we define our identity — serving as a trusted partner in organizational and individual growth.
           </p>
 
-          <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal text-center max-w-3xl mx-auto mt-6 pt-6 border-t border-slate-100">
+          <p className="history-text-secondary">
             Our commitment is to deliver unique, diverse expertise that drives immediate success today while building sustainable capabilities for tomorrow.
           </p>
 
           {/* Core Expertise Tags */}
-          <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mt-8 pt-4">
+          <div className="history-tags-group">
             {expertisePillars.map((pillar, idx) => (
               <span 
                 key={idx}
-                className="px-4 py-2 rounded-xl bg-sky-50 text-[#0284c7] border border-sky-100 text-xs sm:text-sm font-poppins font-bold tracking-wide shadow-xs"
+                className="history-tag-pill"
               >
                 {pillar}
               </span>
             ))}
           </div>
+
         </div>
 
       </div>
+
     </div>
   );
 }
