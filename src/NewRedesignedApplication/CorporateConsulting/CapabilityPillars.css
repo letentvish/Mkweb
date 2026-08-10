@@ -8,7 +8,7 @@
   padding-left: 1rem;
   padding-right: 1rem;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   border-bottom: 1px solid #e2e8f0;
 }
 
@@ -34,6 +34,20 @@
   margin-right: auto;
   position: relative;
   z-index: 10;
+}
+
+/* Left Sticky Column */
+.cc-pillar-left-sticky {
+  position: relative;
+  z-index: 20;
+}
+
+@media (min-width: 1024px) {
+  .cc-pillar-left-sticky {
+    position: sticky;
+    top: 7rem;
+    align-self: flex-start;
+  }
 }
 
 /* Screenshot Exact Card Design */

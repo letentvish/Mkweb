@@ -59,8 +59,8 @@ export default function CapabilityPillars() {
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
-          {/* Left Column: Fixed Sticky Section Info Header matching Screenshot */}
-          <div className="lg:col-span-5 lg:sticky lg:top-32 self-start space-y-6 text-left py-2 z-20">
+          {/* Left Column: Fixed Sticky Section Info Header */}
+          <div className="lg:col-span-5 cc-pillar-left-sticky space-y-6 text-left py-2">
             
             <div className="flex items-center gap-3">
               <p className="cc-why-tag">
@@ -68,7 +68,7 @@ export default function CapabilityPillars() {
               </p>
             </div>
 
-            {/* Main Title matching Screenshot */}
+            {/* Main Title */}
             <h2 className="cc-why-title" style={{ fontSize: 'clamp(2.5rem, 4vw, 3.5rem)', lineHeight: 1.08 }}>
               Five ways <br />we build <br />lasting <span style={{ color: '#0284c7' }}>capability</span>
             </h2>
@@ -77,7 +77,7 @@ export default function CapabilityPillars() {
               Bespoke solutions, engineered end to end. Choose one, or weave several into a single journey — every pillar runs on the same diagnostic engine.
             </p>
 
-            {/* Action Buttons matching Screenshot: Diagnose & Explore */}
+            {/* Action Buttons: Diagnose & Explore */}
             <div className="flex items-center gap-4 pt-4">
               <button
                 onClick={() => navigate("/contact")}
@@ -99,7 +99,7 @@ export default function CapabilityPillars() {
 
           </div>
 
-          {/* Right Column: Timeline Cards matching Screenshot */}
+          {/* Right Column: Timeline Cards (Scrolls Up while left section sticks) */}
           <div className="lg:col-span-7 relative text-left">
             
             {/* Middle Vertical Timeline Line (Desktop Only) */}
