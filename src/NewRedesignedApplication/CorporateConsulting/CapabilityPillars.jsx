@@ -70,7 +70,7 @@ export default function CapabilityPillars() {
 
             {/* Main Title */}
             <h2 className="cc-why-title" style={{ fontSize: 'clamp(2.5rem, 4vw, 3.5rem)', lineHeight: 1.08 }}>
-              Five ways <br />we build <br />lasting <span style={{ color: '#0284c7' }}>capability</span>
+              Ways that <br />we build <br />lasting <span style={{ color: '#0284c7' }}>impact</span>
             </h2>
 
             <p className="cc-why-intro" style={{ marginLeft: 0, fontSize: '1rem', color: '#475569', maxWidth: '26rem', lineHeight: 1.6 }}>
