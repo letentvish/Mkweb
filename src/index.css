@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+  color-scheme: light;
   --surface: #f8f9ff;
   --surface-dim: #cbdbf5;
   --surface-bright: #f8f9ff;
@@ -42,7 +43,8 @@
   --slate-primary: #0F172A;
 }
 
-body {
+html, body {
+  color-scheme: light !important;
   margin: 0;
   background-color: var(--background);
   color: var(--on-surface);
