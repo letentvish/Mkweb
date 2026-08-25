@@ -105,7 +105,6 @@ export default function SolutionsSection() {
                     alt={pillar.title}
                     className="solutions-mockup-img"
                   />
-                  <div className="solutions-mockup-overlay" />
                 </div>
               </div>
 
