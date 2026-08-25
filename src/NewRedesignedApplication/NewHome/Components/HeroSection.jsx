@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Users, LineChart, Box, UserCheck } from "lucide-react";
+import { ArrowRight, Users } from "lucide-react";
 import "./HeroSection.css";
 
 export default function HeroSection() {
@@ -191,37 +191,6 @@ export default function HeroSection() {
                   className="h-full bg-[#0369a1] rounded-full"
                 />
               </div>
-            </div>
-          </motion.div>
-
-          {/* Floating Glassmorphic Icon Badges */}
-          <motion.div 
-            animate={{ y: [0, -10, 0] }}
-            transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut" }}
-            className="hero-badge-1"
-          >
-            <div className="hero-glass-icon">
-              <UserCheck className="w-5 h-5" />
-            </div>
-          </motion.div>
-
-          <motion.div 
-            animate={{ y: [0, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 4.1, ease: "easeInOut", delay: 0.7 }}
-            className="hero-badge-2"
-          >
-            <div className="hero-glass-icon hero-glass-teal">
-              <LineChart className="w-5 h-5" />
-            </div>
-          </motion.div>
-
-          <motion.div 
-            animate={{ y: [0, -8, 0] }}
-            transition={{ repeat: Infinity, duration: 3.8, ease: "easeInOut", delay: 1.2 }}
-            className="hero-badge-3"
-          >
-            <div className="hero-glass-icon hero-glass-sky">
-              <Box className="w-5 h-5" />
             </div>
           </motion.div>
 

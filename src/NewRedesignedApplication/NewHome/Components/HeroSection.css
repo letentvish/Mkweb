@@ -254,20 +254,14 @@
 /* Floating Cards & Badges - Hidden on Mobile & Tablet */
 .hero-card-1,
 .hero-card-2,
-.hero-card-3,
-.hero-badge-1,
-.hero-badge-2,
-.hero-badge-3 {
+.hero-card-3 {
   display: none;
 }
 
 @media (min-width: 1024px) {
   .hero-card-1,
   .hero-card-2,
-  .hero-card-3,
-  .hero-badge-1,
-  .hero-badge-2,
-  .hero-badge-3 {
+  .hero-card-3 {
     display: block;
   }
 }
@@ -381,53 +375,4 @@
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   border: 1px solid #f1f5f9;
   width: 13rem;
-}
-
-.hero-badge-1 {
-  position: absolute;
-  top: 2.5rem;
-  right: 4rem;
-  z-index: 40;
-}
-
-.hero-badge-2 {
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-4rem);
-  z-index: 40;
-}
-
-.hero-badge-3 {
-  position: absolute;
-  right: 3rem;
-  bottom: 8rem;
-  z-index: 40;
-}
-
-.hero-glass-icon {
-  width: 2.75rem;
-  height: 2.75rem;
-  border-radius: 9999px;
-  background-color: rgba(24, 22, 54, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(12px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
-}
-
-.hero-glass-icon:hover {
-  transform: scale(1.1);
-}
-
-.hero-glass-teal {
-  background-color: rgba(13, 148, 136, 0.8);
-}
-
-.hero-glass-sky {
-  background-color: rgba(3, 105, 161, 0.8);
 }
