@@ -192,32 +192,23 @@
 
 .solutions-mockup-wrap {
   width: 100%;
-  height: 11rem;
+  aspect-ratio: 16 / 9;
   border-radius: 1rem;
   overflow: hidden;
   border: 1px solid rgba(51, 65, 85, 0.8);
   background-color: #0f172a;
   margin-bottom: 1.5rem;
   position: relative;
-}
-
-@media (min-width: 768px) {
-  .solutions-mockup-wrap {
-    height: 13rem;
-  }
-}
-
-@media (min-width: 1280px) {
-  .solutions-mockup-wrap {
-    height: 14rem;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .solutions-mockup-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: top;
+  object-fit: contain;
+  object-position: center;
 }
 
 .solutions-mockup-overlay {
