@@ -48,16 +48,6 @@
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
-
-[theme='dark'] .business-approach-card:hover {
-  /* Only image zoom effect, no card movement or shadow */
-}
-
-[theme='light'] .business-approach-card:hover {
-  /* Only image zoom effect, no card movement or shadow */
-}
-
-
 .business-approach-card {
   display: flex;
   flex-direction: column;
@@ -84,122 +74,200 @@
   transform: scale(1.1);
 }
 
-/* Card Content */
+/* New Redesigned Layout Classes */
+.approach-section-root {
+  width: 100%;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  background-color: #f8f9ff;
+  border-bottom: 1px solid rgba(200, 205, 220, 0.6);
+}
 
-[theme='dark'] .business-approach-card-title {
-  font-size: 26px;
+@media (min-width: 1024px) {
+  .approach-section-root {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+.approach-header-box {
+  max-width: 48rem;
+  margin-bottom: 3rem;
+  text-align: left;
+}
+
+.approach-label {
+  font-size: 0.75rem;
   font-weight: 700;
-  margin: 0 0 12px 0;
-  letter-spacing: -0.3px;
-  color: #ffffff;
+  letter-spacing: 0.1em;
+  color: #6366f1;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
 }
 
-[theme='light'] .business-approach-card-title {
-  font-size: 26px;
+.approach-title {
+  font-family: 'Poppins', sans-serif;
   font-weight: 700;
-  margin: 0 0 12px 0;
-  letter-spacing: -0.3px;
-  color: black;
+  font-size: 1.875rem;
+  color: #0b1c30;
+  margin-bottom: 0.75rem;
 }
 
-[theme='dark'] .business-approach-card-description {
-  font-size: 18px;
-  line-height: 1.6;
-  font-weight: 400;
-  color: #D9D9D9;
-  margin: 0;
+@media (min-width: 768px) {
+  .approach-title { font-size: 2.25rem; }
 }
 
-[theme='light'] .business-approach-card-description {
-  font-size: 18px;
-  line-height: 1.6;
-  font-weight: 400;
-  color: #4A5565;
-  margin: 0;
+.approach-subtitle {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  color: #45464d;
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .business-approach-grid {
-    grid-template-columns: 1fr;
-    margin: auto;
-    width: 80%;
-  }
-
-  .business-approach-image-container {
-    width: 100%;
-    min-width: unset;
-    height: auto;
-    aspect-ratio: 16/9;
-  }
-
-  .business-approach-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+.approach-layout-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
 }
-@media (max-width: 900px) {
 
-  .business-approach-title {
-    font-size: 48px;
-    margin-bottom: 40px;
-  }
-
-  .business-approach-image-container {
-    height: auto;
+@media (min-width: 1024px) {
+  .approach-layout-grid {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 4rem;
   }
 }
 
-
-@media (max-width: 768px) {
-  .business-approach-section {
-    padding: 1.25rem 20px;
-  }
-
-  [theme='dark'] .business-approach-title,
-  [theme='light'] .business-approach-title {
-    font-size: 36px;
-    margin-bottom: 40px;
-  }
-
+.approach-timeline-col {
+  position: relative;
+  padding-left: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
 
-@media (max-width: 480px) {
-  .business-approach-section {
-    padding: 0.75rem 1rem;
-  }
+@media (min-width: 768px) {
+  .approach-timeline-col { padding-left: 4rem; }
+}
+@media (min-width: 1024px) {
+  .approach-timeline-col { grid-column: span 6 / span 6; }
+}
 
-  [theme='dark'] .business-approach-title,
-  [theme='light'] .business-approach-title {
-    font-size: 28px;
-    margin-bottom: 32px;
-  }
+.approach-timeline-line {
+  position: absolute;
+  left: 20px;
+  top: 1.5rem;
+  bottom: 1.5rem;
+  width: 2.5px;
+  background-color: #cbd5e1;
+  transform: translateX(-50%);
+  overflow: hidden;
+  border-radius: 9999px;
+}
 
-  .business-approach-grid {
-    gap: 16px;
-    margin-bottom: 40px;
-  }
+@media (min-width: 768px) {
+  .approach-timeline-line { left: 24px; }
+}
 
-  [theme='dark'] .business-approach-card,
-  [theme='light'] .business-approach-card {
-    padding: 20px;
-    border-radius: 16px;
-  }
+.approach-step-item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
 
-  .business-approach-image-container {
-    margin-bottom: 16px;
-  }
+.approach-node-dot {
+  position: absolute;
+  left: -28px;
+  top: 1.75rem;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  [theme='dark'] .business-approach-card-title,
-  [theme='light'] .business-approach-card-title {
-    font-size: 20px;
-    margin-bottom: 8px;
-  }
+@media (min-width: 768px) {
+  .approach-node-dot { left: -40px; }
+}
 
-  [theme='dark'] .business-approach-card-description,
-  [theme='light'] .business-approach-card-description {
-    font-size: 14px;
-    line-height: 1.5;
-  }
+.approach-node-ring {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 9999px;
+  background-color: #0b1c30;
+  outline: 4px solid #f8f9ff;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.approach-icon-box {
+  width: 4rem;
+  height: 4rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.approach-step-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #0b1c30;
+  margin-bottom: 0.375rem;
+}
+
+@media (min-width: 768px) {
+  .approach-step-title { font-size: 1.875rem; }
+}
+
+.approach-step-desc {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  color: #45464d;
+  max-width: 28rem;
+}
+
+.approach-graphic-col {
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 1024px) {
+  .approach-graphic-col { grid-column: span 6 / span 6; }
+}
+
+.approach-graphic-card {
+  width: 100%;
+  max-width: 36rem;
+  background-color: #ffffff;
+  border-radius: 2rem;
+  border: 1px solid rgba(226, 232, 240, 0.7);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .approach-graphic-card { padding: 1.5rem; }
+}
+
+.approach-isometric-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.approach-isometric-img:hover {
+  transform: scale(1.02);
 }

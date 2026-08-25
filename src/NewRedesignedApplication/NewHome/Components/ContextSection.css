@@ -1,0 +1,281 @@
+/* ContextSection.css */
+.context-section-root {
+  position: relative;
+  width: 100%;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background-color: #07091c;
+  color: #ffffff;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(30, 41, 59, 0.8);
+}
+
+@media (min-width: 1024px) {
+  .context-section-root {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+}
+
+.context-wrapper {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  position: relative;
+  z-index: 10;
+}
+
+@media (min-width: 640px) {
+  .context-wrapper { padding-left: 1.5rem; padding-right: 1.5rem; }
+}
+@media (min-width: 1024px) {
+  .context-wrapper { padding-left: 2rem; padding-right: 2rem; }
+}
+
+.context-header {
+  text-align: center;
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 4rem;
+}
+
+.context-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid #334155;
+  background-color: rgba(30, 41, 59, 0.6);
+  margin-bottom: 1.25rem;
+}
+
+.context-badge-text {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #5eead4;
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+}
+
+.context-main-heading {
+  font-size: 2.25rem;
+  font-weight: 800;
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+  letter-spacing: -0.025em;
+}
+
+@media (min-width: 768px) {
+  .context-main-heading { font-size: 3rem; }
+}
+@media (min-width: 1024px) {
+  .context-main-heading { font-size: 3.75rem; }
+}
+
+.context-gradient-text {
+  background: linear-gradient(to right, #38bdf8, #c084fc, #f472b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.context-infographic-layout {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+  max-width: 72rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 1024px) {
+  .context-infographic-layout {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+.context-svg-flow {
+  display: none;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+@media (min-width: 1024px) {
+  .context-svg-flow {
+    display: block;
+  }
+}
+
+.context-col-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  z-index: 20;
+}
+
+@media (min-width: 1024px) {
+  .context-col-cards {
+    grid-column: span 4 / span 4;
+  }
+}
+
+.context-card-box {
+  background-color: rgba(15, 19, 51, 0.9);
+  border: 1px solid rgba(51, 65, 85, 0.6);
+  padding: 1.25rem;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.context-card-box:hover {
+  border-color: rgba(100, 116, 139, 0.8);
+}
+
+.context-icon-square {
+  flex-shrink: 0;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.75rem;
+  background-color: #0f172a;
+  border: 1px solid rgba(51, 65, 85, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.context-card-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #ffffff;
+  margin-bottom: 0.25rem;
+}
+
+.context-card-desc {
+  font-size: 0.75rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+
+/* Center Medallion Hub */
+.context-center-col {
+  display: flex;
+  justify-content: center;
+  z-index: 30;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .context-center-col {
+    grid-column: span 4 / span 4;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+.context-medallion-wrap {
+  position: relative;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .context-medallion-wrap {
+    width: 20rem;
+    height: 20rem;
+  }
+}
+
+.context-indigo-ring {
+  position: absolute;
+  inset: 0.5rem;
+  border-radius: 9999px;
+  border: 2px solid rgba(99, 102, 241, 0.3);
+}
+
+.context-purple-ring {
+  position: absolute;
+  inset: 1.25rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(168, 85, 247, 0.2);
+}
+
+.context-white-core {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
+  background-color: #ffffff;
+  color: #0b1426;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+  border: 4px solid #e2e8f0;
+}
+
+.context-arrow-icon {
+  margin-top: -0.75rem;
+  margin-bottom: 1rem;
+  color: #6366f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+  border-radius: 9999px;
+  background-color: rgba(238, 242, 255, 0.8);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.context-medallion-multiply {
+  background: linear-gradient(to right, #0d9488, #4f46e5, #9333ea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  font-family: 'Poppins', sans-serif;
+}
+
+@media (min-width: 768px) {
+  .context-medallion-multiply { font-size: 1.875rem; }
+}
+@media (min-width: 1024px) {
+  .context-medallion-multiply { font-size: 2.25rem; }
+}
+
+.context-medallion-sub {
+  color: #0b1426;
+  font-size: 0.875rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+}
+
+@media (min-width: 768px) {
+  .context-medallion-sub { font-size: 1rem; }
+}

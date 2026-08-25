@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Users, GraduationCap, Building2, Globe } from "lucide-react";
+import "./StatsSection.css";
 
 function AnimatedCountUp({ value, duration = 2 }) {
   const [count, setCount] = useState(0);
@@ -66,10 +67,10 @@ const metrics = [
 
 export default function StatsSection() {
   return (
-    <section className="relative py-20 lg:py-28 px-4 bg-[#f8f9ff] overflow-hidden border-b border-outline-variant/60">
+    <section className="stats-section-root">
       
       {/* Decorative Dot Matrix Patterns */}
-      <div className="absolute top-10 right-10 opacity-20 hidden md:block pointer-events-none">
+      <div className="stats-dot-matrix-tr">
         <svg width="100" height="80" viewBox="0 0 100 80" fill="#0b1c30">
           <circle cx="10" cy="10" r="2.5" /><circle cx="35" cy="10" r="2.5" /><circle cx="60" cy="10" r="2.5" /><circle cx="85" cy="10" r="2.5" />
           <circle cx="10" cy="35" r="2.5" /><circle cx="35" cy="35" r="2.5" /><circle cx="60" cy="35" r="2.5" /><circle cx="85" cy="35" r="2.5" />
@@ -77,7 +78,7 @@ export default function StatsSection() {
         </svg>
       </div>
 
-      <div className="absolute bottom-10 left-10 opacity-20 hidden md:block pointer-events-none">
+      <div className="stats-dot-matrix-bl">
         <svg width="100" height="80" viewBox="0 0 100 80" fill="#0b1c30">
           <circle cx="10" cy="10" r="2.5" /><circle cx="35" cy="10" r="2.5" /><circle cx="60" cy="10" r="2.5" /><circle cx="85" cy="10" r="2.5" />
           <circle cx="10" cy="35" r="2.5" /><circle cx="35" cy="35" r="2.5" /><circle cx="60" cy="35" r="2.5" /><circle cx="85" cy="35" r="2.5" />
@@ -85,21 +86,21 @@ export default function StatsSection() {
         </svg>
       </div>
 
-      <div className="section-container relative z-10">
+      <div className="stats-container">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-16 text-left">
-          <p className="label-md mb-2 text-[#6366f1]">IMPACT AT SCALE</p>
-          <h2 className="headline-lg text-[#0b1c30] mb-3 font-poppins font-bold tracking-tight">
+        <div className="stats-header-box">
+          <p className="stats-label">IMPACT AT SCALE</p>
+          <h2 className="stats-main-heading">
             Enabling Industries At Scale
           </h2>
-          <p className="body-lg text-[#45464d] leading-relaxed">
+          <p className="stats-desc">
             Quantifiable performance metrics delivered across global enterprises, academic institutions, and workforce ecosystems.
           </p>
         </div>
 
         {/* 4 Metric Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <div className="stats-cards-grid">
           {metrics.map((metric, idx) => (
             <motion.article
               key={idx}
@@ -107,23 +108,23 @@ export default function StatsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.12 }}
-              className="bg-white border border-slate-200/80 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 p-8 md:p-10 flex flex-col items-center text-center group cursor-pointer"
+              className="stats-card-article"
             >
               {/* Icon Container */}
-              <div className="w-16 h-16 rounded-full bg-slate-100/80 flex items-center justify-center mb-6 group-hover:bg-indigo-50 group-hover:scale-110 transition-all duration-300">
+              <div className="stats-icon-circle">
                 {metric.icon}
               </div>
 
               {/* Metric Value */}
-              <h3 className="text-4xl lg:text-5xl font-extrabold font-poppins text-[#6366f1] mb-2 tracking-tight">
+              <h3 className="stats-num-heading">
                 <AnimatedCountUp value={metric.value} duration={2.2} />
               </h3>
 
               {/* Accent Divider */}
-              <div className="w-8 h-1 bg-slate-200 rounded-full mb-6 group-hover:w-12 group-hover:bg-[#6366f1] transition-all duration-300" />
+              <div className="stats-divider" />
 
               {/* Metric Label */}
-              <p className="text-slate-700 font-semibold text-base leading-snug">
+              <p className="stats-card-label">
                 {metric.label}
               </p>
             </motion.article>
@@ -131,13 +132,13 @@ export default function StatsSection() {
         </div>
 
         {/* Bottom Accent Feature Icon */}
-        <div className="flex justify-center mt-14">
-          <div className="w-10 h-10 bg-[#6366f1] rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/20">
-            <div className="grid grid-cols-2 gap-1">
-              <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
-              <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
-              <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
-              <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+        <div className="stats-bottom-accent">
+          <div className="stats-accent-box">
+            <div className="stats-grid-dots">
+              <div className="stats-dot-white"></div>
+              <div className="stats-dot-white"></div>
+              <div className="stats-dot-white"></div>
+              <div className="stats-dot-white"></div>
             </div>
           </div>
         </div>

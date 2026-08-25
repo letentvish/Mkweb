@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Target, UserCheck, TrendingUp } from "lucide-react";
+import "./BusinessApproach.css";
 
 export default function BusinessApproach() {
   const steps = [
@@ -28,29 +29,28 @@ export default function BusinessApproach() {
   ];
 
   return (
-    <section className="w-full py-16 lg:py-24 bg-[#f8f9ff] border-b border-outline-variant/60">
+    <section className="approach-section-root">
       <div className="section-container">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-12 text-left">
-          <p className="label-md mb-2 text-[#6366f1]">OUR APPROACH</p>
-          <h2 className="headline-lg text-[#0b1c30] mb-3 font-poppins font-bold">
+        <div className="approach-header-box">
+          <p className="approach-label">OUR APPROACH</p>
+          <h2 className="approach-title">
             Our Business Approach
           </h2>
-          <p className="body-lg text-[#45464d] leading-relaxed">
+          <p className="approach-subtitle">
             A structured, 3-stage methodology engineered to diagnose reality, embed sustainable capability, and scale enterprise intelligence.
           </p>
         </div>
 
         {/* 2-Column Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="approach-layout-grid">
           
           {/* Left Column: Timeline Track */}
-          <div className="lg:col-span-6 relative pl-12 md:pl-16 space-y-12">
+          <div className="approach-timeline-col">
             
-            {/* Background Vertical Timeline Line (Centering Line) */}
-            <div className="absolute left-[20px] md:left-[24px] top-6 bottom-6 w-[2.5px] bg-slate-300 -translate-x-1/2 overflow-hidden rounded-full">
-              {/* Traveling Glowing Light Blob */}
+            {/* Background Vertical Timeline Line */}
+            <div className="approach-timeline-line">
               <motion.div
                 className="w-full h-16 bg-gradient-to-b from-[#6366f1] via-[#10b981] to-[#4f46e5] rounded-full shadow-[0_0_12px_#6366f1]"
                 animate={{
@@ -72,13 +72,11 @@ export default function BusinessApproach() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.15 }}
-                className="relative flex items-start gap-6 group"
+                className="approach-step-item"
               >
-                {/* Node Dot Marker (100% Dead-Centered on the Line) */}
-                <div className="absolute left-[-28px] md:left-[-40px] top-7 -translate-x-1/2 -translate-y-1/2 z-20 flex items-center justify-center">
-                  {/* Base Outer Ring */}
-                  <div className="w-4 h-4 rounded-full bg-[#0b1c30] ring-4 ring-[#f8f9ff] shadow-md flex items-center justify-center">
-                    {/* Active Glowing Trigger Light Pulse */}
+                {/* Node Dot Marker */}
+                <div className="approach-node-dot">
+                  <div className="approach-node-ring">
                     <motion.div 
                       className="w-2.5 h-2.5 rounded-full bg-teal-400"
                       animate={{
@@ -99,7 +97,7 @@ export default function BusinessApproach() {
                   </div>
                 </div>
 
-                {/* Stage Icon Box (Triggered Glow Animation) */}
+                {/* Stage Icon Box */}
                 <motion.div 
                   animate={{
                     scale: [1, 1.08, 1],
@@ -114,7 +112,7 @@ export default function BusinessApproach() {
                     repeat: Infinity,
                     delay: index * 2
                   }}
-                  className={`w-16 h-16 shrink-0 flex items-center justify-center rounded-2xl ${step.bg} border border-slate-200/90 shadow-sm transition-all duration-300`}
+                  className={`approach-icon-box ${step.bg}`}
                 >
                   <motion.div
                     animate={{ rotate: [0, 8, -8, 0] }}
@@ -125,11 +123,11 @@ export default function BusinessApproach() {
                 </motion.div>
 
                 {/* Stage Content */}
-                <div className="pt-1">
-                  <h3 className="text-2xl md:text-3xl font-poppins font-bold text-[#0b1c30] mb-1.5">
+                <div style={{ paddingTop: "0.25rem" }}>
+                  <h3 className="approach-step-title">
                     {step.title}
                   </h3>
-                  <p className="body-lg text-[#45464d] leading-relaxed max-w-md">
+                  <p className="approach-step-desc">
                     {step.description}
                   </p>
                 </div>
@@ -138,18 +136,18 @@ export default function BusinessApproach() {
           </div>
 
           {/* Right Column: 3D Isometric Graphic Card */}
-          <div className="lg:col-span-6 flex justify-center">
+          <div className="approach-graphic-col">
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="w-full max-w-xl bg-white rounded-[32px] border border-slate-200/70 shadow-xl p-4 md:p-6 overflow-hidden flex items-center justify-center"
+              className="approach-graphic-card"
             >
               <img 
                 src="/approach_isometric.png" 
                 alt="3D Business Approach Illustration" 
-                className="w-full h-auto object-contain rounded-2xl drop-shadow-md hover:scale-102 transition-transform duration-300"
+                className="approach-isometric-img"
               />
             </motion.div>
           </div>
