@@ -86,7 +86,7 @@ export default function HeroSection() {
           {/* Main Central Woman Image (Bottom Aligned & Large Size) */}
           <div className="relative z-20 w-full max-w-lg mx-auto flex justify-center items-end h-full">
             <img 
-              src="/hero_woman.png" 
+              src={process.env.PUBLIC_URL + "/girl hero.png"} 
               alt="Professional holding tablet" 
               className="max-h-[620px] md:max-h-[700px] lg:max-h-[760px] w-auto object-contain object-bottom drop-shadow-2xl"
             />
